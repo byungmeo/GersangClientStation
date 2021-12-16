@@ -25,50 +25,34 @@ namespace GersangClientStation {
         /// </summary>
         private void InitializeComponent() {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            this.button_start_2 = new MetroFramework.Controls.MetroButton();
             this.menuStrip2 = new System.Windows.Forms.MenuStrip();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.다클라ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.metroPanel2 = new MetroFramework.Controls.MetroPanel();
-            this.label_nickname_2 = new MetroFramework.Controls.MetroLabel();
-            this.label_status_2 = new MetroFramework.Controls.MetroLabel();
-            this.button_search_naver2 = new MetroFramework.Controls.MetroButton();
-            this.button_login_2 = new MetroFramework.Controls.MetroButton();
+            this.toggle_client_2 = new MetroFramework.Controls.MetroToggle();
             this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
             this.metroPanel3 = new MetroFramework.Controls.MetroPanel();
-            this.label_nickname_3 = new MetroFramework.Controls.MetroLabel();
-            this.label_status_3 = new MetroFramework.Controls.MetroLabel();
-            this.button_search_naver3 = new MetroFramework.Controls.MetroButton();
-            this.button_login_3 = new MetroFramework.Controls.MetroButton();
+            this.toggle_client_3 = new MetroFramework.Controls.MetroToggle();
             this.metroLabel3 = new MetroFramework.Controls.MetroLabel();
-            this.button_start_3 = new MetroFramework.Controls.MetroButton();
-            this.button_start_1 = new MetroFramework.Controls.MetroButton();
-            this.button_login_1 = new MetroFramework.Controls.MetroButton();
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
-            this.label_status_1 = new MetroFramework.Controls.MetroLabel();
-            this.button_search_naver1 = new MetroFramework.Controls.MetroButton();
             this.metroPanel1 = new MetroFramework.Controls.MetroPanel();
-            this.label_nickname_1 = new MetroFramework.Controls.MetroLabel();
+            this.toggle_client_1 = new MetroFramework.Controls.MetroToggle();
             this.radio_setting_1 = new MetroFramework.Controls.MetroRadioButton();
             this.radio_setting_2 = new MetroFramework.Controls.MetroRadioButton();
             this.radio_setting_3 = new MetroFramework.Controls.MetroRadioButton();
             this.groupBox_setting = new System.Windows.Forms.GroupBox();
-            this.eventBrowser = new System.Windows.Forms.WebBrowser();
+            this.button_search_naver_1 = new System.Windows.Forms.Button();
+            this.button_start_1 = new System.Windows.Forms.Button();
+            this.button_start_2 = new System.Windows.Forms.Button();
+            this.button_search_naver2 = new System.Windows.Forms.Button();
+            this.button_start_3 = new System.Windows.Forms.Button();
+            this.button_search_naver3 = new System.Windows.Forms.Button();
             this.menuStrip2.SuspendLayout();
             this.metroPanel2.SuspendLayout();
             this.metroPanel3.SuspendLayout();
             this.metroPanel1.SuspendLayout();
             this.groupBox_setting.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // button_start_2
-            // 
-            this.button_start_2.Location = new System.Drawing.Point(3, 214);
-            this.button_start_2.Name = "button_start_2";
-            this.button_start_2.Size = new System.Drawing.Size(194, 47);
-            this.button_start_2.TabIndex = 9;
-            this.button_start_2.Text = "게임실행";
-            this.button_start_2.Click += new System.EventHandler(this.button_start_2_Click);
             // 
             // menuStrip2
             // 
@@ -77,9 +61,10 @@ namespace GersangClientStation {
             this.menuStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripMenuItem1,
             this.다클라ToolStripMenuItem});
-            this.menuStrip2.Location = new System.Drawing.Point(1369, 60);
+            this.menuStrip2.Location = new System.Drawing.Point(404, 60);
             this.menuStrip2.Name = "menuStrip2";
-            this.menuStrip2.Size = new System.Drawing.Size(178, 916);
+            this.menuStrip2.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
+            this.menuStrip2.Size = new System.Drawing.Size(197, 410);
             this.menuStrip2.TabIndex = 13;
             this.menuStrip2.Text = "menuStrip2";
             // 
@@ -107,59 +92,31 @@ namespace GersangClientStation {
             // metroPanel2
             // 
             this.metroPanel2.BorderStyle = MetroFramework.Drawing.MetroBorderStyle.FixedSingle;
-            this.metroPanel2.Controls.Add(this.label_nickname_2);
-            this.metroPanel2.Controls.Add(this.label_status_2);
-            this.metroPanel2.Controls.Add(this.button_search_naver2);
-            this.metroPanel2.Controls.Add(this.button_login_2);
-            this.metroPanel2.Controls.Add(this.metroLabel2);
             this.metroPanel2.Controls.Add(this.button_start_2);
+            this.metroPanel2.Controls.Add(this.button_search_naver2);
+            this.metroPanel2.Controls.Add(this.toggle_client_2);
+            this.metroPanel2.Controls.Add(this.metroLabel2);
             this.metroPanel2.HorizontalScrollbarBarColor = true;
             this.metroPanel2.HorizontalScrollbarHighlightOnWheel = false;
             this.metroPanel2.HorizontalScrollbarSize = 10;
-            this.metroPanel2.Location = new System.Drawing.Point(229, 60);
+            this.metroPanel2.Location = new System.Drawing.Point(23, 201);
             this.metroPanel2.Name = "metroPanel2";
-            this.metroPanel2.Size = new System.Drawing.Size(200, 264);
+            this.metroPanel2.Size = new System.Drawing.Size(200, 123);
             this.metroPanel2.TabIndex = 15;
             this.metroPanel2.VerticalScrollbarBarColor = true;
             this.metroPanel2.VerticalScrollbarHighlightOnWheel = false;
             this.metroPanel2.VerticalScrollbarSize = 10;
             // 
-            // label_nickname_2
+            // toggle_client_2
             // 
-            this.label_nickname_2.Location = new System.Drawing.Point(37, 84);
-            this.label_nickname_2.Name = "label_nickname_2";
-            this.label_nickname_2.Size = new System.Drawing.Size(126, 19);
-            this.label_nickname_2.TabIndex = 11;
-            this.label_nickname_2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label_status_2
-            // 
-            this.label_status_2.BackColor = System.Drawing.Color.IndianRed;
-            this.label_status_2.CustomBackground = true;
-            this.label_status_2.Location = new System.Drawing.Point(37, 54);
-            this.label_status_2.Name = "label_status_2";
-            this.label_status_2.Size = new System.Drawing.Size(126, 19);
-            this.label_status_2.TabIndex = 11;
-            this.label_status_2.Text = "Offline";
-            this.label_status_2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // button_search_naver2
-            // 
-            this.button_search_naver2.Location = new System.Drawing.Point(137, 127);
-            this.button_search_naver2.Name = "button_search_naver2";
-            this.button_search_naver2.Size = new System.Drawing.Size(60, 60);
-            this.button_search_naver2.TabIndex = 12;
-            this.button_search_naver2.Text = "네이버\r\n검색";
-            this.button_search_naver2.Click += new System.EventHandler(this.button_search_naver_Click);
-            // 
-            // button_login_2
-            // 
-            this.button_login_2.Location = new System.Drawing.Point(3, 127);
-            this.button_login_2.Name = "button_login_2";
-            this.button_login_2.Size = new System.Drawing.Size(128, 60);
-            this.button_login_2.TabIndex = 10;
-            this.button_login_2.Text = "로그인";
-            this.button_login_2.Click += new System.EventHandler(this.button_login_2_Click);
+            this.toggle_client_2.AutoSize = true;
+            this.toggle_client_2.Location = new System.Drawing.Point(110, 10);
+            this.toggle_client_2.Name = "toggle_client_2";
+            this.toggle_client_2.Size = new System.Drawing.Size(80, 16);
+            this.toggle_client_2.TabIndex = 25;
+            this.toggle_client_2.Text = "Off";
+            this.toggle_client_2.UseVisualStyleBackColor = true;
+            this.toggle_client_2.Click += new System.EventHandler(this.toggle_client_2_Click);
             // 
             // metroLabel2
             // 
@@ -176,59 +133,31 @@ namespace GersangClientStation {
             // metroPanel3
             // 
             this.metroPanel3.BorderStyle = MetroFramework.Drawing.MetroBorderStyle.FixedSingle;
-            this.metroPanel3.Controls.Add(this.label_nickname_3);
-            this.metroPanel3.Controls.Add(this.label_status_3);
-            this.metroPanel3.Controls.Add(this.button_search_naver3);
-            this.metroPanel3.Controls.Add(this.button_login_3);
-            this.metroPanel3.Controls.Add(this.metroLabel3);
             this.metroPanel3.Controls.Add(this.button_start_3);
+            this.metroPanel3.Controls.Add(this.button_search_naver3);
+            this.metroPanel3.Controls.Add(this.toggle_client_3);
+            this.metroPanel3.Controls.Add(this.metroLabel3);
             this.metroPanel3.HorizontalScrollbarBarColor = true;
             this.metroPanel3.HorizontalScrollbarHighlightOnWheel = false;
             this.metroPanel3.HorizontalScrollbarSize = 10;
-            this.metroPanel3.Location = new System.Drawing.Point(436, 60);
+            this.metroPanel3.Location = new System.Drawing.Point(23, 346);
             this.metroPanel3.Name = "metroPanel3";
-            this.metroPanel3.Size = new System.Drawing.Size(200, 264);
+            this.metroPanel3.Size = new System.Drawing.Size(200, 123);
             this.metroPanel3.TabIndex = 16;
             this.metroPanel3.VerticalScrollbarBarColor = true;
             this.metroPanel3.VerticalScrollbarHighlightOnWheel = false;
             this.metroPanel3.VerticalScrollbarSize = 10;
             // 
-            // label_nickname_3
+            // toggle_client_3
             // 
-            this.label_nickname_3.Location = new System.Drawing.Point(36, 84);
-            this.label_nickname_3.Name = "label_nickname_3";
-            this.label_nickname_3.Size = new System.Drawing.Size(126, 19);
-            this.label_nickname_3.TabIndex = 13;
-            this.label_nickname_3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label_status_3
-            // 
-            this.label_status_3.BackColor = System.Drawing.Color.IndianRed;
-            this.label_status_3.CustomBackground = true;
-            this.label_status_3.Location = new System.Drawing.Point(36, 54);
-            this.label_status_3.Name = "label_status_3";
-            this.label_status_3.Size = new System.Drawing.Size(126, 19);
-            this.label_status_3.TabIndex = 13;
-            this.label_status_3.Text = "Offline";
-            this.label_status_3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // button_search_naver3
-            // 
-            this.button_search_naver3.Location = new System.Drawing.Point(137, 127);
-            this.button_search_naver3.Name = "button_search_naver3";
-            this.button_search_naver3.Size = new System.Drawing.Size(60, 60);
-            this.button_search_naver3.TabIndex = 15;
-            this.button_search_naver3.Text = "네이버\r\n검색";
-            this.button_search_naver3.Click += new System.EventHandler(this.button_search_naver_Click);
-            // 
-            // button_login_3
-            // 
-            this.button_login_3.Location = new System.Drawing.Point(3, 127);
-            this.button_login_3.Name = "button_login_3";
-            this.button_login_3.Size = new System.Drawing.Size(128, 60);
-            this.button_login_3.TabIndex = 13;
-            this.button_login_3.Text = "로그인";
-            this.button_login_3.Click += new System.EventHandler(this.button_login_3_Click);
+            this.toggle_client_3.AutoSize = true;
+            this.toggle_client_3.Location = new System.Drawing.Point(110, 10);
+            this.toggle_client_3.Name = "toggle_client_3";
+            this.toggle_client_3.Size = new System.Drawing.Size(80, 16);
+            this.toggle_client_3.TabIndex = 26;
+            this.toggle_client_3.Text = "Off";
+            this.toggle_client_3.UseVisualStyleBackColor = true;
+            this.toggle_client_3.Click += new System.EventHandler(this.toggle_client_3_Click);
             // 
             // metroLabel3
             // 
@@ -242,33 +171,6 @@ namespace GersangClientStation {
             this.metroLabel3.Text = "Client3";
             this.metroLabel3.UseStyleColors = true;
             // 
-            // button_start_3
-            // 
-            this.button_start_3.Location = new System.Drawing.Point(3, 214);
-            this.button_start_3.Name = "button_start_3";
-            this.button_start_3.Size = new System.Drawing.Size(194, 47);
-            this.button_start_3.TabIndex = 9;
-            this.button_start_3.Text = "게임실행";
-            this.button_start_3.Click += new System.EventHandler(this.button_start_3_Click);
-            // 
-            // button_start_1
-            // 
-            this.button_start_1.Location = new System.Drawing.Point(3, 214);
-            this.button_start_1.Name = "button_start_1";
-            this.button_start_1.Size = new System.Drawing.Size(194, 47);
-            this.button_start_1.TabIndex = 5;
-            this.button_start_1.Text = "게임실행";
-            this.button_start_1.Click += new System.EventHandler(this.button_start_1_Click);
-            // 
-            // button_login_1
-            // 
-            this.button_login_1.Location = new System.Drawing.Point(3, 127);
-            this.button_login_1.Name = "button_login_1";
-            this.button_login_1.Size = new System.Drawing.Size(128, 60);
-            this.button_login_1.TabIndex = 4;
-            this.button_login_1.Text = "로그인";
-            this.button_login_1.Click += new System.EventHandler(this.button_login_1_Click);
-            // 
             // metroLabel1
             // 
             this.metroLabel1.AutoSize = true;
@@ -281,58 +183,40 @@ namespace GersangClientStation {
             this.metroLabel1.Text = "MainClient";
             this.metroLabel1.UseStyleColors = true;
             // 
-            // label_status_1
-            // 
-            this.label_status_1.BackColor = System.Drawing.Color.IndianRed;
-            this.label_status_1.CustomBackground = true;
-            this.label_status_1.Location = new System.Drawing.Point(35, 54);
-            this.label_status_1.Name = "label_status_1";
-            this.label_status_1.Size = new System.Drawing.Size(126, 19);
-            this.label_status_1.TabIndex = 7;
-            this.label_status_1.Text = "Offline";
-            this.label_status_1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // button_search_naver1
-            // 
-            this.button_search_naver1.Location = new System.Drawing.Point(137, 127);
-            this.button_search_naver1.Name = "button_search_naver1";
-            this.button_search_naver1.Size = new System.Drawing.Size(60, 60);
-            this.button_search_naver1.TabIndex = 9;
-            this.button_search_naver1.Text = "네이버\r\n검색";
-            this.button_search_naver1.Click += new System.EventHandler(this.button_search_naver_Click);
-            // 
             // metroPanel1
             // 
             this.metroPanel1.BorderStyle = MetroFramework.Drawing.MetroBorderStyle.FixedSingle;
-            this.metroPanel1.Controls.Add(this.label_nickname_1);
-            this.metroPanel1.Controls.Add(this.button_search_naver1);
-            this.metroPanel1.Controls.Add(this.label_status_1);
-            this.metroPanel1.Controls.Add(this.metroLabel1);
-            this.metroPanel1.Controls.Add(this.button_login_1);
             this.metroPanel1.Controls.Add(this.button_start_1);
+            this.metroPanel1.Controls.Add(this.button_search_naver_1);
+            this.metroPanel1.Controls.Add(this.toggle_client_1);
+            this.metroPanel1.Controls.Add(this.metroLabel1);
             this.metroPanel1.HorizontalScrollbarBarColor = true;
             this.metroPanel1.HorizontalScrollbarHighlightOnWheel = false;
             this.metroPanel1.HorizontalScrollbarSize = 10;
             this.metroPanel1.Location = new System.Drawing.Point(23, 60);
             this.metroPanel1.Name = "metroPanel1";
-            this.metroPanel1.Size = new System.Drawing.Size(200, 264);
+            this.metroPanel1.Size = new System.Drawing.Size(200, 123);
             this.metroPanel1.TabIndex = 14;
             this.metroPanel1.VerticalScrollbarBarColor = false;
             this.metroPanel1.VerticalScrollbarHighlightOnWheel = false;
             this.metroPanel1.VerticalScrollbarSize = 10;
+            this.metroPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.metroPanel1_Paint);
             // 
-            // label_nickname_1
+            // toggle_client_1
             // 
-            this.label_nickname_1.Location = new System.Drawing.Point(35, 84);
-            this.label_nickname_1.Name = "label_nickname_1";
-            this.label_nickname_1.Size = new System.Drawing.Size(126, 19);
-            this.label_nickname_1.TabIndex = 10;
-            this.label_nickname_1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.toggle_client_1.AutoSize = true;
+            this.toggle_client_1.Location = new System.Drawing.Point(110, 10);
+            this.toggle_client_1.Name = "toggle_client_1";
+            this.toggle_client_1.Size = new System.Drawing.Size(80, 16);
+            this.toggle_client_1.TabIndex = 24;
+            this.toggle_client_1.Text = "Off";
+            this.toggle_client_1.UseVisualStyleBackColor = true;
+            this.toggle_client_1.Click += new System.EventHandler(this.toggle_client_1_Click);
             // 
             // radio_setting_1
             // 
             this.radio_setting_1.AutoSize = true;
-            this.radio_setting_1.Location = new System.Drawing.Point(22, 21);
+            this.radio_setting_1.Location = new System.Drawing.Point(26, 27);
             this.radio_setting_1.Name = "radio_setting_1";
             this.radio_setting_1.Size = new System.Drawing.Size(68, 15);
             this.radio_setting_1.TabIndex = 19;
@@ -344,7 +228,7 @@ namespace GersangClientStation {
             // radio_setting_2
             // 
             this.radio_setting_2.AutoSize = true;
-            this.radio_setting_2.Location = new System.Drawing.Point(22, 42);
+            this.radio_setting_2.Location = new System.Drawing.Point(26, 58);
             this.radio_setting_2.Name = "radio_setting_2";
             this.radio_setting_2.Size = new System.Drawing.Size(68, 15);
             this.radio_setting_2.TabIndex = 20;
@@ -356,7 +240,7 @@ namespace GersangClientStation {
             // radio_setting_3
             // 
             this.radio_setting_3.AutoSize = true;
-            this.radio_setting_3.Location = new System.Drawing.Point(22, 64);
+            this.radio_setting_3.Location = new System.Drawing.Point(26, 88);
             this.radio_setting_3.Name = "radio_setting_3";
             this.radio_setting_3.Size = new System.Drawing.Size(68, 15);
             this.radio_setting_3.TabIndex = 21;
@@ -370,31 +254,115 @@ namespace GersangClientStation {
             this.groupBox_setting.Controls.Add(this.radio_setting_3);
             this.groupBox_setting.Controls.Add(this.radio_setting_1);
             this.groupBox_setting.Controls.Add(this.radio_setting_2);
-            this.groupBox_setting.Location = new System.Drawing.Point(651, 60);
+            this.groupBox_setting.Location = new System.Drawing.Point(247, 60);
             this.groupBox_setting.Name = "groupBox_setting";
-            this.groupBox_setting.Size = new System.Drawing.Size(129, 92);
+            this.groupBox_setting.Size = new System.Drawing.Size(129, 123);
             this.groupBox_setting.TabIndex = 22;
             this.groupBox_setting.TabStop = false;
             this.groupBox_setting.Text = "클라이언트 세팅";
             // 
-            // eventBrowser
+            // button_search_naver_1
             // 
-            this.eventBrowser.Location = new System.Drawing.Point(23, 340);
-            this.eventBrowser.MinimumSize = new System.Drawing.Size(20, 20);
-            this.eventBrowser.Name = "eventBrowser";
-            this.eventBrowser.ScriptErrorsSuppressed = true;
-            this.eventBrowser.Size = new System.Drawing.Size(1333, 633);
-            this.eventBrowser.TabIndex = 23;
-            this.eventBrowser.Url = new System.Uri("http://www.gersang.co.kr/main/index.gs", System.UriKind.Absolute);
-            this.eventBrowser.DocumentCompleted += new System.Windows.Forms.WebBrowserDocumentCompletedEventHandler(this.eventBrowser_DocumentCompleted);
+            this.button_search_naver_1.AutoSize = true;
+            this.button_search_naver_1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.button_search_naver_1.FlatAppearance.BorderSize = 0;
+            this.button_search_naver_1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_search_naver_1.Image = ((System.Drawing.Image)(resources.GetObject("button_search_naver_1.Image")));
+            this.button_search_naver_1.Location = new System.Drawing.Point(16, 36);
+            this.button_search_naver_1.Name = "button_search_naver_1";
+            this.button_search_naver_1.Size = new System.Drawing.Size(63, 70);
+            this.button_search_naver_1.TabIndex = 25;
+            this.button_search_naver_1.Text = "검색보상";
+            this.button_search_naver_1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.button_search_naver_1.UseVisualStyleBackColor = true;
+            this.button_search_naver_1.Click += new System.EventHandler(this.button_search_naver_Click);
+            // 
+            // button_start_1
+            // 
+            this.button_start_1.AutoSize = true;
+            this.button_start_1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.button_start_1.FlatAppearance.BorderSize = 0;
+            this.button_start_1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_start_1.Image = ((System.Drawing.Image)(resources.GetObject("button_start_1.Image")));
+            this.button_start_1.Location = new System.Drawing.Point(123, 36);
+            this.button_start_1.Name = "button_start_1";
+            this.button_start_1.Size = new System.Drawing.Size(63, 70);
+            this.button_start_1.TabIndex = 26;
+            this.button_start_1.Text = "게임실행";
+            this.button_start_1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.button_start_1.UseVisualStyleBackColor = true;
+            this.button_start_1.Click += new System.EventHandler(this.button_start_1_Click);
+            // 
+            // button_start_2
+            // 
+            this.button_start_2.AutoSize = true;
+            this.button_start_2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.button_start_2.FlatAppearance.BorderSize = 0;
+            this.button_start_2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_start_2.Image = ((System.Drawing.Image)(resources.GetObject("button_start_2.Image")));
+            this.button_start_2.Location = new System.Drawing.Point(118, 36);
+            this.button_start_2.Name = "button_start_2";
+            this.button_start_2.Size = new System.Drawing.Size(63, 70);
+            this.button_start_2.TabIndex = 28;
+            this.button_start_2.Text = "게임실행";
+            this.button_start_2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.button_start_2.UseVisualStyleBackColor = true;
+            this.button_start_2.Click += new System.EventHandler(this.button_start_2_Click);
+            // 
+            // button_search_naver2
+            // 
+            this.button_search_naver2.AutoSize = true;
+            this.button_search_naver2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.button_search_naver2.FlatAppearance.BorderSize = 0;
+            this.button_search_naver2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_search_naver2.Image = ((System.Drawing.Image)(resources.GetObject("button_search_naver2.Image")));
+            this.button_search_naver2.Location = new System.Drawing.Point(11, 36);
+            this.button_search_naver2.Name = "button_search_naver2";
+            this.button_search_naver2.Size = new System.Drawing.Size(63, 70);
+            this.button_search_naver2.TabIndex = 27;
+            this.button_search_naver2.Text = "검색보상";
+            this.button_search_naver2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.button_search_naver2.UseVisualStyleBackColor = true;
+            this.button_search_naver2.Click += new System.EventHandler(this.button_search_naver_Click);
+            // 
+            // button_start_3
+            // 
+            this.button_start_3.AutoSize = true;
+            this.button_start_3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.button_start_3.FlatAppearance.BorderSize = 0;
+            this.button_start_3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_start_3.Image = ((System.Drawing.Image)(resources.GetObject("button_start_3.Image")));
+            this.button_start_3.Location = new System.Drawing.Point(118, 36);
+            this.button_start_3.Name = "button_start_3";
+            this.button_start_3.Size = new System.Drawing.Size(63, 70);
+            this.button_start_3.TabIndex = 30;
+            this.button_start_3.Text = "게임실행";
+            this.button_start_3.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.button_start_3.UseVisualStyleBackColor = true;
+            this.button_start_3.Click += new System.EventHandler(this.button_start_3_Click);
+            // 
+            // button_search_naver3
+            // 
+            this.button_search_naver3.AutoSize = true;
+            this.button_search_naver3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.button_search_naver3.FlatAppearance.BorderSize = 0;
+            this.button_search_naver3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_search_naver3.Image = ((System.Drawing.Image)(resources.GetObject("button_search_naver3.Image")));
+            this.button_search_naver3.Location = new System.Drawing.Point(11, 36);
+            this.button_search_naver3.Name = "button_search_naver3";
+            this.button_search_naver3.Size = new System.Drawing.Size(63, 70);
+            this.button_search_naver3.TabIndex = 29;
+            this.button_search_naver3.Text = "검색보상";
+            this.button_search_naver3.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.button_search_naver3.UseVisualStyleBackColor = true;
+            this.button_search_naver3.Click += new System.EventHandler(this.button_search_naver_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BorderStyle = MetroFramework.Drawing.MetroBorderStyle.FixedSingle;
-            this.ClientSize = new System.Drawing.Size(1567, 996);
-            this.Controls.Add(this.eventBrowser);
+            this.ClientSize = new System.Drawing.Size(621, 490);
             this.Controls.Add(this.groupBox_setting);
             this.Controls.Add(this.menuStrip2);
             this.Controls.Add(this.metroPanel3);
@@ -422,35 +390,28 @@ namespace GersangClientStation {
         }
 
         #endregion
-        private MetroFramework.Controls.MetroButton button_start_2;
         private System.Windows.Forms.MenuStrip menuStrip2;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
         private MetroFramework.Controls.MetroPanel metroPanel2;
         private MetroFramework.Controls.MetroPanel metroPanel3;
-        private MetroFramework.Controls.MetroButton button_start_3;
         private System.Windows.Forms.ToolStripMenuItem 다클라ToolStripMenuItem;
         private MetroFramework.Controls.MetroLabel metroLabel2;
         private MetroFramework.Controls.MetroLabel metroLabel3;
-        private MetroFramework.Controls.MetroButton button_start_1;
-        private MetroFramework.Controls.MetroButton button_login_1;
         private MetroFramework.Controls.MetroLabel metroLabel1;
-        private MetroFramework.Controls.MetroLabel label_status_1;
-        private MetroFramework.Controls.MetroButton button_search_naver1;
         private MetroFramework.Controls.MetroPanel metroPanel1;
-        private MetroFramework.Controls.MetroLabel label_nickname_1;
-        private MetroFramework.Controls.MetroButton button_search_naver2;
-        private MetroFramework.Controls.MetroButton button_login_2;
-        private MetroFramework.Controls.MetroButton button_search_naver3;
-        private MetroFramework.Controls.MetroButton button_login_3;
-        private MetroFramework.Controls.MetroLabel label_status_2;
-        private MetroFramework.Controls.MetroLabel label_status_3;
-        private MetroFramework.Controls.MetroLabel label_nickname_2;
-        private MetroFramework.Controls.MetroLabel label_nickname_3;
         private MetroFramework.Controls.MetroRadioButton radio_setting_1;
         private MetroFramework.Controls.MetroRadioButton radio_setting_2;
         private MetroFramework.Controls.MetroRadioButton radio_setting_3;
         private System.Windows.Forms.GroupBox groupBox_setting;
-        private System.Windows.Forms.WebBrowser eventBrowser;
+        private MetroFramework.Controls.MetroToggle toggle_client_1;
+        private MetroFramework.Controls.MetroToggle toggle_client_2;
+        private MetroFramework.Controls.MetroToggle toggle_client_3;
+        private System.Windows.Forms.Button button_search_naver_1;
+        private System.Windows.Forms.Button button_start_1;
+        private System.Windows.Forms.Button button_start_2;
+        private System.Windows.Forms.Button button_search_naver2;
+        private System.Windows.Forms.Button button_start_3;
+        private System.Windows.Forms.Button button_search_naver3;
     }
 }
 

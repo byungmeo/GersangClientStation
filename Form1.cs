@@ -31,6 +31,7 @@ namespace GersangClientStation {
         private string client_pw_3;
 
         WebBrowser webBrowser = new WebBrowser();
+        WebBrowser eventBrowser = new WebBrowser();
         HtmlDocument document = null;
 
         private Client currentLoginClient = Client.None;
@@ -55,6 +56,10 @@ namespace GersangClientStation {
             webBrowser.DocumentCompleted += new WebBrowserDocumentCompletedEventHandler(this.webBrowser_DocumentCompleted); //브라우저 로딩 완료 이벤트 리스너 부착
             webBrowser.ScriptErrorsSuppressed = true; //Script Error가 뜨지 않도록 합니다.
             webBrowser.Navigate(url_main); //홈페이지 메인 화면으로 이동합니다.
+
+            eventBrowser.DocumentCompleted += new WebBrowserDocumentCompletedEventHandler(this.eventBrowser_DocumentCompleted); //브라우저 로딩 완료 이벤트 리스너 부착
+            eventBrowser.ScriptErrorsSuppressed = true; //Script Error가 뜨지 않도록 합니다.
+            eventBrowser.Url = new Uri(url_main, UriKind.Absolute); //홈페이지 메인 화면으로 이동합니다.
         }
 
         private void Form1_Load(object sender, EventArgs e) {
@@ -156,12 +161,12 @@ namespace GersangClientStation {
             System.Windows.Forms.HtmlElement div_nickname = this.findElementByClassName("div", "user_name");
             if (div_nickname != null) {
                 Debug.WriteLine("로그인이 되어있는 상태입니다!\n홈페이지 닉네임 : " + div_nickname.InnerText);
-                SetStatus(Status.Online, currentLoginClient, div_nickname.InnerText);
+                //SetStatus(Status.Online, currentLoginClient, div_nickname.InnerText);
                 //isLogin = true;
             } else {
                 Debug.WriteLine("로그인에 실패하였거나, 아직 로그인이 되지 않은 상태입니다.");
-                this.label_status_1.Text = "Offline";
-                this.label_status_1.BackColor = Color.IndianRed;
+                //this.label_status_1.Text = "Offline";
+                //this.label_status_1.BackColor = Color.IndianRed;
                 //isLogin = false;
             }
         }
@@ -211,7 +216,7 @@ namespace GersangClientStation {
                 if(document.Url.Equals(url_main)) {
                     Debug.WriteLine(e.Message);
                     Debug.WriteLine("로그인을 다시 시도합니다.");
-                    SetStatus(Status.Retrying, client);
+                    //SetStatus(Status.Retrying, client);
                     Delay(1000);
                     Login(client);
                 }
@@ -221,34 +226,32 @@ namespace GersangClientStation {
         private void Logout() {
             if(currentLoginClient != Client.None) {
                 Debug.WriteLine("로그아웃 시작");
-                SetStatus(Status.Offline, currentLoginClient, "");
+                switch (currentLoginClient) {
+                    case Client.MainClient:
+                        toggle_client_1.Checked = false;
+                        break;
+                    case Client.Client2:
+                        toggle_client_2.Checked = false;
+                        break;
+                    case Client.Client3:
+                        toggle_client_3.Checked = false;
+                        break;
+                    default:
+                        Debug.WriteLine("SetStatus: 잘못된 Client 인자 전달");
+                        break;
+                }
+
                 currentLoginClient = Client.None;
                 webBrowser.Navigate(url_logout);
             }
         }
 
-        private void button_login_1_Click(object sender, EventArgs e) {
-            Debug.WriteLine("1번 로그인 버튼 클릭");
-            Logout();
-            Delay(1000);
-            Login(Client.MainClient);
-        }
-
-        private void button_login_2_Click(object sender, EventArgs e) {
-            Debug.WriteLine("2번 로그인 버튼 클릭");
-            Logout();
-            Delay(1000);
-            Login(Client.Client2);
-        }
-
-        private void button_login_3_Click(object sender, EventArgs e) {
-            Debug.WriteLine("3번 로그인 버튼 클릭");
-            Logout();
-            Delay(1000);
-            Login(Client.Client3);
-        }
-
         private void GameStart(string client_path) {
+            if(currentLoginClient == Client.None) {
+                MessageBox.Show("로그인을 먼저 해주세요.");
+                return;
+            }
+
             //거상의 실행 경로를 저장하는 레지스트리에 접근합니다.
             RegistryKey registryKey = Registry.CurrentUser.OpenSubKey(@"SOFTWARE\JOYON\Gersang\Korean", RegistryKeyPermissionCheck.ReadWriteSubTree);
             if (registryKey != null) {
@@ -261,15 +264,27 @@ namespace GersangClientStation {
         }
 
         private void button_start_1_Click(object sender, EventArgs e) {
+            if (currentLoginClient != Client.MainClient) {
+                MessageBox.Show("로그인을 먼저 해주세요.", "알림", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
             GameStart(client_path_1);
         }
 
         private void button_start_2_Click(object sender, EventArgs e) {
+            if (currentLoginClient != Client.Client2) {
+                MessageBox.Show("로그인을 먼저 해주세요.", "알림", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
             GameStart(client_path_2);
         }
 
         
         private void button_start_3_Click(object sender, EventArgs e) {
+            if (currentLoginClient != Client.Client3) {
+                MessageBox.Show("로그인을 먼저 해주세요.", "알림", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
             GameStart(client_path_3);
         }
         
@@ -305,57 +320,6 @@ namespace GersangClientStation {
                 }
             }
             return null;
-        }
-
-        private void SetStatus(Status status, Client client) {
-            string status_msg = status.ToString();
-            Color color = Color.White;
-
-            switch (status) {
-                case Status.Offline:
-                    color = Color.IndianRed;
-                    break;
-                case Status.Online:
-                    color = Color.Green;
-                    break;
-            }
-
-            switch (client) {
-                case Client.MainClient:
-                    label_status_1.Text = status_msg;
-                    label_status_1.BackColor = color;
-                    break;
-                case Client.Client2:
-                    label_status_2.Text = status_msg;
-                    label_status_2.BackColor = color;
-                    break;
-                case Client.Client3:
-                    label_status_3.Text = status_msg;
-                    label_status_3.BackColor = color;
-                    break;
-                case Client.None:
-                    Debug.WriteLine("SetStatus: 잘못된 Client 인자 전달");
-                    return;
-            }
-        }
-
-        private void SetStatus(Status status, Client client, string nickname) {
-            SetStatus(status, client);
-
-            switch (client) {
-                case Client.MainClient:
-                    label_nickname_1.Text = nickname;
-                    break;
-                case Client.Client2:
-                    label_nickname_2.Text = nickname;
-                    break;
-                case Client.Client3:
-                    label_nickname_3.Text = nickname;
-                    break;
-                case Client.None:
-                    Debug.WriteLine("SetStatus: 잘못된 Client 인자 전달");
-                    return;
-            }
         }
 
         //ms초만큼 딜레이를 겁니다.
@@ -505,6 +469,49 @@ namespace GersangClientStation {
             } else {
                 MessageBox.Show("이벤트 페이지를 찾지 못하였습니다.");
             }
+        }
+
+        private void toggle_client_1_Click(object sender, EventArgs e) {
+            MetroToggle toggle = sender as MetroToggle;
+            if (toggle.Checked) {
+                if (currentLoginClient != Client.None) {
+                    Logout();
+                    Delay(500);
+                }
+                Login(Client.MainClient);
+            } else {
+                Logout();
+            }
+        }
+
+        private void toggle_client_2_Click(object sender, EventArgs e) {
+            MetroToggle toggle = sender as MetroToggle;
+            if (toggle.Checked) {
+                if (currentLoginClient != Client.None) {
+                    Logout();
+                    Delay(500);
+                }
+                Login(Client.Client2);
+            } else {
+                Logout();
+            }
+        }
+
+        private void toggle_client_3_Click(object sender, EventArgs e) {
+            MetroToggle toggle = sender as MetroToggle;
+            if (toggle.Checked) {
+                if (currentLoginClient != Client.None) {
+                    Logout();
+                    Delay(500);
+                }
+                Login(Client.Client3);
+            } else {
+                Logout();
+            }
+        }
+
+        private void metroPanel1_Paint(object sender, PaintEventArgs e) {
+
         }
     }
 }
