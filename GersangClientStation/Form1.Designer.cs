@@ -48,12 +48,18 @@ namespace GersangClientStation {
             this.radio_setting_3 = new MetroFramework.Controls.MetroRadioButton();
             this.groupBox_setting = new System.Windows.Forms.GroupBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.link_blog = new MetroFramework.Controls.MetroLink();
+            this.pic_naver = new System.Windows.Forms.PictureBox();
+            this.pic_github = new System.Windows.Forms.PictureBox();
+            this.link_github = new MetroFramework.Controls.MetroLink();
             this.menuStrip2.SuspendLayout();
             this.metroPanel2.SuspendLayout();
             this.metroPanel3.SuspendLayout();
             this.metroPanel1.SuspendLayout();
             this.groupBox_setting.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pic_naver)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pic_github)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip2
@@ -376,12 +382,58 @@ namespace GersangClientStation {
             this.pictureBox1.TabIndex = 23;
             this.pictureBox1.TabStop = false;
             // 
+            // link_blog
+            // 
+            this.link_blog.AutoSize = true;
+            this.link_blog.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.link_blog.Location = new System.Drawing.Point(478, 23);
+            this.link_blog.Name = "link_blog";
+            this.link_blog.Size = new System.Drawing.Size(40, 22);
+            this.link_blog.TabIndex = 24;
+            this.link_blog.Text = "Blog";
+            this.link_blog.Click += new System.EventHandler(this.link_blog_Click);
+            // 
+            // pic_naver
+            // 
+            this.pic_naver.Image = ((System.Drawing.Image)(resources.GetObject("pic_naver.Image")));
+            this.pic_naver.Location = new System.Drawing.Point(463, 27);
+            this.pic_naver.Name = "pic_naver";
+            this.pic_naver.Size = new System.Drawing.Size(16, 16);
+            this.pic_naver.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pic_naver.TabIndex = 25;
+            this.pic_naver.TabStop = false;
+            // 
+            // pic_github
+            // 
+            this.pic_github.Image = ((System.Drawing.Image)(resources.GetObject("pic_github.Image")));
+            this.pic_github.Location = new System.Drawing.Point(534, 27);
+            this.pic_github.Name = "pic_github";
+            this.pic_github.Size = new System.Drawing.Size(16, 16);
+            this.pic_github.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pic_github.TabIndex = 26;
+            this.pic_github.TabStop = false;
+            // 
+            // link_github
+            // 
+            this.link_github.AutoSize = true;
+            this.link_github.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.link_github.Location = new System.Drawing.Point(549, 23);
+            this.link_github.Name = "link_github";
+            this.link_github.Size = new System.Drawing.Size(51, 22);
+            this.link_github.TabIndex = 27;
+            this.link_github.Text = "Github";
+            this.link_github.Click += new System.EventHandler(this.link_github_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BorderStyle = MetroFramework.Drawing.MetroBorderStyle.FixedSingle;
             this.ClientSize = new System.Drawing.Size(617, 490);
+            this.Controls.Add(this.link_github);
+            this.Controls.Add(this.pic_github);
+            this.Controls.Add(this.pic_naver);
+            this.Controls.Add(this.link_blog);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.groupBox_setting);
             this.Controls.Add(this.menuStrip2);
@@ -407,7 +459,10 @@ namespace GersangClientStation {
             this.groupBox_setting.ResumeLayout(false);
             this.groupBox_setting.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pic_naver)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pic_github)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -435,6 +490,10 @@ namespace GersangClientStation {
         private System.Windows.Forms.Button button_start_3;
         private System.Windows.Forms.Button button_search_naver3;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private MetroFramework.Controls.MetroLink link_blog;
+        private System.Windows.Forms.PictureBox pic_naver;
+        private System.Windows.Forms.PictureBox pic_github;
+        private MetroFramework.Controls.MetroLink link_github;
     }
 }
 

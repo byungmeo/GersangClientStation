@@ -1,9 +1,12 @@
 ﻿using MetroFramework.Controls;
 using MetroFramework.Forms;
 using Microsoft.Win32;
+using Octokit;
 using System;
+using System.Collections.Generic;
 using System.Configuration;
 using System.Diagnostics;
+using System.Reflection;
 using System.Windows.Forms;
 
 namespace GersangClientStation {
@@ -51,7 +54,8 @@ namespace GersangClientStation {
         }
 
         public Form1() {
-            InitializeComponent();
+            checkUpdate();
+
             webBrowser.DocumentCompleted += new WebBrowserDocumentCompletedEventHandler(this.webBrowser_DocumentCompleted); //브라우저 로딩 완료 이벤트 리스너 부착
             webBrowser.ScriptErrorsSuppressed = true; //Script Error가 뜨지 않도록 합니다.
             webBrowser.Navigate(url_main); //홈페이지 메인 화면으로 이동합니다.
@@ -59,6 +63,44 @@ namespace GersangClientStation {
             eventBrowser.DocumentCompleted += new WebBrowserDocumentCompletedEventHandler(this.eventBrowser_DocumentCompleted); //브라우저 로딩 완료 이벤트 리스너 부착
             eventBrowser.ScriptErrorsSuppressed = true; //Script Error가 뜨지 않도록 합니다.
             eventBrowser.Url = new Uri(url_main, UriKind.Absolute); //홈페이지 메인 화면으로 이동합니다.
+
+            InitializeComponent();
+        }
+
+        private async void checkUpdate() {
+            //버전 업데이트 시 Properties -> AssemblyInfo.cs 의 AssemblyVersion과 AssemblyFileVersion을 바꿔주세요.
+            string version = Assembly.GetExecutingAssembly().GetName().Version.ToString().Substring(0, 5);
+
+            try {
+                //깃허브에서 모든 릴리즈 정보를 받아옵니다.
+                GitHubClient client = new GitHubClient(new ProductHeaderValue("Byungmeo"));
+                IReadOnlyList<Release> releases = await client.Repository.Release.GetAll("byungmeo", "GersangClientStation");
+
+                //깃허브에 게시된 마지막 버전과 현재 버전을 초기화 합니다.
+                Version latestGitHubVersion = new Version(releases[0].TagName);
+                Version localVersion = new Version(version);
+                Debug.WriteLine("깃허브에 마지막으로 게시된 버전 : " + latestGitHubVersion);
+                Debug.WriteLine("현재 프로젝트 버전 : " + localVersion);
+
+                //버전 비교
+                int versionComparison = localVersion.CompareTo(latestGitHubVersion);
+                if (versionComparison < 0) {
+                    Debug.WriteLine("구버전입니다! 업데이트 메시지박스를 출력합니다!");
+
+                    DialogResult dr = MessageBox.Show(releases[0].Body + "\n\n업데이트 하시겠습니까? (GitHub 접속)",
+                        "업데이트 안내", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+
+                    if (dr == DialogResult.Yes) {
+                        System.Diagnostics.Process.Start("https://github.com/byungmeo/GersangClientStation/releases/latest");
+                    }
+                } else if (versionComparison > 0) {
+                    Debug.WriteLine("깃허브에 릴리즈된 버전보다 최신입니다!");
+                } else {
+                    Debug.WriteLine("현재 버전은 최신버전입니다!");
+                }
+            } catch (Exception ex) {
+                Debug.WriteLine(ex.Message);
+            }
         }
 
         private void Form1_Load(object sender, EventArgs e) {
@@ -536,6 +578,22 @@ namespace GersangClientStation {
                 Login(Client.Client3);
             } else {
                 Logout();
+            }
+        }
+
+        private void link_blog_Click(object sender, EventArgs e) {
+            try {
+                System.Diagnostics.Process.Start("https://blog.naver.com/kog5071/222597523325");
+            } catch (Exception ex) {
+                MessageBox.Show("링크 접속 에러");
+            }
+        }
+
+        private void link_github_Click(object sender, EventArgs e) {
+            try {
+                System.Diagnostics.Process.Start("https://github.com/byungmeo/GersangClientStation");
+            } catch (Exception ex) {
+                MessageBox.Show("링크 접속 에러");
             }
         }
     }
