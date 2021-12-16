@@ -29,24 +29,24 @@ namespace GersangClientStation {
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.다클라ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.metroPanel2 = new MetroFramework.Controls.MetroPanel();
+            this.button_start_2 = new System.Windows.Forms.Button();
+            this.button_search_naver2 = new System.Windows.Forms.Button();
             this.toggle_client_2 = new MetroFramework.Controls.MetroToggle();
             this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
             this.metroPanel3 = new MetroFramework.Controls.MetroPanel();
+            this.button_start_3 = new System.Windows.Forms.Button();
+            this.button_search_naver3 = new System.Windows.Forms.Button();
             this.toggle_client_3 = new MetroFramework.Controls.MetroToggle();
             this.metroLabel3 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
             this.metroPanel1 = new MetroFramework.Controls.MetroPanel();
+            this.button_start_1 = new System.Windows.Forms.Button();
+            this.button_search_naver_1 = new System.Windows.Forms.Button();
             this.toggle_client_1 = new MetroFramework.Controls.MetroToggle();
             this.radio_setting_1 = new MetroFramework.Controls.MetroRadioButton();
             this.radio_setting_2 = new MetroFramework.Controls.MetroRadioButton();
             this.radio_setting_3 = new MetroFramework.Controls.MetroRadioButton();
             this.groupBox_setting = new System.Windows.Forms.GroupBox();
-            this.button_search_naver_1 = new System.Windows.Forms.Button();
-            this.button_start_1 = new System.Windows.Forms.Button();
-            this.button_start_2 = new System.Windows.Forms.Button();
-            this.button_search_naver2 = new System.Windows.Forms.Button();
-            this.button_start_3 = new System.Windows.Forms.Button();
-            this.button_search_naver3 = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.menuStrip2.SuspendLayout();
             this.metroPanel2.SuspendLayout();
@@ -109,6 +109,38 @@ namespace GersangClientStation {
             this.metroPanel2.VerticalScrollbarHighlightOnWheel = false;
             this.metroPanel2.VerticalScrollbarSize = 10;
             // 
+            // button_start_2
+            // 
+            this.button_start_2.AutoSize = true;
+            this.button_start_2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.button_start_2.FlatAppearance.BorderSize = 0;
+            this.button_start_2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_start_2.Image = ((System.Drawing.Image)(resources.GetObject("button_start_2.Image")));
+            this.button_start_2.Location = new System.Drawing.Point(118, 36);
+            this.button_start_2.Name = "button_start_2";
+            this.button_start_2.Size = new System.Drawing.Size(63, 70);
+            this.button_start_2.TabIndex = 28;
+            this.button_start_2.Text = "게임실행";
+            this.button_start_2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.button_start_2.UseVisualStyleBackColor = true;
+            this.button_start_2.Click += new System.EventHandler(this.button_start_2_Click);
+            // 
+            // button_search_naver2
+            // 
+            this.button_search_naver2.AutoSize = true;
+            this.button_search_naver2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.button_search_naver2.FlatAppearance.BorderSize = 0;
+            this.button_search_naver2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_search_naver2.Image = ((System.Drawing.Image)(resources.GetObject("button_search_naver2.Image")));
+            this.button_search_naver2.Location = new System.Drawing.Point(11, 36);
+            this.button_search_naver2.Name = "button_search_naver2";
+            this.button_search_naver2.Size = new System.Drawing.Size(63, 70);
+            this.button_search_naver2.TabIndex = 27;
+            this.button_search_naver2.Text = "검색보상";
+            this.button_search_naver2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.button_search_naver2.UseVisualStyleBackColor = true;
+            this.button_search_naver2.Click += new System.EventHandler(this.button_search_naver_Click);
+            // 
             // toggle_client_2
             // 
             this.toggle_client_2.AutoSize = true;
@@ -149,6 +181,38 @@ namespace GersangClientStation {
             this.metroPanel3.VerticalScrollbarBarColor = true;
             this.metroPanel3.VerticalScrollbarHighlightOnWheel = false;
             this.metroPanel3.VerticalScrollbarSize = 10;
+            // 
+            // button_start_3
+            // 
+            this.button_start_3.AutoSize = true;
+            this.button_start_3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.button_start_3.FlatAppearance.BorderSize = 0;
+            this.button_start_3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_start_3.Image = ((System.Drawing.Image)(resources.GetObject("button_start_3.Image")));
+            this.button_start_3.Location = new System.Drawing.Point(118, 36);
+            this.button_start_3.Name = "button_start_3";
+            this.button_start_3.Size = new System.Drawing.Size(63, 70);
+            this.button_start_3.TabIndex = 30;
+            this.button_start_3.Text = "게임실행";
+            this.button_start_3.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.button_start_3.UseVisualStyleBackColor = true;
+            this.button_start_3.Click += new System.EventHandler(this.button_start_3_Click);
+            // 
+            // button_search_naver3
+            // 
+            this.button_search_naver3.AutoSize = true;
+            this.button_search_naver3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.button_search_naver3.FlatAppearance.BorderSize = 0;
+            this.button_search_naver3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_search_naver3.Image = ((System.Drawing.Image)(resources.GetObject("button_search_naver3.Image")));
+            this.button_search_naver3.Location = new System.Drawing.Point(11, 36);
+            this.button_search_naver3.Name = "button_search_naver3";
+            this.button_search_naver3.Size = new System.Drawing.Size(63, 70);
+            this.button_search_naver3.TabIndex = 29;
+            this.button_search_naver3.Text = "검색보상";
+            this.button_search_naver3.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.button_search_naver3.UseVisualStyleBackColor = true;
+            this.button_search_naver3.Click += new System.EventHandler(this.button_search_naver_Click);
             // 
             // toggle_client_3
             // 
@@ -203,6 +267,38 @@ namespace GersangClientStation {
             this.metroPanel1.VerticalScrollbarHighlightOnWheel = false;
             this.metroPanel1.VerticalScrollbarSize = 10;
             this.metroPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.metroPanel1_Paint);
+            // 
+            // button_start_1
+            // 
+            this.button_start_1.AutoSize = true;
+            this.button_start_1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.button_start_1.FlatAppearance.BorderSize = 0;
+            this.button_start_1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_start_1.Image = ((System.Drawing.Image)(resources.GetObject("button_start_1.Image")));
+            this.button_start_1.Location = new System.Drawing.Point(123, 36);
+            this.button_start_1.Name = "button_start_1";
+            this.button_start_1.Size = new System.Drawing.Size(63, 70);
+            this.button_start_1.TabIndex = 26;
+            this.button_start_1.Text = "게임실행";
+            this.button_start_1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.button_start_1.UseVisualStyleBackColor = true;
+            this.button_start_1.Click += new System.EventHandler(this.button_start_1_Click);
+            // 
+            // button_search_naver_1
+            // 
+            this.button_search_naver_1.AutoSize = true;
+            this.button_search_naver_1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.button_search_naver_1.FlatAppearance.BorderSize = 0;
+            this.button_search_naver_1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_search_naver_1.Image = ((System.Drawing.Image)(resources.GetObject("button_search_naver_1.Image")));
+            this.button_search_naver_1.Location = new System.Drawing.Point(16, 36);
+            this.button_search_naver_1.Name = "button_search_naver_1";
+            this.button_search_naver_1.Size = new System.Drawing.Size(63, 70);
+            this.button_search_naver_1.TabIndex = 25;
+            this.button_search_naver_1.Text = "검색보상";
+            this.button_search_naver_1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.button_search_naver_1.UseVisualStyleBackColor = true;
+            this.button_search_naver_1.Click += new System.EventHandler(this.button_search_naver_Click);
             // 
             // toggle_client_1
             // 
@@ -262,102 +358,6 @@ namespace GersangClientStation {
             this.groupBox_setting.TabIndex = 22;
             this.groupBox_setting.TabStop = false;
             this.groupBox_setting.Text = "클라이언트 세팅";
-            // 
-            // button_search_naver_1
-            // 
-            this.button_search_naver_1.AutoSize = true;
-            this.button_search_naver_1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.button_search_naver_1.FlatAppearance.BorderSize = 0;
-            this.button_search_naver_1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_search_naver_1.Image = ((System.Drawing.Image)(resources.GetObject("button_search_naver_1.Image")));
-            this.button_search_naver_1.Location = new System.Drawing.Point(16, 36);
-            this.button_search_naver_1.Name = "button_search_naver_1";
-            this.button_search_naver_1.Size = new System.Drawing.Size(63, 70);
-            this.button_search_naver_1.TabIndex = 25;
-            this.button_search_naver_1.Text = "검색보상";
-            this.button_search_naver_1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.button_search_naver_1.UseVisualStyleBackColor = true;
-            this.button_search_naver_1.Click += new System.EventHandler(this.button_search_naver_Click);
-            // 
-            // button_start_1
-            // 
-            this.button_start_1.AutoSize = true;
-            this.button_start_1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.button_start_1.FlatAppearance.BorderSize = 0;
-            this.button_start_1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_start_1.Image = ((System.Drawing.Image)(resources.GetObject("button_start_1.Image")));
-            this.button_start_1.Location = new System.Drawing.Point(123, 36);
-            this.button_start_1.Name = "button_start_1";
-            this.button_start_1.Size = new System.Drawing.Size(63, 70);
-            this.button_start_1.TabIndex = 26;
-            this.button_start_1.Text = "게임실행";
-            this.button_start_1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.button_start_1.UseVisualStyleBackColor = true;
-            this.button_start_1.Click += new System.EventHandler(this.button_start_1_Click);
-            // 
-            // button_start_2
-            // 
-            this.button_start_2.AutoSize = true;
-            this.button_start_2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.button_start_2.FlatAppearance.BorderSize = 0;
-            this.button_start_2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_start_2.Image = ((System.Drawing.Image)(resources.GetObject("button_start_2.Image")));
-            this.button_start_2.Location = new System.Drawing.Point(118, 36);
-            this.button_start_2.Name = "button_start_2";
-            this.button_start_2.Size = new System.Drawing.Size(63, 70);
-            this.button_start_2.TabIndex = 28;
-            this.button_start_2.Text = "게임실행";
-            this.button_start_2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.button_start_2.UseVisualStyleBackColor = true;
-            this.button_start_2.Click += new System.EventHandler(this.button_start_2_Click);
-            // 
-            // button_search_naver2
-            // 
-            this.button_search_naver2.AutoSize = true;
-            this.button_search_naver2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.button_search_naver2.FlatAppearance.BorderSize = 0;
-            this.button_search_naver2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_search_naver2.Image = ((System.Drawing.Image)(resources.GetObject("button_search_naver2.Image")));
-            this.button_search_naver2.Location = new System.Drawing.Point(11, 36);
-            this.button_search_naver2.Name = "button_search_naver2";
-            this.button_search_naver2.Size = new System.Drawing.Size(63, 70);
-            this.button_search_naver2.TabIndex = 27;
-            this.button_search_naver2.Text = "검색보상";
-            this.button_search_naver2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.button_search_naver2.UseVisualStyleBackColor = true;
-            this.button_search_naver2.Click += new System.EventHandler(this.button_search_naver_Click);
-            // 
-            // button_start_3
-            // 
-            this.button_start_3.AutoSize = true;
-            this.button_start_3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.button_start_3.FlatAppearance.BorderSize = 0;
-            this.button_start_3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_start_3.Image = ((System.Drawing.Image)(resources.GetObject("button_start_3.Image")));
-            this.button_start_3.Location = new System.Drawing.Point(118, 36);
-            this.button_start_3.Name = "button_start_3";
-            this.button_start_3.Size = new System.Drawing.Size(63, 70);
-            this.button_start_3.TabIndex = 30;
-            this.button_start_3.Text = "게임실행";
-            this.button_start_3.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.button_start_3.UseVisualStyleBackColor = true;
-            this.button_start_3.Click += new System.EventHandler(this.button_start_3_Click);
-            // 
-            // button_search_naver3
-            // 
-            this.button_search_naver3.AutoSize = true;
-            this.button_search_naver3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.button_search_naver3.FlatAppearance.BorderSize = 0;
-            this.button_search_naver3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_search_naver3.Image = ((System.Drawing.Image)(resources.GetObject("button_search_naver3.Image")));
-            this.button_search_naver3.Location = new System.Drawing.Point(11, 36);
-            this.button_search_naver3.Name = "button_search_naver3";
-            this.button_search_naver3.Size = new System.Drawing.Size(63, 70);
-            this.button_search_naver3.TabIndex = 29;
-            this.button_search_naver3.Text = "검색보상";
-            this.button_search_naver3.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.button_search_naver3.UseVisualStyleBackColor = true;
-            this.button_search_naver3.Click += new System.EventHandler(this.button_search_naver_Click);
             // 
             // pictureBox1
             // 

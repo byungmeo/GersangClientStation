@@ -4,7 +4,6 @@ using Microsoft.Win32;
 using System;
 using System.Configuration;
 using System.Diagnostics;
-using System.Drawing;
 using System.Windows.Forms;
 
 namespace GersangClientStation {
@@ -158,16 +157,25 @@ namespace GersangClientStation {
             }
 
             //웹페이지에 닉네임이 표시되고 있는지 확인하여 로그인 여부를 판단합니다.
-            System.Windows.Forms.HtmlElement div_nickname = this.findElementByClassName("div", "user_name");
+            HtmlElement div_nickname = this.findElementByClassName("div", "user_name");
             if (div_nickname != null) {
                 Debug.WriteLine("로그인이 되어있는 상태입니다!\n홈페이지 닉네임 : " + div_nickname.InnerText);
-                //SetStatus(Status.Online, currentLoginClient, div_nickname.InnerText);
-                //isLogin = true;
+                switch (currentLoginClient) {
+                    case Client.MainClient:
+                        toggle_client_1.Checked = true;
+                        break;
+                    case Client.Client2:
+                        toggle_client_2.Checked = true;
+                        break;
+                    case Client.Client3:
+                        toggle_client_3.Checked = true;
+                        break;
+                    case Client.None:
+                        Debug.WriteLine("SetStatus: 잘못된 Client 인자 전달");
+                        return;
+                }
             } else {
                 Debug.WriteLine("로그인에 실패하였거나, 아직 로그인이 되지 않은 상태입니다.");
-                //this.label_status_1.Text = "Offline";
-                //this.label_status_1.BackColor = Color.IndianRed;
-                //isLogin = false;
             }
         }
 
@@ -474,10 +482,17 @@ namespace GersangClientStation {
         private void toggle_client_1_Click(object sender, EventArgs e) {
             MetroToggle toggle = sender as MetroToggle;
             if (toggle.Checked) {
+                if (client_id_1 == "" || client_pw_1 == "" || client_path_1 == "") {
+                    toggle_client_2.Checked = false;
+                    MessageBox.Show("경로 또는 아이디 또는 비밀번호가 설정되지 않았습니다.");
+                    return;
+                }
+
                 if (currentLoginClient != Client.None) {
                     Logout();
                     Delay(500);
                 }
+                toggle_client_1.Checked = false;
                 Login(Client.MainClient);
             } else {
                 Logout();
@@ -487,10 +502,17 @@ namespace GersangClientStation {
         private void toggle_client_2_Click(object sender, EventArgs e) {
             MetroToggle toggle = sender as MetroToggle;
             if (toggle.Checked) {
+                if (client_id_2 == "" || client_pw_2 == "" || client_path_2 == "") {
+                    toggle_client_2.Checked = false;
+                    MessageBox.Show("경로 또는 아이디 또는 비밀번호가 설정되지 않았습니다.");
+                    return;
+                }
+
                 if (currentLoginClient != Client.None) {
                     Logout();
                     Delay(500);
                 }
+                toggle_client_2.Checked = false;
                 Login(Client.Client2);
             } else {
                 Logout();
@@ -500,10 +522,17 @@ namespace GersangClientStation {
         private void toggle_client_3_Click(object sender, EventArgs e) {
             MetroToggle toggle = sender as MetroToggle;
             if (toggle.Checked) {
+                if(client_id_3 == "" || client_pw_3 == "" || client_path_3 == "") {
+                    toggle_client_3.Checked = false;
+                    MessageBox.Show("경로 또는 아이디 또는 비밀번호가 설정되지 않았습니다.");
+                    return;
+                }
+
                 if (currentLoginClient != Client.None) {
                     Logout();
                     Delay(500);
                 }
+                toggle_client_3.Checked = false;
                 Login(Client.Client3);
             } else {
                 Logout();
