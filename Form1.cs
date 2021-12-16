@@ -483,7 +483,7 @@ namespace GersangClientStation {
             MetroToggle toggle = sender as MetroToggle;
             if (toggle.Checked) {
                 if (client_id_1 == "" || client_pw_1 == "" || client_path_1 == "") {
-                    toggle_client_2.Checked = false;
+                    toggle_client_1.Checked = false;
                     MessageBox.Show("경로 또는 아이디 또는 비밀번호가 설정되지 않았습니다.");
                     return;
                 }
@@ -537,10 +537,6 @@ namespace GersangClientStation {
             } else {
                 Logout();
             }
-        }
-
-        private void metroPanel1_Paint(object sender, PaintEventArgs e) {
-
         }
     }
 }
