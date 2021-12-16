@@ -47,11 +47,13 @@ namespace GersangClientStation {
             this.button_search_naver2 = new System.Windows.Forms.Button();
             this.button_start_3 = new System.Windows.Forms.Button();
             this.button_search_naver3 = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.menuStrip2.SuspendLayout();
             this.metroPanel2.SuspendLayout();
             this.metroPanel3.SuspendLayout();
             this.metroPanel1.SuspendLayout();
             this.groupBox_setting.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip2
@@ -61,7 +63,7 @@ namespace GersangClientStation {
             this.menuStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripMenuItem1,
             this.다클라ToolStripMenuItem});
-            this.menuStrip2.Location = new System.Drawing.Point(404, 60);
+            this.menuStrip2.Location = new System.Drawing.Point(400, 60);
             this.menuStrip2.Name = "menuStrip2";
             this.menuStrip2.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
             this.menuStrip2.Size = new System.Drawing.Size(197, 410);
@@ -357,17 +359,31 @@ namespace GersangClientStation {
             this.button_search_naver3.UseVisualStyleBackColor = true;
             this.button_search_naver3.Click += new System.EventHandler(this.button_search_naver_Click);
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.ErrorImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.ErrorImage")));
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.InitialImage")));
+            this.pictureBox1.Location = new System.Drawing.Point(268, 21);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(30, 30);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 23;
+            this.pictureBox1.TabStop = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BorderStyle = MetroFramework.Drawing.MetroBorderStyle.FixedSingle;
-            this.ClientSize = new System.Drawing.Size(621, 490);
+            this.ClientSize = new System.Drawing.Size(617, 490);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.groupBox_setting);
             this.Controls.Add(this.menuStrip2);
             this.Controls.Add(this.metroPanel3);
             this.Controls.Add(this.metroPanel2);
             this.Controls.Add(this.metroPanel1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip2;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -385,6 +401,7 @@ namespace GersangClientStation {
             this.metroPanel1.PerformLayout();
             this.groupBox_setting.ResumeLayout(false);
             this.groupBox_setting.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -412,6 +429,7 @@ namespace GersangClientStation {
         private System.Windows.Forms.Button button_search_naver2;
         private System.Windows.Forms.Button button_start_3;
         private System.Windows.Forms.Button button_search_naver3;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
 
