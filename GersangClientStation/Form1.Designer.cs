@@ -120,6 +120,7 @@ namespace GersangClientStation {
             this.button_start_2.Name = "button_start_2";
             this.button_start_2.Size = new System.Drawing.Size(63, 70);
             this.button_start_2.TabIndex = 28;
+            this.button_start_2.TabStop = false;
             this.button_start_2.Text = "게임실행";
             this.button_start_2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.button_start_2.UseVisualStyleBackColor = true;
@@ -136,6 +137,7 @@ namespace GersangClientStation {
             this.button_search_naver2.Name = "button_search_naver2";
             this.button_search_naver2.Size = new System.Drawing.Size(63, 70);
             this.button_search_naver2.TabIndex = 27;
+            this.button_search_naver2.TabStop = false;
             this.button_search_naver2.Text = "검색보상";
             this.button_search_naver2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.button_search_naver2.UseVisualStyleBackColor = true;
@@ -193,6 +195,7 @@ namespace GersangClientStation {
             this.button_start_3.Name = "button_start_3";
             this.button_start_3.Size = new System.Drawing.Size(63, 70);
             this.button_start_3.TabIndex = 30;
+            this.button_start_3.TabStop = false;
             this.button_start_3.Text = "게임실행";
             this.button_start_3.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.button_start_3.UseVisualStyleBackColor = true;
@@ -209,6 +212,7 @@ namespace GersangClientStation {
             this.button_search_naver3.Name = "button_search_naver3";
             this.button_search_naver3.Size = new System.Drawing.Size(63, 70);
             this.button_search_naver3.TabIndex = 29;
+            this.button_search_naver3.TabStop = false;
             this.button_search_naver3.Text = "검색보상";
             this.button_search_naver3.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.button_search_naver3.UseVisualStyleBackColor = true;
@@ -278,6 +282,7 @@ namespace GersangClientStation {
             this.button_start_1.Name = "button_start_1";
             this.button_start_1.Size = new System.Drawing.Size(63, 70);
             this.button_start_1.TabIndex = 26;
+            this.button_start_1.TabStop = false;
             this.button_start_1.Text = "게임실행";
             this.button_start_1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.button_start_1.UseVisualStyleBackColor = true;
@@ -294,6 +299,7 @@ namespace GersangClientStation {
             this.button_search_naver_1.Name = "button_search_naver_1";
             this.button_search_naver_1.Size = new System.Drawing.Size(63, 70);
             this.button_search_naver_1.TabIndex = 25;
+            this.button_search_naver_1.TabStop = false;
             this.button_search_naver_1.Text = "검색보상";
             this.button_search_naver_1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.button_search_naver_1.UseVisualStyleBackColor = true;
