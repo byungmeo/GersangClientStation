@@ -14,6 +14,8 @@ namespace GersangClientStation {
         private const string url_main = "http://www.gersang.co.kr/main/index.gs";
         private const string url_logout = "http://www.gersang.co.kr/member/logoutProc.gs";
         private const string url_otp = "https://www.gersang.co.kr/member/otp.gs";
+        private string url_event = "";
+        private const string url_search_gersang = "https://search.naver.com/search.naver?&query=거상";
 
         //pw는 암호화를 통한 관리 필요
         private string client_path_1;
@@ -400,6 +402,108 @@ namespace GersangClientStation {
                 config.Save(ConfigurationSaveMode.Full, true);
                 ConfigurationManager.RefreshSection("appSettings");
                 LoadSetting();
+            }
+        }
+
+        bool isFind = false; //이벤트 페이지 링크를 찾았는지 여부
+        bool isNaver = false;
+        bool isMainPage = false;
+        bool isEventPage = false;
+        private void eventBrowser_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e) {
+            //프로그램을 시작하자마자 출석체크 이벤트 페이지를 찾고, 리턴합니다.
+            //찾은 뒤에는 진입하지 않습니다.
+            if (!isFind) {
+                foreach (HtmlElement element in eventBrowser.Document.GetElementsByTagName("a")) {
+                    string href = element.GetAttribute("href");
+                    if (href.Contains("attendance")) {
+                        url_event = href;
+                        Debug.WriteLine("이벤트 페이지 링크 : " + url_event);
+                        isFind = true;
+                        return;
+                    }
+                }
+            }
+
+            //출석체크 이벤트 페이지를 성공적으로 찾았으며, 현재 네이버에 거상을 검색한 상태라면,
+            //검색페이지 내의 거상 공식홈페이지 링크 버튼을 찾고 누릅니다.
+            if(isNaver) {
+                clickGersangLink();
+                return;
+            }
+
+            //거상 홈페이지에 들어왔다면, 바로 이벤트 페이지로 접속합니다.
+            if(isMainPage) {
+                navigateEventPage();
+                return;
+            }
+
+            //거상 출석체크 이벤트 페이지에 접속하였다면, 현재 시간 체크 후 해당 시간의 아이템 받기 버튼을 클릭합니다.
+            if (isEventPage && eventBrowser.Url.Equals(url_event)) {
+                if(eventBrowser.Document.GetElementById("pop") != null) { //단순히 정말로 페이지가 다 로딩된건지 확인하기 위함입니다.
+                    clickItemGet();
+                }
+            }
+        }
+
+        private void navigateSearchPage() {
+            isNaver = true;
+            eventBrowser.Navigate(url_search_gersang);
+        }
+
+        private void clickGersangLink() {
+            foreach (HtmlElement element in eventBrowser.Document.GetElementsByTagName("a")) {
+                string href = element.GetAttribute("href");
+                if (href.Equals("http://www.gersang.co.kr/main.gs")) {
+                    element.SetAttribute("target", "_self"); //새 창이 열리지 않도록 합니다
+                    element.InvokeMember("click");
+                    isNaver = false;
+                    isMainPage = true;
+                    break;
+                }
+            }
+        }
+
+        private void navigateEventPage() {
+            isMainPage = false;
+            isEventPage = true;
+            eventBrowser.Navigate(url_event);
+        }
+
+        private void clickItemGet() {
+            isEventPage = false;
+
+            /*
+            1-> 00:05 ~05:55
+            2-> 06:05 ~11:55
+            3-> 12:05 ~17:55
+            4-> 18:05 ~23:55
+            */
+            int arg;
+
+            int koreaHour = TimeZoneInfo.ConvertTimeBySystemTimeZoneId(DateTime.UtcNow, "Korea Standard Time").Hour;
+            if (koreaHour >= 0 && koreaHour <= 5) {
+                arg = 1;
+            } else if (koreaHour >= 6 && koreaHour <= 11) {
+                arg = 2;
+            } else if (koreaHour >= 12 && koreaHour <= 17) {
+                arg = 3;
+            } else {
+                arg = 4;
+            }
+
+            eventBrowser.Document.InvokeScript("event_Search_Use", new object[] { arg });
+        }
+
+        private void button_search_naver_Click(object sender, EventArgs e) {
+            if(currentLoginClient == Client.None) {
+                MessageBox.Show("로그인을 먼저 해주세요.");
+                return;
+            }
+
+            if(url_event != "" && isFind) {
+                navigateSearchPage();
+            } else {
+                MessageBox.Show("이벤트 페이지를 찾지 못하였습니다.");
             }
         }
     }
