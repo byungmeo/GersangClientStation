@@ -52,7 +52,6 @@ namespace GersangClientStation {
             this.metroButton4 = new MetroFramework.Controls.MetroButton();
             this.metroPanel1 = new MetroFramework.Controls.MetroPanel();
             this.label_nickname_1 = new MetroFramework.Controls.MetroLabel();
-            this.webBrowser2 = new System.Windows.Forms.WebBrowser();
             this.radio_setting_1 = new MetroFramework.Controls.MetroRadioButton();
             this.radio_setting_2 = new MetroFramework.Controls.MetroRadioButton();
             this.radio_setting_3 = new MetroFramework.Controls.MetroRadioButton();
@@ -80,9 +79,9 @@ namespace GersangClientStation {
             this.menuStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripMenuItem1,
             this.다클라ToolStripMenuItem});
-            this.menuStrip2.Location = new System.Drawing.Point(1080, 60);
+            this.menuStrip2.Location = new System.Drawing.Point(798, 60);
             this.menuStrip2.Name = "menuStrip2";
-            this.menuStrip2.Size = new System.Drawing.Size(200, 920);
+            this.menuStrip2.Size = new System.Drawing.Size(178, 261);
             this.menuStrip2.TabIndex = 13;
             this.menuStrip2.Text = "menuStrip2";
             // 
@@ -99,11 +98,13 @@ namespace GersangClientStation {
             // 다클라ToolStripMenuItem
             // 
             this.다클라ToolStripMenuItem.AutoSize = false;
+            this.다클라ToolStripMenuItem.Enabled = false;
             this.다클라ToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("다클라ToolStripMenuItem.Image")));
             this.다클라ToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.다클라ToolStripMenuItem.Name = "다클라ToolStripMenuItem";
             this.다클라ToolStripMenuItem.Size = new System.Drawing.Size(193, 30);
             this.다클라ToolStripMenuItem.Text = "다클라 생성기 실행";
+            this.다클라ToolStripMenuItem.Visible = false;
             // 
             // metroPanel2
             // 
@@ -147,19 +148,23 @@ namespace GersangClientStation {
             // 
             // metroButton2
             // 
+            this.metroButton2.Enabled = false;
             this.metroButton2.Location = new System.Drawing.Point(70, 127);
             this.metroButton2.Name = "metroButton2";
             this.metroButton2.Size = new System.Drawing.Size(60, 60);
             this.metroButton2.TabIndex = 12;
             this.metroButton2.Text = "네이버\r\n검색";
+            this.metroButton2.Visible = false;
             // 
             // metroButton5
             // 
+            this.metroButton5.Enabled = false;
             this.metroButton5.Location = new System.Drawing.Point(137, 127);
             this.metroButton5.Name = "metroButton5";
             this.metroButton5.Size = new System.Drawing.Size(60, 60);
             this.metroButton5.TabIndex = 11;
             this.metroButton5.Text = "검색보상";
+            this.metroButton5.Visible = false;
             // 
             // button_login_2
             // 
@@ -224,19 +229,23 @@ namespace GersangClientStation {
             // 
             // metroButton7
             // 
+            this.metroButton7.Enabled = false;
             this.metroButton7.Location = new System.Drawing.Point(70, 127);
             this.metroButton7.Name = "metroButton7";
             this.metroButton7.Size = new System.Drawing.Size(60, 60);
             this.metroButton7.TabIndex = 15;
             this.metroButton7.Text = "네이버\r\n검색";
+            this.metroButton7.Visible = false;
             // 
             // metroButton8
             // 
+            this.metroButton8.Enabled = false;
             this.metroButton8.Location = new System.Drawing.Point(137, 127);
             this.metroButton8.Name = "metroButton8";
             this.metroButton8.Size = new System.Drawing.Size(60, 60);
             this.metroButton8.TabIndex = 14;
             this.metroButton8.Text = "검색보상";
+            this.metroButton8.Visible = false;
             // 
             // button_login_3
             // 
@@ -311,19 +320,23 @@ namespace GersangClientStation {
             // 
             // metroButton3
             // 
+            this.metroButton3.Enabled = false;
             this.metroButton3.Location = new System.Drawing.Point(137, 127);
             this.metroButton3.Name = "metroButton3";
             this.metroButton3.Size = new System.Drawing.Size(60, 60);
             this.metroButton3.TabIndex = 8;
             this.metroButton3.Text = "검색보상";
+            this.metroButton3.Visible = false;
             // 
             // metroButton4
             // 
+            this.metroButton4.Enabled = false;
             this.metroButton4.Location = new System.Drawing.Point(70, 127);
             this.metroButton4.Name = "metroButton4";
             this.metroButton4.Size = new System.Drawing.Size(60, 60);
             this.metroButton4.TabIndex = 9;
             this.metroButton4.Text = "네이버\r\n검색";
+            this.metroButton4.Visible = false;
             // 
             // metroPanel1
             // 
@@ -353,14 +366,6 @@ namespace GersangClientStation {
             this.label_nickname_1.Size = new System.Drawing.Size(126, 19);
             this.label_nickname_1.TabIndex = 10;
             this.label_nickname_1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // webBrowser2
-            // 
-            this.webBrowser2.Location = new System.Drawing.Point(23, 335);
-            this.webBrowser2.MinimumSize = new System.Drawing.Size(20, 20);
-            this.webBrowser2.Name = "webBrowser2";
-            this.webBrowser2.Size = new System.Drawing.Size(1257, 645);
-            this.webBrowser2.TabIndex = 18;
             // 
             // radio_setting_1
             // 
@@ -415,9 +420,8 @@ namespace GersangClientStation {
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BorderStyle = MetroFramework.Drawing.MetroBorderStyle.FixedSingle;
-            this.ClientSize = new System.Drawing.Size(1300, 1000);
+            this.ClientSize = new System.Drawing.Size(996, 341);
             this.Controls.Add(this.groupBox_setting);
-            this.Controls.Add(this.webBrowser2);
             this.Controls.Add(this.menuStrip2);
             this.Controls.Add(this.metroPanel3);
             this.Controls.Add(this.metroPanel2);
@@ -471,7 +475,6 @@ namespace GersangClientStation {
         private MetroFramework.Controls.MetroLabel label_status_3;
         private MetroFramework.Controls.MetroLabel label_nickname_2;
         private MetroFramework.Controls.MetroLabel label_nickname_3;
-        private System.Windows.Forms.WebBrowser webBrowser2;
         private MetroFramework.Controls.MetroRadioButton radio_setting_1;
         private MetroFramework.Controls.MetroRadioButton radio_setting_2;
         private MetroFramework.Controls.MetroRadioButton radio_setting_3;

@@ -9,6 +9,8 @@ using System.Windows.Forms;
 
 namespace GersangClientStation {
     public partial class Form1 : MetroForm {
+        private Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+
         private const string url_main = "http://www.gersang.co.kr/main/index.gs";
         private const string url_logout = "http://www.gersang.co.kr/member/logoutProc.gs";
         private const string url_otp = "https://www.gersang.co.kr/member/otp.gs";
@@ -48,9 +50,9 @@ namespace GersangClientStation {
 
         public Form1() {
             InitializeComponent();
-            webBrowser2.DocumentCompleted += new WebBrowserDocumentCompletedEventHandler(this.webBrowser_DocumentCompleted); //브라우저 로딩 완료 이벤트 리스너 부착
-            webBrowser2.ScriptErrorsSuppressed = true; //Script Error가 뜨지 않도록 합니다.
-            webBrowser2.Navigate(url_main); //홈페이지 메인 화면으로 이동합니다.
+            webBrowser.DocumentCompleted += new WebBrowserDocumentCompletedEventHandler(this.webBrowser_DocumentCompleted); //브라우저 로딩 완료 이벤트 리스너 부착
+            webBrowser.ScriptErrorsSuppressed = true; //Script Error가 뜨지 않도록 합니다.
+            webBrowser.Navigate(url_main); //홈페이지 메인 화면으로 이동합니다.
         }
 
         private void Form1_Load(object sender, EventArgs e) {
@@ -120,7 +122,7 @@ namespace GersangClientStation {
         //웹 브라우저 로딩이 완료되면 호출됩니다.
         private void webBrowser_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e) {
             Debug.WriteLine("Document Load Completed");
-            this.document = this.webBrowser2.Document;
+            this.document = this.webBrowser.Document;
             Debug.WriteLine("Load URL : " + document.Url);
 
             HtmlElementCollection input_otp = this.document.GetElementsByTagName("input").GetElementsByName("GSotpNo"); //OTP 입력상자를 가져옵니다.
@@ -219,7 +221,7 @@ namespace GersangClientStation {
                 Debug.WriteLine("로그아웃 시작");
                 SetStatus(Status.Offline, currentLoginClient, "");
                 currentLoginClient = Client.None;
-                webBrowser2.Navigate(url_logout);
+                webBrowser.Navigate(url_logout);
             }
         }
 
@@ -385,16 +387,18 @@ namespace GersangClientStation {
             // changed to true.
             if (rb.Checked) {
                 if(rb.Equals(radio_setting_1)) {
-                    ConfigurationManager.AppSettings["setting_num"] = "1";
+                    config.AppSettings.Settings["setting_num"].Value = "1";
                 } else if(rb.Equals(radio_setting_2)) {
-                    ConfigurationManager.AppSettings["setting_num"] = "2";
+                    config.AppSettings.Settings["setting_num"].Value = "2";
                 } else if(rb.Equals(radio_setting_3)) {
-                    ConfigurationManager.AppSettings["setting_num"] = "3";
+                    config.AppSettings.Settings["setting_num"].Value = "3";
                 } else {
                     MessageBox.Show("오류 발생 : radio_setting_CheckedChanged\nUnknown RadioButton");
                     return;
                 }
 
+                config.Save(ConfigurationSaveMode.Full, true);
+                ConfigurationManager.RefreshSection("appSettings");
                 LoadSetting();
             }
         }
