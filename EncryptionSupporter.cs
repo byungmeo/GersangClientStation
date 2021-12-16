@@ -12,6 +12,9 @@ namespace GersangClientStation {
             return PasswordProtect;
         }
         public static string Unprotect(string origin) {
+            if(origin == "") {
+                return "";
+            }
             var PasswordUnprotect = Encoding.UTF8.GetString(ProtectedData.Unprotect(Convert.FromBase64String(origin), null, DataProtectionScope.CurrentUser));
             return PasswordUnprotect; 
         }
