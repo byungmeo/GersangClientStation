@@ -116,7 +116,7 @@ namespace GersangClientStation {
             this.button_start_2.FlatAppearance.BorderSize = 0;
             this.button_start_2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button_start_2.Image = ((System.Drawing.Image)(resources.GetObject("button_start_2.Image")));
-            this.button_start_2.Location = new System.Drawing.Point(118, 36);
+            this.button_start_2.Location = new System.Drawing.Point(117, 36);
             this.button_start_2.Name = "button_start_2";
             this.button_start_2.Size = new System.Drawing.Size(63, 70);
             this.button_start_2.TabIndex = 28;
@@ -132,7 +132,7 @@ namespace GersangClientStation {
             this.button_search_naver2.FlatAppearance.BorderSize = 0;
             this.button_search_naver2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button_search_naver2.Image = ((System.Drawing.Image)(resources.GetObject("button_search_naver2.Image")));
-            this.button_search_naver2.Location = new System.Drawing.Point(11, 36);
+            this.button_search_naver2.Location = new System.Drawing.Point(20, 36);
             this.button_search_naver2.Name = "button_search_naver2";
             this.button_search_naver2.Size = new System.Drawing.Size(63, 70);
             this.button_search_naver2.TabIndex = 27;
@@ -189,7 +189,7 @@ namespace GersangClientStation {
             this.button_start_3.FlatAppearance.BorderSize = 0;
             this.button_start_3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button_start_3.Image = ((System.Drawing.Image)(resources.GetObject("button_start_3.Image")));
-            this.button_start_3.Location = new System.Drawing.Point(118, 36);
+            this.button_start_3.Location = new System.Drawing.Point(117, 36);
             this.button_start_3.Name = "button_start_3";
             this.button_start_3.Size = new System.Drawing.Size(63, 70);
             this.button_start_3.TabIndex = 30;
@@ -205,7 +205,7 @@ namespace GersangClientStation {
             this.button_search_naver3.FlatAppearance.BorderSize = 0;
             this.button_search_naver3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button_search_naver3.Image = ((System.Drawing.Image)(resources.GetObject("button_search_naver3.Image")));
-            this.button_search_naver3.Location = new System.Drawing.Point(11, 36);
+            this.button_search_naver3.Location = new System.Drawing.Point(20, 36);
             this.button_search_naver3.Name = "button_search_naver3";
             this.button_search_naver3.Size = new System.Drawing.Size(63, 70);
             this.button_search_naver3.TabIndex = 29;
@@ -274,7 +274,7 @@ namespace GersangClientStation {
             this.button_start_1.FlatAppearance.BorderSize = 0;
             this.button_start_1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button_start_1.Image = ((System.Drawing.Image)(resources.GetObject("button_start_1.Image")));
-            this.button_start_1.Location = new System.Drawing.Point(123, 36);
+            this.button_start_1.Location = new System.Drawing.Point(117, 36);
             this.button_start_1.Name = "button_start_1";
             this.button_start_1.Size = new System.Drawing.Size(63, 70);
             this.button_start_1.TabIndex = 26;
@@ -290,7 +290,7 @@ namespace GersangClientStation {
             this.button_search_naver_1.FlatAppearance.BorderSize = 0;
             this.button_search_naver_1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button_search_naver_1.Image = ((System.Drawing.Image)(resources.GetObject("button_search_naver_1.Image")));
-            this.button_search_naver_1.Location = new System.Drawing.Point(16, 36);
+            this.button_search_naver_1.Location = new System.Drawing.Point(20, 36);
             this.button_search_naver_1.Name = "button_search_naver_1";
             this.button_search_naver_1.Size = new System.Drawing.Size(63, 70);
             this.button_search_naver_1.TabIndex = 25;
