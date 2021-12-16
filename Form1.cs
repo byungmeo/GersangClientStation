@@ -9,7 +9,7 @@ using System.Windows.Forms;
 
 namespace GersangClientStation {
     public partial class Form1 : MetroForm {
-        private Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+        public static Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
 
         private const string url_main = "http://www.gersang.co.kr/main/index.gs";
         private const string url_logout = "http://www.gersang.co.kr/member/logoutProc.gs";
@@ -202,7 +202,7 @@ namespace GersangClientStation {
                 }
 
                 input_userId.SetAttribute("value", id); //아이디를 웹페이지에 입력
-                input_userPwd.SetAttribute("value", pw); //패스워드를 웹페이지에 입력
+                input_userPwd.SetAttribute("value", EncryptionSupporter.Unprotect(pw)); //복호화된 패스워드를 웹페이지에 입력
                 form_login.InvokeMember("submit"); //입력된 아이디와 패스워드로 로그인을 시도
 
             } catch(ArgumentOutOfRangeException e) {
