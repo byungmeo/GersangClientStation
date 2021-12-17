@@ -457,6 +457,9 @@ namespace GersangClientStation {
                     clickItemGet();
                 }
             }
+
+            Delay(100);
+            this.Activate(); //검색 보상 기능 실행 후 폼이 비활성화 되어 실행 버튼을 두번 눌러야 하는 현상 방지
         }
 
         private void navigateSearchPage() {
@@ -509,7 +512,7 @@ namespace GersangClientStation {
         }
 
         private void button_search_naver_Click(object sender, EventArgs e) {
-            if(currentLoginClient == Client.None) {
+            if (currentLoginClient == Client.None) {
                 MessageBox.Show("로그인을 먼저 해주세요.");
                 return;
             }
