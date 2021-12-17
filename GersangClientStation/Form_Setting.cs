@@ -88,11 +88,7 @@ namespace GersangClientStation {
             Form1.config.AppSettings.Settings["client_id_3_tab_1"].Value = textBox_client_id_3_tab_1.Text;
             Form1.config.AppSettings.Settings["client_pw_3_tab_1"].Value = textBox_client_pw_3_tab_1.Text;
 
-            //Debug.WriteLine("최종적으로 저장된 패스워드1_1 : " + ConfigurationManager.AppSettings["client_pw_1_tab_1"]);
-            //Debug.WriteLine("최종적으로 저장된 패스워드1_2 : " + ConfigurationManager.AppSettings["client_pw_2_tab_1"]);
-            //Debug.WriteLine("최종적으로 저장된 패스워드1_3 : " + ConfigurationManager.AppSettings["client_pw_3_tab_1"]);
-
-            Form1.config.Save(ConfigurationSaveMode.Full, true);
+            Form1.config.Save(ConfigurationSaveMode.Modified, true);
             ConfigurationManager.RefreshSection("appSettings");
         }
 
@@ -109,11 +105,7 @@ namespace GersangClientStation {
             Form1.config.AppSettings.Settings["client_id_3_tab_2"].Value = textBox_client_id_3_tab_2.Text;
             Form1.config.AppSettings.Settings["client_pw_3_tab_2"].Value = textBox_client_pw_3_tab_2.Text;
 
-            //Debug.WriteLine("최종적으로 저장된 패스워드2_1 : " + ConfigurationManager.AppSettings["client_pw_1_tab_1"]);
-            //Debug.WriteLine("최종적으로 저장된 패스워드2_2 : " + ConfigurationManager.AppSettings["client_pw_2_tab_1"]);
-            //Debug.WriteLine("최종적으로 저장된 패스워드2_3 : " + ConfigurationManager.AppSettings["client_pw_3_tab_1"]);
-
-            Form1.config.Save(ConfigurationSaveMode.Full, true);
+            Form1.config.Save(ConfigurationSaveMode.Modified, true);
             ConfigurationManager.RefreshSection("appSettings");
         }
 
@@ -130,11 +122,7 @@ namespace GersangClientStation {
             Form1.config.AppSettings.Settings["client_id_3_tab_3"].Value = textBox_client_id_3_tab_3.Text;
             Form1.config.AppSettings.Settings["client_pw_3_tab_3"].Value = textBox_client_pw_3_tab_3.Text;
 
-            //Debug.WriteLine("최종적으로 저장된 패스워드3_1 : " + ConfigurationManager.AppSettings["client_pw_1_tab_1"]);
-            //Debug.WriteLine("최종적으로 저장된 패스워드3_2 : " + ConfigurationManager.AppSettings["client_pw_2_tab_1"]);
-            //Debug.WriteLine("최종적으로 저장된 패스워드3_3 : " + ConfigurationManager.AppSettings["client_pw_3_tab_1"]);
-
-            Form1.config.Save(ConfigurationSaveMode.Full, true);
+            Form1.config.Save(ConfigurationSaveMode.Modified, true);
             ConfigurationManager.RefreshSection("appSettings");
         }
 

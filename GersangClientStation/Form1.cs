@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 namespace GersangClientStation {
     public partial class Form1 : MetroForm {
-        public static Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+        public static Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);  
 
         private const string url_main = "http://www.gersang.co.kr/main/index.gs";
         private const string url_logout = "http://www.gersang.co.kr/member/logoutProc.gs";
@@ -39,12 +39,6 @@ namespace GersangClientStation {
         private Client currentLoginClient = Client.None;
         private bool isTypingOtp = false;
         private bool isSubmitOtp = false;
-
-        enum Status {
-            Offline, //로그아웃 상태
-            Online,  //로그인 완료
-            Retrying //로그인 재시도중
-        }
 
         enum Client {
             MainClient, //1클라
@@ -413,7 +407,7 @@ namespace GersangClientStation {
                     return;
                 }
 
-                config.Save(ConfigurationSaveMode.Full, true);
+                config.Save(ConfigurationSaveMode.Modified, true); //Full로 하면 특정 환경에서 오류 발생
                 ConfigurationManager.RefreshSection("appSettings");
                 LoadSetting();
             }
