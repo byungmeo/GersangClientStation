@@ -27,6 +27,7 @@ namespace GersangClientStation {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.menuStrip2 = new System.Windows.Forms.MenuStrip();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.다클라ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.metroPanel2 = new MetroFramework.Controls.MetroPanel();
             this.button_start_2 = new System.Windows.Forms.Button();
@@ -52,6 +53,11 @@ namespace GersangClientStation {
             this.pic_naver = new System.Windows.Forms.PictureBox();
             this.pic_github = new System.Windows.Forms.PictureBox();
             this.link_github = new MetroFramework.Controls.MetroLink();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.link_shortcut_3 = new MetroFramework.Controls.MetroLink();
+            this.link_shortcut_2 = new MetroFramework.Controls.MetroLink();
+            this.link_shortcut_1 = new MetroFramework.Controls.MetroLink();
+            this.metroLabel4 = new MetroFramework.Controls.MetroLabel();
             this.menuStrip2.SuspendLayout();
             this.metroPanel2.SuspendLayout();
             this.metroPanel3.SuspendLayout();
@@ -60,6 +66,7 @@ namespace GersangClientStation {
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic_naver)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic_github)).BeginInit();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip2
@@ -68,6 +75,7 @@ namespace GersangClientStation {
             this.menuStrip2.Dock = System.Windows.Forms.DockStyle.Right;
             this.menuStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripMenuItem1,
+            this.ToolStripMenuItem2,
             this.다클라ToolStripMenuItem});
             this.menuStrip2.Location = new System.Drawing.Point(400, 60);
             this.menuStrip2.Name = "menuStrip2";
@@ -85,6 +93,15 @@ namespace GersangClientStation {
             this.toolStripMenuItem1.Size = new System.Drawing.Size(193, 36);
             this.toolStripMenuItem1.Text = "계정정보 및 경로 설정";
             this.toolStripMenuItem1.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
+            // 
+            // ToolStripMenuItem2
+            // 
+            this.ToolStripMenuItem2.Image = ((System.Drawing.Image)(resources.GetObject("ToolStripMenuItem2.Image")));
+            this.ToolStripMenuItem2.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.ToolStripMenuItem2.Name = "ToolStripMenuItem2";
+            this.ToolStripMenuItem2.Size = new System.Drawing.Size(190, 36);
+            this.ToolStripMenuItem2.Text = "바로가기 경로 설정   ";
+            this.ToolStripMenuItem2.Click += new System.EventHandler(this.ToolStripMenuItem2_Click);
             // 
             // 다클라ToolStripMenuItem
             // 
@@ -424,12 +441,64 @@ namespace GersangClientStation {
             this.link_github.Text = "Github";
             this.link_github.Click += new System.EventHandler(this.link_github_Click);
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.metroLabel4);
+            this.groupBox1.Controls.Add(this.link_shortcut_3);
+            this.groupBox1.Controls.Add(this.link_shortcut_2);
+            this.groupBox1.Controls.Add(this.link_shortcut_1);
+            this.groupBox1.Location = new System.Drawing.Point(247, 202);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(129, 140);
+            this.groupBox1.TabIndex = 23;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "커스텀 바로가기";
+            // 
+            // link_shortcut_3
+            // 
+            this.link_shortcut_3.Location = new System.Drawing.Point(27, 82);
+            this.link_shortcut_3.Name = "link_shortcut_3";
+            this.link_shortcut_3.Size = new System.Drawing.Size(75, 23);
+            this.link_shortcut_3.TabIndex = 2;
+            this.link_shortcut_3.Text = "바로가기3";
+            this.link_shortcut_3.Click += new System.EventHandler(this.link_shortcut_3_Click);
+            // 
+            // link_shortcut_2
+            // 
+            this.link_shortcut_2.Location = new System.Drawing.Point(27, 53);
+            this.link_shortcut_2.Name = "link_shortcut_2";
+            this.link_shortcut_2.Size = new System.Drawing.Size(75, 23);
+            this.link_shortcut_2.TabIndex = 1;
+            this.link_shortcut_2.Text = "바로가기2";
+            this.link_shortcut_2.Click += new System.EventHandler(this.link_shortcut_2_Click);
+            // 
+            // link_shortcut_1
+            // 
+            this.link_shortcut_1.Location = new System.Drawing.Point(27, 24);
+            this.link_shortcut_1.Name = "link_shortcut_1";
+            this.link_shortcut_1.Size = new System.Drawing.Size(75, 23);
+            this.link_shortcut_1.TabIndex = 0;
+            this.link_shortcut_1.Text = "바로가기1";
+            this.link_shortcut_1.Click += new System.EventHandler(this.link_shortcut_1_Click);
+            // 
+            // metroLabel4
+            // 
+            this.metroLabel4.AutoSize = true;
+            this.metroLabel4.Location = new System.Drawing.Point(16, 109);
+            this.metroLabel4.Name = "metroLabel4";
+            this.metroLabel4.Size = new System.Drawing.Size(97, 19);
+            this.metroLabel4.Style = MetroFramework.MetroColorStyle.Red;
+            this.metroLabel4.TabIndex = 28;
+            this.metroLabel4.Text = "로그아웃 필수";
+            this.metroLabel4.UseStyleColors = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BorderStyle = MetroFramework.Drawing.MetroBorderStyle.FixedSingle;
             this.ClientSize = new System.Drawing.Size(617, 490);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.link_github);
             this.Controls.Add(this.pic_github);
             this.Controls.Add(this.pic_naver);
@@ -460,6 +529,8 @@ namespace GersangClientStation {
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic_naver)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic_github)).EndInit();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -493,6 +564,12 @@ namespace GersangClientStation {
         private System.Windows.Forms.PictureBox pic_naver;
         private System.Windows.Forms.PictureBox pic_github;
         private MetroFramework.Controls.MetroLink link_github;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private MetroFramework.Controls.MetroLink link_shortcut_3;
+        private MetroFramework.Controls.MetroLink link_shortcut_2;
+        private MetroFramework.Controls.MetroLink link_shortcut_1;
+        private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItem2;
+        private MetroFramework.Controls.MetroLabel metroLabel4;
     }
 }
 
