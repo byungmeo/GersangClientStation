@@ -44,10 +44,28 @@ namespace GersangClientStation {
             this.button_save_tab_1 = new MetroFramework.Controls.MetroButton();
             this.tabControl_setting = new MetroFramework.Controls.MetroTabControl();
             this.metroTabPage1 = new MetroFramework.Controls.MetroTabPage();
+            this.metroLabel19 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel20 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel21 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel22 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel23 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel24 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel25 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel26 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel27 = new MetroFramework.Controls.MetroLabel();
             this.button_clear_pw_3_tab_1 = new MetroFramework.Controls.MetroButton();
             this.button_clear_pw_2_tab_1 = new MetroFramework.Controls.MetroButton();
             this.button_clear_pw_1_tab_1 = new MetroFramework.Controls.MetroButton();
             this.metroTabPage2 = new MetroFramework.Controls.MetroTabPage();
+            this.metroLabel16 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel17 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel18 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel13 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel14 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel15 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel10 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel11 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel12 = new MetroFramework.Controls.MetroLabel();
             this.button_clear_pw_3_tab_2 = new MetroFramework.Controls.MetroButton();
             this.button_clear_pw_2_tab_2 = new MetroFramework.Controls.MetroButton();
             this.button_clear_pw_1_tab_2 = new MetroFramework.Controls.MetroButton();
@@ -69,6 +87,15 @@ namespace GersangClientStation {
             this.textBox_client_path_2_tab_2 = new MetroFramework.Controls.MetroTextBox();
             this.button_path_finder_2_tab_2 = new MetroFramework.Controls.MetroButton();
             this.metroTabPage3 = new MetroFramework.Controls.MetroTabPage();
+            this.metroLabel7 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel8 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel9 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel4 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel5 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel6 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel3 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
             this.button_clear_pw_3_tab_3 = new MetroFramework.Controls.MetroButton();
             this.button_clear_pw_2_tab_3 = new MetroFramework.Controls.MetroButton();
             this.button_clear_pw_1_tab_3 = new MetroFramework.Controls.MetroButton();
@@ -89,33 +116,6 @@ namespace GersangClientStation {
             this.textBox_client_id_2_tab_3 = new MetroFramework.Controls.MetroTextBox();
             this.textBox_client_path_2_tab_3 = new MetroFramework.Controls.MetroTextBox();
             this.button_path_finder_2_tab_3 = new MetroFramework.Controls.MetroButton();
-            this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
-            this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
-            this.metroLabel3 = new MetroFramework.Controls.MetroLabel();
-            this.metroLabel4 = new MetroFramework.Controls.MetroLabel();
-            this.metroLabel5 = new MetroFramework.Controls.MetroLabel();
-            this.metroLabel6 = new MetroFramework.Controls.MetroLabel();
-            this.metroLabel7 = new MetroFramework.Controls.MetroLabel();
-            this.metroLabel8 = new MetroFramework.Controls.MetroLabel();
-            this.metroLabel9 = new MetroFramework.Controls.MetroLabel();
-            this.metroLabel10 = new MetroFramework.Controls.MetroLabel();
-            this.metroLabel11 = new MetroFramework.Controls.MetroLabel();
-            this.metroLabel12 = new MetroFramework.Controls.MetroLabel();
-            this.metroLabel13 = new MetroFramework.Controls.MetroLabel();
-            this.metroLabel14 = new MetroFramework.Controls.MetroLabel();
-            this.metroLabel15 = new MetroFramework.Controls.MetroLabel();
-            this.metroLabel16 = new MetroFramework.Controls.MetroLabel();
-            this.metroLabel17 = new MetroFramework.Controls.MetroLabel();
-            this.metroLabel18 = new MetroFramework.Controls.MetroLabel();
-            this.metroLabel19 = new MetroFramework.Controls.MetroLabel();
-            this.metroLabel20 = new MetroFramework.Controls.MetroLabel();
-            this.metroLabel21 = new MetroFramework.Controls.MetroLabel();
-            this.metroLabel22 = new MetroFramework.Controls.MetroLabel();
-            this.metroLabel23 = new MetroFramework.Controls.MetroLabel();
-            this.metroLabel24 = new MetroFramework.Controls.MetroLabel();
-            this.metroLabel25 = new MetroFramework.Controls.MetroLabel();
-            this.metroLabel26 = new MetroFramework.Controls.MetroLabel();
-            this.metroLabel27 = new MetroFramework.Controls.MetroLabel();
             this.tabControl_setting.SuspendLayout();
             this.metroTabPage1.SuspendLayout();
             this.metroTabPage2.SuspendLayout();
@@ -342,6 +342,87 @@ namespace GersangClientStation {
             this.metroTabPage1.Text = "1번";
             this.metroTabPage1.VerticalScrollbarBarColor = true;
             // 
+            // metroLabel19
+            // 
+            this.metroLabel19.AutoSize = true;
+            this.metroLabel19.Location = new System.Drawing.Point(3, 322);
+            this.metroLabel19.Name = "metroLabel19";
+            this.metroLabel19.Size = new System.Drawing.Size(30, 19);
+            this.metroLabel19.TabIndex = 120;
+            this.metroLabel19.Text = "PW";
+            // 
+            // metroLabel20
+            // 
+            this.metroLabel20.AutoSize = true;
+            this.metroLabel20.Location = new System.Drawing.Point(3, 293);
+            this.metroLabel20.Name = "metroLabel20";
+            this.metroLabel20.Size = new System.Drawing.Size(21, 19);
+            this.metroLabel20.TabIndex = 119;
+            this.metroLabel20.Text = "ID";
+            // 
+            // metroLabel21
+            // 
+            this.metroLabel21.AutoSize = true;
+            this.metroLabel21.Location = new System.Drawing.Point(3, 264);
+            this.metroLabel21.Name = "metroLabel21";
+            this.metroLabel21.Size = new System.Drawing.Size(37, 19);
+            this.metroLabel21.TabIndex = 118;
+            this.metroLabel21.Text = "경로";
+            // 
+            // metroLabel22
+            // 
+            this.metroLabel22.AutoSize = true;
+            this.metroLabel22.Location = new System.Drawing.Point(3, 207);
+            this.metroLabel22.Name = "metroLabel22";
+            this.metroLabel22.Size = new System.Drawing.Size(30, 19);
+            this.metroLabel22.TabIndex = 117;
+            this.metroLabel22.Text = "PW";
+            // 
+            // metroLabel23
+            // 
+            this.metroLabel23.AutoSize = true;
+            this.metroLabel23.Location = new System.Drawing.Point(3, 178);
+            this.metroLabel23.Name = "metroLabel23";
+            this.metroLabel23.Size = new System.Drawing.Size(21, 19);
+            this.metroLabel23.TabIndex = 116;
+            this.metroLabel23.Text = "ID";
+            // 
+            // metroLabel24
+            // 
+            this.metroLabel24.AutoSize = true;
+            this.metroLabel24.Location = new System.Drawing.Point(3, 149);
+            this.metroLabel24.Name = "metroLabel24";
+            this.metroLabel24.Size = new System.Drawing.Size(37, 19);
+            this.metroLabel24.TabIndex = 115;
+            this.metroLabel24.Text = "경로";
+            // 
+            // metroLabel25
+            // 
+            this.metroLabel25.AutoSize = true;
+            this.metroLabel25.Location = new System.Drawing.Point(3, 92);
+            this.metroLabel25.Name = "metroLabel25";
+            this.metroLabel25.Size = new System.Drawing.Size(30, 19);
+            this.metroLabel25.TabIndex = 114;
+            this.metroLabel25.Text = "PW";
+            // 
+            // metroLabel26
+            // 
+            this.metroLabel26.AutoSize = true;
+            this.metroLabel26.Location = new System.Drawing.Point(3, 63);
+            this.metroLabel26.Name = "metroLabel26";
+            this.metroLabel26.Size = new System.Drawing.Size(21, 19);
+            this.metroLabel26.TabIndex = 113;
+            this.metroLabel26.Text = "ID";
+            // 
+            // metroLabel27
+            // 
+            this.metroLabel27.AutoSize = true;
+            this.metroLabel27.Location = new System.Drawing.Point(3, 34);
+            this.metroLabel27.Name = "metroLabel27";
+            this.metroLabel27.Size = new System.Drawing.Size(37, 19);
+            this.metroLabel27.TabIndex = 112;
+            this.metroLabel27.Text = "경로";
+            // 
             // button_clear_pw_3_tab_1
             // 
             this.button_clear_pw_3_tab_1.Location = new System.Drawing.Point(172, 320);
@@ -413,6 +494,87 @@ namespace GersangClientStation {
             this.metroTabPage2.TabIndex = 1;
             this.metroTabPage2.Text = "2번";
             this.metroTabPage2.VerticalScrollbarBarColor = true;
+            // 
+            // metroLabel16
+            // 
+            this.metroLabel16.AutoSize = true;
+            this.metroLabel16.Location = new System.Drawing.Point(3, 322);
+            this.metroLabel16.Name = "metroLabel16";
+            this.metroLabel16.Size = new System.Drawing.Size(30, 19);
+            this.metroLabel16.TabIndex = 111;
+            this.metroLabel16.Text = "PW";
+            // 
+            // metroLabel17
+            // 
+            this.metroLabel17.AutoSize = true;
+            this.metroLabel17.Location = new System.Drawing.Point(3, 293);
+            this.metroLabel17.Name = "metroLabel17";
+            this.metroLabel17.Size = new System.Drawing.Size(21, 19);
+            this.metroLabel17.TabIndex = 110;
+            this.metroLabel17.Text = "ID";
+            // 
+            // metroLabel18
+            // 
+            this.metroLabel18.AutoSize = true;
+            this.metroLabel18.Location = new System.Drawing.Point(3, 264);
+            this.metroLabel18.Name = "metroLabel18";
+            this.metroLabel18.Size = new System.Drawing.Size(37, 19);
+            this.metroLabel18.TabIndex = 109;
+            this.metroLabel18.Text = "경로";
+            // 
+            // metroLabel13
+            // 
+            this.metroLabel13.AutoSize = true;
+            this.metroLabel13.Location = new System.Drawing.Point(3, 207);
+            this.metroLabel13.Name = "metroLabel13";
+            this.metroLabel13.Size = new System.Drawing.Size(30, 19);
+            this.metroLabel13.TabIndex = 108;
+            this.metroLabel13.Text = "PW";
+            // 
+            // metroLabel14
+            // 
+            this.metroLabel14.AutoSize = true;
+            this.metroLabel14.Location = new System.Drawing.Point(3, 178);
+            this.metroLabel14.Name = "metroLabel14";
+            this.metroLabel14.Size = new System.Drawing.Size(21, 19);
+            this.metroLabel14.TabIndex = 107;
+            this.metroLabel14.Text = "ID";
+            // 
+            // metroLabel15
+            // 
+            this.metroLabel15.AutoSize = true;
+            this.metroLabel15.Location = new System.Drawing.Point(3, 149);
+            this.metroLabel15.Name = "metroLabel15";
+            this.metroLabel15.Size = new System.Drawing.Size(37, 19);
+            this.metroLabel15.TabIndex = 106;
+            this.metroLabel15.Text = "경로";
+            // 
+            // metroLabel10
+            // 
+            this.metroLabel10.AutoSize = true;
+            this.metroLabel10.Location = new System.Drawing.Point(3, 92);
+            this.metroLabel10.Name = "metroLabel10";
+            this.metroLabel10.Size = new System.Drawing.Size(30, 19);
+            this.metroLabel10.TabIndex = 105;
+            this.metroLabel10.Text = "PW";
+            // 
+            // metroLabel11
+            // 
+            this.metroLabel11.AutoSize = true;
+            this.metroLabel11.Location = new System.Drawing.Point(3, 63);
+            this.metroLabel11.Name = "metroLabel11";
+            this.metroLabel11.Size = new System.Drawing.Size(21, 19);
+            this.metroLabel11.TabIndex = 104;
+            this.metroLabel11.Text = "ID";
+            // 
+            // metroLabel12
+            // 
+            this.metroLabel12.AutoSize = true;
+            this.metroLabel12.Location = new System.Drawing.Point(3, 34);
+            this.metroLabel12.Name = "metroLabel12";
+            this.metroLabel12.Size = new System.Drawing.Size(37, 19);
+            this.metroLabel12.TabIndex = 103;
+            this.metroLabel12.Text = "경로";
             // 
             // button_clear_pw_3_tab_2
             // 
@@ -651,6 +813,87 @@ namespace GersangClientStation {
             this.metroTabPage3.Text = "3번";
             this.metroTabPage3.VerticalScrollbarBarColor = true;
             // 
+            // metroLabel7
+            // 
+            this.metroLabel7.AutoSize = true;
+            this.metroLabel7.Location = new System.Drawing.Point(3, 322);
+            this.metroLabel7.Name = "metroLabel7";
+            this.metroLabel7.Size = new System.Drawing.Size(30, 19);
+            this.metroLabel7.TabIndex = 108;
+            this.metroLabel7.Text = "PW";
+            // 
+            // metroLabel8
+            // 
+            this.metroLabel8.AutoSize = true;
+            this.metroLabel8.Location = new System.Drawing.Point(3, 293);
+            this.metroLabel8.Name = "metroLabel8";
+            this.metroLabel8.Size = new System.Drawing.Size(21, 19);
+            this.metroLabel8.TabIndex = 107;
+            this.metroLabel8.Text = "ID";
+            // 
+            // metroLabel9
+            // 
+            this.metroLabel9.AutoSize = true;
+            this.metroLabel9.Location = new System.Drawing.Point(3, 264);
+            this.metroLabel9.Name = "metroLabel9";
+            this.metroLabel9.Size = new System.Drawing.Size(37, 19);
+            this.metroLabel9.TabIndex = 106;
+            this.metroLabel9.Text = "경로";
+            // 
+            // metroLabel4
+            // 
+            this.metroLabel4.AutoSize = true;
+            this.metroLabel4.Location = new System.Drawing.Point(3, 207);
+            this.metroLabel4.Name = "metroLabel4";
+            this.metroLabel4.Size = new System.Drawing.Size(30, 19);
+            this.metroLabel4.TabIndex = 105;
+            this.metroLabel4.Text = "PW";
+            // 
+            // metroLabel5
+            // 
+            this.metroLabel5.AutoSize = true;
+            this.metroLabel5.Location = new System.Drawing.Point(3, 178);
+            this.metroLabel5.Name = "metroLabel5";
+            this.metroLabel5.Size = new System.Drawing.Size(21, 19);
+            this.metroLabel5.TabIndex = 104;
+            this.metroLabel5.Text = "ID";
+            // 
+            // metroLabel6
+            // 
+            this.metroLabel6.AutoSize = true;
+            this.metroLabel6.Location = new System.Drawing.Point(3, 149);
+            this.metroLabel6.Name = "metroLabel6";
+            this.metroLabel6.Size = new System.Drawing.Size(37, 19);
+            this.metroLabel6.TabIndex = 103;
+            this.metroLabel6.Text = "경로";
+            // 
+            // metroLabel3
+            // 
+            this.metroLabel3.AutoSize = true;
+            this.metroLabel3.Location = new System.Drawing.Point(3, 92);
+            this.metroLabel3.Name = "metroLabel3";
+            this.metroLabel3.Size = new System.Drawing.Size(30, 19);
+            this.metroLabel3.TabIndex = 102;
+            this.metroLabel3.Text = "PW";
+            // 
+            // metroLabel2
+            // 
+            this.metroLabel2.AutoSize = true;
+            this.metroLabel2.Location = new System.Drawing.Point(3, 63);
+            this.metroLabel2.Name = "metroLabel2";
+            this.metroLabel2.Size = new System.Drawing.Size(21, 19);
+            this.metroLabel2.TabIndex = 101;
+            this.metroLabel2.Text = "ID";
+            // 
+            // metroLabel1
+            // 
+            this.metroLabel1.AutoSize = true;
+            this.metroLabel1.Location = new System.Drawing.Point(3, 34);
+            this.metroLabel1.Name = "metroLabel1";
+            this.metroLabel1.Size = new System.Drawing.Size(37, 19);
+            this.metroLabel1.TabIndex = 100;
+            this.metroLabel1.Text = "경로";
+            // 
             // button_clear_pw_3_tab_3
             // 
             this.button_clear_pw_3_tab_3.Location = new System.Drawing.Point(172, 320);
@@ -849,249 +1092,6 @@ namespace GersangClientStation {
             this.button_path_finder_2_tab_3.Text = "찾기";
             this.button_path_finder_2_tab_3.Click += new System.EventHandler(this.button_path_finder_2_tab_3_Click);
             // 
-            // metroLabel1
-            // 
-            this.metroLabel1.AutoSize = true;
-            this.metroLabel1.Location = new System.Drawing.Point(3, 34);
-            this.metroLabel1.Name = "metroLabel1";
-            this.metroLabel1.Size = new System.Drawing.Size(37, 19);
-            this.metroLabel1.TabIndex = 100;
-            this.metroLabel1.Text = "경로";
-            // 
-            // metroLabel2
-            // 
-            this.metroLabel2.AutoSize = true;
-            this.metroLabel2.Location = new System.Drawing.Point(3, 63);
-            this.metroLabel2.Name = "metroLabel2";
-            this.metroLabel2.Size = new System.Drawing.Size(21, 19);
-            this.metroLabel2.TabIndex = 101;
-            this.metroLabel2.Text = "ID";
-            // 
-            // metroLabel3
-            // 
-            this.metroLabel3.AutoSize = true;
-            this.metroLabel3.Location = new System.Drawing.Point(3, 92);
-            this.metroLabel3.Name = "metroLabel3";
-            this.metroLabel3.Size = new System.Drawing.Size(30, 19);
-            this.metroLabel3.TabIndex = 102;
-            this.metroLabel3.Text = "PW";
-            // 
-            // metroLabel4
-            // 
-            this.metroLabel4.AutoSize = true;
-            this.metroLabel4.Location = new System.Drawing.Point(3, 207);
-            this.metroLabel4.Name = "metroLabel4";
-            this.metroLabel4.Size = new System.Drawing.Size(30, 19);
-            this.metroLabel4.TabIndex = 105;
-            this.metroLabel4.Text = "PW";
-            // 
-            // metroLabel5
-            // 
-            this.metroLabel5.AutoSize = true;
-            this.metroLabel5.Location = new System.Drawing.Point(3, 178);
-            this.metroLabel5.Name = "metroLabel5";
-            this.metroLabel5.Size = new System.Drawing.Size(21, 19);
-            this.metroLabel5.TabIndex = 104;
-            this.metroLabel5.Text = "ID";
-            // 
-            // metroLabel6
-            // 
-            this.metroLabel6.AutoSize = true;
-            this.metroLabel6.Location = new System.Drawing.Point(3, 149);
-            this.metroLabel6.Name = "metroLabel6";
-            this.metroLabel6.Size = new System.Drawing.Size(37, 19);
-            this.metroLabel6.TabIndex = 103;
-            this.metroLabel6.Text = "경로";
-            // 
-            // metroLabel7
-            // 
-            this.metroLabel7.AutoSize = true;
-            this.metroLabel7.Location = new System.Drawing.Point(3, 322);
-            this.metroLabel7.Name = "metroLabel7";
-            this.metroLabel7.Size = new System.Drawing.Size(30, 19);
-            this.metroLabel7.TabIndex = 108;
-            this.metroLabel7.Text = "PW";
-            // 
-            // metroLabel8
-            // 
-            this.metroLabel8.AutoSize = true;
-            this.metroLabel8.Location = new System.Drawing.Point(3, 293);
-            this.metroLabel8.Name = "metroLabel8";
-            this.metroLabel8.Size = new System.Drawing.Size(21, 19);
-            this.metroLabel8.TabIndex = 107;
-            this.metroLabel8.Text = "ID";
-            // 
-            // metroLabel9
-            // 
-            this.metroLabel9.AutoSize = true;
-            this.metroLabel9.Location = new System.Drawing.Point(3, 264);
-            this.metroLabel9.Name = "metroLabel9";
-            this.metroLabel9.Size = new System.Drawing.Size(37, 19);
-            this.metroLabel9.TabIndex = 106;
-            this.metroLabel9.Text = "경로";
-            // 
-            // metroLabel10
-            // 
-            this.metroLabel10.AutoSize = true;
-            this.metroLabel10.Location = new System.Drawing.Point(3, 92);
-            this.metroLabel10.Name = "metroLabel10";
-            this.metroLabel10.Size = new System.Drawing.Size(30, 19);
-            this.metroLabel10.TabIndex = 105;
-            this.metroLabel10.Text = "PW";
-            // 
-            // metroLabel11
-            // 
-            this.metroLabel11.AutoSize = true;
-            this.metroLabel11.Location = new System.Drawing.Point(3, 63);
-            this.metroLabel11.Name = "metroLabel11";
-            this.metroLabel11.Size = new System.Drawing.Size(21, 19);
-            this.metroLabel11.TabIndex = 104;
-            this.metroLabel11.Text = "ID";
-            // 
-            // metroLabel12
-            // 
-            this.metroLabel12.AutoSize = true;
-            this.metroLabel12.Location = new System.Drawing.Point(3, 34);
-            this.metroLabel12.Name = "metroLabel12";
-            this.metroLabel12.Size = new System.Drawing.Size(37, 19);
-            this.metroLabel12.TabIndex = 103;
-            this.metroLabel12.Text = "경로";
-            // 
-            // metroLabel13
-            // 
-            this.metroLabel13.AutoSize = true;
-            this.metroLabel13.Location = new System.Drawing.Point(3, 207);
-            this.metroLabel13.Name = "metroLabel13";
-            this.metroLabel13.Size = new System.Drawing.Size(30, 19);
-            this.metroLabel13.TabIndex = 108;
-            this.metroLabel13.Text = "PW";
-            // 
-            // metroLabel14
-            // 
-            this.metroLabel14.AutoSize = true;
-            this.metroLabel14.Location = new System.Drawing.Point(3, 178);
-            this.metroLabel14.Name = "metroLabel14";
-            this.metroLabel14.Size = new System.Drawing.Size(21, 19);
-            this.metroLabel14.TabIndex = 107;
-            this.metroLabel14.Text = "ID";
-            // 
-            // metroLabel15
-            // 
-            this.metroLabel15.AutoSize = true;
-            this.metroLabel15.Location = new System.Drawing.Point(3, 149);
-            this.metroLabel15.Name = "metroLabel15";
-            this.metroLabel15.Size = new System.Drawing.Size(37, 19);
-            this.metroLabel15.TabIndex = 106;
-            this.metroLabel15.Text = "경로";
-            // 
-            // metroLabel16
-            // 
-            this.metroLabel16.AutoSize = true;
-            this.metroLabel16.Location = new System.Drawing.Point(3, 322);
-            this.metroLabel16.Name = "metroLabel16";
-            this.metroLabel16.Size = new System.Drawing.Size(30, 19);
-            this.metroLabel16.TabIndex = 111;
-            this.metroLabel16.Text = "PW";
-            // 
-            // metroLabel17
-            // 
-            this.metroLabel17.AutoSize = true;
-            this.metroLabel17.Location = new System.Drawing.Point(3, 293);
-            this.metroLabel17.Name = "metroLabel17";
-            this.metroLabel17.Size = new System.Drawing.Size(21, 19);
-            this.metroLabel17.TabIndex = 110;
-            this.metroLabel17.Text = "ID";
-            // 
-            // metroLabel18
-            // 
-            this.metroLabel18.AutoSize = true;
-            this.metroLabel18.Location = new System.Drawing.Point(3, 264);
-            this.metroLabel18.Name = "metroLabel18";
-            this.metroLabel18.Size = new System.Drawing.Size(37, 19);
-            this.metroLabel18.TabIndex = 109;
-            this.metroLabel18.Text = "경로";
-            // 
-            // metroLabel19
-            // 
-            this.metroLabel19.AutoSize = true;
-            this.metroLabel19.Location = new System.Drawing.Point(3, 322);
-            this.metroLabel19.Name = "metroLabel19";
-            this.metroLabel19.Size = new System.Drawing.Size(30, 19);
-            this.metroLabel19.TabIndex = 120;
-            this.metroLabel19.Text = "PW";
-            // 
-            // metroLabel20
-            // 
-            this.metroLabel20.AutoSize = true;
-            this.metroLabel20.Location = new System.Drawing.Point(3, 293);
-            this.metroLabel20.Name = "metroLabel20";
-            this.metroLabel20.Size = new System.Drawing.Size(21, 19);
-            this.metroLabel20.TabIndex = 119;
-            this.metroLabel20.Text = "ID";
-            // 
-            // metroLabel21
-            // 
-            this.metroLabel21.AutoSize = true;
-            this.metroLabel21.Location = new System.Drawing.Point(3, 264);
-            this.metroLabel21.Name = "metroLabel21";
-            this.metroLabel21.Size = new System.Drawing.Size(37, 19);
-            this.metroLabel21.TabIndex = 118;
-            this.metroLabel21.Text = "경로";
-            // 
-            // metroLabel22
-            // 
-            this.metroLabel22.AutoSize = true;
-            this.metroLabel22.Location = new System.Drawing.Point(3, 207);
-            this.metroLabel22.Name = "metroLabel22";
-            this.metroLabel22.Size = new System.Drawing.Size(30, 19);
-            this.metroLabel22.TabIndex = 117;
-            this.metroLabel22.Text = "PW";
-            // 
-            // metroLabel23
-            // 
-            this.metroLabel23.AutoSize = true;
-            this.metroLabel23.Location = new System.Drawing.Point(3, 178);
-            this.metroLabel23.Name = "metroLabel23";
-            this.metroLabel23.Size = new System.Drawing.Size(21, 19);
-            this.metroLabel23.TabIndex = 116;
-            this.metroLabel23.Text = "ID";
-            // 
-            // metroLabel24
-            // 
-            this.metroLabel24.AutoSize = true;
-            this.metroLabel24.Location = new System.Drawing.Point(3, 149);
-            this.metroLabel24.Name = "metroLabel24";
-            this.metroLabel24.Size = new System.Drawing.Size(37, 19);
-            this.metroLabel24.TabIndex = 115;
-            this.metroLabel24.Text = "경로";
-            // 
-            // metroLabel25
-            // 
-            this.metroLabel25.AutoSize = true;
-            this.metroLabel25.Location = new System.Drawing.Point(3, 92);
-            this.metroLabel25.Name = "metroLabel25";
-            this.metroLabel25.Size = new System.Drawing.Size(30, 19);
-            this.metroLabel25.TabIndex = 114;
-            this.metroLabel25.Text = "PW";
-            // 
-            // metroLabel26
-            // 
-            this.metroLabel26.AutoSize = true;
-            this.metroLabel26.Location = new System.Drawing.Point(3, 63);
-            this.metroLabel26.Name = "metroLabel26";
-            this.metroLabel26.Size = new System.Drawing.Size(21, 19);
-            this.metroLabel26.TabIndex = 113;
-            this.metroLabel26.Text = "ID";
-            // 
-            // metroLabel27
-            // 
-            this.metroLabel27.AutoSize = true;
-            this.metroLabel27.Location = new System.Drawing.Point(3, 34);
-            this.metroLabel27.Name = "metroLabel27";
-            this.metroLabel27.Size = new System.Drawing.Size(37, 19);
-            this.metroLabel27.TabIndex = 112;
-            this.metroLabel27.Text = "경로";
-            // 
             // Form_Setting
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
@@ -1103,6 +1103,7 @@ namespace GersangClientStation {
             this.MinimizeBox = false;
             this.Name = "Form_Setting";
             this.Resizable = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "경로 및 계정정보";
             this.Load += new System.EventHandler(this.Form_Setting_Load);
             this.tabControl_setting.ResumeLayout(false);

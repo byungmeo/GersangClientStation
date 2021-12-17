@@ -20,21 +20,31 @@ namespace GersangClientStation {
         private const string url_search_gersang = "https://search.naver.com/search.naver?&query=거상";
 
         //pw는 암호화를 통한 관리 필요
-        private string client_path_1;
+        private string client_path_1;//
         private string client_id_1;
         private string client_pw_1;
-
-        private string client_path_2;
+        private string client_path_2;//
         private string client_id_2;
         private string client_pw_2;
-
-        private string client_path_3;
+        private string client_path_3;//
         private string client_id_3;
         private string client_pw_3;
 
-        WebBrowser webBrowser = new WebBrowser();
+        //바로가기 경로
+        private string shortcut_name_1;//
+        private string shortcut_address_1;
+        private string shortcut_name_2;//
+        private string shortcut_address_2;
+        private string shortcut_name_3;//
+        private string shortcut_address_3;
+
+        WebBrowser mainBrowser = new WebBrowser();
         WebBrowser eventBrowser = new WebBrowser();
-        HtmlDocument document = null;
+        WebBrowser shortcutBrowser = new WebBrowser();
+
+        HtmlDocument document_main = null;
+        HtmlDocument document_evnet = null;
+        HtmlDocument document_shortcut = null;
 
         private Client currentLoginClient = Client.None;
         private bool isTypingOtp = false;
@@ -50,9 +60,10 @@ namespace GersangClientStation {
         public Form1() {
             checkUpdate();
 
-            webBrowser.DocumentCompleted += new WebBrowserDocumentCompletedEventHandler(this.webBrowser_DocumentCompleted); //브라우저 로딩 완료 이벤트 리스너 부착
-            webBrowser.ScriptErrorsSuppressed = true; //Script Error가 뜨지 않도록 합니다.
-            webBrowser.Navigate(url_main); //홈페이지 메인 화면으로 이동합니다.
+            mainBrowser.DocumentCompleted += new WebBrowserDocumentCompletedEventHandler(this.mainBrowser_DocumentCompleted); //브라우저 로딩 완료 이벤트 리스너 부착
+            mainBrowser.ScriptErrorsSuppressed = true; //Script Error가 뜨지 않도록 합니다.
+            mainBrowser.Dock = DockStyle.Fill;
+            mainBrowser.Navigate(url_main); //홈페이지 메인 화면으로 이동합니다.
 
             eventBrowser.DocumentCompleted += new WebBrowserDocumentCompletedEventHandler(this.eventBrowser_DocumentCompleted); //브라우저 로딩 완료 이벤트 리스너 부착
             eventBrowser.ScriptErrorsSuppressed = true; //Script Error가 뜨지 않도록 합니다.
@@ -159,17 +170,27 @@ namespace GersangClientStation {
                     Debug.WriteLine("잘못된 세팅값입니다.");
                     break;
             }
+
+            this.shortcut_name_1 = ConfigurationManager.AppSettings["shortcut_name_1"];
+            link_shortcut_1.Text = this.shortcut_name_1;
+            this.shortcut_address_1 = ConfigurationManager.AppSettings["shortcut_address_1"];
+            this.shortcut_name_2 = ConfigurationManager.AppSettings["shortcut_name_2"];
+            link_shortcut_2.Text = this.shortcut_name_2;
+            this.shortcut_address_2 = ConfigurationManager.AppSettings["shortcut_address_2"];
+            this.shortcut_name_3 = ConfigurationManager.AppSettings["shortcut_name_3"];
+            link_shortcut_3.Text = this.shortcut_name_3;
+            this.shortcut_address_3 = ConfigurationManager.AppSettings["shortcut_address_3"];
         }
 
-        //웹 브라우저 로딩이 완료되면 호출됩니다.
-        private void webBrowser_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e) {
-            Debug.WriteLine("Document Load Completed");
-            this.document = this.webBrowser.Document;
-            Debug.WriteLine("Load URL : " + document.Url);
+        //메인 브라우저 로딩이 완료되면 호출됩니다.
+        private void mainBrowser_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e) {
+            Debug.WriteLine("mainBrowser Document Load Completed");
+            this.document_main = mainBrowser.Document;
+            Debug.WriteLine("Load URL : " + document_main.Url);
 
-            HtmlElementCollection input_otp = this.document.GetElementsByTagName("input").GetElementsByName("GSotpNo"); //OTP 입력상자를 가져옵니다.
+            HtmlElementCollection input_otp = this.document_main.GetElementsByTagName("input").GetElementsByName("GSotpNo"); //OTP 입력상자를 가져옵니다.
             //홈페이지 주소가 otp주소면서 OTP 입력상자가 존재할 경우 OTP 화면으로 간주합니다.
-            if (document.Url.Equals(url_otp) && input_otp.Count != 0) {
+            if (document_main.Url.Equals(url_otp) && input_otp.Count != 0) {
                 Debug.WriteLine("OTP 화면입니다.");
                 if(!isTypingOtp && !isSubmitOtp) {
                     OtpLogin(input_otp[0]); //여기서 otp 입력을 함
@@ -178,7 +199,7 @@ namespace GersangClientStation {
 
                 if(!isSubmitOtp) {
                     //opt 입력이 되었으므로, 클릭
-                    HtmlElement button_otp_login = document.GetElementById("btn_Send");
+                    HtmlElement button_otp_login = document_main.GetElementById("btn_Send");
                     isSubmitOtp = true;
                     button_otp_login.InvokeMember("Click");
                 }
@@ -242,11 +263,11 @@ namespace GersangClientStation {
             try {
                 //"GSuserID"라는 이름을 가진 input 태그 요소는 2개 있습니다. 그 중 2번째 요소에 id속성을 설정해줘야 합니다.
                 //"GSuserPW"도 마찬가지
-                HtmlElement input_userId = document.GetElementsByTagName("input").GetElementsByName("GSuserID")[1];
-                HtmlElement input_userPwd = document.GetElementsByTagName("input").GetElementsByName("GSuserPW")[1];
+                HtmlElement input_userId = document_main.GetElementsByTagName("input").GetElementsByName("GSuserID")[1];
+                HtmlElement input_userPwd = document_main.GetElementsByTagName("input").GetElementsByName("GSuserPW")[1];
 
                 //frmLogin이라는 Name 속성을 가진 Form 태그 요소를 찾습니다.
-                HtmlElement form_login = document.Forms.GetElementsByName("frmLogin")[0];
+                HtmlElement form_login = document_main.Forms.GetElementsByName("frmLogin")[0];
                 
                 if(input_userId == null || input_userPwd == null || form_login == null) {
                     return;
@@ -257,7 +278,7 @@ namespace GersangClientStation {
                 form_login.InvokeMember("submit"); //입력된 아이디와 패스워드로 로그인을 시도
 
             } catch(ArgumentOutOfRangeException e) {
-                if(document.Url.Equals(url_main)) {
+                if(document_main.Url.Equals(url_main)) {
                     Debug.WriteLine(e.Message);
                     Debug.WriteLine("로그인을 다시 시도합니다.");
                     //SetStatus(Status.Retrying, client);
@@ -286,7 +307,7 @@ namespace GersangClientStation {
                 }
 
                 currentLoginClient = Client.None;
-                webBrowser.Navigate(url_logout);
+                mainBrowser.Navigate(url_logout);
             }
         }
 
@@ -304,7 +325,7 @@ namespace GersangClientStation {
             }
 
             //홈페이지에서 gameStart 스크립트를 실행합니다. (인자가 1이면 본섭, 2면 테섭을 실행합니다)
-            this.document.InvokeScript("gameStart", new object[] { 1 });
+            this.document_main.InvokeScript("gameStart", new object[] { 1 });
         }
 
         private void button_start_1_Click(object sender, EventArgs e) {
@@ -358,7 +379,7 @@ namespace GersangClientStation {
         //Document에서 해당 태그와 클래스명을 가진 요소를 반환합니다.
         //여러 개가 있을 경우 가장 첫 번째에 있는 요소를 가져옴에 유의
         private HtmlElement findElementByClassName(string tagName, string className) {
-            foreach (HtmlElement element in document.GetElementsByTagName(tagName)) {
+            foreach (HtmlElement element in document_main.GetElementsByTagName(tagName)) {
                 if (element.GetAttribute("className") == className) {
                     return element;
                 }
@@ -377,12 +398,6 @@ namespace GersangClientStation {
                 ThisMoment = DateTime.Now;
             }
             return DateTime.Now;
-        }
-
-        private void toolStripMenuItem1_Click(object sender, EventArgs e) {
-            Form_Setting settingDialogForm = new Form_Setting();
-            settingDialogForm.ShowDialog();
-            LoadSetting(); //세팅값이 바뀌었다면 새로고침 합니다.
         }
 
         private void radio_setting_CheckedChanged(object sender, EventArgs e) {
@@ -561,7 +576,7 @@ namespace GersangClientStation {
         private void toggle_client_3_Click(object sender, EventArgs e) {
             MetroToggle toggle = sender as MetroToggle;
             if (toggle.Checked) {
-                if(client_id_3 == "" || client_pw_3 == "" || client_path_3 == "") {
+                if (client_id_3 == "" || client_pw_3 == "" || client_path_3 == "") {
                     toggle_client_3.Checked = false;
                     MessageBox.Show("경로 또는 아이디 또는 비밀번호가 설정되지 않았습니다.");
                     return;
@@ -578,10 +593,14 @@ namespace GersangClientStation {
             }
         }
 
+        /***
+        **** 링크 클릭
+        ***/
         private void link_blog_Click(object sender, EventArgs e) {
             try {
                 System.Diagnostics.Process.Start("https://blog.naver.com/kog5071/222597523325");
             } catch (Exception ex) {
+                Debug.WriteLine(ex.Message);
                 MessageBox.Show("링크 접속 에러");
             }
         }
@@ -590,8 +609,69 @@ namespace GersangClientStation {
             try {
                 System.Diagnostics.Process.Start("https://github.com/byungmeo/GersangClientStation");
             } catch (Exception ex) {
+                Debug.WriteLine(ex.Message);
                 MessageBox.Show("링크 접속 에러");
             }
+        }
+
+        private void link_shortcut_1_Click(object sender, EventArgs e) {
+            if (shortcut_address_1 == "") {
+                MessageBox.Show("바로가기 주소를 설정 해주세요.");
+                return;
+            }
+
+            try {
+                Form_Browser shortcutForm = new Form_Browser(mainBrowser, shortcut_address_1);
+                shortcutForm.ShowDialog();
+            } catch (Exception ex) {
+                Debug.WriteLine(ex.Message);
+                MessageBox.Show("링크 접속 에러");
+            }
+        }
+
+        private void link_shortcut_2_Click(object sender, EventArgs e) {
+            if (shortcut_address_2 == "") {
+                MessageBox.Show("바로가기 주소를 설정 해주세요.");
+                return;
+            }
+
+            try {
+                Form_Browser shortcutForm = new Form_Browser(mainBrowser, shortcut_address_2);
+                shortcutForm.ShowDialog();
+            } catch (Exception ex) {
+                Debug.WriteLine(ex.Message);
+                MessageBox.Show("링크 접속 에러");
+            }
+        }
+
+        private void link_shortcut_3_Click(object sender, EventArgs e) {
+            if(shortcut_address_3 == "") {
+                MessageBox.Show("바로가기 주소를 설정 해주세요.");
+                return;
+            }
+
+            try {
+                Form_Browser shortcutForm = new Form_Browser(mainBrowser, shortcut_address_3);
+                shortcutForm.ShowDialog();
+            } catch (Exception ex) {
+                Debug.WriteLine(ex.Message);
+                MessageBox.Show("링크 접속 에러");
+            }
+        }
+
+        /***
+        **** 메뉴 클릭
+        ***/
+        private void toolStripMenuItem1_Click(object sender, EventArgs e) {
+            Form_Setting settingDialogForm = new Form_Setting();
+            settingDialogForm.ShowDialog();
+            LoadSetting(); //세팅값이 바뀌었다면 새로고침 합니다.
+        }
+
+        private void ToolStripMenuItem2_Click(object sender, EventArgs e) {
+            Form_Shortcut shortcutDialogForm = new Form_Shortcut();
+            shortcutDialogForm.ShowDialog();
+            LoadSetting(); //세팅값이 바뀌었다면 새로고침 합니다.
         }
     }
 }
