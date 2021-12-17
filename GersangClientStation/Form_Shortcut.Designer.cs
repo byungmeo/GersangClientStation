@@ -55,7 +55,6 @@ namespace GersangClientStation {
             this.textBox_name_1.Name = "textBox_name_1";
             this.textBox_name_1.Size = new System.Drawing.Size(75, 23);
             this.textBox_name_1.TabIndex = 1;
-            this.textBox_name_1.Text = "metroTextBox1";
             // 
             // textBox_address_1
             // 
@@ -63,7 +62,6 @@ namespace GersangClientStation {
             this.textBox_address_1.Name = "textBox_address_1";
             this.textBox_address_1.Size = new System.Drawing.Size(267, 23);
             this.textBox_address_1.TabIndex = 3;
-            this.textBox_address_1.Text = "http://www.gersang.co.kr/main/index.gs";
             // 
             // metroLabel2
             // 
@@ -80,7 +78,6 @@ namespace GersangClientStation {
             this.textBox_address_2.Name = "textBox_address_2";
             this.textBox_address_2.Size = new System.Drawing.Size(267, 23);
             this.textBox_address_2.TabIndex = 7;
-            this.textBox_address_2.Text = "http://www.gersang.co.kr/event/2021/20211201_attendance/main.gs";
             // 
             // metroLabel3
             // 
@@ -97,7 +94,6 @@ namespace GersangClientStation {
             this.textBox_name_2.Name = "textBox_name_2";
             this.textBox_name_2.Size = new System.Drawing.Size(75, 23);
             this.textBox_name_2.TabIndex = 5;
-            this.textBox_name_2.Text = "metroTextBox4";
             // 
             // metroLabel4
             // 
@@ -114,7 +110,6 @@ namespace GersangClientStation {
             this.textBox_address_3.Name = "textBox_address_3";
             this.textBox_address_3.Size = new System.Drawing.Size(267, 23);
             this.textBox_address_3.TabIndex = 11;
-            this.textBox_address_3.Text = "http://www.gersang.co.kr/event/2021/20211124_Nigh5re3tau24nt/main.gs#link";
             // 
             // metroLabel5
             // 
@@ -131,7 +126,6 @@ namespace GersangClientStation {
             this.textBox_name_3.Name = "textBox_name_3";
             this.textBox_name_3.Size = new System.Drawing.Size(75, 23);
             this.textBox_name_3.TabIndex = 9;
-            this.textBox_name_3.Text = "metroTextBox6";
             // 
             // metroLabel6
             // 
@@ -187,7 +181,9 @@ namespace GersangClientStation {
             this.MinimizeBox = false;
             this.Name = "Form_Shortcut";
             this.Resizable = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "바로가기 경로 설정";
+            this.Load += new System.EventHandler(this.Form_Shortcut_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

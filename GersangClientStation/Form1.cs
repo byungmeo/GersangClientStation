@@ -62,6 +62,7 @@ namespace GersangClientStation {
 
             mainBrowser.DocumentCompleted += new WebBrowserDocumentCompletedEventHandler(this.mainBrowser_DocumentCompleted); //브라우저 로딩 완료 이벤트 리스너 부착
             mainBrowser.ScriptErrorsSuppressed = true; //Script Error가 뜨지 않도록 합니다.
+            mainBrowser.Dock = DockStyle.Fill;
             mainBrowser.Navigate(url_main); //홈페이지 메인 화면으로 이동합니다.
 
             eventBrowser.DocumentCompleted += new WebBrowserDocumentCompletedEventHandler(this.eventBrowser_DocumentCompleted); //브라우저 로딩 완료 이벤트 리스너 부착
@@ -613,8 +614,6 @@ namespace GersangClientStation {
             }
         }
 
-
-
         private void link_shortcut_1_Click(object sender, EventArgs e) {
             if (shortcut_address_1 == "") {
                 MessageBox.Show("바로가기 주소를 설정 해주세요.");
@@ -622,8 +621,8 @@ namespace GersangClientStation {
             }
 
             try {
-                mainBrowser.Navigate(shortcut_address_1, true);
-                //System.Diagnostics.Process.Start(shortcut_address_1);
+                Form_Browser shortcutForm = new Form_Browser(mainBrowser, shortcut_address_1);
+                shortcutForm.ShowDialog();
             } catch (Exception ex) {
                 Debug.WriteLine(ex.Message);
                 MessageBox.Show("링크 접속 에러");
@@ -637,8 +636,8 @@ namespace GersangClientStation {
             }
 
             try {
-                mainBrowser.Navigate(shortcut_address_2, true);
-                //System.Diagnostics.Process.Start(shortcut_address_2);
+                Form_Browser shortcutForm = new Form_Browser(mainBrowser, shortcut_address_2);
+                shortcutForm.ShowDialog();
             } catch (Exception ex) {
                 Debug.WriteLine(ex.Message);
                 MessageBox.Show("링크 접속 에러");
@@ -652,8 +651,8 @@ namespace GersangClientStation {
             }
 
             try {
-                mainBrowser.Navigate(shortcut_address_3, true);
-                //System.Diagnostics.Process.Start(shortcut_address_3);
+                Form_Browser shortcutForm = new Form_Browser(mainBrowser, shortcut_address_3);
+                shortcutForm.ShowDialog();
             } catch (Exception ex) {
                 Debug.WriteLine(ex.Message);
                 MessageBox.Show("링크 접속 에러");

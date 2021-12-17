@@ -57,7 +57,6 @@ namespace GersangClientStation {
             this.link_shortcut_3 = new MetroFramework.Controls.MetroLink();
             this.link_shortcut_2 = new MetroFramework.Controls.MetroLink();
             this.link_shortcut_1 = new MetroFramework.Controls.MetroLink();
-            this.metroLabel4 = new MetroFramework.Controls.MetroLabel();
             this.menuStrip2.SuspendLayout();
             this.metroPanel2.SuspendLayout();
             this.metroPanel3.SuspendLayout();
@@ -443,13 +442,12 @@ namespace GersangClientStation {
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.metroLabel4);
             this.groupBox1.Controls.Add(this.link_shortcut_3);
             this.groupBox1.Controls.Add(this.link_shortcut_2);
             this.groupBox1.Controls.Add(this.link_shortcut_1);
             this.groupBox1.Location = new System.Drawing.Point(247, 202);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(129, 140);
+            this.groupBox1.Size = new System.Drawing.Size(129, 122);
             this.groupBox1.TabIndex = 23;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "커스텀 바로가기";
@@ -480,17 +478,6 @@ namespace GersangClientStation {
             this.link_shortcut_1.TabIndex = 0;
             this.link_shortcut_1.Text = "바로가기1";
             this.link_shortcut_1.Click += new System.EventHandler(this.link_shortcut_1_Click);
-            // 
-            // metroLabel4
-            // 
-            this.metroLabel4.AutoSize = true;
-            this.metroLabel4.Location = new System.Drawing.Point(16, 109);
-            this.metroLabel4.Name = "metroLabel4";
-            this.metroLabel4.Size = new System.Drawing.Size(97, 19);
-            this.metroLabel4.Style = MetroFramework.MetroColorStyle.Red;
-            this.metroLabel4.TabIndex = 28;
-            this.metroLabel4.Text = "로그아웃 필수";
-            this.metroLabel4.UseStyleColors = true;
             // 
             // Form1
             // 
@@ -530,7 +517,6 @@ namespace GersangClientStation {
             ((System.ComponentModel.ISupportInitialize)(this.pic_naver)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic_github)).EndInit();
             this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -569,7 +555,6 @@ namespace GersangClientStation {
         private MetroFramework.Controls.MetroLink link_shortcut_2;
         private MetroFramework.Controls.MetroLink link_shortcut_1;
         private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItem2;
-        private MetroFramework.Controls.MetroLabel metroLabel4;
     }
 }
 
