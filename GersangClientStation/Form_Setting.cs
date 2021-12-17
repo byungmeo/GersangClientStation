@@ -2,6 +2,7 @@
 using MetroFramework.Forms;
 using System.Configuration;
 using System.Diagnostics;
+using System.Windows.Forms;
 
 namespace GersangClientStation {
     public partial class Form_Setting : MetroForm {
@@ -90,6 +91,8 @@ namespace GersangClientStation {
 
             Form1.config.Save(ConfigurationSaveMode.Modified, true);
             ConfigurationManager.RefreshSection("appSettings");
+
+            MessageBox.Show("저장이 완료되었습니다.", "경로 및 계정정보", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void button_save_tab_2_Click(object sender, System.EventArgs e) {
@@ -107,6 +110,8 @@ namespace GersangClientStation {
 
             Form1.config.Save(ConfigurationSaveMode.Modified, true);
             ConfigurationManager.RefreshSection("appSettings");
+
+            MessageBox.Show("저장이 완료되었습니다.", "경로 및 계정정보", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void button_save_tab_3_Click(object sender, System.EventArgs e) {
@@ -124,6 +129,8 @@ namespace GersangClientStation {
 
             Form1.config.Save(ConfigurationSaveMode.Modified, true);
             ConfigurationManager.RefreshSection("appSettings");
+
+            MessageBox.Show("저장이 완료되었습니다.", "경로 및 계정정보", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         //tab_1 패스워드 암호화
