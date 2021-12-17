@@ -1,4 +1,8 @@
 # Gersang Client Station
+![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/byungmeo/GersangClientStation?style=for-the-badge)
+![GitHub last commit](https://img.shields.io/github/last-commit/byungmeo/GersangClientStation?style=for-the-badge)
+![GitHub all releases](https://img.shields.io/github/downloads/byungmeo/GersangClientStation/total?style=for-the-badge)
+
 거상 종합 다클라 유틸리티
 
 ## 요구사항
