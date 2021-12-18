@@ -143,6 +143,7 @@ namespace GersangClientStation {
                 Debug.WriteLine("로그인에 실패하였거나, 아직 로그인이 되지 않은 상태입니다.");
             }
         }
+
         //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
         /// <summary>
@@ -571,30 +572,100 @@ namespace GersangClientStation {
         /// <summary>
         /// 게임 시작 버튼 클릭
         /// </summary>
-        private void button_start_1_Click(object sender, EventArgs e) {
-            if (currentLoginClient != Client.MainClient) {
-                MessageBox.Show("로그인을 먼저 해주세요.", "알림", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        private void button_start_Click(object sender, EventArgs e) {
+            int max_check_count = 10; //로그인 또는 로그아웃이 잘 되었는지 체크 할 횟수
+            Client client;
+            string client_path;
+
+            //클릭한 버튼에 따라 변수를 초기화
+            Button button_start = sender as Button;
+            if(button_start.Equals(button_start_1)) { 
+                client = Client.MainClient;
+                client_path = client_path_1;
+            } 
+            else if(button_start.Equals(button_start_2)) { 
+                client = Client.Client2;
+                client_path = client_path_2;
+            } 
+            else if(button_start.Equals(button_start_3)) { 
+                client = Client.Client3;
+                client_path = client_path_3;
+            }
+            else { 
+                client = Client.None;
+                client_path = string.Empty;
+            }
+
+            //예외 처리
+            if(client == Client.None) {
+                MessageBox.Show("잘못된 시작 버튼, 개발자에게 문의하세요.");
                 return;
             }
-            GameStart(client_path_1);
-        }
 
-        private void button_start_2_Click(object sender, EventArgs e) {
-            if (currentLoginClient != Client.Client2) {
-                MessageBox.Show("로그인을 먼저 해주세요.", "알림", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            if(client_path == "") {
+                MessageBox.Show("거상 경로를 지정해주세요.");
                 return;
             }
-            GameStart(client_path_2);
-        }
 
+            if (currentLoginClient != client) {
+                //다른 계정에 로그인 되어있거나, 로그아웃 상태라면,
 
-        private void button_start_3_Click(object sender, EventArgs e) {
-            if (currentLoginClient != Client.Client3) {
-                MessageBox.Show("로그인을 먼저 해주세요.", "알림", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                if(this.findElementByClassName("div", "user_name") != null) {
+                    //로그인이 되어있는지 확실하게 체크한 후,
+
+                    Logout(); //로그아웃 한다.
+
+                    
+                    //로그아웃이 잘 되었는지 확인
+                    for (int i = 0; i < max_check_count; i++) {
+                        Delay(200); //0.2초 간격으로 최대 2초동안 로그아웃이 잘 되었는지 확인합니다.
+                        if (this.findElementByClassName("div", "user_name") == null && document_main.Url.ToString().Equals(url_main)) {
+                            Login(client);
+                            break;
+                        }
+                        
+                        if(i == max_check_count - 1) {
+                            MessageBox.Show("로그아웃이 정상적으로 완료되지 않았습니다.");
+                            return;
+                        }
+                    }
+
+                    for(int i = 0; i < max_check_count; i++) {
+                        Delay(200); //0.2초 간격으로 최대 2초동안 로그인이 잘 되었는지 확인합니다.
+                        if (this.findElementByClassName("div", "user_name") != null) {
+                            GameStart(client_path);
+                            return;
+                        }
+
+                        if (i == max_check_count - 1) {
+                            MessageBox.Show("로그인이 정상적으로 완료되지 않았습니다.");
+                            return;
+                        }
+                    }
+                } else {
+                    //로그인이 안되어있다면,
+                    Login(client);
+
+                    for (int i = 0; i < max_check_count; i++) {
+                        Delay(200); //0.2초 간격으로 최대 2초동안 로그인이 잘 되었는지 확인합니다.
+                        if (this.findElementByClassName("div", "user_name") != null) {
+                            GameStart(client_path);
+                            return;
+                        }
+
+                        if (i == max_check_count - 1) {
+                            MessageBox.Show("로그인이 정상적으로 완료되지 않았습니다.");
+                            return;
+                        }
+                    }
+                }
+            } else {
+                //시작하려는 거상 계정에 로그인되어있다면 그냥 실행
+                GameStart(client_path);
                 return;
             }
-            GameStart(client_path_3);
         }
+        //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
         /// <summary>
         /// 메뉴 클릭

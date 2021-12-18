@@ -147,7 +147,7 @@ namespace GersangClientStation {
             this.button_start_2.Text = "게임실행";
             this.button_start_2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.button_start_2.UseVisualStyleBackColor = true;
-            this.button_start_2.Click += new System.EventHandler(this.button_start_2_Click);
+            this.button_start_2.Click += new System.EventHandler(this.button_start_Click);
             // 
             // button_search_naver2
             // 
@@ -222,7 +222,7 @@ namespace GersangClientStation {
             this.button_start_3.Text = "게임실행";
             this.button_start_3.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.button_start_3.UseVisualStyleBackColor = true;
-            this.button_start_3.Click += new System.EventHandler(this.button_start_3_Click);
+            this.button_start_3.Click += new System.EventHandler(this.button_start_Click);
             // 
             // button_search_naver3
             // 
@@ -309,7 +309,7 @@ namespace GersangClientStation {
             this.button_start_1.Text = "게임실행";
             this.button_start_1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.button_start_1.UseVisualStyleBackColor = true;
-            this.button_start_1.Click += new System.EventHandler(this.button_start_1_Click);
+            this.button_start_1.Click += new System.EventHandler(this.button_start_Click);
             // 
             // button_search_naver_1
             // 
@@ -491,7 +491,7 @@ namespace GersangClientStation {
             this.link_qa1.UseStyleColors = true;
             this.link_qa1.Click += new System.EventHandler(this.link_qa1_Click);
             // 
-            // Form1
+            // Form_Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -512,7 +512,7 @@ namespace GersangClientStation {
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip2;
             this.MaximumSize = new System.Drawing.Size(617, 490);
-            this.Name = "Form1";
+            this.Name = "Form_Main";
             this.Resizable = false;
             this.ShowIcon = false;
             this.Text = "거상 다클라 스테이션";
