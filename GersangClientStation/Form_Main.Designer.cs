@@ -1,6 +1,6 @@
 ﻿
 namespace GersangClientStation {
-    partial class Form1 {
+    partial class Form_Main {
         /// <summary>
         /// 필수 디자이너 변수입니다.
         /// </summary>
@@ -24,7 +24,7 @@ namespace GersangClientStation {
         /// 이 메서드의 내용을 코드 편집기로 수정하지 마세요.
         /// </summary>
         private void InitializeComponent() {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_Main));
             this.menuStrip2 = new System.Windows.Forms.MenuStrip();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();

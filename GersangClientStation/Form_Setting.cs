@@ -77,57 +77,57 @@ namespace GersangClientStation {
         private void button_save_tab_1_Click(object sender, System.EventArgs e) {
             button_save_tab_1.Focus();
 
-            Form1.config.AppSettings.Settings["client_path_1_tab_1"].Value = textBox_client_path_1_tab_1.Text;
-            Form1.config.AppSettings.Settings["client_id_1_tab_1"].Value = textBox_client_id_1_tab_1.Text;
-            Form1.config.AppSettings.Settings["client_pw_1_tab_1"].Value = textBox_client_pw_1_tab_1.Text;
+            Form_Main.config.AppSettings.Settings["client_path_1_tab_1"].Value = textBox_client_path_1_tab_1.Text;
+            Form_Main.config.AppSettings.Settings["client_id_1_tab_1"].Value = textBox_client_id_1_tab_1.Text;
+            Form_Main.config.AppSettings.Settings["client_pw_1_tab_1"].Value = textBox_client_pw_1_tab_1.Text;
 
-            Form1.config.AppSettings.Settings["client_path_2_tab_1"].Value = textBox_client_path_2_tab_1.Text;
-            Form1.config.AppSettings.Settings["client_id_2_tab_1"].Value = textBox_client_id_2_tab_1.Text;
-            Form1.config.AppSettings.Settings["client_pw_2_tab_1"].Value = textBox_client_pw_2_tab_1.Text;
+            Form_Main.config.AppSettings.Settings["client_path_2_tab_1"].Value = textBox_client_path_2_tab_1.Text;
+            Form_Main.config.AppSettings.Settings["client_id_2_tab_1"].Value = textBox_client_id_2_tab_1.Text;
+            Form_Main.config.AppSettings.Settings["client_pw_2_tab_1"].Value = textBox_client_pw_2_tab_1.Text;
 
-            Form1.config.AppSettings.Settings["client_path_3_tab_1"].Value = textBox_client_path_3_tab_1.Text;
-            Form1.config.AppSettings.Settings["client_id_3_tab_1"].Value = textBox_client_id_3_tab_1.Text;
-            Form1.config.AppSettings.Settings["client_pw_3_tab_1"].Value = textBox_client_pw_3_tab_1.Text;
+            Form_Main.config.AppSettings.Settings["client_path_3_tab_1"].Value = textBox_client_path_3_tab_1.Text;
+            Form_Main.config.AppSettings.Settings["client_id_3_tab_1"].Value = textBox_client_id_3_tab_1.Text;
+            Form_Main.config.AppSettings.Settings["client_pw_3_tab_1"].Value = textBox_client_pw_3_tab_1.Text;
 
-            Form1.config.Save(ConfigurationSaveMode.Modified, true);
+            Form_Main.config.Save(ConfigurationSaveMode.Modified, true);
             ConfigurationManager.RefreshSection("appSettings");
 
             MessageBox.Show("저장이 완료되었습니다.", "경로 및 계정정보", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void button_save_tab_2_Click(object sender, System.EventArgs e) {
-            Form1.config.AppSettings.Settings["client_path_1_tab_2"].Value = textBox_client_path_1_tab_2.Text;
-            Form1.config.AppSettings.Settings["client_id_1_tab_2"].Value = textBox_client_id_1_tab_2.Text;
-            Form1.config.AppSettings.Settings["client_pw_1_tab_2"].Value = textBox_client_pw_1_tab_2.Text;
+            Form_Main.config.AppSettings.Settings["client_path_1_tab_2"].Value = textBox_client_path_1_tab_2.Text;
+            Form_Main.config.AppSettings.Settings["client_id_1_tab_2"].Value = textBox_client_id_1_tab_2.Text;
+            Form_Main.config.AppSettings.Settings["client_pw_1_tab_2"].Value = textBox_client_pw_1_tab_2.Text;
 
-            Form1.config.AppSettings.Settings["client_path_2_tab_2"].Value = textBox_client_path_2_tab_2.Text;
-            Form1.config.AppSettings.Settings["client_id_2_tab_2"].Value = textBox_client_id_2_tab_2.Text;
-            Form1.config.AppSettings.Settings["client_pw_2_tab_2"].Value = textBox_client_pw_2_tab_2.Text;
+            Form_Main.config.AppSettings.Settings["client_path_2_tab_2"].Value = textBox_client_path_2_tab_2.Text;
+            Form_Main.config.AppSettings.Settings["client_id_2_tab_2"].Value = textBox_client_id_2_tab_2.Text;
+            Form_Main.config.AppSettings.Settings["client_pw_2_tab_2"].Value = textBox_client_pw_2_tab_2.Text;
 
-            Form1.config.AppSettings.Settings["client_path_3_tab_2"].Value = textBox_client_path_3_tab_2.Text;
-            Form1.config.AppSettings.Settings["client_id_3_tab_2"].Value = textBox_client_id_3_tab_2.Text;
-            Form1.config.AppSettings.Settings["client_pw_3_tab_2"].Value = textBox_client_pw_3_tab_2.Text;
+            Form_Main.config.AppSettings.Settings["client_path_3_tab_2"].Value = textBox_client_path_3_tab_2.Text;
+            Form_Main.config.AppSettings.Settings["client_id_3_tab_2"].Value = textBox_client_id_3_tab_2.Text;
+            Form_Main.config.AppSettings.Settings["client_pw_3_tab_2"].Value = textBox_client_pw_3_tab_2.Text;
 
-            Form1.config.Save(ConfigurationSaveMode.Modified, true);
+            Form_Main.config.Save(ConfigurationSaveMode.Modified, true);
             ConfigurationManager.RefreshSection("appSettings");
 
             MessageBox.Show("저장이 완료되었습니다.", "경로 및 계정정보", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void button_save_tab_3_Click(object sender, System.EventArgs e) {
-            Form1.config.AppSettings.Settings["client_path_1_tab_3"].Value = textBox_client_path_1_tab_3.Text;
-            Form1.config.AppSettings.Settings["client_id_1_tab_3"].Value = textBox_client_id_1_tab_3.Text;
-            Form1.config.AppSettings.Settings["client_pw_1_tab_3"].Value = textBox_client_pw_1_tab_3.Text;
+            Form_Main.config.AppSettings.Settings["client_path_1_tab_3"].Value = textBox_client_path_1_tab_3.Text;
+            Form_Main.config.AppSettings.Settings["client_id_1_tab_3"].Value = textBox_client_id_1_tab_3.Text;
+            Form_Main.config.AppSettings.Settings["client_pw_1_tab_3"].Value = textBox_client_pw_1_tab_3.Text;
 
-            Form1.config.AppSettings.Settings["client_path_2_tab_3"].Value = textBox_client_path_2_tab_3.Text;
-            Form1.config.AppSettings.Settings["client_id_2_tab_3"].Value = textBox_client_id_2_tab_3.Text;
-            Form1.config.AppSettings.Settings["client_pw_2_tab_3"].Value = textBox_client_pw_2_tab_3.Text;
+            Form_Main.config.AppSettings.Settings["client_path_2_tab_3"].Value = textBox_client_path_2_tab_3.Text;
+            Form_Main.config.AppSettings.Settings["client_id_2_tab_3"].Value = textBox_client_id_2_tab_3.Text;
+            Form_Main.config.AppSettings.Settings["client_pw_2_tab_3"].Value = textBox_client_pw_2_tab_3.Text;
 
-            Form1.config.AppSettings.Settings["client_path_3_tab_3"].Value = textBox_client_path_3_tab_3.Text;
-            Form1.config.AppSettings.Settings["client_id_3_tab_3"].Value = textBox_client_id_3_tab_3.Text;
-            Form1.config.AppSettings.Settings["client_pw_3_tab_3"].Value = textBox_client_pw_3_tab_3.Text;
+            Form_Main.config.AppSettings.Settings["client_path_3_tab_3"].Value = textBox_client_path_3_tab_3.Text;
+            Form_Main.config.AppSettings.Settings["client_id_3_tab_3"].Value = textBox_client_id_3_tab_3.Text;
+            Form_Main.config.AppSettings.Settings["client_pw_3_tab_3"].Value = textBox_client_pw_3_tab_3.Text;
 
-            Form1.config.Save(ConfigurationSaveMode.Modified, true);
+            Form_Main.config.Save(ConfigurationSaveMode.Modified, true);
             ConfigurationManager.RefreshSection("appSettings");
 
             MessageBox.Show("저장이 완료되었습니다.", "경로 및 계정정보", MessageBoxButtons.OK, MessageBoxIcon.Information);
