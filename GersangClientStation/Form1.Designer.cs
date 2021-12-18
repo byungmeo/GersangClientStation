@@ -57,6 +57,7 @@ namespace GersangClientStation {
             this.link_shortcut_3 = new MetroFramework.Controls.MetroLink();
             this.link_shortcut_2 = new MetroFramework.Controls.MetroLink();
             this.link_shortcut_1 = new MetroFramework.Controls.MetroLink();
+            this.link_qa1 = new MetroFramework.Controls.MetroLink();
             this.menuStrip2.SuspendLayout();
             this.metroPanel2.SuspendLayout();
             this.metroPanel3.SuspendLayout();
@@ -479,12 +480,24 @@ namespace GersangClientStation {
             this.link_shortcut_1.Text = "바로가기1";
             this.link_shortcut_1.Click += new System.EventHandler(this.link_shortcut_1_Click);
             // 
+            // link_qa1
+            // 
+            this.link_qa1.Location = new System.Drawing.Point(268, 446);
+            this.link_qa1.Name = "link_qa1";
+            this.link_qa1.Size = new System.Drawing.Size(91, 23);
+            this.link_qa1.Style = MetroFramework.MetroColorStyle.Red;
+            this.link_qa1.TabIndex = 28;
+            this.link_qa1.Text = "실행이 안되면?";
+            this.link_qa1.UseStyleColors = true;
+            this.link_qa1.Click += new System.EventHandler(this.link_qa1_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BorderStyle = MetroFramework.Drawing.MetroBorderStyle.FixedSingle;
             this.ClientSize = new System.Drawing.Size(617, 490);
+            this.Controls.Add(this.link_qa1);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.link_github);
             this.Controls.Add(this.pic_github);
@@ -556,6 +569,7 @@ namespace GersangClientStation {
         private MetroFramework.Controls.MetroLink link_shortcut_2;
         private MetroFramework.Controls.MetroLink link_shortcut_1;
         private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItem2;
+        private MetroFramework.Controls.MetroLink link_qa1;
     }
 }
 

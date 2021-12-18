@@ -374,6 +374,9 @@ namespace GersangClientStation {
             isTypingOtp = true;
             Debug.WriteLine(otpCode);
             input_otp.SetAttribute("value", otpCode);
+
+            Delay(100);
+            this.Activate(); //OTP 로그인 후 버튼 두 번 클릭해야하는 현상 방지
         }
 
         //Document에서 해당 태그와 클래스명을 가진 요소를 반환합니다.
@@ -659,6 +662,16 @@ namespace GersangClientStation {
             }
         }
 
+        //거상 실행이 안되면?
+        private void link_qa1_Click(object sender, EventArgs e) {
+            try {
+                System.Diagnostics.Process.Start("https://blog.naver.com/kog5071/222598459133");
+            } catch (Exception ex) {
+                Debug.WriteLine(ex.Message);
+                MessageBox.Show("링크 접속 에러");
+            }
+        }
+
         /***
         **** 메뉴 클릭
         ***/
@@ -684,6 +697,5 @@ namespace GersangClientStation {
                 return cp;
             }
         }
-            
     }
 }
