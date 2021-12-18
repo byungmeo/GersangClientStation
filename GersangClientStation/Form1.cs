@@ -673,5 +673,17 @@ namespace GersangClientStation {
             shortcutDialogForm.ShowDialog();
             LoadSetting(); //세팅값이 바뀌었다면 새로고침 합니다.
         }
+
+        //태스크바의 아이콘을 클릭 시 최소화, 최대화가 되도록 설정 (호출 필요 X)
+        //원래 안되었던 이유 : MetroForm은 BorderStyle이 None이라서
+        protected override CreateParams CreateParams {
+            get {
+                CreateParams cp = base.CreateParams;
+                cp.Style |= 0x20000;
+                cp.ClassStyle |= 0x8;
+                return cp;
+            }
+        }
+            
     }
 }

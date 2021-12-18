@@ -498,9 +498,10 @@ namespace GersangClientStation {
             this.Controls.Add(this.metroPanel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip2;
-            this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(617, 490);
             this.Name = "Form1";
             this.Resizable = false;
+            this.ShowIcon = false;
             this.Text = "거상 다클라 스테이션";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.menuStrip2.ResumeLayout(false);
