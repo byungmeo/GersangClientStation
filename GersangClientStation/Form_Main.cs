@@ -489,6 +489,11 @@ namespace GersangClientStation {
                 config.Save(ConfigurationSaveMode.Modified, true); //Full로 하면 특정 환경에서 오류 발생
                 ConfigurationManager.RefreshSection("appSettings");
                 LoadSetting();
+
+                //만약 로그인 되어있었다면, 로그아웃 합니다.
+                if(currentLoginClient != Client.None) {
+                    Logout();
+                }
             }
         }
         //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -594,12 +599,15 @@ namespace GersangClientStation {
         /// <summary>
         /// 메뉴 클릭
         /// </summary>
+
+        //계정 정보 및 경로 설정
         private void toolStripMenuItem1_Click(object sender, EventArgs e) {
             Form_Setting settingDialogForm = new Form_Setting();
             settingDialogForm.ShowDialog();
             LoadSetting(); //세팅값이 바뀌었다면 새로고침 합니다.
         }
 
+        //바로가기 설정
         private void ToolStripMenuItem2_Click(object sender, EventArgs e) {
             Form_Shortcut shortcutDialogForm = new Form_Shortcut();
             shortcutDialogForm.ShowDialog();
