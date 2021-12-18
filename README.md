@@ -19,11 +19,15 @@
 .NET Framework 4.7.2
 
 ## 참고사항
-거상 유틸 오픈소스 프로젝트 디스코드 : https://discord.gg/XFp6hkyrXS
+거상 유틸 오픈소스 프로젝트 디스코드 : https://discord.gg/XFp6hkyrXS (개발 관련 의견 공유)
 
-Form1.cs : 메인폼 코드
+Form_Main.cs : 메인폼 코드
 
-Form_Setting.cs : 설정폼 코드
+Form_Setting.cs : 계정 설정폼 코드
+
+Form_Shortcut.cs : 바로가기 설정폼 코드
+
+Form_Browser.cs : 바로가기 화면폼 코드
 
 ## 유의사항
 프로그램 사용 시 발생할 수 잇는 문제에 대한 책임은 전적으로 사용자에게 있습니다.
