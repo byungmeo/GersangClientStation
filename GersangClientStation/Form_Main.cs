@@ -76,7 +76,7 @@ namespace GersangClientStation {
         }
 
         //폼 로딩
-        private void Form1_Load(object sender, EventArgs e) {
+        private void Form_Main_Load(object sender, EventArgs e) {
             initRadioButton(); //저장되어있는 세팅값 번호를 불러오고, 해당 세팅값으로 클라이언트를 세팅합니다.
         }
         //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

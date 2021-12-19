@@ -516,7 +516,7 @@ namespace GersangClientStation {
             this.Resizable = false;
             this.ShowIcon = false;
             this.Text = "거상 다클라 스테이션";
-            this.Load += new System.EventHandler(this.Form1_Load);
+            this.Load += new System.EventHandler(this.Form_Main_Load);
             this.menuStrip2.ResumeLayout(false);
             this.menuStrip2.PerformLayout();
             this.metroPanel2.ResumeLayout(false);
