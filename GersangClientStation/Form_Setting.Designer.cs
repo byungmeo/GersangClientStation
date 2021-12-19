@@ -157,7 +157,7 @@ namespace GersangClientStation {
             this.textBox_client_path_1_tab_1.Location = new System.Drawing.Point(46, 61);
             this.textBox_client_path_1_tab_1.Name = "textBox_client_path_1_tab_1";
             this.textBox_client_path_1_tab_1.Size = new System.Drawing.Size(257, 23);
-            this.textBox_client_path_1_tab_1.TabIndex = 0;
+            this.textBox_client_path_1_tab_1.TabIndex = 1;
             this.textBox_client_path_1_tab_1.TabStop = false;
             // 
             // button_path_finder_1_tab_1
@@ -179,7 +179,7 @@ namespace GersangClientStation {
             this.textBox_client_id_1_tab_1.Location = new System.Drawing.Point(46, 90);
             this.textBox_client_id_1_tab_1.Name = "textBox_client_id_1_tab_1";
             this.textBox_client_id_1_tab_1.Size = new System.Drawing.Size(120, 23);
-            this.textBox_client_id_1_tab_1.TabIndex = 1;
+            this.textBox_client_id_1_tab_1.TabIndex = 2;
             // 
             // textBox_client_pw_1_tab_1
             // 
@@ -187,7 +187,7 @@ namespace GersangClientStation {
             this.textBox_client_pw_1_tab_1.Name = "textBox_client_pw_1_tab_1";
             this.textBox_client_pw_1_tab_1.PasswordChar = '●';
             this.textBox_client_pw_1_tab_1.Size = new System.Drawing.Size(120, 23);
-            this.textBox_client_pw_1_tab_1.TabIndex = 2;
+            this.textBox_client_pw_1_tab_1.TabIndex = 3;
             this.textBox_client_pw_1_tab_1.UseSystemPasswordChar = true;
             this.textBox_client_pw_1_tab_1.TextChanged += new System.EventHandler(this.textBox_client_pw_1_tab_1_TextChanged);
             this.textBox_client_pw_1_tab_1.Leave += new System.EventHandler(this.textBox_client_pw_1_tab_1_Leave);
@@ -210,7 +210,7 @@ namespace GersangClientStation {
             this.textBox_client_pw_2_tab_1.Name = "textBox_client_pw_2_tab_1";
             this.textBox_client_pw_2_tab_1.PasswordChar = '●';
             this.textBox_client_pw_2_tab_1.Size = new System.Drawing.Size(120, 23);
-            this.textBox_client_pw_2_tab_1.TabIndex = 5;
+            this.textBox_client_pw_2_tab_1.TabIndex = 7;
             this.textBox_client_pw_2_tab_1.UseSystemPasswordChar = true;
             this.textBox_client_pw_2_tab_1.TextChanged += new System.EventHandler(this.textBox_client_pw_2_tab_1_TextChanged);
             this.textBox_client_pw_2_tab_1.Leave += new System.EventHandler(this.textBox_client_pw_2_tab_1_Leave);
@@ -220,7 +220,7 @@ namespace GersangClientStation {
             this.textBox_client_id_2_tab_1.Location = new System.Drawing.Point(46, 246);
             this.textBox_client_id_2_tab_1.Name = "textBox_client_id_2_tab_1";
             this.textBox_client_id_2_tab_1.Size = new System.Drawing.Size(120, 23);
-            this.textBox_client_id_2_tab_1.TabIndex = 4;
+            this.textBox_client_id_2_tab_1.TabIndex = 6;
             // 
             // button_path_finder_2_tab_1
             // 
@@ -237,7 +237,7 @@ namespace GersangClientStation {
             this.textBox_client_path_2_tab_1.Location = new System.Drawing.Point(46, 217);
             this.textBox_client_path_2_tab_1.Name = "textBox_client_path_2_tab_1";
             this.textBox_client_path_2_tab_1.Size = new System.Drawing.Size(257, 23);
-            this.textBox_client_path_2_tab_1.TabIndex = 3;
+            this.textBox_client_path_2_tab_1.TabIndex = 5;
             this.textBox_client_path_2_tab_1.TabStop = false;
             // 
             // label_client_2_tab_1
@@ -258,7 +258,7 @@ namespace GersangClientStation {
             this.textBox_client_pw_3_tab_1.Name = "textBox_client_pw_3_tab_1";
             this.textBox_client_pw_3_tab_1.PasswordChar = '●';
             this.textBox_client_pw_3_tab_1.Size = new System.Drawing.Size(120, 23);
-            this.textBox_client_pw_3_tab_1.TabIndex = 8;
+            this.textBox_client_pw_3_tab_1.TabIndex = 11;
             this.textBox_client_pw_3_tab_1.UseSystemPasswordChar = true;
             this.textBox_client_pw_3_tab_1.TextChanged += new System.EventHandler(this.textBox_client_pw_3_tab_1_TextChanged);
             this.textBox_client_pw_3_tab_1.Leave += new System.EventHandler(this.textBox_client_pw_3_tab_1_Leave);
@@ -268,7 +268,7 @@ namespace GersangClientStation {
             this.textBox_client_id_3_tab_1.Location = new System.Drawing.Point(46, 402);
             this.textBox_client_id_3_tab_1.Name = "textBox_client_id_3_tab_1";
             this.textBox_client_id_3_tab_1.Size = new System.Drawing.Size(120, 23);
-            this.textBox_client_id_3_tab_1.TabIndex = 7;
+            this.textBox_client_id_3_tab_1.TabIndex = 10;
             // 
             // button_path_finder_3_tab_1
             // 
@@ -285,7 +285,7 @@ namespace GersangClientStation {
             this.textBox_client_path_3_tab_1.Location = new System.Drawing.Point(46, 373);
             this.textBox_client_path_3_tab_1.Name = "textBox_client_path_3_tab_1";
             this.textBox_client_path_3_tab_1.Size = new System.Drawing.Size(257, 23);
-            this.textBox_client_path_3_tab_1.TabIndex = 6;
+            this.textBox_client_path_3_tab_1.TabIndex = 9;
             this.textBox_client_path_3_tab_1.TabStop = false;
             // 
             // label_client_3_tab_1
@@ -305,7 +305,7 @@ namespace GersangClientStation {
             this.button_save_tab_1.Location = new System.Drawing.Point(141, 580);
             this.button_save_tab_1.Name = "button_save_tab_1";
             this.button_save_tab_1.Size = new System.Drawing.Size(75, 23);
-            this.button_save_tab_1.TabIndex = 9;
+            this.button_save_tab_1.TabIndex = 12;
             this.button_save_tab_1.Text = "저장";
             this.button_save_tab_1.Click += new System.EventHandler(this.button_save_tab_1_Click);
             // 
@@ -317,7 +317,7 @@ namespace GersangClientStation {
             this.tabControl_setting.ItemSize = new System.Drawing.Size(60, 32);
             this.tabControl_setting.Location = new System.Drawing.Point(23, 63);
             this.tabControl_setting.Name = "tabControl_setting";
-            this.tabControl_setting.SelectedIndex = 1;
+            this.tabControl_setting.SelectedIndex = 2;
             this.tabControl_setting.Size = new System.Drawing.Size(365, 658);
             this.tabControl_setting.TabIndex = 0;
             this.tabControl_setting.TabStop = false;
@@ -382,7 +382,7 @@ namespace GersangClientStation {
             this.textBox_client_name_3_tab_1.MaxLength = 5;
             this.textBox_client_name_3_tab_1.Name = "textBox_client_name_3_tab_1";
             this.textBox_client_name_3_tab_1.Size = new System.Drawing.Size(75, 23);
-            this.textBox_client_name_3_tab_1.TabIndex = 125;
+            this.textBox_client_name_3_tab_1.TabIndex = 8;
             // 
             // metroLabel29
             // 
@@ -399,7 +399,7 @@ namespace GersangClientStation {
             this.textBox_client_name_2_tab_1.MaxLength = 5;
             this.textBox_client_name_2_tab_1.Name = "textBox_client_name_2_tab_1";
             this.textBox_client_name_2_tab_1.Size = new System.Drawing.Size(75, 23);
-            this.textBox_client_name_2_tab_1.TabIndex = 123;
+            this.textBox_client_name_2_tab_1.TabIndex = 4;
             // 
             // metroLabel28
             // 
@@ -416,7 +416,7 @@ namespace GersangClientStation {
             this.textBox_client_name_1_tab_1.MaxLength = 5;
             this.textBox_client_name_1_tab_1.Name = "textBox_client_name_1_tab_1";
             this.textBox_client_name_1_tab_1.Size = new System.Drawing.Size(75, 23);
-            this.textBox_client_name_1_tab_1.TabIndex = 121;
+            this.textBox_client_name_1_tab_1.TabIndex = 0;
             // 
             // metroLabel19
             // 
@@ -592,7 +592,7 @@ namespace GersangClientStation {
             this.textBox_client_name_3_tab_2.MaxLength = 5;
             this.textBox_client_name_3_tab_2.Name = "textBox_client_name_3_tab_2";
             this.textBox_client_name_3_tab_2.Size = new System.Drawing.Size(75, 23);
-            this.textBox_client_name_3_tab_2.TabIndex = 127;
+            this.textBox_client_name_3_tab_2.TabIndex = 8;
             // 
             // metroLabel32
             // 
@@ -609,7 +609,7 @@ namespace GersangClientStation {
             this.textBox_client_name_2_tab_2.MaxLength = 5;
             this.textBox_client_name_2_tab_2.Name = "textBox_client_name_2_tab_2";
             this.textBox_client_name_2_tab_2.Size = new System.Drawing.Size(75, 23);
-            this.textBox_client_name_2_tab_2.TabIndex = 125;
+            this.textBox_client_name_2_tab_2.TabIndex = 4;
             // 
             // metroLabel31
             // 
@@ -626,7 +626,7 @@ namespace GersangClientStation {
             this.textBox_client_name_1_tab_2.MaxLength = 5;
             this.textBox_client_name_1_tab_2.Name = "textBox_client_name_1_tab_2";
             this.textBox_client_name_1_tab_2.Size = new System.Drawing.Size(75, 23);
-            this.textBox_client_name_1_tab_2.TabIndex = 123;
+            this.textBox_client_name_1_tab_2.TabIndex = 0;
             // 
             // metroLabel16
             // 
@@ -759,7 +759,7 @@ namespace GersangClientStation {
             this.button_save_tab_2.Location = new System.Drawing.Point(141, 580);
             this.button_save_tab_2.Name = "button_save_tab_2";
             this.button_save_tab_2.Size = new System.Drawing.Size(75, 23);
-            this.button_save_tab_2.TabIndex = 9;
+            this.button_save_tab_2.TabIndex = 12;
             this.button_save_tab_2.Text = "저장";
             this.button_save_tab_2.Click += new System.EventHandler(this.button_save_tab_2_Click);
             // 
@@ -769,7 +769,7 @@ namespace GersangClientStation {
             this.textBox_client_pw_3_tab_2.Name = "textBox_client_pw_3_tab_2";
             this.textBox_client_pw_3_tab_2.PasswordChar = '●';
             this.textBox_client_pw_3_tab_2.Size = new System.Drawing.Size(120, 23);
-            this.textBox_client_pw_3_tab_2.TabIndex = 8;
+            this.textBox_client_pw_3_tab_2.TabIndex = 11;
             this.textBox_client_pw_3_tab_2.UseSystemPasswordChar = true;
             this.textBox_client_pw_3_tab_2.TextChanged += new System.EventHandler(this.textBox_client_pw_3_tab_2_TextChanged);
             this.textBox_client_pw_3_tab_2.Leave += new System.EventHandler(this.textBox_client_pw_3_tab_2_Leave);
@@ -791,14 +791,14 @@ namespace GersangClientStation {
             this.textBox_client_id_3_tab_2.Location = new System.Drawing.Point(46, 402);
             this.textBox_client_id_3_tab_2.Name = "textBox_client_id_3_tab_2";
             this.textBox_client_id_3_tab_2.Size = new System.Drawing.Size(120, 23);
-            this.textBox_client_id_3_tab_2.TabIndex = 7;
+            this.textBox_client_id_3_tab_2.TabIndex = 10;
             // 
             // textBox_client_path_1_tab_2
             // 
             this.textBox_client_path_1_tab_2.Location = new System.Drawing.Point(46, 61);
             this.textBox_client_path_1_tab_2.Name = "textBox_client_path_1_tab_2";
             this.textBox_client_path_1_tab_2.Size = new System.Drawing.Size(257, 23);
-            this.textBox_client_path_1_tab_2.TabIndex = 0;
+            this.textBox_client_path_1_tab_2.TabIndex = 1;
             this.textBox_client_path_1_tab_2.TabStop = false;
             // 
             // button_path_finder_3_tab_2
@@ -826,7 +826,7 @@ namespace GersangClientStation {
             this.textBox_client_path_3_tab_2.Location = new System.Drawing.Point(46, 373);
             this.textBox_client_path_3_tab_2.Name = "textBox_client_path_3_tab_2";
             this.textBox_client_path_3_tab_2.Size = new System.Drawing.Size(257, 23);
-            this.textBox_client_path_3_tab_2.TabIndex = 6;
+            this.textBox_client_path_3_tab_2.TabIndex = 9;
             this.textBox_client_path_3_tab_2.TabStop = false;
             // 
             // textBox_client_id_1_tab_2
@@ -834,7 +834,7 @@ namespace GersangClientStation {
             this.textBox_client_id_1_tab_2.Location = new System.Drawing.Point(46, 90);
             this.textBox_client_id_1_tab_2.Name = "textBox_client_id_1_tab_2";
             this.textBox_client_id_1_tab_2.Size = new System.Drawing.Size(120, 23);
-            this.textBox_client_id_1_tab_2.TabIndex = 1;
+            this.textBox_client_id_1_tab_2.TabIndex = 2;
             // 
             // label_client_3_tab_2
             // 
@@ -854,7 +854,7 @@ namespace GersangClientStation {
             this.textBox_client_pw_1_tab_2.Name = "textBox_client_pw_1_tab_2";
             this.textBox_client_pw_1_tab_2.PasswordChar = '●';
             this.textBox_client_pw_1_tab_2.Size = new System.Drawing.Size(120, 23);
-            this.textBox_client_pw_1_tab_2.TabIndex = 2;
+            this.textBox_client_pw_1_tab_2.TabIndex = 3;
             this.textBox_client_pw_1_tab_2.UseSystemPasswordChar = true;
             this.textBox_client_pw_1_tab_2.TextChanged += new System.EventHandler(this.textBox_client_pw_1_tab_2_TextChanged);
             this.textBox_client_pw_1_tab_2.Leave += new System.EventHandler(this.textBox_client_pw_1_tab_2_Leave);
@@ -865,7 +865,7 @@ namespace GersangClientStation {
             this.textBox_client_pw_2_tab_2.Name = "textBox_client_pw_2_tab_2";
             this.textBox_client_pw_2_tab_2.PasswordChar = '●';
             this.textBox_client_pw_2_tab_2.Size = new System.Drawing.Size(120, 23);
-            this.textBox_client_pw_2_tab_2.TabIndex = 5;
+            this.textBox_client_pw_2_tab_2.TabIndex = 7;
             this.textBox_client_pw_2_tab_2.UseSystemPasswordChar = true;
             this.textBox_client_pw_2_tab_2.TextChanged += new System.EventHandler(this.textBox_client_pw_2_tab_2_TextChanged);
             this.textBox_client_pw_2_tab_2.Leave += new System.EventHandler(this.textBox_client_pw_2_tab_2_Leave);
@@ -887,14 +887,14 @@ namespace GersangClientStation {
             this.textBox_client_id_2_tab_2.Location = new System.Drawing.Point(46, 246);
             this.textBox_client_id_2_tab_2.Name = "textBox_client_id_2_tab_2";
             this.textBox_client_id_2_tab_2.Size = new System.Drawing.Size(120, 23);
-            this.textBox_client_id_2_tab_2.TabIndex = 4;
+            this.textBox_client_id_2_tab_2.TabIndex = 6;
             // 
             // textBox_client_path_2_tab_2
             // 
             this.textBox_client_path_2_tab_2.Location = new System.Drawing.Point(46, 217);
             this.textBox_client_path_2_tab_2.Name = "textBox_client_path_2_tab_2";
             this.textBox_client_path_2_tab_2.Size = new System.Drawing.Size(257, 23);
-            this.textBox_client_path_2_tab_2.TabIndex = 3;
+            this.textBox_client_path_2_tab_2.TabIndex = 5;
             this.textBox_client_path_2_tab_2.TabStop = false;
             // 
             // button_path_finder_2_tab_2
@@ -967,7 +967,7 @@ namespace GersangClientStation {
             this.textBox_client_name_3_tab_3.MaxLength = 5;
             this.textBox_client_name_3_tab_3.Name = "textBox_client_name_3_tab_3";
             this.textBox_client_name_3_tab_3.Size = new System.Drawing.Size(75, 23);
-            this.textBox_client_name_3_tab_3.TabIndex = 129;
+            this.textBox_client_name_3_tab_3.TabIndex = 8;
             // 
             // metroLabel35
             // 
@@ -984,7 +984,7 @@ namespace GersangClientStation {
             this.textBox_client_name_2_tab_3.MaxLength = 5;
             this.textBox_client_name_2_tab_3.Name = "textBox_client_name_2_tab_3";
             this.textBox_client_name_2_tab_3.Size = new System.Drawing.Size(75, 23);
-            this.textBox_client_name_2_tab_3.TabIndex = 127;
+            this.textBox_client_name_2_tab_3.TabIndex = 4;
             // 
             // metroLabel34
             // 
@@ -1001,7 +1001,7 @@ namespace GersangClientStation {
             this.textBox_client_name_1_tab_3.MaxLength = 5;
             this.textBox_client_name_1_tab_3.Name = "textBox_client_name_1_tab_3";
             this.textBox_client_name_1_tab_3.Size = new System.Drawing.Size(75, 23);
-            this.textBox_client_name_1_tab_3.TabIndex = 125;
+            this.textBox_client_name_1_tab_3.TabIndex = 0;
             // 
             // metroLabel7
             // 
@@ -1134,7 +1134,7 @@ namespace GersangClientStation {
             this.button_save_tab_3.Location = new System.Drawing.Point(141, 580);
             this.button_save_tab_3.Name = "button_save_tab_3";
             this.button_save_tab_3.Size = new System.Drawing.Size(75, 23);
-            this.button_save_tab_3.TabIndex = 9;
+            this.button_save_tab_3.TabIndex = 12;
             this.button_save_tab_3.Text = "저장";
             this.button_save_tab_3.Click += new System.EventHandler(this.button_save_tab_3_Click);
             // 
@@ -1144,7 +1144,7 @@ namespace GersangClientStation {
             this.textBox_client_pw_3_tab_3.Name = "textBox_client_pw_3_tab_3";
             this.textBox_client_pw_3_tab_3.PasswordChar = '●';
             this.textBox_client_pw_3_tab_3.Size = new System.Drawing.Size(120, 23);
-            this.textBox_client_pw_3_tab_3.TabIndex = 8;
+            this.textBox_client_pw_3_tab_3.TabIndex = 11;
             this.textBox_client_pw_3_tab_3.UseSystemPasswordChar = true;
             this.textBox_client_pw_3_tab_3.TextChanged += new System.EventHandler(this.textBox_client_pw_3_tab_3_TextChanged);
             this.textBox_client_pw_3_tab_3.Leave += new System.EventHandler(this.textBox_client_pw_3_tab_3_Leave);
@@ -1166,14 +1166,14 @@ namespace GersangClientStation {
             this.textBox_client_id_3_tab_3.Location = new System.Drawing.Point(46, 402);
             this.textBox_client_id_3_tab_3.Name = "textBox_client_id_3_tab_3";
             this.textBox_client_id_3_tab_3.Size = new System.Drawing.Size(120, 23);
-            this.textBox_client_id_3_tab_3.TabIndex = 7;
+            this.textBox_client_id_3_tab_3.TabIndex = 10;
             // 
             // textBox_client_path_1_tab_3
             // 
             this.textBox_client_path_1_tab_3.Location = new System.Drawing.Point(46, 61);
             this.textBox_client_path_1_tab_3.Name = "textBox_client_path_1_tab_3";
             this.textBox_client_path_1_tab_3.Size = new System.Drawing.Size(257, 23);
-            this.textBox_client_path_1_tab_3.TabIndex = 0;
+            this.textBox_client_path_1_tab_3.TabIndex = 1;
             this.textBox_client_path_1_tab_3.TabStop = false;
             // 
             // button_path_finder_3_tab_3
@@ -1201,7 +1201,7 @@ namespace GersangClientStation {
             this.textBox_client_path_3_tab_3.Location = new System.Drawing.Point(46, 373);
             this.textBox_client_path_3_tab_3.Name = "textBox_client_path_3_tab_3";
             this.textBox_client_path_3_tab_3.Size = new System.Drawing.Size(257, 23);
-            this.textBox_client_path_3_tab_3.TabIndex = 6;
+            this.textBox_client_path_3_tab_3.TabIndex = 9;
             this.textBox_client_path_3_tab_3.TabStop = false;
             // 
             // textBox_client_id_1_tab_3
@@ -1209,7 +1209,7 @@ namespace GersangClientStation {
             this.textBox_client_id_1_tab_3.Location = new System.Drawing.Point(46, 90);
             this.textBox_client_id_1_tab_3.Name = "textBox_client_id_1_tab_3";
             this.textBox_client_id_1_tab_3.Size = new System.Drawing.Size(120, 23);
-            this.textBox_client_id_1_tab_3.TabIndex = 1;
+            this.textBox_client_id_1_tab_3.TabIndex = 2;
             // 
             // label_client_3_tab_3
             // 
@@ -1229,7 +1229,7 @@ namespace GersangClientStation {
             this.textBox_client_pw_1_tab_3.Name = "textBox_client_pw_1_tab_3";
             this.textBox_client_pw_1_tab_3.PasswordChar = '●';
             this.textBox_client_pw_1_tab_3.Size = new System.Drawing.Size(120, 23);
-            this.textBox_client_pw_1_tab_3.TabIndex = 2;
+            this.textBox_client_pw_1_tab_3.TabIndex = 3;
             this.textBox_client_pw_1_tab_3.UseSystemPasswordChar = true;
             this.textBox_client_pw_1_tab_3.TextChanged += new System.EventHandler(this.textBox_client_pw_1_tab_3_TextChanged);
             this.textBox_client_pw_1_tab_3.Leave += new System.EventHandler(this.textBox_client_pw_1_tab_3_Leave);
@@ -1240,7 +1240,7 @@ namespace GersangClientStation {
             this.textBox_client_pw_2_tab_3.Name = "textBox_client_pw_2_tab_3";
             this.textBox_client_pw_2_tab_3.PasswordChar = '●';
             this.textBox_client_pw_2_tab_3.Size = new System.Drawing.Size(120, 23);
-            this.textBox_client_pw_2_tab_3.TabIndex = 5;
+            this.textBox_client_pw_2_tab_3.TabIndex = 7;
             this.textBox_client_pw_2_tab_3.UseSystemPasswordChar = true;
             this.textBox_client_pw_2_tab_3.TextChanged += new System.EventHandler(this.textBox_client_pw_2_tab_3_TextChanged);
             this.textBox_client_pw_2_tab_3.Leave += new System.EventHandler(this.textBox_client_pw_2_tab_3_Leave);
@@ -1262,14 +1262,14 @@ namespace GersangClientStation {
             this.textBox_client_id_2_tab_3.Location = new System.Drawing.Point(46, 246);
             this.textBox_client_id_2_tab_3.Name = "textBox_client_id_2_tab_3";
             this.textBox_client_id_2_tab_3.Size = new System.Drawing.Size(120, 23);
-            this.textBox_client_id_2_tab_3.TabIndex = 4;
+            this.textBox_client_id_2_tab_3.TabIndex = 6;
             // 
             // textBox_client_path_2_tab_3
             // 
             this.textBox_client_path_2_tab_3.Location = new System.Drawing.Point(46, 217);
             this.textBox_client_path_2_tab_3.Name = "textBox_client_path_2_tab_3";
             this.textBox_client_path_2_tab_3.Size = new System.Drawing.Size(257, 23);
-            this.textBox_client_path_2_tab_3.TabIndex = 3;
+            this.textBox_client_path_2_tab_3.TabIndex = 5;
             this.textBox_client_path_2_tab_3.TabStop = false;
             // 
             // button_path_finder_2_tab_3
