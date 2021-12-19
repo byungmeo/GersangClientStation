@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Diagnostics;
 using System.Reflection;
+using System.Security.Cryptography;
 using System.Windows.Forms;
 
 namespace GersangClientStation {
@@ -187,7 +188,17 @@ namespace GersangClientStation {
                 }
 
                 input_userId.SetAttribute("value", id); //아이디를 웹페이지에 입력
-                input_userPwd.SetAttribute("value", EncryptionSupporter.Unprotect(pw)); //복호화된 패스워드를 웹페이지에 입력
+
+                try {
+                    input_userPwd.SetAttribute("value", EncryptionSupporter.Unprotect(pw)); //복호화된 패스워드를 웹페이지에 입력
+                } catch (CryptographicException e) {
+                    //사용자가 암호화된 패스워드가 포함된 설정파일을 타 PC로 복사 후 사용 시 발생하는 오류
+                    Debug.WriteLine(e.Message);
+                    MessageBox.Show("암호화된 패스워드를 복호화하는데 실패하였습니다.\n설정 파일을 타 PC로 복사하지 말아주세요.\n모든 패스워드가 초기화 됩니다.", "패스워드 복호화 오류", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    clearPassword();
+                    return;
+                }
+
                 form_login.InvokeMember("submit"); //입력된 아이디와 패스워드로 로그인을 시도
 
             } catch(ArgumentOutOfRangeException e) {
@@ -199,6 +210,21 @@ namespace GersangClientStation {
                     Login(client);
                 }
             }
+        }
+        private void clearPassword() {
+            Form_Main.config.AppSettings.Settings["client_pw_1_tab_1"].Value = "";
+            Form_Main.config.AppSettings.Settings["client_pw_2_tab_1"].Value = "";
+            Form_Main.config.AppSettings.Settings["client_pw_3_tab_1"].Value = "";
+            Form_Main.config.AppSettings.Settings["client_pw_1_tab_2"].Value = "";
+            Form_Main.config.AppSettings.Settings["client_pw_2_tab_2"].Value = "";
+            Form_Main.config.AppSettings.Settings["client_pw_3_tab_2"].Value = "";
+            Form_Main.config.AppSettings.Settings["client_pw_1_tab_3"].Value = "";
+            Form_Main.config.AppSettings.Settings["client_pw_2_tab_3"].Value = "";
+            Form_Main.config.AppSettings.Settings["client_pw_3_tab_3"].Value = "";
+
+            config.Save(ConfigurationSaveMode.Modified, true);
+            ConfigurationManager.RefreshSection("appSettings");
+            LoadSetting();
         }
         //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
