@@ -58,6 +58,8 @@ namespace GersangClientStation {
             this.link_shortcut_2 = new MetroFramework.Controls.MetroLink();
             this.link_shortcut_1 = new MetroFramework.Controls.MetroLink();
             this.link_qa1 = new MetroFramework.Controls.MetroLink();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.link_qa2 = new MetroFramework.Controls.MetroLink();
             this.menuStrip2.SuspendLayout();
             this.metroPanel2.SuspendLayout();
             this.metroPanel3.SuspendLayout();
@@ -67,6 +69,7 @@ namespace GersangClientStation {
             ((System.ComponentModel.ISupportInitialize)(this.pic_naver)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic_github)).BeginInit();
             this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip2
@@ -124,7 +127,7 @@ namespace GersangClientStation {
             this.metroPanel2.HorizontalScrollbarBarColor = true;
             this.metroPanel2.HorizontalScrollbarHighlightOnWheel = false;
             this.metroPanel2.HorizontalScrollbarSize = 10;
-            this.metroPanel2.Location = new System.Drawing.Point(23, 201);
+            this.metroPanel2.Location = new System.Drawing.Point(23, 204);
             this.metroPanel2.Name = "metroPanel2";
             this.metroPanel2.Size = new System.Drawing.Size(200, 123);
             this.metroPanel2.TabIndex = 15;
@@ -198,7 +201,7 @@ namespace GersangClientStation {
             this.metroPanel3.HorizontalScrollbarBarColor = true;
             this.metroPanel3.HorizontalScrollbarHighlightOnWheel = false;
             this.metroPanel3.HorizontalScrollbarSize = 10;
-            this.metroPanel3.Location = new System.Drawing.Point(23, 346);
+            this.metroPanel3.Location = new System.Drawing.Point(23, 347);
             this.metroPanel3.Name = "metroPanel3";
             this.metroPanel3.Size = new System.Drawing.Size(200, 123);
             this.metroPanel3.TabIndex = 16;
@@ -443,12 +446,12 @@ namespace GersangClientStation {
             this.groupBox1.Controls.Add(this.link_shortcut_3);
             this.groupBox1.Controls.Add(this.link_shortcut_2);
             this.groupBox1.Controls.Add(this.link_shortcut_1);
-            this.groupBox1.Location = new System.Drawing.Point(247, 202);
+            this.groupBox1.Location = new System.Drawing.Point(247, 204);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(129, 122);
+            this.groupBox1.Size = new System.Drawing.Size(129, 123);
             this.groupBox1.TabIndex = 23;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "커스텀 바로가기";
+            this.groupBox1.Text = "바로가기";
             // 
             // link_shortcut_3
             // 
@@ -479,14 +482,36 @@ namespace GersangClientStation {
             // 
             // link_qa1
             // 
-            this.link_qa1.Location = new System.Drawing.Point(268, 446);
+            this.link_qa1.Location = new System.Drawing.Point(19, 25);
             this.link_qa1.Name = "link_qa1";
             this.link_qa1.Size = new System.Drawing.Size(91, 23);
             this.link_qa1.Style = MetroFramework.MetroColorStyle.Red;
             this.link_qa1.TabIndex = 28;
-            this.link_qa1.Text = "실행이 안되면?";
+            this.link_qa1.Text = "실행이 안돼요";
             this.link_qa1.UseStyleColors = true;
             this.link_qa1.Click += new System.EventHandler(this.link_qa1_Click);
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.link_qa2);
+            this.groupBox2.Controls.Add(this.link_qa1);
+            this.groupBox2.Location = new System.Drawing.Point(247, 347);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(129, 123);
+            this.groupBox2.TabIndex = 24;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "자주 하는 질문";
+            // 
+            // link_qa2
+            // 
+            this.link_qa2.Location = new System.Drawing.Point(19, 57);
+            this.link_qa2.Name = "link_qa2";
+            this.link_qa2.Size = new System.Drawing.Size(91, 51);
+            this.link_qa2.Style = MetroFramework.MetroColorStyle.Red;
+            this.link_qa2.TabIndex = 29;
+            this.link_qa2.Text = "업데이트 때마다 \r\n계정설정을 다시\r\n해야하나요?";
+            this.link_qa2.UseStyleColors = true;
+            this.link_qa2.Click += new System.EventHandler(this.link_qa2_Click);
             // 
             // Form_Main
             // 
@@ -494,7 +519,7 @@ namespace GersangClientStation {
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BorderStyle = MetroFramework.Drawing.MetroBorderStyle.FixedSingle;
             this.ClientSize = new System.Drawing.Size(617, 490);
-            this.Controls.Add(this.link_qa1);
+            this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.link_github);
             this.Controls.Add(this.pic_github);
@@ -528,6 +553,7 @@ namespace GersangClientStation {
             ((System.ComponentModel.ISupportInitialize)(this.pic_naver)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic_github)).EndInit();
             this.groupBox1.ResumeLayout(false);
+            this.groupBox2.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -567,6 +593,8 @@ namespace GersangClientStation {
         private MetroFramework.Controls.MetroLink link_shortcut_1;
         private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItem2;
         private MetroFramework.Controls.MetroLink link_qa1;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private MetroFramework.Controls.MetroLink link_qa2;
     }
 }
 

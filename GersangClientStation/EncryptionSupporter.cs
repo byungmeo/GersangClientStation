@@ -19,7 +19,6 @@ namespace GersangClientStation {
 
             try {
                 PasswordUnprotect = Encoding.UTF8.GetString(ProtectedData.Unprotect(Convert.FromBase64String(origin), null, DataProtectionScope.CurrentUser));
-                throw new CryptographicException();
             } catch(CryptographicException e) {
                 throw e;
             } catch(Exception e) {

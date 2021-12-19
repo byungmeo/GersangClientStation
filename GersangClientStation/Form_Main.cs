@@ -593,6 +593,14 @@ namespace GersangClientStation {
                 MessageBox.Show("링크 접속 에러");
             }
         }
+        private void link_qa2_Click(object sender, EventArgs e) {
+            try {
+                System.Diagnostics.Process.Start("https://blog.naver.com/kog5071/222599326032");
+            } catch (Exception ex) {
+                Debug.WriteLine(ex.Message);
+                MessageBox.Show("링크 접속 에러");
+            }
+        }
         //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
         /// <summary>
