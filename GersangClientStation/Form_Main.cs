@@ -732,34 +732,43 @@ namespace GersangClientStation {
 
             switch (settingNumber) {
                 case 1:
+                    this.label_client_1.Text = ConfigurationManager.AppSettings["client_name_1_tab_1"];
                     this.client_path_1 = ConfigurationManager.AppSettings["client_path_1_tab_1"];
                     this.client_id_1 = ConfigurationManager.AppSettings["client_id_1_tab_1"];
                     this.client_pw_1 = ConfigurationManager.AppSettings["client_pw_1_tab_1"];
+                    this.label_client_2.Text = ConfigurationManager.AppSettings["client_name_2_tab_1"];
                     this.client_path_2 = ConfigurationManager.AppSettings["client_path_2_tab_1"];
                     this.client_id_2 = ConfigurationManager.AppSettings["client_id_2_tab_1"];
                     this.client_pw_2 = ConfigurationManager.AppSettings["client_pw_2_tab_1"];
+                    this.label_client_3.Text = ConfigurationManager.AppSettings["client_name_3_tab_1"];
                     this.client_path_3 = ConfigurationManager.AppSettings["client_path_3_tab_1"];
                     this.client_id_3 = ConfigurationManager.AppSettings["client_id_3_tab_1"];
                     this.client_pw_3 = ConfigurationManager.AppSettings["client_pw_3_tab_1"];
                     break;
                 case 2:
+                    this.label_client_1.Text = ConfigurationManager.AppSettings["client_name_1_tab_2"];
                     this.client_path_1 = ConfigurationManager.AppSettings["client_path_1_tab_2"];
                     this.client_id_1 = ConfigurationManager.AppSettings["client_id_1_tab_2"];
                     this.client_pw_1 = ConfigurationManager.AppSettings["client_pw_1_tab_2"];
+                    this.label_client_2.Text = ConfigurationManager.AppSettings["client_name_2_tab_2"];
                     this.client_path_2 = ConfigurationManager.AppSettings["client_path_2_tab_2"];
                     this.client_id_2 = ConfigurationManager.AppSettings["client_id_2_tab_2"];
                     this.client_pw_2 = ConfigurationManager.AppSettings["client_pw_2_tab_2"];
+                    this.label_client_3.Text = ConfigurationManager.AppSettings["client_name_3_tab_2"];
                     this.client_path_3 = ConfigurationManager.AppSettings["client_path_3_tab_2"];
                     this.client_id_3 = ConfigurationManager.AppSettings["client_id_3_tab_2"];
                     this.client_pw_3 = ConfigurationManager.AppSettings["client_pw_3_tab_2"];
                     break;
                 case 3:
+                    this.label_client_1.Text = ConfigurationManager.AppSettings["client_name_1_tab_3"];
                     this.client_path_1 = ConfigurationManager.AppSettings["client_path_1_tab_3"];
                     this.client_id_1 = ConfigurationManager.AppSettings["client_id_1_tab_3"];
                     this.client_pw_1 = ConfigurationManager.AppSettings["client_pw_1_tab_3"];
+                    this.label_client_2.Text = ConfigurationManager.AppSettings["client_name_2_tab_3"];
                     this.client_path_2 = ConfigurationManager.AppSettings["client_path_2_tab_3"];
                     this.client_id_2 = ConfigurationManager.AppSettings["client_id_2_tab_3"];
                     this.client_pw_2 = ConfigurationManager.AppSettings["client_pw_2_tab_3"];
+                    this.label_client_3.Text = ConfigurationManager.AppSettings["client_name_3_tab_3"];
                     this.client_path_3 = ConfigurationManager.AppSettings["client_path_3_tab_3"];
                     this.client_id_3 = ConfigurationManager.AppSettings["client_id_3_tab_3"];
                     this.client_pw_3 = ConfigurationManager.AppSettings["client_pw_3_tab_3"];
@@ -768,6 +777,7 @@ namespace GersangClientStation {
                     Debug.WriteLine("잘못된 세팅값입니다.");
                     break;
             }
+            
 
             this.shortcut_name_1 = ConfigurationManager.AppSettings["shortcut_name_1"];
             link_shortcut_1.Text = this.shortcut_name_1;

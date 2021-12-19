@@ -44,6 +44,12 @@ namespace GersangClientStation {
             this.button_save_tab_1 = new MetroFramework.Controls.MetroButton();
             this.tabControl_setting = new MetroFramework.Controls.MetroTabControl();
             this.metroTabPage1 = new MetroFramework.Controls.MetroTabPage();
+            this.metroLabel30 = new MetroFramework.Controls.MetroLabel();
+            this.textBox_client_name_3_tab_1 = new MetroFramework.Controls.MetroTextBox();
+            this.metroLabel29 = new MetroFramework.Controls.MetroLabel();
+            this.textBox_client_name_2_tab_1 = new MetroFramework.Controls.MetroTextBox();
+            this.metroLabel28 = new MetroFramework.Controls.MetroLabel();
+            this.textBox_client_name_1_tab_1 = new MetroFramework.Controls.MetroTextBox();
             this.metroLabel19 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel20 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel21 = new MetroFramework.Controls.MetroLabel();
@@ -57,6 +63,12 @@ namespace GersangClientStation {
             this.button_clear_pw_2_tab_1 = new MetroFramework.Controls.MetroButton();
             this.button_clear_pw_1_tab_1 = new MetroFramework.Controls.MetroButton();
             this.metroTabPage2 = new MetroFramework.Controls.MetroTabPage();
+            this.metroLabel33 = new MetroFramework.Controls.MetroLabel();
+            this.textBox_client_name_3_tab_2 = new MetroFramework.Controls.MetroTextBox();
+            this.metroLabel32 = new MetroFramework.Controls.MetroLabel();
+            this.textBox_client_name_2_tab_2 = new MetroFramework.Controls.MetroTextBox();
+            this.metroLabel31 = new MetroFramework.Controls.MetroLabel();
+            this.textBox_client_name_1_tab_2 = new MetroFramework.Controls.MetroTextBox();
             this.metroLabel16 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel17 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel18 = new MetroFramework.Controls.MetroLabel();
@@ -87,6 +99,12 @@ namespace GersangClientStation {
             this.textBox_client_path_2_tab_2 = new MetroFramework.Controls.MetroTextBox();
             this.button_path_finder_2_tab_2 = new MetroFramework.Controls.MetroButton();
             this.metroTabPage3 = new MetroFramework.Controls.MetroTabPage();
+            this.metroLabel36 = new MetroFramework.Controls.MetroLabel();
+            this.textBox_client_name_3_tab_3 = new MetroFramework.Controls.MetroTextBox();
+            this.metroLabel35 = new MetroFramework.Controls.MetroLabel();
+            this.textBox_client_name_2_tab_3 = new MetroFramework.Controls.MetroTextBox();
+            this.metroLabel34 = new MetroFramework.Controls.MetroLabel();
+            this.textBox_client_name_1_tab_3 = new MetroFramework.Controls.MetroTextBox();
             this.metroLabel7 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel8 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel9 = new MetroFramework.Controls.MetroLabel();
@@ -127,7 +145,7 @@ namespace GersangClientStation {
             this.label_client_1_tab_1.AutoSize = true;
             this.label_client_1_tab_1.FontSize = MetroFramework.MetroLabelSize.Tall;
             this.label_client_1_tab_1.FontWeight = MetroFramework.MetroLabelWeight.Bold;
-            this.label_client_1_tab_1.Location = new System.Drawing.Point(3, 4);
+            this.label_client_1_tab_1.Location = new System.Drawing.Point(0, 4);
             this.label_client_1_tab_1.Name = "label_client_1_tab_1";
             this.label_client_1_tab_1.Size = new System.Drawing.Size(104, 25);
             this.label_client_1_tab_1.TabIndex = 0;
@@ -136,7 +154,7 @@ namespace GersangClientStation {
             // 
             // textBox_client_path_1_tab_1
             // 
-            this.textBox_client_path_1_tab_1.Location = new System.Drawing.Point(46, 32);
+            this.textBox_client_path_1_tab_1.Location = new System.Drawing.Point(46, 61);
             this.textBox_client_path_1_tab_1.Name = "textBox_client_path_1_tab_1";
             this.textBox_client_path_1_tab_1.Size = new System.Drawing.Size(257, 23);
             this.textBox_client_path_1_tab_1.TabIndex = 0;
@@ -144,7 +162,7 @@ namespace GersangClientStation {
             // 
             // button_path_finder_1_tab_1
             // 
-            this.button_path_finder_1_tab_1.Location = new System.Drawing.Point(309, 32);
+            this.button_path_finder_1_tab_1.Location = new System.Drawing.Point(309, 61);
             this.button_path_finder_1_tab_1.Name = "button_path_finder_1_tab_1";
             this.button_path_finder_1_tab_1.Size = new System.Drawing.Size(44, 23);
             this.button_path_finder_1_tab_1.TabIndex = 0;
@@ -158,14 +176,14 @@ namespace GersangClientStation {
             // 
             // textBox_client_id_1_tab_1
             // 
-            this.textBox_client_id_1_tab_1.Location = new System.Drawing.Point(46, 61);
+            this.textBox_client_id_1_tab_1.Location = new System.Drawing.Point(46, 90);
             this.textBox_client_id_1_tab_1.Name = "textBox_client_id_1_tab_1";
             this.textBox_client_id_1_tab_1.Size = new System.Drawing.Size(120, 23);
             this.textBox_client_id_1_tab_1.TabIndex = 1;
             // 
             // textBox_client_pw_1_tab_1
             // 
-            this.textBox_client_pw_1_tab_1.Location = new System.Drawing.Point(46, 90);
+            this.textBox_client_pw_1_tab_1.Location = new System.Drawing.Point(46, 119);
             this.textBox_client_pw_1_tab_1.Name = "textBox_client_pw_1_tab_1";
             this.textBox_client_pw_1_tab_1.PasswordChar = '●';
             this.textBox_client_pw_1_tab_1.Size = new System.Drawing.Size(120, 23);
@@ -177,18 +195,18 @@ namespace GersangClientStation {
             // label_notify_encrypt_tab_1
             // 
             this.label_notify_encrypt_tab_1.AutoSize = true;
-            this.label_notify_encrypt_tab_1.Location = new System.Drawing.Point(63, 376);
+            this.label_notify_encrypt_tab_1.Location = new System.Drawing.Point(63, 482);
             this.label_notify_encrypt_tab_1.Name = "label_notify_encrypt_tab_1";
-            this.label_notify_encrypt_tab_1.Size = new System.Drawing.Size(230, 19);
+            this.label_notify_encrypt_tab_1.Size = new System.Drawing.Size(230, 76);
             this.label_notify_encrypt_tab_1.Style = MetroFramework.MetroColorStyle.Silver;
             this.label_notify_encrypt_tab_1.TabIndex = 0;
-            this.label_notify_encrypt_tab_1.Text = "비밀번호는 암호화되어 저장됩니다.";
+            this.label_notify_encrypt_tab_1.Text = "비밀번호는 암호화되어 저장됩니다.\r\n\r\nPC방 등의 공개적인 장소에서는 \r\n사용을 권장하지 않습니다.";
             this.label_notify_encrypt_tab_1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.label_notify_encrypt_tab_1.UseStyleColors = true;
             // 
             // textBox_client_pw_2_tab_1
             // 
-            this.textBox_client_pw_2_tab_1.Location = new System.Drawing.Point(46, 205);
+            this.textBox_client_pw_2_tab_1.Location = new System.Drawing.Point(46, 275);
             this.textBox_client_pw_2_tab_1.Name = "textBox_client_pw_2_tab_1";
             this.textBox_client_pw_2_tab_1.PasswordChar = '●';
             this.textBox_client_pw_2_tab_1.Size = new System.Drawing.Size(120, 23);
@@ -199,14 +217,14 @@ namespace GersangClientStation {
             // 
             // textBox_client_id_2_tab_1
             // 
-            this.textBox_client_id_2_tab_1.Location = new System.Drawing.Point(46, 176);
+            this.textBox_client_id_2_tab_1.Location = new System.Drawing.Point(46, 246);
             this.textBox_client_id_2_tab_1.Name = "textBox_client_id_2_tab_1";
             this.textBox_client_id_2_tab_1.Size = new System.Drawing.Size(120, 23);
             this.textBox_client_id_2_tab_1.TabIndex = 4;
             // 
             // button_path_finder_2_tab_1
             // 
-            this.button_path_finder_2_tab_1.Location = new System.Drawing.Point(309, 147);
+            this.button_path_finder_2_tab_1.Location = new System.Drawing.Point(309, 217);
             this.button_path_finder_2_tab_1.Name = "button_path_finder_2_tab_1";
             this.button_path_finder_2_tab_1.Size = new System.Drawing.Size(44, 23);
             this.button_path_finder_2_tab_1.TabIndex = 0;
@@ -216,7 +234,7 @@ namespace GersangClientStation {
             // 
             // textBox_client_path_2_tab_1
             // 
-            this.textBox_client_path_2_tab_1.Location = new System.Drawing.Point(46, 147);
+            this.textBox_client_path_2_tab_1.Location = new System.Drawing.Point(46, 217);
             this.textBox_client_path_2_tab_1.Name = "textBox_client_path_2_tab_1";
             this.textBox_client_path_2_tab_1.Size = new System.Drawing.Size(257, 23);
             this.textBox_client_path_2_tab_1.TabIndex = 3;
@@ -227,7 +245,7 @@ namespace GersangClientStation {
             this.label_client_2_tab_1.AutoSize = true;
             this.label_client_2_tab_1.FontSize = MetroFramework.MetroLabelSize.Tall;
             this.label_client_2_tab_1.FontWeight = MetroFramework.MetroLabelWeight.Bold;
-            this.label_client_2_tab_1.Location = new System.Drawing.Point(3, 119);
+            this.label_client_2_tab_1.Location = new System.Drawing.Point(0, 160);
             this.label_client_2_tab_1.Name = "label_client_2_tab_1";
             this.label_client_2_tab_1.Size = new System.Drawing.Size(71, 25);
             this.label_client_2_tab_1.TabIndex = 0;
@@ -236,7 +254,7 @@ namespace GersangClientStation {
             // 
             // textBox_client_pw_3_tab_1
             // 
-            this.textBox_client_pw_3_tab_1.Location = new System.Drawing.Point(46, 320);
+            this.textBox_client_pw_3_tab_1.Location = new System.Drawing.Point(46, 431);
             this.textBox_client_pw_3_tab_1.Name = "textBox_client_pw_3_tab_1";
             this.textBox_client_pw_3_tab_1.PasswordChar = '●';
             this.textBox_client_pw_3_tab_1.Size = new System.Drawing.Size(120, 23);
@@ -247,14 +265,14 @@ namespace GersangClientStation {
             // 
             // textBox_client_id_3_tab_1
             // 
-            this.textBox_client_id_3_tab_1.Location = new System.Drawing.Point(46, 291);
+            this.textBox_client_id_3_tab_1.Location = new System.Drawing.Point(46, 402);
             this.textBox_client_id_3_tab_1.Name = "textBox_client_id_3_tab_1";
             this.textBox_client_id_3_tab_1.Size = new System.Drawing.Size(120, 23);
             this.textBox_client_id_3_tab_1.TabIndex = 7;
             // 
             // button_path_finder_3_tab_1
             // 
-            this.button_path_finder_3_tab_1.Location = new System.Drawing.Point(309, 262);
+            this.button_path_finder_3_tab_1.Location = new System.Drawing.Point(309, 373);
             this.button_path_finder_3_tab_1.Name = "button_path_finder_3_tab_1";
             this.button_path_finder_3_tab_1.Size = new System.Drawing.Size(44, 23);
             this.button_path_finder_3_tab_1.TabIndex = 0;
@@ -264,7 +282,7 @@ namespace GersangClientStation {
             // 
             // textBox_client_path_3_tab_1
             // 
-            this.textBox_client_path_3_tab_1.Location = new System.Drawing.Point(46, 262);
+            this.textBox_client_path_3_tab_1.Location = new System.Drawing.Point(46, 373);
             this.textBox_client_path_3_tab_1.Name = "textBox_client_path_3_tab_1";
             this.textBox_client_path_3_tab_1.Size = new System.Drawing.Size(257, 23);
             this.textBox_client_path_3_tab_1.TabIndex = 6;
@@ -275,7 +293,7 @@ namespace GersangClientStation {
             this.label_client_3_tab_1.AutoSize = true;
             this.label_client_3_tab_1.FontSize = MetroFramework.MetroLabelSize.Tall;
             this.label_client_3_tab_1.FontWeight = MetroFramework.MetroLabelWeight.Bold;
-            this.label_client_3_tab_1.Location = new System.Drawing.Point(3, 234);
+            this.label_client_3_tab_1.Location = new System.Drawing.Point(0, 316);
             this.label_client_3_tab_1.Name = "label_client_3_tab_1";
             this.label_client_3_tab_1.Size = new System.Drawing.Size(71, 25);
             this.label_client_3_tab_1.TabIndex = 0;
@@ -284,7 +302,7 @@ namespace GersangClientStation {
             // 
             // button_save_tab_1
             // 
-            this.button_save_tab_1.Location = new System.Drawing.Point(141, 419);
+            this.button_save_tab_1.Location = new System.Drawing.Point(141, 580);
             this.button_save_tab_1.Name = "button_save_tab_1";
             this.button_save_tab_1.Size = new System.Drawing.Size(75, 23);
             this.button_save_tab_1.TabIndex = 9;
@@ -296,15 +314,22 @@ namespace GersangClientStation {
             this.tabControl_setting.Controls.Add(this.metroTabPage1);
             this.tabControl_setting.Controls.Add(this.metroTabPage2);
             this.tabControl_setting.Controls.Add(this.metroTabPage3);
+            this.tabControl_setting.ItemSize = new System.Drawing.Size(60, 32);
             this.tabControl_setting.Location = new System.Drawing.Point(23, 63);
             this.tabControl_setting.Name = "tabControl_setting";
-            this.tabControl_setting.SelectedIndex = 0;
-            this.tabControl_setting.Size = new System.Drawing.Size(365, 494);
+            this.tabControl_setting.SelectedIndex = 1;
+            this.tabControl_setting.Size = new System.Drawing.Size(365, 658);
             this.tabControl_setting.TabIndex = 0;
             this.tabControl_setting.TabStop = false;
             // 
             // metroTabPage1
             // 
+            this.metroTabPage1.Controls.Add(this.metroLabel30);
+            this.metroTabPage1.Controls.Add(this.textBox_client_name_3_tab_1);
+            this.metroTabPage1.Controls.Add(this.metroLabel29);
+            this.metroTabPage1.Controls.Add(this.textBox_client_name_2_tab_1);
+            this.metroTabPage1.Controls.Add(this.metroLabel28);
+            this.metroTabPage1.Controls.Add(this.textBox_client_name_1_tab_1);
             this.metroTabPage1.Controls.Add(this.textBox_client_path_3_tab_1);
             this.metroTabPage1.Controls.Add(this.metroLabel19);
             this.metroTabPage1.Controls.Add(this.metroLabel20);
@@ -337,15 +362,66 @@ namespace GersangClientStation {
             this.metroTabPage1.HorizontalScrollbarBarColor = true;
             this.metroTabPage1.Location = new System.Drawing.Point(4, 36);
             this.metroTabPage1.Name = "metroTabPage1";
-            this.metroTabPage1.Size = new System.Drawing.Size(357, 454);
+            this.metroTabPage1.Size = new System.Drawing.Size(357, 618);
             this.metroTabPage1.TabIndex = 0;
             this.metroTabPage1.Text = "1번";
             this.metroTabPage1.VerticalScrollbarBarColor = true;
             // 
+            // metroLabel30
+            // 
+            this.metroLabel30.AutoSize = true;
+            this.metroLabel30.Location = new System.Drawing.Point(3, 346);
+            this.metroLabel30.Name = "metroLabel30";
+            this.metroLabel30.Size = new System.Drawing.Size(37, 19);
+            this.metroLabel30.TabIndex = 126;
+            this.metroLabel30.Text = "별명";
+            // 
+            // textBox_client_name_3_tab_1
+            // 
+            this.textBox_client_name_3_tab_1.Location = new System.Drawing.Point(46, 344);
+            this.textBox_client_name_3_tab_1.MaxLength = 5;
+            this.textBox_client_name_3_tab_1.Name = "textBox_client_name_3_tab_1";
+            this.textBox_client_name_3_tab_1.Size = new System.Drawing.Size(75, 23);
+            this.textBox_client_name_3_tab_1.TabIndex = 125;
+            // 
+            // metroLabel29
+            // 
+            this.metroLabel29.AutoSize = true;
+            this.metroLabel29.Location = new System.Drawing.Point(3, 190);
+            this.metroLabel29.Name = "metroLabel29";
+            this.metroLabel29.Size = new System.Drawing.Size(37, 19);
+            this.metroLabel29.TabIndex = 124;
+            this.metroLabel29.Text = "별명";
+            // 
+            // textBox_client_name_2_tab_1
+            // 
+            this.textBox_client_name_2_tab_1.Location = new System.Drawing.Point(46, 188);
+            this.textBox_client_name_2_tab_1.MaxLength = 5;
+            this.textBox_client_name_2_tab_1.Name = "textBox_client_name_2_tab_1";
+            this.textBox_client_name_2_tab_1.Size = new System.Drawing.Size(75, 23);
+            this.textBox_client_name_2_tab_1.TabIndex = 123;
+            // 
+            // metroLabel28
+            // 
+            this.metroLabel28.AutoSize = true;
+            this.metroLabel28.Location = new System.Drawing.Point(3, 34);
+            this.metroLabel28.Name = "metroLabel28";
+            this.metroLabel28.Size = new System.Drawing.Size(37, 19);
+            this.metroLabel28.TabIndex = 122;
+            this.metroLabel28.Text = "별명";
+            // 
+            // textBox_client_name_1_tab_1
+            // 
+            this.textBox_client_name_1_tab_1.Location = new System.Drawing.Point(46, 32);
+            this.textBox_client_name_1_tab_1.MaxLength = 5;
+            this.textBox_client_name_1_tab_1.Name = "textBox_client_name_1_tab_1";
+            this.textBox_client_name_1_tab_1.Size = new System.Drawing.Size(75, 23);
+            this.textBox_client_name_1_tab_1.TabIndex = 121;
+            // 
             // metroLabel19
             // 
             this.metroLabel19.AutoSize = true;
-            this.metroLabel19.Location = new System.Drawing.Point(3, 322);
+            this.metroLabel19.Location = new System.Drawing.Point(6, 433);
             this.metroLabel19.Name = "metroLabel19";
             this.metroLabel19.Size = new System.Drawing.Size(30, 19);
             this.metroLabel19.TabIndex = 120;
@@ -354,7 +430,7 @@ namespace GersangClientStation {
             // metroLabel20
             // 
             this.metroLabel20.AutoSize = true;
-            this.metroLabel20.Location = new System.Drawing.Point(3, 293);
+            this.metroLabel20.Location = new System.Drawing.Point(11, 404);
             this.metroLabel20.Name = "metroLabel20";
             this.metroLabel20.Size = new System.Drawing.Size(21, 19);
             this.metroLabel20.TabIndex = 119;
@@ -363,7 +439,7 @@ namespace GersangClientStation {
             // metroLabel21
             // 
             this.metroLabel21.AutoSize = true;
-            this.metroLabel21.Location = new System.Drawing.Point(3, 264);
+            this.metroLabel21.Location = new System.Drawing.Point(3, 375);
             this.metroLabel21.Name = "metroLabel21";
             this.metroLabel21.Size = new System.Drawing.Size(37, 19);
             this.metroLabel21.TabIndex = 118;
@@ -372,7 +448,7 @@ namespace GersangClientStation {
             // metroLabel22
             // 
             this.metroLabel22.AutoSize = true;
-            this.metroLabel22.Location = new System.Drawing.Point(3, 207);
+            this.metroLabel22.Location = new System.Drawing.Point(6, 277);
             this.metroLabel22.Name = "metroLabel22";
             this.metroLabel22.Size = new System.Drawing.Size(30, 19);
             this.metroLabel22.TabIndex = 117;
@@ -381,7 +457,7 @@ namespace GersangClientStation {
             // metroLabel23
             // 
             this.metroLabel23.AutoSize = true;
-            this.metroLabel23.Location = new System.Drawing.Point(3, 178);
+            this.metroLabel23.Location = new System.Drawing.Point(11, 248);
             this.metroLabel23.Name = "metroLabel23";
             this.metroLabel23.Size = new System.Drawing.Size(21, 19);
             this.metroLabel23.TabIndex = 116;
@@ -390,7 +466,7 @@ namespace GersangClientStation {
             // metroLabel24
             // 
             this.metroLabel24.AutoSize = true;
-            this.metroLabel24.Location = new System.Drawing.Point(3, 149);
+            this.metroLabel24.Location = new System.Drawing.Point(3, 219);
             this.metroLabel24.Name = "metroLabel24";
             this.metroLabel24.Size = new System.Drawing.Size(37, 19);
             this.metroLabel24.TabIndex = 115;
@@ -399,7 +475,7 @@ namespace GersangClientStation {
             // metroLabel25
             // 
             this.metroLabel25.AutoSize = true;
-            this.metroLabel25.Location = new System.Drawing.Point(3, 92);
+            this.metroLabel25.Location = new System.Drawing.Point(6, 121);
             this.metroLabel25.Name = "metroLabel25";
             this.metroLabel25.Size = new System.Drawing.Size(30, 19);
             this.metroLabel25.TabIndex = 114;
@@ -408,7 +484,7 @@ namespace GersangClientStation {
             // metroLabel26
             // 
             this.metroLabel26.AutoSize = true;
-            this.metroLabel26.Location = new System.Drawing.Point(3, 63);
+            this.metroLabel26.Location = new System.Drawing.Point(11, 92);
             this.metroLabel26.Name = "metroLabel26";
             this.metroLabel26.Size = new System.Drawing.Size(21, 19);
             this.metroLabel26.TabIndex = 113;
@@ -417,7 +493,7 @@ namespace GersangClientStation {
             // metroLabel27
             // 
             this.metroLabel27.AutoSize = true;
-            this.metroLabel27.Location = new System.Drawing.Point(3, 34);
+            this.metroLabel27.Location = new System.Drawing.Point(3, 63);
             this.metroLabel27.Name = "metroLabel27";
             this.metroLabel27.Size = new System.Drawing.Size(37, 19);
             this.metroLabel27.TabIndex = 112;
@@ -425,7 +501,7 @@ namespace GersangClientStation {
             // 
             // button_clear_pw_3_tab_1
             // 
-            this.button_clear_pw_3_tab_1.Location = new System.Drawing.Point(172, 320);
+            this.button_clear_pw_3_tab_1.Location = new System.Drawing.Point(172, 431);
             this.button_clear_pw_3_tab_1.Name = "button_clear_pw_3_tab_1";
             this.button_clear_pw_3_tab_1.Size = new System.Drawing.Size(44, 23);
             this.button_clear_pw_3_tab_1.Style = MetroFramework.MetroColorStyle.Red;
@@ -436,7 +512,7 @@ namespace GersangClientStation {
             // 
             // button_clear_pw_2_tab_1
             // 
-            this.button_clear_pw_2_tab_1.Location = new System.Drawing.Point(172, 205);
+            this.button_clear_pw_2_tab_1.Location = new System.Drawing.Point(172, 275);
             this.button_clear_pw_2_tab_1.Name = "button_clear_pw_2_tab_1";
             this.button_clear_pw_2_tab_1.Size = new System.Drawing.Size(44, 23);
             this.button_clear_pw_2_tab_1.Style = MetroFramework.MetroColorStyle.Red;
@@ -447,7 +523,7 @@ namespace GersangClientStation {
             // 
             // button_clear_pw_1_tab_1
             // 
-            this.button_clear_pw_1_tab_1.Location = new System.Drawing.Point(172, 90);
+            this.button_clear_pw_1_tab_1.Location = new System.Drawing.Point(172, 119);
             this.button_clear_pw_1_tab_1.Name = "button_clear_pw_1_tab_1";
             this.button_clear_pw_1_tab_1.Size = new System.Drawing.Size(44, 23);
             this.button_clear_pw_1_tab_1.Style = MetroFramework.MetroColorStyle.Red;
@@ -458,6 +534,12 @@ namespace GersangClientStation {
             // 
             // metroTabPage2
             // 
+            this.metroTabPage2.Controls.Add(this.metroLabel33);
+            this.metroTabPage2.Controls.Add(this.textBox_client_name_3_tab_2);
+            this.metroTabPage2.Controls.Add(this.metroLabel32);
+            this.metroTabPage2.Controls.Add(this.textBox_client_name_2_tab_2);
+            this.metroTabPage2.Controls.Add(this.metroLabel31);
+            this.metroTabPage2.Controls.Add(this.textBox_client_name_1_tab_2);
             this.metroTabPage2.Controls.Add(this.metroLabel16);
             this.metroTabPage2.Controls.Add(this.metroLabel17);
             this.metroTabPage2.Controls.Add(this.metroLabel18);
@@ -490,15 +572,66 @@ namespace GersangClientStation {
             this.metroTabPage2.HorizontalScrollbarBarColor = true;
             this.metroTabPage2.Location = new System.Drawing.Point(4, 36);
             this.metroTabPage2.Name = "metroTabPage2";
-            this.metroTabPage2.Size = new System.Drawing.Size(357, 454);
+            this.metroTabPage2.Size = new System.Drawing.Size(357, 618);
             this.metroTabPage2.TabIndex = 1;
             this.metroTabPage2.Text = "2번";
             this.metroTabPage2.VerticalScrollbarBarColor = true;
             // 
+            // metroLabel33
+            // 
+            this.metroLabel33.AutoSize = true;
+            this.metroLabel33.Location = new System.Drawing.Point(3, 346);
+            this.metroLabel33.Name = "metroLabel33";
+            this.metroLabel33.Size = new System.Drawing.Size(37, 19);
+            this.metroLabel33.TabIndex = 128;
+            this.metroLabel33.Text = "별명";
+            // 
+            // textBox_client_name_3_tab_2
+            // 
+            this.textBox_client_name_3_tab_2.Location = new System.Drawing.Point(46, 344);
+            this.textBox_client_name_3_tab_2.MaxLength = 5;
+            this.textBox_client_name_3_tab_2.Name = "textBox_client_name_3_tab_2";
+            this.textBox_client_name_3_tab_2.Size = new System.Drawing.Size(75, 23);
+            this.textBox_client_name_3_tab_2.TabIndex = 127;
+            // 
+            // metroLabel32
+            // 
+            this.metroLabel32.AutoSize = true;
+            this.metroLabel32.Location = new System.Drawing.Point(3, 190);
+            this.metroLabel32.Name = "metroLabel32";
+            this.metroLabel32.Size = new System.Drawing.Size(37, 19);
+            this.metroLabel32.TabIndex = 126;
+            this.metroLabel32.Text = "별명";
+            // 
+            // textBox_client_name_2_tab_2
+            // 
+            this.textBox_client_name_2_tab_2.Location = new System.Drawing.Point(46, 188);
+            this.textBox_client_name_2_tab_2.MaxLength = 5;
+            this.textBox_client_name_2_tab_2.Name = "textBox_client_name_2_tab_2";
+            this.textBox_client_name_2_tab_2.Size = new System.Drawing.Size(75, 23);
+            this.textBox_client_name_2_tab_2.TabIndex = 125;
+            // 
+            // metroLabel31
+            // 
+            this.metroLabel31.AutoSize = true;
+            this.metroLabel31.Location = new System.Drawing.Point(3, 34);
+            this.metroLabel31.Name = "metroLabel31";
+            this.metroLabel31.Size = new System.Drawing.Size(37, 19);
+            this.metroLabel31.TabIndex = 124;
+            this.metroLabel31.Text = "별명";
+            // 
+            // textBox_client_name_1_tab_2
+            // 
+            this.textBox_client_name_1_tab_2.Location = new System.Drawing.Point(46, 32);
+            this.textBox_client_name_1_tab_2.MaxLength = 5;
+            this.textBox_client_name_1_tab_2.Name = "textBox_client_name_1_tab_2";
+            this.textBox_client_name_1_tab_2.Size = new System.Drawing.Size(75, 23);
+            this.textBox_client_name_1_tab_2.TabIndex = 123;
+            // 
             // metroLabel16
             // 
             this.metroLabel16.AutoSize = true;
-            this.metroLabel16.Location = new System.Drawing.Point(3, 322);
+            this.metroLabel16.Location = new System.Drawing.Point(6, 433);
             this.metroLabel16.Name = "metroLabel16";
             this.metroLabel16.Size = new System.Drawing.Size(30, 19);
             this.metroLabel16.TabIndex = 111;
@@ -507,7 +640,7 @@ namespace GersangClientStation {
             // metroLabel17
             // 
             this.metroLabel17.AutoSize = true;
-            this.metroLabel17.Location = new System.Drawing.Point(3, 293);
+            this.metroLabel17.Location = new System.Drawing.Point(11, 404);
             this.metroLabel17.Name = "metroLabel17";
             this.metroLabel17.Size = new System.Drawing.Size(21, 19);
             this.metroLabel17.TabIndex = 110;
@@ -516,7 +649,7 @@ namespace GersangClientStation {
             // metroLabel18
             // 
             this.metroLabel18.AutoSize = true;
-            this.metroLabel18.Location = new System.Drawing.Point(3, 264);
+            this.metroLabel18.Location = new System.Drawing.Point(3, 375);
             this.metroLabel18.Name = "metroLabel18";
             this.metroLabel18.Size = new System.Drawing.Size(37, 19);
             this.metroLabel18.TabIndex = 109;
@@ -525,7 +658,7 @@ namespace GersangClientStation {
             // metroLabel13
             // 
             this.metroLabel13.AutoSize = true;
-            this.metroLabel13.Location = new System.Drawing.Point(3, 207);
+            this.metroLabel13.Location = new System.Drawing.Point(6, 277);
             this.metroLabel13.Name = "metroLabel13";
             this.metroLabel13.Size = new System.Drawing.Size(30, 19);
             this.metroLabel13.TabIndex = 108;
@@ -534,7 +667,7 @@ namespace GersangClientStation {
             // metroLabel14
             // 
             this.metroLabel14.AutoSize = true;
-            this.metroLabel14.Location = new System.Drawing.Point(3, 178);
+            this.metroLabel14.Location = new System.Drawing.Point(11, 248);
             this.metroLabel14.Name = "metroLabel14";
             this.metroLabel14.Size = new System.Drawing.Size(21, 19);
             this.metroLabel14.TabIndex = 107;
@@ -543,7 +676,7 @@ namespace GersangClientStation {
             // metroLabel15
             // 
             this.metroLabel15.AutoSize = true;
-            this.metroLabel15.Location = new System.Drawing.Point(3, 149);
+            this.metroLabel15.Location = new System.Drawing.Point(3, 219);
             this.metroLabel15.Name = "metroLabel15";
             this.metroLabel15.Size = new System.Drawing.Size(37, 19);
             this.metroLabel15.TabIndex = 106;
@@ -552,7 +685,7 @@ namespace GersangClientStation {
             // metroLabel10
             // 
             this.metroLabel10.AutoSize = true;
-            this.metroLabel10.Location = new System.Drawing.Point(3, 92);
+            this.metroLabel10.Location = new System.Drawing.Point(6, 121);
             this.metroLabel10.Name = "metroLabel10";
             this.metroLabel10.Size = new System.Drawing.Size(30, 19);
             this.metroLabel10.TabIndex = 105;
@@ -561,7 +694,7 @@ namespace GersangClientStation {
             // metroLabel11
             // 
             this.metroLabel11.AutoSize = true;
-            this.metroLabel11.Location = new System.Drawing.Point(3, 63);
+            this.metroLabel11.Location = new System.Drawing.Point(11, 92);
             this.metroLabel11.Name = "metroLabel11";
             this.metroLabel11.Size = new System.Drawing.Size(21, 19);
             this.metroLabel11.TabIndex = 104;
@@ -570,7 +703,7 @@ namespace GersangClientStation {
             // metroLabel12
             // 
             this.metroLabel12.AutoSize = true;
-            this.metroLabel12.Location = new System.Drawing.Point(3, 34);
+            this.metroLabel12.Location = new System.Drawing.Point(3, 63);
             this.metroLabel12.Name = "metroLabel12";
             this.metroLabel12.Size = new System.Drawing.Size(37, 19);
             this.metroLabel12.TabIndex = 103;
@@ -578,7 +711,7 @@ namespace GersangClientStation {
             // 
             // button_clear_pw_3_tab_2
             // 
-            this.button_clear_pw_3_tab_2.Location = new System.Drawing.Point(172, 320);
+            this.button_clear_pw_3_tab_2.Location = new System.Drawing.Point(172, 431);
             this.button_clear_pw_3_tab_2.Name = "button_clear_pw_3_tab_2";
             this.button_clear_pw_3_tab_2.Size = new System.Drawing.Size(44, 23);
             this.button_clear_pw_3_tab_2.Style = MetroFramework.MetroColorStyle.Red;
@@ -589,7 +722,7 @@ namespace GersangClientStation {
             // 
             // button_clear_pw_2_tab_2
             // 
-            this.button_clear_pw_2_tab_2.Location = new System.Drawing.Point(172, 205);
+            this.button_clear_pw_2_tab_2.Location = new System.Drawing.Point(172, 275);
             this.button_clear_pw_2_tab_2.Name = "button_clear_pw_2_tab_2";
             this.button_clear_pw_2_tab_2.Size = new System.Drawing.Size(44, 23);
             this.button_clear_pw_2_tab_2.Style = MetroFramework.MetroColorStyle.Red;
@@ -600,7 +733,7 @@ namespace GersangClientStation {
             // 
             // button_clear_pw_1_tab_2
             // 
-            this.button_clear_pw_1_tab_2.Location = new System.Drawing.Point(172, 90);
+            this.button_clear_pw_1_tab_2.Location = new System.Drawing.Point(172, 119);
             this.button_clear_pw_1_tab_2.Name = "button_clear_pw_1_tab_2";
             this.button_clear_pw_1_tab_2.Size = new System.Drawing.Size(44, 23);
             this.button_clear_pw_1_tab_2.Style = MetroFramework.MetroColorStyle.Red;
@@ -612,18 +745,18 @@ namespace GersangClientStation {
             // label_notify_encrypt_tab_2
             // 
             this.label_notify_encrypt_tab_2.AutoSize = true;
-            this.label_notify_encrypt_tab_2.Location = new System.Drawing.Point(63, 376);
+            this.label_notify_encrypt_tab_2.Location = new System.Drawing.Point(63, 482);
             this.label_notify_encrypt_tab_2.Name = "label_notify_encrypt_tab_2";
-            this.label_notify_encrypt_tab_2.Size = new System.Drawing.Size(230, 19);
+            this.label_notify_encrypt_tab_2.Size = new System.Drawing.Size(230, 76);
             this.label_notify_encrypt_tab_2.Style = MetroFramework.MetroColorStyle.Silver;
             this.label_notify_encrypt_tab_2.TabIndex = 99;
-            this.label_notify_encrypt_tab_2.Text = "비밀번호는 암호화되어 저장됩니다.";
+            this.label_notify_encrypt_tab_2.Text = "비밀번호는 암호화되어 저장됩니다.\r\n\r\nPC방 등의 공개적인 장소에서는 \r\n사용을 권장하지 않습니다.";
             this.label_notify_encrypt_tab_2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.label_notify_encrypt_tab_2.UseStyleColors = true;
             // 
             // button_save_tab_2
             // 
-            this.button_save_tab_2.Location = new System.Drawing.Point(141, 419);
+            this.button_save_tab_2.Location = new System.Drawing.Point(141, 580);
             this.button_save_tab_2.Name = "button_save_tab_2";
             this.button_save_tab_2.Size = new System.Drawing.Size(75, 23);
             this.button_save_tab_2.TabIndex = 9;
@@ -632,7 +765,7 @@ namespace GersangClientStation {
             // 
             // textBox_client_pw_3_tab_2
             // 
-            this.textBox_client_pw_3_tab_2.Location = new System.Drawing.Point(46, 320);
+            this.textBox_client_pw_3_tab_2.Location = new System.Drawing.Point(46, 431);
             this.textBox_client_pw_3_tab_2.Name = "textBox_client_pw_3_tab_2";
             this.textBox_client_pw_3_tab_2.PasswordChar = '●';
             this.textBox_client_pw_3_tab_2.Size = new System.Drawing.Size(120, 23);
@@ -646,7 +779,7 @@ namespace GersangClientStation {
             this.label_client_1_tab_2.AutoSize = true;
             this.label_client_1_tab_2.FontSize = MetroFramework.MetroLabelSize.Tall;
             this.label_client_1_tab_2.FontWeight = MetroFramework.MetroLabelWeight.Bold;
-            this.label_client_1_tab_2.Location = new System.Drawing.Point(3, 4);
+            this.label_client_1_tab_2.Location = new System.Drawing.Point(0, 4);
             this.label_client_1_tab_2.Name = "label_client_1_tab_2";
             this.label_client_1_tab_2.Size = new System.Drawing.Size(104, 25);
             this.label_client_1_tab_2.TabIndex = 99;
@@ -655,14 +788,14 @@ namespace GersangClientStation {
             // 
             // textBox_client_id_3_tab_2
             // 
-            this.textBox_client_id_3_tab_2.Location = new System.Drawing.Point(46, 291);
+            this.textBox_client_id_3_tab_2.Location = new System.Drawing.Point(46, 402);
             this.textBox_client_id_3_tab_2.Name = "textBox_client_id_3_tab_2";
             this.textBox_client_id_3_tab_2.Size = new System.Drawing.Size(120, 23);
             this.textBox_client_id_3_tab_2.TabIndex = 7;
             // 
             // textBox_client_path_1_tab_2
             // 
-            this.textBox_client_path_1_tab_2.Location = new System.Drawing.Point(46, 32);
+            this.textBox_client_path_1_tab_2.Location = new System.Drawing.Point(46, 61);
             this.textBox_client_path_1_tab_2.Name = "textBox_client_path_1_tab_2";
             this.textBox_client_path_1_tab_2.Size = new System.Drawing.Size(257, 23);
             this.textBox_client_path_1_tab_2.TabIndex = 0;
@@ -670,7 +803,7 @@ namespace GersangClientStation {
             // 
             // button_path_finder_3_tab_2
             // 
-            this.button_path_finder_3_tab_2.Location = new System.Drawing.Point(309, 262);
+            this.button_path_finder_3_tab_2.Location = new System.Drawing.Point(309, 373);
             this.button_path_finder_3_tab_2.Name = "button_path_finder_3_tab_2";
             this.button_path_finder_3_tab_2.Size = new System.Drawing.Size(44, 23);
             this.button_path_finder_3_tab_2.TabIndex = 99;
@@ -680,7 +813,7 @@ namespace GersangClientStation {
             // 
             // button_path_finder_1_tab_2
             // 
-            this.button_path_finder_1_tab_2.Location = new System.Drawing.Point(309, 32);
+            this.button_path_finder_1_tab_2.Location = new System.Drawing.Point(309, 61);
             this.button_path_finder_1_tab_2.Name = "button_path_finder_1_tab_2";
             this.button_path_finder_1_tab_2.Size = new System.Drawing.Size(44, 23);
             this.button_path_finder_1_tab_2.TabIndex = 99;
@@ -690,7 +823,7 @@ namespace GersangClientStation {
             // 
             // textBox_client_path_3_tab_2
             // 
-            this.textBox_client_path_3_tab_2.Location = new System.Drawing.Point(46, 262);
+            this.textBox_client_path_3_tab_2.Location = new System.Drawing.Point(46, 373);
             this.textBox_client_path_3_tab_2.Name = "textBox_client_path_3_tab_2";
             this.textBox_client_path_3_tab_2.Size = new System.Drawing.Size(257, 23);
             this.textBox_client_path_3_tab_2.TabIndex = 6;
@@ -698,7 +831,7 @@ namespace GersangClientStation {
             // 
             // textBox_client_id_1_tab_2
             // 
-            this.textBox_client_id_1_tab_2.Location = new System.Drawing.Point(46, 61);
+            this.textBox_client_id_1_tab_2.Location = new System.Drawing.Point(46, 90);
             this.textBox_client_id_1_tab_2.Name = "textBox_client_id_1_tab_2";
             this.textBox_client_id_1_tab_2.Size = new System.Drawing.Size(120, 23);
             this.textBox_client_id_1_tab_2.TabIndex = 1;
@@ -708,7 +841,7 @@ namespace GersangClientStation {
             this.label_client_3_tab_2.AutoSize = true;
             this.label_client_3_tab_2.FontSize = MetroFramework.MetroLabelSize.Tall;
             this.label_client_3_tab_2.FontWeight = MetroFramework.MetroLabelWeight.Bold;
-            this.label_client_3_tab_2.Location = new System.Drawing.Point(3, 234);
+            this.label_client_3_tab_2.Location = new System.Drawing.Point(0, 316);
             this.label_client_3_tab_2.Name = "label_client_3_tab_2";
             this.label_client_3_tab_2.Size = new System.Drawing.Size(71, 25);
             this.label_client_3_tab_2.TabIndex = 99;
@@ -717,7 +850,7 @@ namespace GersangClientStation {
             // 
             // textBox_client_pw_1_tab_2
             // 
-            this.textBox_client_pw_1_tab_2.Location = new System.Drawing.Point(46, 90);
+            this.textBox_client_pw_1_tab_2.Location = new System.Drawing.Point(46, 119);
             this.textBox_client_pw_1_tab_2.Name = "textBox_client_pw_1_tab_2";
             this.textBox_client_pw_1_tab_2.PasswordChar = '●';
             this.textBox_client_pw_1_tab_2.Size = new System.Drawing.Size(120, 23);
@@ -728,7 +861,7 @@ namespace GersangClientStation {
             // 
             // textBox_client_pw_2_tab_2
             // 
-            this.textBox_client_pw_2_tab_2.Location = new System.Drawing.Point(46, 205);
+            this.textBox_client_pw_2_tab_2.Location = new System.Drawing.Point(46, 275);
             this.textBox_client_pw_2_tab_2.Name = "textBox_client_pw_2_tab_2";
             this.textBox_client_pw_2_tab_2.PasswordChar = '●';
             this.textBox_client_pw_2_tab_2.Size = new System.Drawing.Size(120, 23);
@@ -742,7 +875,7 @@ namespace GersangClientStation {
             this.label_client_2_tab_2.AutoSize = true;
             this.label_client_2_tab_2.FontSize = MetroFramework.MetroLabelSize.Tall;
             this.label_client_2_tab_2.FontWeight = MetroFramework.MetroLabelWeight.Bold;
-            this.label_client_2_tab_2.Location = new System.Drawing.Point(3, 119);
+            this.label_client_2_tab_2.Location = new System.Drawing.Point(0, 160);
             this.label_client_2_tab_2.Name = "label_client_2_tab_2";
             this.label_client_2_tab_2.Size = new System.Drawing.Size(71, 25);
             this.label_client_2_tab_2.TabIndex = 99;
@@ -751,14 +884,14 @@ namespace GersangClientStation {
             // 
             // textBox_client_id_2_tab_2
             // 
-            this.textBox_client_id_2_tab_2.Location = new System.Drawing.Point(46, 176);
+            this.textBox_client_id_2_tab_2.Location = new System.Drawing.Point(46, 246);
             this.textBox_client_id_2_tab_2.Name = "textBox_client_id_2_tab_2";
             this.textBox_client_id_2_tab_2.Size = new System.Drawing.Size(120, 23);
             this.textBox_client_id_2_tab_2.TabIndex = 4;
             // 
             // textBox_client_path_2_tab_2
             // 
-            this.textBox_client_path_2_tab_2.Location = new System.Drawing.Point(46, 147);
+            this.textBox_client_path_2_tab_2.Location = new System.Drawing.Point(46, 217);
             this.textBox_client_path_2_tab_2.Name = "textBox_client_path_2_tab_2";
             this.textBox_client_path_2_tab_2.Size = new System.Drawing.Size(257, 23);
             this.textBox_client_path_2_tab_2.TabIndex = 3;
@@ -766,7 +899,7 @@ namespace GersangClientStation {
             // 
             // button_path_finder_2_tab_2
             // 
-            this.button_path_finder_2_tab_2.Location = new System.Drawing.Point(309, 147);
+            this.button_path_finder_2_tab_2.Location = new System.Drawing.Point(309, 217);
             this.button_path_finder_2_tab_2.Name = "button_path_finder_2_tab_2";
             this.button_path_finder_2_tab_2.Size = new System.Drawing.Size(44, 23);
             this.button_path_finder_2_tab_2.TabIndex = 99;
@@ -776,6 +909,12 @@ namespace GersangClientStation {
             // 
             // metroTabPage3
             // 
+            this.metroTabPage3.Controls.Add(this.metroLabel36);
+            this.metroTabPage3.Controls.Add(this.textBox_client_name_3_tab_3);
+            this.metroTabPage3.Controls.Add(this.metroLabel35);
+            this.metroTabPage3.Controls.Add(this.textBox_client_name_2_tab_3);
+            this.metroTabPage3.Controls.Add(this.metroLabel34);
+            this.metroTabPage3.Controls.Add(this.textBox_client_name_1_tab_3);
             this.metroTabPage3.Controls.Add(this.metroLabel7);
             this.metroTabPage3.Controls.Add(this.metroLabel8);
             this.metroTabPage3.Controls.Add(this.metroLabel9);
@@ -808,15 +947,66 @@ namespace GersangClientStation {
             this.metroTabPage3.HorizontalScrollbarBarColor = true;
             this.metroTabPage3.Location = new System.Drawing.Point(4, 36);
             this.metroTabPage3.Name = "metroTabPage3";
-            this.metroTabPage3.Size = new System.Drawing.Size(357, 454);
+            this.metroTabPage3.Size = new System.Drawing.Size(357, 618);
             this.metroTabPage3.TabIndex = 2;
             this.metroTabPage3.Text = "3번";
             this.metroTabPage3.VerticalScrollbarBarColor = true;
             // 
+            // metroLabel36
+            // 
+            this.metroLabel36.AutoSize = true;
+            this.metroLabel36.Location = new System.Drawing.Point(3, 346);
+            this.metroLabel36.Name = "metroLabel36";
+            this.metroLabel36.Size = new System.Drawing.Size(37, 19);
+            this.metroLabel36.TabIndex = 130;
+            this.metroLabel36.Text = "별명";
+            // 
+            // textBox_client_name_3_tab_3
+            // 
+            this.textBox_client_name_3_tab_3.Location = new System.Drawing.Point(46, 344);
+            this.textBox_client_name_3_tab_3.MaxLength = 5;
+            this.textBox_client_name_3_tab_3.Name = "textBox_client_name_3_tab_3";
+            this.textBox_client_name_3_tab_3.Size = new System.Drawing.Size(75, 23);
+            this.textBox_client_name_3_tab_3.TabIndex = 129;
+            // 
+            // metroLabel35
+            // 
+            this.metroLabel35.AutoSize = true;
+            this.metroLabel35.Location = new System.Drawing.Point(3, 190);
+            this.metroLabel35.Name = "metroLabel35";
+            this.metroLabel35.Size = new System.Drawing.Size(37, 19);
+            this.metroLabel35.TabIndex = 128;
+            this.metroLabel35.Text = "별명";
+            // 
+            // textBox_client_name_2_tab_3
+            // 
+            this.textBox_client_name_2_tab_3.Location = new System.Drawing.Point(46, 188);
+            this.textBox_client_name_2_tab_3.MaxLength = 5;
+            this.textBox_client_name_2_tab_3.Name = "textBox_client_name_2_tab_3";
+            this.textBox_client_name_2_tab_3.Size = new System.Drawing.Size(75, 23);
+            this.textBox_client_name_2_tab_3.TabIndex = 127;
+            // 
+            // metroLabel34
+            // 
+            this.metroLabel34.AutoSize = true;
+            this.metroLabel34.Location = new System.Drawing.Point(3, 34);
+            this.metroLabel34.Name = "metroLabel34";
+            this.metroLabel34.Size = new System.Drawing.Size(37, 19);
+            this.metroLabel34.TabIndex = 126;
+            this.metroLabel34.Text = "별명";
+            // 
+            // textBox_client_name_1_tab_3
+            // 
+            this.textBox_client_name_1_tab_3.Location = new System.Drawing.Point(46, 32);
+            this.textBox_client_name_1_tab_3.MaxLength = 5;
+            this.textBox_client_name_1_tab_3.Name = "textBox_client_name_1_tab_3";
+            this.textBox_client_name_1_tab_3.Size = new System.Drawing.Size(75, 23);
+            this.textBox_client_name_1_tab_3.TabIndex = 125;
+            // 
             // metroLabel7
             // 
             this.metroLabel7.AutoSize = true;
-            this.metroLabel7.Location = new System.Drawing.Point(3, 322);
+            this.metroLabel7.Location = new System.Drawing.Point(6, 433);
             this.metroLabel7.Name = "metroLabel7";
             this.metroLabel7.Size = new System.Drawing.Size(30, 19);
             this.metroLabel7.TabIndex = 108;
@@ -825,7 +1015,7 @@ namespace GersangClientStation {
             // metroLabel8
             // 
             this.metroLabel8.AutoSize = true;
-            this.metroLabel8.Location = new System.Drawing.Point(3, 293);
+            this.metroLabel8.Location = new System.Drawing.Point(11, 404);
             this.metroLabel8.Name = "metroLabel8";
             this.metroLabel8.Size = new System.Drawing.Size(21, 19);
             this.metroLabel8.TabIndex = 107;
@@ -834,7 +1024,7 @@ namespace GersangClientStation {
             // metroLabel9
             // 
             this.metroLabel9.AutoSize = true;
-            this.metroLabel9.Location = new System.Drawing.Point(3, 264);
+            this.metroLabel9.Location = new System.Drawing.Point(3, 375);
             this.metroLabel9.Name = "metroLabel9";
             this.metroLabel9.Size = new System.Drawing.Size(37, 19);
             this.metroLabel9.TabIndex = 106;
@@ -843,7 +1033,7 @@ namespace GersangClientStation {
             // metroLabel4
             // 
             this.metroLabel4.AutoSize = true;
-            this.metroLabel4.Location = new System.Drawing.Point(3, 207);
+            this.metroLabel4.Location = new System.Drawing.Point(6, 277);
             this.metroLabel4.Name = "metroLabel4";
             this.metroLabel4.Size = new System.Drawing.Size(30, 19);
             this.metroLabel4.TabIndex = 105;
@@ -852,7 +1042,7 @@ namespace GersangClientStation {
             // metroLabel5
             // 
             this.metroLabel5.AutoSize = true;
-            this.metroLabel5.Location = new System.Drawing.Point(3, 178);
+            this.metroLabel5.Location = new System.Drawing.Point(11, 248);
             this.metroLabel5.Name = "metroLabel5";
             this.metroLabel5.Size = new System.Drawing.Size(21, 19);
             this.metroLabel5.TabIndex = 104;
@@ -861,7 +1051,7 @@ namespace GersangClientStation {
             // metroLabel6
             // 
             this.metroLabel6.AutoSize = true;
-            this.metroLabel6.Location = new System.Drawing.Point(3, 149);
+            this.metroLabel6.Location = new System.Drawing.Point(3, 219);
             this.metroLabel6.Name = "metroLabel6";
             this.metroLabel6.Size = new System.Drawing.Size(37, 19);
             this.metroLabel6.TabIndex = 103;
@@ -870,7 +1060,7 @@ namespace GersangClientStation {
             // metroLabel3
             // 
             this.metroLabel3.AutoSize = true;
-            this.metroLabel3.Location = new System.Drawing.Point(3, 92);
+            this.metroLabel3.Location = new System.Drawing.Point(6, 121);
             this.metroLabel3.Name = "metroLabel3";
             this.metroLabel3.Size = new System.Drawing.Size(30, 19);
             this.metroLabel3.TabIndex = 102;
@@ -879,7 +1069,7 @@ namespace GersangClientStation {
             // metroLabel2
             // 
             this.metroLabel2.AutoSize = true;
-            this.metroLabel2.Location = new System.Drawing.Point(3, 63);
+            this.metroLabel2.Location = new System.Drawing.Point(11, 92);
             this.metroLabel2.Name = "metroLabel2";
             this.metroLabel2.Size = new System.Drawing.Size(21, 19);
             this.metroLabel2.TabIndex = 101;
@@ -888,7 +1078,7 @@ namespace GersangClientStation {
             // metroLabel1
             // 
             this.metroLabel1.AutoSize = true;
-            this.metroLabel1.Location = new System.Drawing.Point(3, 34);
+            this.metroLabel1.Location = new System.Drawing.Point(3, 63);
             this.metroLabel1.Name = "metroLabel1";
             this.metroLabel1.Size = new System.Drawing.Size(37, 19);
             this.metroLabel1.TabIndex = 100;
@@ -896,7 +1086,7 @@ namespace GersangClientStation {
             // 
             // button_clear_pw_3_tab_3
             // 
-            this.button_clear_pw_3_tab_3.Location = new System.Drawing.Point(172, 320);
+            this.button_clear_pw_3_tab_3.Location = new System.Drawing.Point(172, 431);
             this.button_clear_pw_3_tab_3.Name = "button_clear_pw_3_tab_3";
             this.button_clear_pw_3_tab_3.Size = new System.Drawing.Size(44, 23);
             this.button_clear_pw_3_tab_3.Style = MetroFramework.MetroColorStyle.Red;
@@ -907,7 +1097,7 @@ namespace GersangClientStation {
             // 
             // button_clear_pw_2_tab_3
             // 
-            this.button_clear_pw_2_tab_3.Location = new System.Drawing.Point(172, 205);
+            this.button_clear_pw_2_tab_3.Location = new System.Drawing.Point(172, 275);
             this.button_clear_pw_2_tab_3.Name = "button_clear_pw_2_tab_3";
             this.button_clear_pw_2_tab_3.Size = new System.Drawing.Size(44, 23);
             this.button_clear_pw_2_tab_3.Style = MetroFramework.MetroColorStyle.Red;
@@ -918,7 +1108,7 @@ namespace GersangClientStation {
             // 
             // button_clear_pw_1_tab_3
             // 
-            this.button_clear_pw_1_tab_3.Location = new System.Drawing.Point(172, 90);
+            this.button_clear_pw_1_tab_3.Location = new System.Drawing.Point(172, 119);
             this.button_clear_pw_1_tab_3.Name = "button_clear_pw_1_tab_3";
             this.button_clear_pw_1_tab_3.Size = new System.Drawing.Size(44, 23);
             this.button_clear_pw_1_tab_3.Style = MetroFramework.MetroColorStyle.Red;
@@ -930,18 +1120,18 @@ namespace GersangClientStation {
             // label_notify_encrypt_tab_3
             // 
             this.label_notify_encrypt_tab_3.AutoSize = true;
-            this.label_notify_encrypt_tab_3.Location = new System.Drawing.Point(63, 376);
+            this.label_notify_encrypt_tab_3.Location = new System.Drawing.Point(63, 482);
             this.label_notify_encrypt_tab_3.Name = "label_notify_encrypt_tab_3";
-            this.label_notify_encrypt_tab_3.Size = new System.Drawing.Size(230, 19);
+            this.label_notify_encrypt_tab_3.Size = new System.Drawing.Size(230, 76);
             this.label_notify_encrypt_tab_3.Style = MetroFramework.MetroColorStyle.Silver;
             this.label_notify_encrypt_tab_3.TabIndex = 99;
-            this.label_notify_encrypt_tab_3.Text = "비밀번호는 암호화되어 저장됩니다.";
+            this.label_notify_encrypt_tab_3.Text = "비밀번호는 암호화되어 저장됩니다.\r\n\r\nPC방 등의 공개적인 장소에서는 \r\n사용을 권장하지 않습니다.";
             this.label_notify_encrypt_tab_3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.label_notify_encrypt_tab_3.UseStyleColors = true;
             // 
             // button_save_tab_3
             // 
-            this.button_save_tab_3.Location = new System.Drawing.Point(141, 419);
+            this.button_save_tab_3.Location = new System.Drawing.Point(141, 580);
             this.button_save_tab_3.Name = "button_save_tab_3";
             this.button_save_tab_3.Size = new System.Drawing.Size(75, 23);
             this.button_save_tab_3.TabIndex = 9;
@@ -950,7 +1140,7 @@ namespace GersangClientStation {
             // 
             // textBox_client_pw_3_tab_3
             // 
-            this.textBox_client_pw_3_tab_3.Location = new System.Drawing.Point(46, 320);
+            this.textBox_client_pw_3_tab_3.Location = new System.Drawing.Point(46, 431);
             this.textBox_client_pw_3_tab_3.Name = "textBox_client_pw_3_tab_3";
             this.textBox_client_pw_3_tab_3.PasswordChar = '●';
             this.textBox_client_pw_3_tab_3.Size = new System.Drawing.Size(120, 23);
@@ -964,7 +1154,7 @@ namespace GersangClientStation {
             this.label_client_1_tab_3.AutoSize = true;
             this.label_client_1_tab_3.FontSize = MetroFramework.MetroLabelSize.Tall;
             this.label_client_1_tab_3.FontWeight = MetroFramework.MetroLabelWeight.Bold;
-            this.label_client_1_tab_3.Location = new System.Drawing.Point(3, 4);
+            this.label_client_1_tab_3.Location = new System.Drawing.Point(0, 4);
             this.label_client_1_tab_3.Name = "label_client_1_tab_3";
             this.label_client_1_tab_3.Size = new System.Drawing.Size(104, 25);
             this.label_client_1_tab_3.TabIndex = 99;
@@ -973,14 +1163,14 @@ namespace GersangClientStation {
             // 
             // textBox_client_id_3_tab_3
             // 
-            this.textBox_client_id_3_tab_3.Location = new System.Drawing.Point(46, 291);
+            this.textBox_client_id_3_tab_3.Location = new System.Drawing.Point(46, 402);
             this.textBox_client_id_3_tab_3.Name = "textBox_client_id_3_tab_3";
             this.textBox_client_id_3_tab_3.Size = new System.Drawing.Size(120, 23);
             this.textBox_client_id_3_tab_3.TabIndex = 7;
             // 
             // textBox_client_path_1_tab_3
             // 
-            this.textBox_client_path_1_tab_3.Location = new System.Drawing.Point(46, 32);
+            this.textBox_client_path_1_tab_3.Location = new System.Drawing.Point(46, 61);
             this.textBox_client_path_1_tab_3.Name = "textBox_client_path_1_tab_3";
             this.textBox_client_path_1_tab_3.Size = new System.Drawing.Size(257, 23);
             this.textBox_client_path_1_tab_3.TabIndex = 0;
@@ -988,7 +1178,7 @@ namespace GersangClientStation {
             // 
             // button_path_finder_3_tab_3
             // 
-            this.button_path_finder_3_tab_3.Location = new System.Drawing.Point(309, 262);
+            this.button_path_finder_3_tab_3.Location = new System.Drawing.Point(309, 373);
             this.button_path_finder_3_tab_3.Name = "button_path_finder_3_tab_3";
             this.button_path_finder_3_tab_3.Size = new System.Drawing.Size(44, 23);
             this.button_path_finder_3_tab_3.TabIndex = 99;
@@ -998,7 +1188,7 @@ namespace GersangClientStation {
             // 
             // button_path_finder_1_tab_3
             // 
-            this.button_path_finder_1_tab_3.Location = new System.Drawing.Point(309, 32);
+            this.button_path_finder_1_tab_3.Location = new System.Drawing.Point(309, 61);
             this.button_path_finder_1_tab_3.Name = "button_path_finder_1_tab_3";
             this.button_path_finder_1_tab_3.Size = new System.Drawing.Size(44, 23);
             this.button_path_finder_1_tab_3.TabIndex = 99;
@@ -1008,7 +1198,7 @@ namespace GersangClientStation {
             // 
             // textBox_client_path_3_tab_3
             // 
-            this.textBox_client_path_3_tab_3.Location = new System.Drawing.Point(46, 262);
+            this.textBox_client_path_3_tab_3.Location = new System.Drawing.Point(46, 373);
             this.textBox_client_path_3_tab_3.Name = "textBox_client_path_3_tab_3";
             this.textBox_client_path_3_tab_3.Size = new System.Drawing.Size(257, 23);
             this.textBox_client_path_3_tab_3.TabIndex = 6;
@@ -1016,7 +1206,7 @@ namespace GersangClientStation {
             // 
             // textBox_client_id_1_tab_3
             // 
-            this.textBox_client_id_1_tab_3.Location = new System.Drawing.Point(46, 61);
+            this.textBox_client_id_1_tab_3.Location = new System.Drawing.Point(46, 90);
             this.textBox_client_id_1_tab_3.Name = "textBox_client_id_1_tab_3";
             this.textBox_client_id_1_tab_3.Size = new System.Drawing.Size(120, 23);
             this.textBox_client_id_1_tab_3.TabIndex = 1;
@@ -1026,7 +1216,7 @@ namespace GersangClientStation {
             this.label_client_3_tab_3.AutoSize = true;
             this.label_client_3_tab_3.FontSize = MetroFramework.MetroLabelSize.Tall;
             this.label_client_3_tab_3.FontWeight = MetroFramework.MetroLabelWeight.Bold;
-            this.label_client_3_tab_3.Location = new System.Drawing.Point(3, 234);
+            this.label_client_3_tab_3.Location = new System.Drawing.Point(0, 316);
             this.label_client_3_tab_3.Name = "label_client_3_tab_3";
             this.label_client_3_tab_3.Size = new System.Drawing.Size(71, 25);
             this.label_client_3_tab_3.TabIndex = 99;
@@ -1035,7 +1225,7 @@ namespace GersangClientStation {
             // 
             // textBox_client_pw_1_tab_3
             // 
-            this.textBox_client_pw_1_tab_3.Location = new System.Drawing.Point(46, 90);
+            this.textBox_client_pw_1_tab_3.Location = new System.Drawing.Point(46, 119);
             this.textBox_client_pw_1_tab_3.Name = "textBox_client_pw_1_tab_3";
             this.textBox_client_pw_1_tab_3.PasswordChar = '●';
             this.textBox_client_pw_1_tab_3.Size = new System.Drawing.Size(120, 23);
@@ -1046,7 +1236,7 @@ namespace GersangClientStation {
             // 
             // textBox_client_pw_2_tab_3
             // 
-            this.textBox_client_pw_2_tab_3.Location = new System.Drawing.Point(46, 205);
+            this.textBox_client_pw_2_tab_3.Location = new System.Drawing.Point(46, 275);
             this.textBox_client_pw_2_tab_3.Name = "textBox_client_pw_2_tab_3";
             this.textBox_client_pw_2_tab_3.PasswordChar = '●';
             this.textBox_client_pw_2_tab_3.Size = new System.Drawing.Size(120, 23);
@@ -1060,7 +1250,7 @@ namespace GersangClientStation {
             this.label_client_2_tab_3.AutoSize = true;
             this.label_client_2_tab_3.FontSize = MetroFramework.MetroLabelSize.Tall;
             this.label_client_2_tab_3.FontWeight = MetroFramework.MetroLabelWeight.Bold;
-            this.label_client_2_tab_3.Location = new System.Drawing.Point(3, 119);
+            this.label_client_2_tab_3.Location = new System.Drawing.Point(0, 160);
             this.label_client_2_tab_3.Name = "label_client_2_tab_3";
             this.label_client_2_tab_3.Size = new System.Drawing.Size(71, 25);
             this.label_client_2_tab_3.TabIndex = 99;
@@ -1069,14 +1259,14 @@ namespace GersangClientStation {
             // 
             // textBox_client_id_2_tab_3
             // 
-            this.textBox_client_id_2_tab_3.Location = new System.Drawing.Point(46, 176);
+            this.textBox_client_id_2_tab_3.Location = new System.Drawing.Point(46, 246);
             this.textBox_client_id_2_tab_3.Name = "textBox_client_id_2_tab_3";
             this.textBox_client_id_2_tab_3.Size = new System.Drawing.Size(120, 23);
             this.textBox_client_id_2_tab_3.TabIndex = 4;
             // 
             // textBox_client_path_2_tab_3
             // 
-            this.textBox_client_path_2_tab_3.Location = new System.Drawing.Point(46, 147);
+            this.textBox_client_path_2_tab_3.Location = new System.Drawing.Point(46, 217);
             this.textBox_client_path_2_tab_3.Name = "textBox_client_path_2_tab_3";
             this.textBox_client_path_2_tab_3.Size = new System.Drawing.Size(257, 23);
             this.textBox_client_path_2_tab_3.TabIndex = 3;
@@ -1084,7 +1274,7 @@ namespace GersangClientStation {
             // 
             // button_path_finder_2_tab_3
             // 
-            this.button_path_finder_2_tab_3.Location = new System.Drawing.Point(309, 147);
+            this.button_path_finder_2_tab_3.Location = new System.Drawing.Point(309, 217);
             this.button_path_finder_2_tab_3.Name = "button_path_finder_2_tab_3";
             this.button_path_finder_2_tab_3.Size = new System.Drawing.Size(44, 23);
             this.button_path_finder_2_tab_3.TabIndex = 99;
@@ -1097,7 +1287,7 @@ namespace GersangClientStation {
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BorderStyle = MetroFramework.Drawing.MetroBorderStyle.FixedSingle;
-            this.ClientSize = new System.Drawing.Size(410, 570);
+            this.ClientSize = new System.Drawing.Size(410, 744);
             this.Controls.Add(this.tabControl_setting);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -1211,5 +1401,23 @@ namespace GersangClientStation {
         private MetroFramework.Controls.MetroLabel metroLabel25;
         private MetroFramework.Controls.MetroLabel metroLabel26;
         private MetroFramework.Controls.MetroLabel metroLabel27;
+        private MetroFramework.Controls.MetroLabel metroLabel28;
+        private MetroFramework.Controls.MetroTextBox textBox_client_name_1_tab_1;
+        private MetroFramework.Controls.MetroLabel metroLabel30;
+        private MetroFramework.Controls.MetroTextBox textBox_client_name_3_tab_1;
+        private MetroFramework.Controls.MetroLabel metroLabel29;
+        private MetroFramework.Controls.MetroTextBox textBox_client_name_2_tab_1;
+        private MetroFramework.Controls.MetroLabel metroLabel31;
+        private MetroFramework.Controls.MetroTextBox textBox_client_name_1_tab_2;
+        private MetroFramework.Controls.MetroLabel metroLabel32;
+        private MetroFramework.Controls.MetroTextBox textBox_client_name_2_tab_2;
+        private MetroFramework.Controls.MetroLabel metroLabel33;
+        private MetroFramework.Controls.MetroTextBox textBox_client_name_3_tab_2;
+        private MetroFramework.Controls.MetroLabel metroLabel36;
+        private MetroFramework.Controls.MetroTextBox textBox_client_name_3_tab_3;
+        private MetroFramework.Controls.MetroLabel metroLabel35;
+        private MetroFramework.Controls.MetroTextBox textBox_client_name_2_tab_3;
+        private MetroFramework.Controls.MetroLabel metroLabel34;
+        private MetroFramework.Controls.MetroTextBox textBox_client_name_1_tab_3;
     }
 }

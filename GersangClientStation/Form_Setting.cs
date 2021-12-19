@@ -16,40 +16,49 @@ namespace GersangClientStation {
             tabControl_setting.SelectedTab = metroTabPage1;
 
             //탭1
+            textBox_client_name_1_tab_1.Text = ConfigurationManager.AppSettings["client_name_1_tab_1"];
             textBox_client_path_1_tab_1.Text = ConfigurationManager.AppSettings["client_path_1_tab_1"];
             textBox_client_id_1_tab_1.Text = ConfigurationManager.AppSettings["client_id_1_tab_1"];
             textBox_client_pw_1_tab_1.Text = ConfigurationManager.AppSettings["client_pw_1_tab_1"];
 
+            textBox_client_name_2_tab_1.Text = ConfigurationManager.AppSettings["client_name_2_tab_1"];
             textBox_client_path_2_tab_1.Text = ConfigurationManager.AppSettings["client_path_2_tab_1"];
             textBox_client_id_2_tab_1.Text = ConfigurationManager.AppSettings["client_id_2_tab_1"];
             textBox_client_pw_2_tab_1.Text = ConfigurationManager.AppSettings["client_pw_2_tab_1"];
 
+            textBox_client_name_3_tab_1.Text = ConfigurationManager.AppSettings["client_name_3_tab_1"];
             textBox_client_path_3_tab_1.Text = ConfigurationManager.AppSettings["client_path_3_tab_1"];
             textBox_client_id_3_tab_1.Text = ConfigurationManager.AppSettings["client_id_3_tab_1"];
             textBox_client_pw_3_tab_1.Text = ConfigurationManager.AppSettings["client_pw_3_tab_1"];
 
             //탭2
+            textBox_client_name_1_tab_2.Text = ConfigurationManager.AppSettings["client_name_1_tab_2"];
             textBox_client_path_1_tab_2.Text = ConfigurationManager.AppSettings["client_path_1_tab_2"];
             textBox_client_id_1_tab_2.Text = ConfigurationManager.AppSettings["client_id_1_tab_2"];
             textBox_client_pw_1_tab_2.Text = ConfigurationManager.AppSettings["client_pw_1_tab_2"];
 
+            textBox_client_name_2_tab_2.Text = ConfigurationManager.AppSettings["client_name_2_tab_2"];
             textBox_client_path_2_tab_2.Text = ConfigurationManager.AppSettings["client_path_2_tab_2"];
             textBox_client_id_2_tab_2.Text = ConfigurationManager.AppSettings["client_id_2_tab_2"];
             textBox_client_pw_2_tab_2.Text = ConfigurationManager.AppSettings["client_pw_2_tab_2"];
 
+            textBox_client_name_3_tab_2.Text = ConfigurationManager.AppSettings["client_name_3_tab_2"];
             textBox_client_path_3_tab_2.Text = ConfigurationManager.AppSettings["client_path_3_tab_2"];
             textBox_client_id_3_tab_2.Text = ConfigurationManager.AppSettings["client_id_3_tab_2"];
             textBox_client_pw_3_tab_2.Text = ConfigurationManager.AppSettings["client_pw_3_tab_2"];
 
             //탭3
+            textBox_client_name_1_tab_3.Text = ConfigurationManager.AppSettings["client_name_1_tab_3"];
             textBox_client_path_1_tab_3.Text = ConfigurationManager.AppSettings["client_path_1_tab_3"];
             textBox_client_id_1_tab_3.Text = ConfigurationManager.AppSettings["client_id_1_tab_3"];
             textBox_client_pw_1_tab_3.Text = ConfigurationManager.AppSettings["client_pw_1_tab_3"];
 
+            textBox_client_name_2_tab_3.Text = ConfigurationManager.AppSettings["client_name_2_tab_3"];
             textBox_client_path_2_tab_3.Text = ConfigurationManager.AppSettings["client_path_2_tab_3"];
             textBox_client_id_2_tab_3.Text = ConfigurationManager.AppSettings["client_id_2_tab_3"];
             textBox_client_pw_2_tab_3.Text = ConfigurationManager.AppSettings["client_pw_2_tab_3"];
 
+            textBox_client_name_3_tab_3.Text = ConfigurationManager.AppSettings["client_name_3_tab_3"];
             textBox_client_path_3_tab_3.Text = ConfigurationManager.AppSettings["client_path_3_tab_3"];
             textBox_client_id_3_tab_3.Text = ConfigurationManager.AppSettings["client_id_3_tab_3"];
             textBox_client_pw_3_tab_3.Text = ConfigurationManager.AppSettings["client_pw_3_tab_3"];
@@ -75,16 +84,17 @@ namespace GersangClientStation {
         private void button_path_finder_3_tab_3_Click(object sender, System.EventArgs e) { FindPath(textBox_client_path_3_tab_3); }
 
         private void button_save_tab_1_Click(object sender, System.EventArgs e) {
-            button_save_tab_1.Focus();
-
+            Form_Main.config.AppSettings.Settings["client_name_1_tab_1"].Value = textBox_client_name_1_tab_1.Text;
             Form_Main.config.AppSettings.Settings["client_path_1_tab_1"].Value = textBox_client_path_1_tab_1.Text;
             Form_Main.config.AppSettings.Settings["client_id_1_tab_1"].Value = textBox_client_id_1_tab_1.Text;
             Form_Main.config.AppSettings.Settings["client_pw_1_tab_1"].Value = textBox_client_pw_1_tab_1.Text;
 
+            Form_Main.config.AppSettings.Settings["client_name_2_tab_1"].Value = textBox_client_name_2_tab_1.Text;
             Form_Main.config.AppSettings.Settings["client_path_2_tab_1"].Value = textBox_client_path_2_tab_1.Text;
             Form_Main.config.AppSettings.Settings["client_id_2_tab_1"].Value = textBox_client_id_2_tab_1.Text;
             Form_Main.config.AppSettings.Settings["client_pw_2_tab_1"].Value = textBox_client_pw_2_tab_1.Text;
 
+            Form_Main.config.AppSettings.Settings["client_name_3_tab_1"].Value = textBox_client_name_3_tab_1.Text;
             Form_Main.config.AppSettings.Settings["client_path_3_tab_1"].Value = textBox_client_path_3_tab_1.Text;
             Form_Main.config.AppSettings.Settings["client_id_3_tab_1"].Value = textBox_client_id_3_tab_1.Text;
             Form_Main.config.AppSettings.Settings["client_pw_3_tab_1"].Value = textBox_client_pw_3_tab_1.Text;
@@ -96,14 +106,17 @@ namespace GersangClientStation {
         }
 
         private void button_save_tab_2_Click(object sender, System.EventArgs e) {
+            Form_Main.config.AppSettings.Settings["client_name_1_tab_2"].Value = textBox_client_name_1_tab_2.Text;
             Form_Main.config.AppSettings.Settings["client_path_1_tab_2"].Value = textBox_client_path_1_tab_2.Text;
             Form_Main.config.AppSettings.Settings["client_id_1_tab_2"].Value = textBox_client_id_1_tab_2.Text;
             Form_Main.config.AppSettings.Settings["client_pw_1_tab_2"].Value = textBox_client_pw_1_tab_2.Text;
 
+            Form_Main.config.AppSettings.Settings["client_name_2_tab_2"].Value = textBox_client_name_2_tab_2.Text;
             Form_Main.config.AppSettings.Settings["client_path_2_tab_2"].Value = textBox_client_path_2_tab_2.Text;
             Form_Main.config.AppSettings.Settings["client_id_2_tab_2"].Value = textBox_client_id_2_tab_2.Text;
             Form_Main.config.AppSettings.Settings["client_pw_2_tab_2"].Value = textBox_client_pw_2_tab_2.Text;
 
+            Form_Main.config.AppSettings.Settings["client_name_3_tab_2"].Value = textBox_client_name_3_tab_2.Text;
             Form_Main.config.AppSettings.Settings["client_path_3_tab_2"].Value = textBox_client_path_3_tab_2.Text;
             Form_Main.config.AppSettings.Settings["client_id_3_tab_2"].Value = textBox_client_id_3_tab_2.Text;
             Form_Main.config.AppSettings.Settings["client_pw_3_tab_2"].Value = textBox_client_pw_3_tab_2.Text;
@@ -115,14 +128,17 @@ namespace GersangClientStation {
         }
 
         private void button_save_tab_3_Click(object sender, System.EventArgs e) {
+            Form_Main.config.AppSettings.Settings["client_name_1_tab_3"].Value = textBox_client_name_1_tab_3.Text;
             Form_Main.config.AppSettings.Settings["client_path_1_tab_3"].Value = textBox_client_path_1_tab_3.Text;
             Form_Main.config.AppSettings.Settings["client_id_1_tab_3"].Value = textBox_client_id_1_tab_3.Text;
             Form_Main.config.AppSettings.Settings["client_pw_1_tab_3"].Value = textBox_client_pw_1_tab_3.Text;
 
+            Form_Main.config.AppSettings.Settings["client_name_2_tab_3"].Value = textBox_client_name_2_tab_3.Text;
             Form_Main.config.AppSettings.Settings["client_path_2_tab_3"].Value = textBox_client_path_2_tab_3.Text;
             Form_Main.config.AppSettings.Settings["client_id_2_tab_3"].Value = textBox_client_id_2_tab_3.Text;
             Form_Main.config.AppSettings.Settings["client_pw_2_tab_3"].Value = textBox_client_pw_2_tab_3.Text;
 
+            Form_Main.config.AppSettings.Settings["client_name_3_tab_3"].Value = textBox_client_name_3_tab_3.Text;
             Form_Main.config.AppSettings.Settings["client_path_3_tab_3"].Value = textBox_client_path_3_tab_3.Text;
             Form_Main.config.AppSettings.Settings["client_id_3_tab_3"].Value = textBox_client_id_3_tab_3.Text;
             Form_Main.config.AppSettings.Settings["client_pw_3_tab_3"].Value = textBox_client_pw_3_tab_3.Text;
