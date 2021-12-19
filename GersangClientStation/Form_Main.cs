@@ -764,6 +764,16 @@ namespace GersangClientStation {
         private void LoadSetting() {
             byte settingNumber = Byte.Parse(ConfigurationManager.AppSettings["setting_num"]);
 
+            //이전 버전에서 설정 파일을 가져온 경우 클라이언트 별명을 임의로 설정합니다. 
+            for(int tab = 1; tab <= 3; tab++) {
+                for (int num = 1; num <= 3; num++) {
+                    KeyValueConfigurationElement element = Form_Main.config.AppSettings.Settings["client_name_" + num + "_tab_" + tab];
+                    if (element == null) { Form_Main.config.AppSettings.Settings.Add("client_name_" + num + "_tab_" + tab, "Client" + num); }
+                }
+            }
+            config.Save(ConfigurationSaveMode.Modified, true);
+            ConfigurationManager.RefreshSection("appSettings");
+
             switch (settingNumber) {
                 case 1:
                     this.label_client_1.Text = ConfigurationManager.AppSettings["client_name_1_tab_1"];
