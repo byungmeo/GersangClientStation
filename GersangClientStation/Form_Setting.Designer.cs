@@ -306,7 +306,7 @@ namespace GersangClientStation {
             this.button_save_tab_1.Name = "button_save_tab_1";
             this.button_save_tab_1.Size = new System.Drawing.Size(75, 23);
             this.button_save_tab_1.TabIndex = 12;
-            this.button_save_tab_1.Text = "저장";
+            this.button_save_tab_1.Text = "1번 저장";
             this.button_save_tab_1.Click += new System.EventHandler(this.button_save_tab_1_Click);
             // 
             // tabControl_setting
@@ -760,7 +760,7 @@ namespace GersangClientStation {
             this.button_save_tab_2.Name = "button_save_tab_2";
             this.button_save_tab_2.Size = new System.Drawing.Size(75, 23);
             this.button_save_tab_2.TabIndex = 12;
-            this.button_save_tab_2.Text = "저장";
+            this.button_save_tab_2.Text = "2번 저장";
             this.button_save_tab_2.Click += new System.EventHandler(this.button_save_tab_2_Click);
             // 
             // textBox_client_pw_3_tab_2
@@ -1135,7 +1135,7 @@ namespace GersangClientStation {
             this.button_save_tab_3.Name = "button_save_tab_3";
             this.button_save_tab_3.Size = new System.Drawing.Size(75, 23);
             this.button_save_tab_3.TabIndex = 12;
-            this.button_save_tab_3.Text = "저장";
+            this.button_save_tab_3.Text = "3번 저장";
             this.button_save_tab_3.Click += new System.EventHandler(this.button_save_tab_3_Click);
             // 
             // textBox_client_pw_3_tab_3
