@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Diagnostics;
+using System.Net;
 using System.Reflection;
 using System.Security.Cryptography;
 using System.Windows.Forms;
@@ -788,6 +789,8 @@ namespace GersangClientStation {
         /// </summary>
         //깃허브 레포지토리의 최신 Release 버전을 이용하여 최신버전인지 체크하고, 구버전이라면 깃허브 링크로 안내합니다.
         private async void checkUpdate() {
+            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+
             //버전 업데이트 시 Properties -> AssemblyInfo.cs 의 AssemblyVersion과 AssemblyFileVersion을 바꿔주세요.
             string version = Assembly.GetExecutingAssembly().GetName().Version.ToString().Substring(0, 5);
 
@@ -861,7 +864,9 @@ namespace GersangClientStation {
                     Debug.WriteLine("현재 버전은 최신버전입니다!");
                 }
             } catch (Exception ex) {
-                MessageBox.Show("프로그램 업데이트 확인 도중 에러가 발생하였습니다.\n문의 부탁드립니다.", "업데이트 확인 오류", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("프로그램 업데이트 확인 도중 에러가 발생하였습니다.\n에러 메시지를 캡쳐하고, 문의 부탁드립니다.", "업데이트 확인 오류", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("에러 메시지1 : \n" + ex.Message);
+                MessageBox.Show("에러 메시지2 : \n" + ex.ToString());
                 Debug.WriteLine(ex.Message);
             }
         }
