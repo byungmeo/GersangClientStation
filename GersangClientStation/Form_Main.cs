@@ -15,7 +15,7 @@ namespace GersangClientStation {
         /// <summary>
         /// 셋업
         /// </summary>
-        
+
         //app.config 관련
         public static Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
 
@@ -79,6 +79,7 @@ namespace GersangClientStation {
         //폼 로딩
         private void Form_Main_Load(object sender, EventArgs e) {
             initRadioButton(); //저장되어있는 세팅값 번호를 불러오고, 해당 세팅값으로 클라이언트를 세팅합니다.
+            initCheckBox();
         }
         //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -90,7 +91,7 @@ namespace GersangClientStation {
             Debug.WriteLine("메인 브라우저가 로딩되었습니다.");
             this.document_main = mainBrowser.Document;
             Debug.WriteLine("현재 메인 브라우저 접속 URL : " + document_main.Url);
-            
+
             //홈페이지 주소가 otp주소인지 확인합니다.
             if (document_main.Url.Equals(url_otp)) {
                 HtmlElementCollection input_otp = this.document_main.GetElementsByTagName("input").GetElementsByName("GSotpNo"); //OTP 입력상자를 가져옵니다.
@@ -102,7 +103,7 @@ namespace GersangClientStation {
                     }
 
                     if (!isSubmitOtp) {
-                        if(input_otp[0].GetAttribute("value").Length == 0) {
+                        if (input_otp[0].GetAttribute("value").Length == 0) {
                             MessageBox.Show("OTP 코드를 입력해주세요.", "OTP 코드 입력", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                             isTypingOtp = false;
                             return;
@@ -123,7 +124,7 @@ namespace GersangClientStation {
             isSubmitOtp = false;
 
             //로그인 상태가 아니라면 로그인 여부를 판단하지 않습니다.
-            if(currentLoginClient == Client.None) {
+            if (currentLoginClient == Client.None) {
                 return;
             }
 
@@ -187,8 +188,8 @@ namespace GersangClientStation {
 
                 //frmLogin이라는 Name 속성을 가진 Form 태그 요소를 찾습니다.
                 HtmlElement form_login = document_main.Forms.GetElementsByName("frmLogin")[0];
-                
-                if(input_userId == null || input_userPwd == null || form_login == null) {
+
+                if (input_userId == null || input_userPwd == null || form_login == null) {
                     return;
                 }
 
@@ -206,8 +207,8 @@ namespace GersangClientStation {
 
                 form_login.InvokeMember("submit"); //입력된 아이디와 패스워드로 로그인을 시도
 
-            } catch(ArgumentOutOfRangeException e) {
-                if(document_main.Url.Equals(url_main)) {
+            } catch (ArgumentOutOfRangeException e) {
+                if (document_main.Url.Equals(url_main)) {
                     Debug.WriteLine(e.Message);
                     Debug.WriteLine("로그인을 다시 시도합니다.");
                     //SetStatus(Status.Retrying, client);
@@ -277,7 +278,7 @@ namespace GersangClientStation {
         /// 로그아웃
         /// </summary>
         private void Logout() {
-            if(currentLoginClient != Client.None) {
+            if (currentLoginClient != Client.None) {
                 Debug.WriteLine("로그아웃 시작");
                 switch (currentLoginClient) {
                     case Client.MainClient:
@@ -304,7 +305,7 @@ namespace GersangClientStation {
         /// 게임 시작
         /// </summary>
         private void GameStart(string client_path) {
-            if(currentLoginClient == Client.None) {
+            if (currentLoginClient == Client.None) {
                 MessageBox.Show("로그인을 먼저 해주세요.");
                 return;
             }
@@ -346,20 +347,20 @@ namespace GersangClientStation {
 
             //출석체크 이벤트 페이지를 성공적으로 찾았으며, 현재 네이버에 거상을 검색한 상태라면,
             //검색페이지 내의 거상 공식홈페이지 링크 버튼을 찾고 누릅니다.
-            if(isNaver) {
+            if (isNaver) {
                 clickGersangLink();
                 return;
             }
 
             //거상 홈페이지에 들어왔다면, 바로 이벤트 페이지로 접속합니다.
-            if(isMainPage) {
+            if (isMainPage) {
                 navigateEventPage();
                 return;
             }
 
             //거상 출석체크 이벤트 페이지에 접속하였다면, 현재 시간 체크 후 해당 시간의 아이템 받기 버튼을 클릭합니다.
             if (isEventPage && eventBrowser.Url.Equals(url_event)) {
-                if(eventBrowser.Document.GetElementById("pop") != null) { //단순히 정말로 페이지가 다 로딩된건지 확인하기 위함입니다.
+                if (eventBrowser.Document.GetElementById("pop") != null) { //단순히 정말로 페이지가 다 로딩된건지 확인하기 위함입니다.
                     clickItemGet();
                 }
             }
@@ -380,13 +381,13 @@ namespace GersangClientStation {
                 return;
             }
 
-            if(url_event != "" && isFind) {
+            if (url_event != "" && isFind) {
                 navigateSearchPage();
             } else {
                 MessageBox.Show("이벤트 페이지를 찾지 못하였습니다.");
             }
         }
-        
+
         //네이버에 거상을 검색
         private void navigateSearchPage() {
             isNaver = true;
@@ -442,7 +443,7 @@ namespace GersangClientStation {
         //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
         /// <summary>
-        /// 로그인 토글버튼 클릭
+        /// 로그인 토글버튼 클릭 & 별명 체크박스 클릭
         /// </summary>
         private void toggle_client_1_Click(object sender, EventArgs e) {
             MetroToggle toggle = sender as MetroToggle;
@@ -503,6 +504,22 @@ namespace GersangClientStation {
                 Logout();
             }
         }
+
+        //별명 체크박스 클릭
+        private void check_nickname_CheckedChanged(object sender, EventArgs e) {
+            MetroCheckBox checkBox = sender as MetroCheckBox;
+            if(checkBox.Equals(this.check_nickname1)) {
+                config.AppSettings.Settings["display_nickname_1"].Value = checkBox.Checked.ToString();
+            } else if(checkBox.Equals(this.check_nickname2)) {
+                config.AppSettings.Settings["display_nickname_2"].Value = checkBox.Checked.ToString();
+            } else if(checkBox.Equals(this.check_nickname3)) {
+                config.AppSettings.Settings["display_nickname_3"].Value = checkBox.Checked.ToString();
+            } else {
+                MessageBox.Show("오류 발생 : check_nickname_CheckedChanged\nUnknown CheckBox");
+                return;
+            }
+            LoadSetting();
+        }
         //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
         /// <summary>
@@ -535,7 +552,7 @@ namespace GersangClientStation {
                 LoadSetting();
 
                 //만약 로그인 되어있었다면, 로그아웃 합니다.
-                if(currentLoginClient != Client.None) {
+                if (currentLoginClient != Client.None) {
                     Logout();
                 }
             }
@@ -589,7 +606,7 @@ namespace GersangClientStation {
             }
         }
         private void link_shortcut_3_Click(object sender, EventArgs e) {
-            if(shortcut_address_3 == "") {
+            if (shortcut_address_3 == "") {
                 MessageBox.Show("바로가기 주소를 설정 해주세요.");
                 return;
             }
@@ -630,30 +647,27 @@ namespace GersangClientStation {
 
             //클릭한 버튼에 따라 변수를 초기화
             Button button_start = sender as Button;
-            if(button_start.Equals(button_start_1)) { 
+            if (button_start.Equals(button_start_1)) {
                 client = Client.MainClient;
                 client_path = client_path_1;
-            } 
-            else if(button_start.Equals(button_start_2)) { 
+            } else if (button_start.Equals(button_start_2)) {
                 client = Client.Client2;
                 client_path = client_path_2;
-            } 
-            else if(button_start.Equals(button_start_3)) { 
+            } else if (button_start.Equals(button_start_3)) {
                 client = Client.Client3;
                 client_path = client_path_3;
-            }
-            else { 
+            } else {
                 client = Client.None;
                 client_path = string.Empty;
             }
 
             //예외 처리
-            if(client == Client.None) {
+            if (client == Client.None) {
                 MessageBox.Show("잘못된 시작 버튼, 개발자에게 문의하세요.");
                 return;
             }
 
-            if(client_path == "") {
+            if (client_path == "") {
                 MessageBox.Show("거상 경로를 지정해주세요.");
                 return;
             }
@@ -661,12 +675,12 @@ namespace GersangClientStation {
             if (currentLoginClient != client) {
                 //다른 계정에 로그인 되어있거나, 로그아웃 상태라면,
 
-                if(this.findElementByClassName("div", "user_name") != null) {
+                if (this.findElementByClassName("div", "user_name") != null) {
                     //로그인이 되어있는지 확실하게 체크한 후,
 
                     Logout(); //로그아웃 한다.
 
-                    
+
                     //로그아웃이 잘 되었는지 확인
                     for (int i = 0; i < max_check_count; i++) {
                         Delay(200); //0.2초 간격으로 최대 2초동안 로그아웃이 잘 되었는지 확인합니다.
@@ -674,14 +688,14 @@ namespace GersangClientStation {
                             Login(client);
                             break;
                         }
-                        
-                        if(i == max_check_count - 1) {
+
+                        if (i == max_check_count - 1) {
                             MessageBox.Show("로그아웃이 정상적으로 완료되지 않았습니다.");
                             return;
                         }
                     }
 
-                    for(int i = 0; i < max_check_count; i++) {
+                    for (int i = 0; i < max_check_count; i++) {
                         Delay(200); //0.2초 간격으로 최대 2초동안 로그인이 잘 되었는지 확인합니다.
                         if (this.findElementByClassName("div", "user_name") != null) {
                             GameStart(client_path);
@@ -736,7 +750,7 @@ namespace GersangClientStation {
             LoadSetting(); //세팅값이 바뀌었다면 새로고침 합니다.
         }
         //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        
+
         /// <summary>
         /// 세팅 메서드
         /// </summary>
@@ -782,8 +796,8 @@ namespace GersangClientStation {
             byte settingNumber = Byte.Parse(ConfigurationManager.AppSettings["setting_num"]);
 
             //이전 버전에서 설정 파일을 가져온 경우 세팅값을 임의로 설정합니다.
-            for(int tab = 1; tab <= 4; tab++) {
-                for(int num = 1; num <= 3; num++) {
+            for (int tab = 1; tab <= 4; tab++) {
+                for (int num = 1; num <= 3; num++) {
                     KeyValueConfigurationElement element_name = Form_Main.config.AppSettings.Settings["client_name_" + num + "_tab_" + tab];
                     if (element_name == null) { Form_Main.config.AppSettings.Settings.Add("client_name_" + num + "_tab_" + tab, "Client" + num); }
 
@@ -807,21 +821,30 @@ namespace GersangClientStation {
                 if (element_shortcut_address == null) { Form_Main.config.AppSettings.Settings.Add("shortcut_address_" + num, url_main); }
             }
 
+            //이전 버전에서 설정 파일을 가져온 경우 별명 표시 여부 설정을 임의로 설정합니다.
+            for (int num = 1; num <= 3; num++) {
+                KeyValueConfigurationElement element_display_nickname = Form_Main.config.AppSettings.Settings["display_nickname_" + num];
+                if (element_display_nickname == null) { Form_Main.config.AppSettings.Settings.Add("display_nickname_" + num, "true"); }
+            }
+
             config.Save(ConfigurationSaveMode.Modified, true);
             ConfigurationManager.RefreshSection("appSettings");
 
-            this.label_client_1.Text = ConfigurationManager.AppSettings["client_name_1_tab_" + settingNumber];
             this.client_path_1 = ConfigurationManager.AppSettings["client_path_1_tab_" + settingNumber];
             this.client_id_1 = ConfigurationManager.AppSettings["client_id_1_tab_" + settingNumber];
             this.client_pw_1 = ConfigurationManager.AppSettings["client_pw_1_tab_" + settingNumber];
-            this.label_client_2.Text = ConfigurationManager.AppSettings["client_name_2_tab_" + settingNumber];
+
             this.client_path_2 = ConfigurationManager.AppSettings["client_path_2_tab_" + settingNumber];
             this.client_id_2 = ConfigurationManager.AppSettings["client_id_2_tab_" + settingNumber];
             this.client_pw_2 = ConfigurationManager.AppSettings["client_pw_2_tab_" + settingNumber];
-            this.label_client_3.Text = ConfigurationManager.AppSettings["client_name_3_tab_" + settingNumber];
+
             this.client_path_3 = ConfigurationManager.AppSettings["client_path_3_tab_" + settingNumber];
             this.client_id_3 = ConfigurationManager.AppSettings["client_id_3_tab_" + settingNumber];
             this.client_pw_3 = ConfigurationManager.AppSettings["client_pw_3_tab_" + settingNumber];
+
+            if (check_nickname1.Checked) { this.label_client_1.Text = ConfigurationManager.AppSettings["client_name_1_tab_" + settingNumber]; } else { this.label_client_1.Text = client_id_1; }
+            if (check_nickname2.Checked) { this.label_client_2.Text = ConfigurationManager.AppSettings["client_name_2_tab_" + settingNumber]; } else { this.label_client_2.Text = client_id_2; }
+            if (check_nickname3.Checked) { this.label_client_3.Text = ConfigurationManager.AppSettings["client_name_3_tab_" + settingNumber]; } else { this.label_client_3.Text = client_id_3; }
 
             this.shortcut_name_1 = ConfigurationManager.AppSettings["shortcut_name_1"];
             link_shortcut_1.Text = this.shortcut_name_1;
@@ -835,7 +858,7 @@ namespace GersangClientStation {
         }
 
         //저장되어있는 세팅값 번호를 불러오고, 해당 세팅값으로 클라이언트를 세팅합니다.
-        private void initRadioButton () {
+        private void initRadioButton() {
             byte settingNumber = Byte.Parse(ConfigurationManager.AppSettings["setting_num"]);
             switch (settingNumber) {
                 case 1:
@@ -854,6 +877,16 @@ namespace GersangClientStation {
                     MessageBox.Show("오류 발생 : Form1_Load\nInvalid Setting Number");
                     return;
             }
+        }
+
+        private void initCheckBox() {
+            bool display_nickname_1 = bool.Parse(ConfigurationManager.AppSettings["display_nickname_1"]);
+            bool display_nickname_2 = bool.Parse(ConfigurationManager.AppSettings["display_nickname_2"]);
+            bool display_nickname_3 = bool.Parse(ConfigurationManager.AppSettings["display_nickname_3"]);
+
+            this.check_nickname1.Checked = display_nickname_1;
+            this.check_nickname2.Checked = display_nickname_2;
+            this.check_nickname3.Checked = display_nickname_3;
         }
 
         private void initWebBrowser() {
