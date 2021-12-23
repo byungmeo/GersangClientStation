@@ -17,6 +17,12 @@ namespace GersangClientStation {
 
             textBox_name_3.Text = ConfigurationManager.AppSettings["shortcut_name_3"];
             textBox_address_3.Text = ConfigurationManager.AppSettings["shortcut_address_3"];
+
+            textBox_name_4.Text = ConfigurationManager.AppSettings["shortcut_name_4"];
+            textBox_address_4.Text = ConfigurationManager.AppSettings["shortcut_address_4"];
+
+            textBox_name_5.Text = ConfigurationManager.AppSettings["shortcut_name_5"];
+            textBox_address_5.Text = ConfigurationManager.AppSettings["shortcut_address_5"];
         }
 
         private void button_save_Click(object sender, System.EventArgs e) {
@@ -28,6 +34,12 @@ namespace GersangClientStation {
 
             Form_Main.config.AppSettings.Settings["shortcut_name_3"].Value = textBox_name_3.Text;
             Form_Main.config.AppSettings.Settings["shortcut_address_3"].Value = textBox_address_3.Text;
+
+            Form_Main.config.AppSettings.Settings["shortcut_name_4"].Value = textBox_name_4.Text;
+            Form_Main.config.AppSettings.Settings["shortcut_address_4"].Value = textBox_address_4.Text;
+
+            Form_Main.config.AppSettings.Settings["shortcut_name_5"].Value = textBox_name_5.Text;
+            Form_Main.config.AppSettings.Settings["shortcut_address_5"].Value = textBox_address_5.Text;
 
             Form_Main.config.Save(ConfigurationSaveMode.Modified, true);
             ConfigurationManager.RefreshSection("appSettings");

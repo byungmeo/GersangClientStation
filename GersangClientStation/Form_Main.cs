@@ -781,13 +781,32 @@ namespace GersangClientStation {
         private void LoadSetting() {
             byte settingNumber = Byte.Parse(ConfigurationManager.AppSettings["setting_num"]);
 
-            //이전 버전에서 설정 파일을 가져온 경우 클라이언트 별명을 임의로 설정합니다. 
+            //이전 버전에서 설정 파일을 가져온 경우 세팅값을 임의로 설정합니다.
             for(int tab = 1; tab <= 4; tab++) {
-                for (int num = 1; num <= 3; num++) {
-                    KeyValueConfigurationElement element = Form_Main.config.AppSettings.Settings["client_name_" + num + "_tab_" + tab];
-                    if (element == null) { Form_Main.config.AppSettings.Settings.Add("client_name_" + num + "_tab_" + tab, "Client" + num); }
+                for(int num = 1; num <= 3; num++) {
+                    KeyValueConfigurationElement element_name = Form_Main.config.AppSettings.Settings["client_name_" + num + "_tab_" + tab];
+                    if (element_name == null) { Form_Main.config.AppSettings.Settings.Add("client_name_" + num + "_tab_" + tab, "Client" + num); }
+
+                    KeyValueConfigurationElement element_path = Form_Main.config.AppSettings.Settings["client_path_" + num + "_tab_" + tab];
+                    if (element_path == null) { Form_Main.config.AppSettings.Settings.Add("client_path_" + num + "_tab_" + tab, ""); }
+
+                    KeyValueConfigurationElement element_id = Form_Main.config.AppSettings.Settings["client_id_" + num + "_tab_" + tab];
+                    if (element_id == null) { Form_Main.config.AppSettings.Settings.Add("client_id_" + num + "_tab_" + tab, ""); }
+
+                    KeyValueConfigurationElement element_pw = Form_Main.config.AppSettings.Settings["client_pw_" + num + "_tab_" + tab];
+                    if (element_pw == null) { Form_Main.config.AppSettings.Settings.Add("client_pw_" + num + "_tab_" + tab, ""); }
                 }
             }
+
+            //이전 버전에서 설정 파일을 가져온 경우 바로가기 설정을 임의로 설정합니다.
+            for (int num = 1; num <= 5; num++) {
+                KeyValueConfigurationElement element_shortcut_name = Form_Main.config.AppSettings.Settings["shortcut_name_" + num];
+                if (element_shortcut_name == null) { Form_Main.config.AppSettings.Settings.Add("shortcut_name_" + num, "바로가기" + num); }
+
+                KeyValueConfigurationElement element_shortcut_address = Form_Main.config.AppSettings.Settings["shortcut_address_" + num];
+                if (element_shortcut_address == null) { Form_Main.config.AppSettings.Settings.Add("shortcut_address_" + num, url_main); }
+            }
+
             config.Save(ConfigurationSaveMode.Modified, true);
             ConfigurationManager.RefreshSection("appSettings");
 
