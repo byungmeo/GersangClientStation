@@ -226,6 +226,9 @@ namespace GersangClientStation {
             Form_Main.config.AppSettings.Settings["client_pw_1_tab_3"].Value = "";
             Form_Main.config.AppSettings.Settings["client_pw_2_tab_3"].Value = "";
             Form_Main.config.AppSettings.Settings["client_pw_3_tab_3"].Value = "";
+            Form_Main.config.AppSettings.Settings["client_pw_1_tab_4"].Value = "";
+            Form_Main.config.AppSettings.Settings["client_pw_2_tab_4"].Value = "";
+            Form_Main.config.AppSettings.Settings["client_pw_3_tab_4"].Value = "";
 
             config.Save(ConfigurationSaveMode.Modified, true);
             ConfigurationManager.RefreshSection("appSettings");
@@ -520,6 +523,8 @@ namespace GersangClientStation {
                     config.AppSettings.Settings["setting_num"].Value = "2";
                 } else if (rb.Equals(radio_setting_3)) {
                     config.AppSettings.Settings["setting_num"].Value = "3";
+                } else if (rb.Equals(radio_setting_4)) {
+                    config.AppSettings.Settings["setting_num"].Value = "4";
                 } else {
                     MessageBox.Show("오류 발생 : radio_setting_CheckedChanged\nUnknown RadioButton");
                     return;
@@ -777,7 +782,7 @@ namespace GersangClientStation {
             byte settingNumber = Byte.Parse(ConfigurationManager.AppSettings["setting_num"]);
 
             //이전 버전에서 설정 파일을 가져온 경우 클라이언트 별명을 임의로 설정합니다. 
-            for(int tab = 1; tab <= 3; tab++) {
+            for(int tab = 1; tab <= 4; tab++) {
                 for (int num = 1; num <= 3; num++) {
                     KeyValueConfigurationElement element = Form_Main.config.AppSettings.Settings["client_name_" + num + "_tab_" + tab];
                     if (element == null) { Form_Main.config.AppSettings.Settings.Add("client_name_" + num + "_tab_" + tab, "Client" + num); }
@@ -786,54 +791,18 @@ namespace GersangClientStation {
             config.Save(ConfigurationSaveMode.Modified, true);
             ConfigurationManager.RefreshSection("appSettings");
 
-            switch (settingNumber) {
-                case 1:
-                    this.label_client_1.Text = ConfigurationManager.AppSettings["client_name_1_tab_1"];
-                    this.client_path_1 = ConfigurationManager.AppSettings["client_path_1_tab_1"];
-                    this.client_id_1 = ConfigurationManager.AppSettings["client_id_1_tab_1"];
-                    this.client_pw_1 = ConfigurationManager.AppSettings["client_pw_1_tab_1"];
-                    this.label_client_2.Text = ConfigurationManager.AppSettings["client_name_2_tab_1"];
-                    this.client_path_2 = ConfigurationManager.AppSettings["client_path_2_tab_1"];
-                    this.client_id_2 = ConfigurationManager.AppSettings["client_id_2_tab_1"];
-                    this.client_pw_2 = ConfigurationManager.AppSettings["client_pw_2_tab_1"];
-                    this.label_client_3.Text = ConfigurationManager.AppSettings["client_name_3_tab_1"];
-                    this.client_path_3 = ConfigurationManager.AppSettings["client_path_3_tab_1"];
-                    this.client_id_3 = ConfigurationManager.AppSettings["client_id_3_tab_1"];
-                    this.client_pw_3 = ConfigurationManager.AppSettings["client_pw_3_tab_1"];
-                    break;
-                case 2:
-                    this.label_client_1.Text = ConfigurationManager.AppSettings["client_name_1_tab_2"];
-                    this.client_path_1 = ConfigurationManager.AppSettings["client_path_1_tab_2"];
-                    this.client_id_1 = ConfigurationManager.AppSettings["client_id_1_tab_2"];
-                    this.client_pw_1 = ConfigurationManager.AppSettings["client_pw_1_tab_2"];
-                    this.label_client_2.Text = ConfigurationManager.AppSettings["client_name_2_tab_2"];
-                    this.client_path_2 = ConfigurationManager.AppSettings["client_path_2_tab_2"];
-                    this.client_id_2 = ConfigurationManager.AppSettings["client_id_2_tab_2"];
-                    this.client_pw_2 = ConfigurationManager.AppSettings["client_pw_2_tab_2"];
-                    this.label_client_3.Text = ConfigurationManager.AppSettings["client_name_3_tab_2"];
-                    this.client_path_3 = ConfigurationManager.AppSettings["client_path_3_tab_2"];
-                    this.client_id_3 = ConfigurationManager.AppSettings["client_id_3_tab_2"];
-                    this.client_pw_3 = ConfigurationManager.AppSettings["client_pw_3_tab_2"];
-                    break;
-                case 3:
-                    this.label_client_1.Text = ConfigurationManager.AppSettings["client_name_1_tab_3"];
-                    this.client_path_1 = ConfigurationManager.AppSettings["client_path_1_tab_3"];
-                    this.client_id_1 = ConfigurationManager.AppSettings["client_id_1_tab_3"];
-                    this.client_pw_1 = ConfigurationManager.AppSettings["client_pw_1_tab_3"];
-                    this.label_client_2.Text = ConfigurationManager.AppSettings["client_name_2_tab_3"];
-                    this.client_path_2 = ConfigurationManager.AppSettings["client_path_2_tab_3"];
-                    this.client_id_2 = ConfigurationManager.AppSettings["client_id_2_tab_3"];
-                    this.client_pw_2 = ConfigurationManager.AppSettings["client_pw_2_tab_3"];
-                    this.label_client_3.Text = ConfigurationManager.AppSettings["client_name_3_tab_3"];
-                    this.client_path_3 = ConfigurationManager.AppSettings["client_path_3_tab_3"];
-                    this.client_id_3 = ConfigurationManager.AppSettings["client_id_3_tab_3"];
-                    this.client_pw_3 = ConfigurationManager.AppSettings["client_pw_3_tab_3"];
-                    break;
-                default:
-                    Debug.WriteLine("잘못된 세팅값입니다.");
-                    break;
-            }
-            
+            this.label_client_1.Text = ConfigurationManager.AppSettings["client_name_1_tab_" + settingNumber];
+            this.client_path_1 = ConfigurationManager.AppSettings["client_path_1_tab_" + settingNumber];
+            this.client_id_1 = ConfigurationManager.AppSettings["client_id_1_tab_" + settingNumber];
+            this.client_pw_1 = ConfigurationManager.AppSettings["client_pw_1_tab_" + settingNumber];
+            this.label_client_2.Text = ConfigurationManager.AppSettings["client_name_2_tab_" + settingNumber];
+            this.client_path_2 = ConfigurationManager.AppSettings["client_path_2_tab_" + settingNumber];
+            this.client_id_2 = ConfigurationManager.AppSettings["client_id_2_tab_" + settingNumber];
+            this.client_pw_2 = ConfigurationManager.AppSettings["client_pw_2_tab_" + settingNumber];
+            this.label_client_3.Text = ConfigurationManager.AppSettings["client_name_3_tab_" + settingNumber];
+            this.client_path_3 = ConfigurationManager.AppSettings["client_path_3_tab_" + settingNumber];
+            this.client_id_3 = ConfigurationManager.AppSettings["client_id_3_tab_" + settingNumber];
+            this.client_pw_3 = ConfigurationManager.AppSettings["client_pw_3_tab_" + settingNumber];
 
             this.shortcut_name_1 = ConfigurationManager.AppSettings["shortcut_name_1"];
             link_shortcut_1.Text = this.shortcut_name_1;
@@ -858,6 +827,9 @@ namespace GersangClientStation {
                     break;
                 case 3:
                     radio_setting_3.PerformClick();
+                    break;
+                case 4:
+                    radio_setting_4.PerformClick();
                     break;
                 default:
                     MessageBox.Show("오류 발생 : Form1_Load\nInvalid Setting Number");

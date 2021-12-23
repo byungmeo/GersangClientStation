@@ -570,6 +570,7 @@ namespace GersangClientStation {
             this.radio_setting_4.TabStop = true;
             this.radio_setting_4.Text = "4번 설정";
             this.radio_setting_4.UseVisualStyleBackColor = true;
+            this.radio_setting_4.CheckedChanged += new System.EventHandler(this.radio_setting_CheckedChanged);
             // 
             // check_nickname1
             // 

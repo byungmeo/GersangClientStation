@@ -134,10 +134,47 @@ namespace GersangClientStation {
             this.textBox_client_id_2_tab_3 = new MetroFramework.Controls.MetroTextBox();
             this.textBox_client_path_2_tab_3 = new MetroFramework.Controls.MetroTextBox();
             this.button_path_finder_2_tab_3 = new MetroFramework.Controls.MetroButton();
+            this.metroTabPage4 = new MetroFramework.Controls.MetroTabPage();
+            this.metroLabel37 = new MetroFramework.Controls.MetroLabel();
+            this.textBox_client_name_3_tab_4 = new MetroFramework.Controls.MetroTextBox();
+            this.metroLabel38 = new MetroFramework.Controls.MetroLabel();
+            this.textBox_client_name_2_tab_4 = new MetroFramework.Controls.MetroTextBox();
+            this.metroLabel39 = new MetroFramework.Controls.MetroLabel();
+            this.textBox_client_name_1_tab_4 = new MetroFramework.Controls.MetroTextBox();
+            this.metroLabel40 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel41 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel42 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel43 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel44 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel45 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel46 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel47 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel48 = new MetroFramework.Controls.MetroLabel();
+            this.button_clear_pw_3_tab_4 = new MetroFramework.Controls.MetroButton();
+            this.button_clear_pw_2_tab_4 = new MetroFramework.Controls.MetroButton();
+            this.button_clear_pw_1_tab_4 = new MetroFramework.Controls.MetroButton();
+            this.label_notify_encrypt_tab_4 = new MetroFramework.Controls.MetroLabel();
+            this.button_save_tab_4 = new MetroFramework.Controls.MetroButton();
+            this.textBox_client_pw_3_tab_4 = new MetroFramework.Controls.MetroTextBox();
+            this.label_client_1_tab_4 = new MetroFramework.Controls.MetroLabel();
+            this.textBox_client_id_3_tab_4 = new MetroFramework.Controls.MetroTextBox();
+            this.textBox_client_path_1_tab_4 = new MetroFramework.Controls.MetroTextBox();
+            this.button_path_finder_3_tab_4 = new MetroFramework.Controls.MetroButton();
+            this.button_path_finder_1_tab_4 = new MetroFramework.Controls.MetroButton();
+            this.textBox_client_path_3_tab_4 = new MetroFramework.Controls.MetroTextBox();
+            this.textBox_client_id_1_tab_4 = new MetroFramework.Controls.MetroTextBox();
+            this.label_client_3_tab_4 = new MetroFramework.Controls.MetroLabel();
+            this.textBox_client_pw_1_tab_4 = new MetroFramework.Controls.MetroTextBox();
+            this.textBox_client_pw_2_tab_4 = new MetroFramework.Controls.MetroTextBox();
+            this.label_client_2_tab_4 = new MetroFramework.Controls.MetroLabel();
+            this.textBox_client_id_2_tab_4 = new MetroFramework.Controls.MetroTextBox();
+            this.textBox_client_path_2_tab_4 = new MetroFramework.Controls.MetroTextBox();
+            this.button_path_finder_2_tab_4 = new MetroFramework.Controls.MetroButton();
             this.tabControl_setting.SuspendLayout();
             this.metroTabPage1.SuspendLayout();
             this.metroTabPage2.SuspendLayout();
             this.metroTabPage3.SuspendLayout();
+            this.metroTabPage4.SuspendLayout();
             this.SuspendLayout();
             // 
             // label_client_1_tab_1
@@ -189,7 +226,7 @@ namespace GersangClientStation {
             this.textBox_client_pw_1_tab_1.Size = new System.Drawing.Size(120, 23);
             this.textBox_client_pw_1_tab_1.TabIndex = 3;
             this.textBox_client_pw_1_tab_1.UseSystemPasswordChar = true;
-            this.textBox_client_pw_1_tab_1.TextChanged += new System.EventHandler(this.textBox_client_pw_1_tab_1_TextChanged);
+            this.textBox_client_pw_1_tab_1.TextChanged += new System.EventHandler(this.textBox_client_pw_TextChanged);
             this.textBox_client_pw_1_tab_1.Leave += new System.EventHandler(this.textBox_client_pw_1_tab_1_Leave);
             // 
             // label_notify_encrypt_tab_1
@@ -212,7 +249,7 @@ namespace GersangClientStation {
             this.textBox_client_pw_2_tab_1.Size = new System.Drawing.Size(120, 23);
             this.textBox_client_pw_2_tab_1.TabIndex = 7;
             this.textBox_client_pw_2_tab_1.UseSystemPasswordChar = true;
-            this.textBox_client_pw_2_tab_1.TextChanged += new System.EventHandler(this.textBox_client_pw_2_tab_1_TextChanged);
+            this.textBox_client_pw_2_tab_1.TextChanged += new System.EventHandler(this.textBox_client_pw_TextChanged);
             this.textBox_client_pw_2_tab_1.Leave += new System.EventHandler(this.textBox_client_pw_2_tab_1_Leave);
             // 
             // textBox_client_id_2_tab_1
@@ -260,7 +297,7 @@ namespace GersangClientStation {
             this.textBox_client_pw_3_tab_1.Size = new System.Drawing.Size(120, 23);
             this.textBox_client_pw_3_tab_1.TabIndex = 11;
             this.textBox_client_pw_3_tab_1.UseSystemPasswordChar = true;
-            this.textBox_client_pw_3_tab_1.TextChanged += new System.EventHandler(this.textBox_client_pw_3_tab_1_TextChanged);
+            this.textBox_client_pw_3_tab_1.TextChanged += new System.EventHandler(this.textBox_client_pw_TextChanged);
             this.textBox_client_pw_3_tab_1.Leave += new System.EventHandler(this.textBox_client_pw_3_tab_1_Leave);
             // 
             // textBox_client_id_3_tab_1
@@ -314,10 +351,11 @@ namespace GersangClientStation {
             this.tabControl_setting.Controls.Add(this.metroTabPage1);
             this.tabControl_setting.Controls.Add(this.metroTabPage2);
             this.tabControl_setting.Controls.Add(this.metroTabPage3);
+            this.tabControl_setting.Controls.Add(this.metroTabPage4);
             this.tabControl_setting.ItemSize = new System.Drawing.Size(60, 32);
             this.tabControl_setting.Location = new System.Drawing.Point(23, 63);
             this.tabControl_setting.Name = "tabControl_setting";
-            this.tabControl_setting.SelectedIndex = 2;
+            this.tabControl_setting.SelectedIndex = 3;
             this.tabControl_setting.Size = new System.Drawing.Size(365, 658);
             this.tabControl_setting.TabIndex = 0;
             this.tabControl_setting.TabStop = false;
@@ -359,12 +397,13 @@ namespace GersangClientStation {
             this.metroTabPage1.Controls.Add(this.textBox_client_id_2_tab_1);
             this.metroTabPage1.Controls.Add(this.textBox_client_path_2_tab_1);
             this.metroTabPage1.Controls.Add(this.button_path_finder_2_tab_1);
+            this.metroTabPage1.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.metroTabPage1.HorizontalScrollbarBarColor = true;
             this.metroTabPage1.Location = new System.Drawing.Point(4, 36);
             this.metroTabPage1.Name = "metroTabPage1";
             this.metroTabPage1.Size = new System.Drawing.Size(357, 618);
             this.metroTabPage1.TabIndex = 0;
-            this.metroTabPage1.Text = "1번";
+            this.metroTabPage1.Text = "1번세팅";
             this.metroTabPage1.VerticalScrollbarBarColor = true;
             // 
             // metroLabel30
@@ -574,7 +613,7 @@ namespace GersangClientStation {
             this.metroTabPage2.Name = "metroTabPage2";
             this.metroTabPage2.Size = new System.Drawing.Size(357, 618);
             this.metroTabPage2.TabIndex = 1;
-            this.metroTabPage2.Text = "2번";
+            this.metroTabPage2.Text = "2번세팅";
             this.metroTabPage2.VerticalScrollbarBarColor = true;
             // 
             // metroLabel33
@@ -771,7 +810,7 @@ namespace GersangClientStation {
             this.textBox_client_pw_3_tab_2.Size = new System.Drawing.Size(120, 23);
             this.textBox_client_pw_3_tab_2.TabIndex = 11;
             this.textBox_client_pw_3_tab_2.UseSystemPasswordChar = true;
-            this.textBox_client_pw_3_tab_2.TextChanged += new System.EventHandler(this.textBox_client_pw_3_tab_2_TextChanged);
+            this.textBox_client_pw_3_tab_2.TextChanged += new System.EventHandler(this.textBox_client_pw_TextChanged);
             this.textBox_client_pw_3_tab_2.Leave += new System.EventHandler(this.textBox_client_pw_3_tab_2_Leave);
             // 
             // label_client_1_tab_2
@@ -856,7 +895,7 @@ namespace GersangClientStation {
             this.textBox_client_pw_1_tab_2.Size = new System.Drawing.Size(120, 23);
             this.textBox_client_pw_1_tab_2.TabIndex = 3;
             this.textBox_client_pw_1_tab_2.UseSystemPasswordChar = true;
-            this.textBox_client_pw_1_tab_2.TextChanged += new System.EventHandler(this.textBox_client_pw_1_tab_2_TextChanged);
+            this.textBox_client_pw_1_tab_2.TextChanged += new System.EventHandler(this.textBox_client_pw_TextChanged);
             this.textBox_client_pw_1_tab_2.Leave += new System.EventHandler(this.textBox_client_pw_1_tab_2_Leave);
             // 
             // textBox_client_pw_2_tab_2
@@ -867,7 +906,7 @@ namespace GersangClientStation {
             this.textBox_client_pw_2_tab_2.Size = new System.Drawing.Size(120, 23);
             this.textBox_client_pw_2_tab_2.TabIndex = 7;
             this.textBox_client_pw_2_tab_2.UseSystemPasswordChar = true;
-            this.textBox_client_pw_2_tab_2.TextChanged += new System.EventHandler(this.textBox_client_pw_2_tab_2_TextChanged);
+            this.textBox_client_pw_2_tab_2.TextChanged += new System.EventHandler(this.textBox_client_pw_TextChanged);
             this.textBox_client_pw_2_tab_2.Leave += new System.EventHandler(this.textBox_client_pw_2_tab_2_Leave);
             // 
             // label_client_2_tab_2
@@ -949,7 +988,7 @@ namespace GersangClientStation {
             this.metroTabPage3.Name = "metroTabPage3";
             this.metroTabPage3.Size = new System.Drawing.Size(357, 618);
             this.metroTabPage3.TabIndex = 2;
-            this.metroTabPage3.Text = "3번";
+            this.metroTabPage3.Text = "3번세팅";
             this.metroTabPage3.VerticalScrollbarBarColor = true;
             // 
             // metroLabel36
@@ -1146,7 +1185,7 @@ namespace GersangClientStation {
             this.textBox_client_pw_3_tab_3.Size = new System.Drawing.Size(120, 23);
             this.textBox_client_pw_3_tab_3.TabIndex = 11;
             this.textBox_client_pw_3_tab_3.UseSystemPasswordChar = true;
-            this.textBox_client_pw_3_tab_3.TextChanged += new System.EventHandler(this.textBox_client_pw_3_tab_3_TextChanged);
+            this.textBox_client_pw_3_tab_3.TextChanged += new System.EventHandler(this.textBox_client_pw_TextChanged);
             this.textBox_client_pw_3_tab_3.Leave += new System.EventHandler(this.textBox_client_pw_3_tab_3_Leave);
             // 
             // label_client_1_tab_3
@@ -1231,7 +1270,7 @@ namespace GersangClientStation {
             this.textBox_client_pw_1_tab_3.Size = new System.Drawing.Size(120, 23);
             this.textBox_client_pw_1_tab_3.TabIndex = 3;
             this.textBox_client_pw_1_tab_3.UseSystemPasswordChar = true;
-            this.textBox_client_pw_1_tab_3.TextChanged += new System.EventHandler(this.textBox_client_pw_1_tab_3_TextChanged);
+            this.textBox_client_pw_1_tab_3.TextChanged += new System.EventHandler(this.textBox_client_pw_TextChanged);
             this.textBox_client_pw_1_tab_3.Leave += new System.EventHandler(this.textBox_client_pw_1_tab_3_Leave);
             // 
             // textBox_client_pw_2_tab_3
@@ -1242,7 +1281,7 @@ namespace GersangClientStation {
             this.textBox_client_pw_2_tab_3.Size = new System.Drawing.Size(120, 23);
             this.textBox_client_pw_2_tab_3.TabIndex = 7;
             this.textBox_client_pw_2_tab_3.UseSystemPasswordChar = true;
-            this.textBox_client_pw_2_tab_3.TextChanged += new System.EventHandler(this.textBox_client_pw_2_tab_3_TextChanged);
+            this.textBox_client_pw_2_tab_3.TextChanged += new System.EventHandler(this.textBox_client_pw_TextChanged);
             this.textBox_client_pw_2_tab_3.Leave += new System.EventHandler(this.textBox_client_pw_2_tab_3_Leave);
             // 
             // label_client_2_tab_3
@@ -1282,6 +1321,381 @@ namespace GersangClientStation {
             this.button_path_finder_2_tab_3.Text = "찾기";
             this.button_path_finder_2_tab_3.Click += new System.EventHandler(this.button_path_finder_2_tab_3_Click);
             // 
+            // metroTabPage4
+            // 
+            this.metroTabPage4.Controls.Add(this.metroLabel37);
+            this.metroTabPage4.Controls.Add(this.textBox_client_name_3_tab_4);
+            this.metroTabPage4.Controls.Add(this.metroLabel38);
+            this.metroTabPage4.Controls.Add(this.textBox_client_name_2_tab_4);
+            this.metroTabPage4.Controls.Add(this.metroLabel39);
+            this.metroTabPage4.Controls.Add(this.textBox_client_name_1_tab_4);
+            this.metroTabPage4.Controls.Add(this.metroLabel40);
+            this.metroTabPage4.Controls.Add(this.metroLabel41);
+            this.metroTabPage4.Controls.Add(this.metroLabel42);
+            this.metroTabPage4.Controls.Add(this.metroLabel43);
+            this.metroTabPage4.Controls.Add(this.metroLabel44);
+            this.metroTabPage4.Controls.Add(this.metroLabel45);
+            this.metroTabPage4.Controls.Add(this.metroLabel46);
+            this.metroTabPage4.Controls.Add(this.metroLabel47);
+            this.metroTabPage4.Controls.Add(this.metroLabel48);
+            this.metroTabPage4.Controls.Add(this.button_clear_pw_3_tab_4);
+            this.metroTabPage4.Controls.Add(this.button_clear_pw_2_tab_4);
+            this.metroTabPage4.Controls.Add(this.button_clear_pw_1_tab_4);
+            this.metroTabPage4.Controls.Add(this.label_notify_encrypt_tab_4);
+            this.metroTabPage4.Controls.Add(this.button_save_tab_4);
+            this.metroTabPage4.Controls.Add(this.textBox_client_pw_3_tab_4);
+            this.metroTabPage4.Controls.Add(this.label_client_1_tab_4);
+            this.metroTabPage4.Controls.Add(this.textBox_client_id_3_tab_4);
+            this.metroTabPage4.Controls.Add(this.textBox_client_path_1_tab_4);
+            this.metroTabPage4.Controls.Add(this.button_path_finder_3_tab_4);
+            this.metroTabPage4.Controls.Add(this.button_path_finder_1_tab_4);
+            this.metroTabPage4.Controls.Add(this.textBox_client_path_3_tab_4);
+            this.metroTabPage4.Controls.Add(this.textBox_client_id_1_tab_4);
+            this.metroTabPage4.Controls.Add(this.label_client_3_tab_4);
+            this.metroTabPage4.Controls.Add(this.textBox_client_pw_1_tab_4);
+            this.metroTabPage4.Controls.Add(this.textBox_client_pw_2_tab_4);
+            this.metroTabPage4.Controls.Add(this.label_client_2_tab_4);
+            this.metroTabPage4.Controls.Add(this.textBox_client_id_2_tab_4);
+            this.metroTabPage4.Controls.Add(this.textBox_client_path_2_tab_4);
+            this.metroTabPage4.Controls.Add(this.button_path_finder_2_tab_4);
+            this.metroTabPage4.HorizontalScrollbarBarColor = true;
+            this.metroTabPage4.Location = new System.Drawing.Point(4, 36);
+            this.metroTabPage4.Name = "metroTabPage4";
+            this.metroTabPage4.Size = new System.Drawing.Size(357, 618);
+            this.metroTabPage4.TabIndex = 3;
+            this.metroTabPage4.Text = "4번세팅";
+            this.metroTabPage4.VerticalScrollbarBarColor = true;
+            // 
+            // metroLabel37
+            // 
+            this.metroLabel37.AutoSize = true;
+            this.metroLabel37.Location = new System.Drawing.Point(3, 346);
+            this.metroLabel37.Name = "metroLabel37";
+            this.metroLabel37.Size = new System.Drawing.Size(37, 19);
+            this.metroLabel37.TabIndex = 165;
+            this.metroLabel37.Text = "별명";
+            // 
+            // textBox_client_name_3_tab_4
+            // 
+            this.textBox_client_name_3_tab_4.Location = new System.Drawing.Point(46, 344);
+            this.textBox_client_name_3_tab_4.MaxLength = 5;
+            this.textBox_client_name_3_tab_4.Name = "textBox_client_name_3_tab_4";
+            this.textBox_client_name_3_tab_4.Size = new System.Drawing.Size(75, 23);
+            this.textBox_client_name_3_tab_4.TabIndex = 142;
+            // 
+            // metroLabel38
+            // 
+            this.metroLabel38.AutoSize = true;
+            this.metroLabel38.Location = new System.Drawing.Point(3, 190);
+            this.metroLabel38.Name = "metroLabel38";
+            this.metroLabel38.Size = new System.Drawing.Size(37, 19);
+            this.metroLabel38.TabIndex = 164;
+            this.metroLabel38.Text = "별명";
+            // 
+            // textBox_client_name_2_tab_4
+            // 
+            this.textBox_client_name_2_tab_4.Location = new System.Drawing.Point(46, 188);
+            this.textBox_client_name_2_tab_4.MaxLength = 5;
+            this.textBox_client_name_2_tab_4.Name = "textBox_client_name_2_tab_4";
+            this.textBox_client_name_2_tab_4.Size = new System.Drawing.Size(75, 23);
+            this.textBox_client_name_2_tab_4.TabIndex = 138;
+            // 
+            // metroLabel39
+            // 
+            this.metroLabel39.AutoSize = true;
+            this.metroLabel39.Location = new System.Drawing.Point(3, 34);
+            this.metroLabel39.Name = "metroLabel39";
+            this.metroLabel39.Size = new System.Drawing.Size(37, 19);
+            this.metroLabel39.TabIndex = 163;
+            this.metroLabel39.Text = "별명";
+            // 
+            // textBox_client_name_1_tab_4
+            // 
+            this.textBox_client_name_1_tab_4.Location = new System.Drawing.Point(46, 32);
+            this.textBox_client_name_1_tab_4.MaxLength = 5;
+            this.textBox_client_name_1_tab_4.Name = "textBox_client_name_1_tab_4";
+            this.textBox_client_name_1_tab_4.Size = new System.Drawing.Size(75, 23);
+            this.textBox_client_name_1_tab_4.TabIndex = 132;
+            // 
+            // metroLabel40
+            // 
+            this.metroLabel40.AutoSize = true;
+            this.metroLabel40.Location = new System.Drawing.Point(6, 433);
+            this.metroLabel40.Name = "metroLabel40";
+            this.metroLabel40.Size = new System.Drawing.Size(30, 19);
+            this.metroLabel40.TabIndex = 162;
+            this.metroLabel40.Text = "PW";
+            // 
+            // metroLabel41
+            // 
+            this.metroLabel41.AutoSize = true;
+            this.metroLabel41.Location = new System.Drawing.Point(11, 404);
+            this.metroLabel41.Name = "metroLabel41";
+            this.metroLabel41.Size = new System.Drawing.Size(21, 19);
+            this.metroLabel41.TabIndex = 161;
+            this.metroLabel41.Text = "ID";
+            // 
+            // metroLabel42
+            // 
+            this.metroLabel42.AutoSize = true;
+            this.metroLabel42.Location = new System.Drawing.Point(3, 375);
+            this.metroLabel42.Name = "metroLabel42";
+            this.metroLabel42.Size = new System.Drawing.Size(37, 19);
+            this.metroLabel42.TabIndex = 160;
+            this.metroLabel42.Text = "경로";
+            // 
+            // metroLabel43
+            // 
+            this.metroLabel43.AutoSize = true;
+            this.metroLabel43.Location = new System.Drawing.Point(6, 277);
+            this.metroLabel43.Name = "metroLabel43";
+            this.metroLabel43.Size = new System.Drawing.Size(30, 19);
+            this.metroLabel43.TabIndex = 159;
+            this.metroLabel43.Text = "PW";
+            // 
+            // metroLabel44
+            // 
+            this.metroLabel44.AutoSize = true;
+            this.metroLabel44.Location = new System.Drawing.Point(11, 248);
+            this.metroLabel44.Name = "metroLabel44";
+            this.metroLabel44.Size = new System.Drawing.Size(21, 19);
+            this.metroLabel44.TabIndex = 158;
+            this.metroLabel44.Text = "ID";
+            // 
+            // metroLabel45
+            // 
+            this.metroLabel45.AutoSize = true;
+            this.metroLabel45.Location = new System.Drawing.Point(3, 219);
+            this.metroLabel45.Name = "metroLabel45";
+            this.metroLabel45.Size = new System.Drawing.Size(37, 19);
+            this.metroLabel45.TabIndex = 157;
+            this.metroLabel45.Text = "경로";
+            // 
+            // metroLabel46
+            // 
+            this.metroLabel46.AutoSize = true;
+            this.metroLabel46.Location = new System.Drawing.Point(6, 121);
+            this.metroLabel46.Name = "metroLabel46";
+            this.metroLabel46.Size = new System.Drawing.Size(30, 19);
+            this.metroLabel46.TabIndex = 156;
+            this.metroLabel46.Text = "PW";
+            // 
+            // metroLabel47
+            // 
+            this.metroLabel47.AutoSize = true;
+            this.metroLabel47.Location = new System.Drawing.Point(11, 92);
+            this.metroLabel47.Name = "metroLabel47";
+            this.metroLabel47.Size = new System.Drawing.Size(21, 19);
+            this.metroLabel47.TabIndex = 155;
+            this.metroLabel47.Text = "ID";
+            // 
+            // metroLabel48
+            // 
+            this.metroLabel48.AutoSize = true;
+            this.metroLabel48.Location = new System.Drawing.Point(3, 63);
+            this.metroLabel48.Name = "metroLabel48";
+            this.metroLabel48.Size = new System.Drawing.Size(37, 19);
+            this.metroLabel48.TabIndex = 154;
+            this.metroLabel48.Text = "경로";
+            // 
+            // button_clear_pw_3_tab_4
+            // 
+            this.button_clear_pw_3_tab_4.Location = new System.Drawing.Point(172, 431);
+            this.button_clear_pw_3_tab_4.Name = "button_clear_pw_3_tab_4";
+            this.button_clear_pw_3_tab_4.Size = new System.Drawing.Size(44, 23);
+            this.button_clear_pw_3_tab_4.Style = MetroFramework.MetroColorStyle.Red;
+            this.button_clear_pw_3_tab_4.TabIndex = 134;
+            this.button_clear_pw_3_tab_4.TabStop = false;
+            this.button_clear_pw_3_tab_4.Text = "비우기";
+            this.button_clear_pw_3_tab_4.Click += new System.EventHandler(this.button_clear_pw_3_tab_4_Click);
+            // 
+            // button_clear_pw_2_tab_4
+            // 
+            this.button_clear_pw_2_tab_4.Location = new System.Drawing.Point(172, 275);
+            this.button_clear_pw_2_tab_4.Name = "button_clear_pw_2_tab_4";
+            this.button_clear_pw_2_tab_4.Size = new System.Drawing.Size(44, 23);
+            this.button_clear_pw_2_tab_4.Style = MetroFramework.MetroColorStyle.Red;
+            this.button_clear_pw_2_tab_4.TabIndex = 133;
+            this.button_clear_pw_2_tab_4.TabStop = false;
+            this.button_clear_pw_2_tab_4.Text = "비우기";
+            this.button_clear_pw_2_tab_4.Click += new System.EventHandler(this.button_clear_pw_2_tab_4_Click);
+            // 
+            // button_clear_pw_1_tab_4
+            // 
+            this.button_clear_pw_1_tab_4.Location = new System.Drawing.Point(172, 119);
+            this.button_clear_pw_1_tab_4.Name = "button_clear_pw_1_tab_4";
+            this.button_clear_pw_1_tab_4.Size = new System.Drawing.Size(44, 23);
+            this.button_clear_pw_1_tab_4.Style = MetroFramework.MetroColorStyle.Red;
+            this.button_clear_pw_1_tab_4.TabIndex = 131;
+            this.button_clear_pw_1_tab_4.TabStop = false;
+            this.button_clear_pw_1_tab_4.Text = "비우기";
+            this.button_clear_pw_1_tab_4.Click += new System.EventHandler(this.button_clear_pw_1_tab_4_Click);
+            // 
+            // label_notify_encrypt_tab_4
+            // 
+            this.label_notify_encrypt_tab_4.AutoSize = true;
+            this.label_notify_encrypt_tab_4.Location = new System.Drawing.Point(63, 482);
+            this.label_notify_encrypt_tab_4.Name = "label_notify_encrypt_tab_4";
+            this.label_notify_encrypt_tab_4.Size = new System.Drawing.Size(230, 76);
+            this.label_notify_encrypt_tab_4.Style = MetroFramework.MetroColorStyle.Silver;
+            this.label_notify_encrypt_tab_4.TabIndex = 153;
+            this.label_notify_encrypt_tab_4.Text = "비밀번호는 암호화되어 저장됩니다.\r\n\r\nPC방 등의 공개적인 장소에서는 \r\n사용을 권장하지 않습니다.";
+            this.label_notify_encrypt_tab_4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label_notify_encrypt_tab_4.UseStyleColors = true;
+            // 
+            // button_save_tab_4
+            // 
+            this.button_save_tab_4.Location = new System.Drawing.Point(141, 580);
+            this.button_save_tab_4.Name = "button_save_tab_4";
+            this.button_save_tab_4.Size = new System.Drawing.Size(75, 23);
+            this.button_save_tab_4.TabIndex = 146;
+            this.button_save_tab_4.Text = "4번 저장";
+            this.button_save_tab_4.Click += new System.EventHandler(this.button_save_tab_4_Click);
+            // 
+            // textBox_client_pw_3_tab_4
+            // 
+            this.textBox_client_pw_3_tab_4.Location = new System.Drawing.Point(46, 431);
+            this.textBox_client_pw_3_tab_4.Name = "textBox_client_pw_3_tab_4";
+            this.textBox_client_pw_3_tab_4.PasswordChar = '●';
+            this.textBox_client_pw_3_tab_4.Size = new System.Drawing.Size(120, 23);
+            this.textBox_client_pw_3_tab_4.TabIndex = 145;
+            this.textBox_client_pw_3_tab_4.UseSystemPasswordChar = true;
+            this.textBox_client_pw_3_tab_4.TextChanged += new System.EventHandler(this.textBox_client_pw_TextChanged);
+            this.textBox_client_pw_3_tab_4.Leave += new System.EventHandler(this.textBox_client_pw_3_tab_4_Leave);
+            // 
+            // label_client_1_tab_4
+            // 
+            this.label_client_1_tab_4.AutoSize = true;
+            this.label_client_1_tab_4.FontSize = MetroFramework.MetroLabelSize.Tall;
+            this.label_client_1_tab_4.FontWeight = MetroFramework.MetroLabelWeight.Bold;
+            this.label_client_1_tab_4.Location = new System.Drawing.Point(0, 4);
+            this.label_client_1_tab_4.Name = "label_client_1_tab_4";
+            this.label_client_1_tab_4.Size = new System.Drawing.Size(104, 25);
+            this.label_client_1_tab_4.TabIndex = 150;
+            this.label_client_1_tab_4.Text = "MainClient";
+            this.label_client_1_tab_4.UseStyleColors = true;
+            // 
+            // textBox_client_id_3_tab_4
+            // 
+            this.textBox_client_id_3_tab_4.Location = new System.Drawing.Point(46, 402);
+            this.textBox_client_id_3_tab_4.Name = "textBox_client_id_3_tab_4";
+            this.textBox_client_id_3_tab_4.Size = new System.Drawing.Size(120, 23);
+            this.textBox_client_id_3_tab_4.TabIndex = 144;
+            // 
+            // textBox_client_path_1_tab_4
+            // 
+            this.textBox_client_path_1_tab_4.Location = new System.Drawing.Point(46, 61);
+            this.textBox_client_path_1_tab_4.Name = "textBox_client_path_1_tab_4";
+            this.textBox_client_path_1_tab_4.Size = new System.Drawing.Size(257, 23);
+            this.textBox_client_path_1_tab_4.TabIndex = 135;
+            this.textBox_client_path_1_tab_4.TabStop = false;
+            // 
+            // button_path_finder_3_tab_4
+            // 
+            this.button_path_finder_3_tab_4.Location = new System.Drawing.Point(309, 373);
+            this.button_path_finder_3_tab_4.Name = "button_path_finder_3_tab_4";
+            this.button_path_finder_3_tab_4.Size = new System.Drawing.Size(44, 23);
+            this.button_path_finder_3_tab_4.TabIndex = 151;
+            this.button_path_finder_3_tab_4.TabStop = false;
+            this.button_path_finder_3_tab_4.Text = "찾기";
+            this.button_path_finder_3_tab_4.Click += new System.EventHandler(this.button_path_finder_3_tab_4_Click);
+            // 
+            // button_path_finder_1_tab_4
+            // 
+            this.button_path_finder_1_tab_4.Location = new System.Drawing.Point(309, 61);
+            this.button_path_finder_1_tab_4.Name = "button_path_finder_1_tab_4";
+            this.button_path_finder_1_tab_4.Size = new System.Drawing.Size(44, 23);
+            this.button_path_finder_1_tab_4.TabIndex = 147;
+            this.button_path_finder_1_tab_4.TabStop = false;
+            this.button_path_finder_1_tab_4.Text = "찾기";
+            this.button_path_finder_1_tab_4.Click += new System.EventHandler(this.button_path_finder_1_tab_4_Click);
+            // 
+            // textBox_client_path_3_tab_4
+            // 
+            this.textBox_client_path_3_tab_4.Location = new System.Drawing.Point(46, 373);
+            this.textBox_client_path_3_tab_4.Name = "textBox_client_path_3_tab_4";
+            this.textBox_client_path_3_tab_4.Size = new System.Drawing.Size(257, 23);
+            this.textBox_client_path_3_tab_4.TabIndex = 143;
+            this.textBox_client_path_3_tab_4.TabStop = false;
+            // 
+            // textBox_client_id_1_tab_4
+            // 
+            this.textBox_client_id_1_tab_4.Location = new System.Drawing.Point(46, 90);
+            this.textBox_client_id_1_tab_4.Name = "textBox_client_id_1_tab_4";
+            this.textBox_client_id_1_tab_4.Size = new System.Drawing.Size(120, 23);
+            this.textBox_client_id_1_tab_4.TabIndex = 136;
+            // 
+            // label_client_3_tab_4
+            // 
+            this.label_client_3_tab_4.AutoSize = true;
+            this.label_client_3_tab_4.FontSize = MetroFramework.MetroLabelSize.Tall;
+            this.label_client_3_tab_4.FontWeight = MetroFramework.MetroLabelWeight.Bold;
+            this.label_client_3_tab_4.Location = new System.Drawing.Point(0, 316);
+            this.label_client_3_tab_4.Name = "label_client_3_tab_4";
+            this.label_client_3_tab_4.Size = new System.Drawing.Size(71, 25);
+            this.label_client_3_tab_4.TabIndex = 148;
+            this.label_client_3_tab_4.Text = "Client3";
+            this.label_client_3_tab_4.UseStyleColors = true;
+            // 
+            // textBox_client_pw_1_tab_4
+            // 
+            this.textBox_client_pw_1_tab_4.Location = new System.Drawing.Point(46, 119);
+            this.textBox_client_pw_1_tab_4.Name = "textBox_client_pw_1_tab_4";
+            this.textBox_client_pw_1_tab_4.PasswordChar = '●';
+            this.textBox_client_pw_1_tab_4.Size = new System.Drawing.Size(120, 23);
+            this.textBox_client_pw_1_tab_4.TabIndex = 137;
+            this.textBox_client_pw_1_tab_4.UseSystemPasswordChar = true;
+            this.textBox_client_pw_1_tab_4.TextChanged += new System.EventHandler(this.textBox_client_pw_TextChanged);
+            this.textBox_client_pw_1_tab_4.Leave += new System.EventHandler(this.textBox_client_pw_1_tab_4_Leave);
+            // 
+            // textBox_client_pw_2_tab_4
+            // 
+            this.textBox_client_pw_2_tab_4.Location = new System.Drawing.Point(46, 275);
+            this.textBox_client_pw_2_tab_4.Name = "textBox_client_pw_2_tab_4";
+            this.textBox_client_pw_2_tab_4.PasswordChar = '●';
+            this.textBox_client_pw_2_tab_4.Size = new System.Drawing.Size(120, 23);
+            this.textBox_client_pw_2_tab_4.TabIndex = 141;
+            this.textBox_client_pw_2_tab_4.UseSystemPasswordChar = true;
+            this.textBox_client_pw_2_tab_4.TextChanged += new System.EventHandler(this.textBox_client_pw_TextChanged);
+            this.textBox_client_pw_2_tab_4.Leave += new System.EventHandler(this.textBox_client_pw_2_tab_4_Leave);
+            // 
+            // label_client_2_tab_4
+            // 
+            this.label_client_2_tab_4.AutoSize = true;
+            this.label_client_2_tab_4.FontSize = MetroFramework.MetroLabelSize.Tall;
+            this.label_client_2_tab_4.FontWeight = MetroFramework.MetroLabelWeight.Bold;
+            this.label_client_2_tab_4.Location = new System.Drawing.Point(0, 160);
+            this.label_client_2_tab_4.Name = "label_client_2_tab_4";
+            this.label_client_2_tab_4.Size = new System.Drawing.Size(71, 25);
+            this.label_client_2_tab_4.TabIndex = 149;
+            this.label_client_2_tab_4.Text = "Client2";
+            this.label_client_2_tab_4.UseStyleColors = true;
+            // 
+            // textBox_client_id_2_tab_4
+            // 
+            this.textBox_client_id_2_tab_4.Location = new System.Drawing.Point(46, 246);
+            this.textBox_client_id_2_tab_4.Name = "textBox_client_id_2_tab_4";
+            this.textBox_client_id_2_tab_4.Size = new System.Drawing.Size(120, 23);
+            this.textBox_client_id_2_tab_4.TabIndex = 140;
+            // 
+            // textBox_client_path_2_tab_4
+            // 
+            this.textBox_client_path_2_tab_4.Location = new System.Drawing.Point(46, 217);
+            this.textBox_client_path_2_tab_4.Name = "textBox_client_path_2_tab_4";
+            this.textBox_client_path_2_tab_4.Size = new System.Drawing.Size(257, 23);
+            this.textBox_client_path_2_tab_4.TabIndex = 139;
+            this.textBox_client_path_2_tab_4.TabStop = false;
+            // 
+            // button_path_finder_2_tab_4
+            // 
+            this.button_path_finder_2_tab_4.Location = new System.Drawing.Point(309, 217);
+            this.button_path_finder_2_tab_4.Name = "button_path_finder_2_tab_4";
+            this.button_path_finder_2_tab_4.Size = new System.Drawing.Size(44, 23);
+            this.button_path_finder_2_tab_4.TabIndex = 152;
+            this.button_path_finder_2_tab_4.TabStop = false;
+            this.button_path_finder_2_tab_4.Text = "찾기";
+            this.button_path_finder_2_tab_4.Click += new System.EventHandler(this.button_path_finder_2_tab_4_Click);
+            // 
             // Form_Setting
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
@@ -1303,6 +1717,8 @@ namespace GersangClientStation {
             this.metroTabPage2.PerformLayout();
             this.metroTabPage3.ResumeLayout(false);
             this.metroTabPage3.PerformLayout();
+            this.metroTabPage4.ResumeLayout(false);
+            this.metroTabPage4.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1331,6 +1747,7 @@ namespace GersangClientStation {
         private MetroFramework.Controls.MetroTabPage metroTabPage1;
         private MetroFramework.Controls.MetroTabPage metroTabPage2;
         private MetroFramework.Controls.MetroTabPage metroTabPage3;
+        private MetroFramework.Controls.MetroTabPage metroTabPage4;
         private MetroFramework.Controls.MetroLabel label_notify_encrypt_tab_2;
         private MetroFramework.Controls.MetroButton button_save_tab_2;
         private MetroFramework.Controls.MetroTextBox textBox_client_pw_3_tab_2;
@@ -1419,5 +1836,40 @@ namespace GersangClientStation {
         private MetroFramework.Controls.MetroTextBox textBox_client_name_2_tab_3;
         private MetroFramework.Controls.MetroLabel metroLabel34;
         private MetroFramework.Controls.MetroTextBox textBox_client_name_1_tab_3;
+        private MetroFramework.Controls.MetroLabel metroLabel37;
+        private MetroFramework.Controls.MetroTextBox textBox_client_name_3_tab_4;
+        private MetroFramework.Controls.MetroLabel metroLabel38;
+        private MetroFramework.Controls.MetroTextBox textBox_client_name_2_tab_4;
+        private MetroFramework.Controls.MetroLabel metroLabel39;
+        private MetroFramework.Controls.MetroTextBox textBox_client_name_1_tab_4;
+        private MetroFramework.Controls.MetroLabel metroLabel40;
+        private MetroFramework.Controls.MetroLabel metroLabel41;
+        private MetroFramework.Controls.MetroLabel metroLabel42;
+        private MetroFramework.Controls.MetroLabel metroLabel43;
+        private MetroFramework.Controls.MetroLabel metroLabel44;
+        private MetroFramework.Controls.MetroLabel metroLabel45;
+        private MetroFramework.Controls.MetroLabel metroLabel46;
+        private MetroFramework.Controls.MetroLabel metroLabel47;
+        private MetroFramework.Controls.MetroLabel metroLabel48;
+        private MetroFramework.Controls.MetroButton button_clear_pw_3_tab_4;
+        private MetroFramework.Controls.MetroButton button_clear_pw_2_tab_4;
+        private MetroFramework.Controls.MetroButton button_clear_pw_1_tab_4;
+        private MetroFramework.Controls.MetroLabel label_notify_encrypt_tab_4;
+        private MetroFramework.Controls.MetroButton button_save_tab_4;
+        private MetroFramework.Controls.MetroTextBox textBox_client_pw_3_tab_4;
+        private MetroFramework.Controls.MetroLabel label_client_1_tab_4;
+        private MetroFramework.Controls.MetroTextBox textBox_client_id_3_tab_4;
+        private MetroFramework.Controls.MetroTextBox textBox_client_path_1_tab_4;
+        private MetroFramework.Controls.MetroButton button_path_finder_3_tab_4;
+        private MetroFramework.Controls.MetroButton button_path_finder_1_tab_4;
+        private MetroFramework.Controls.MetroTextBox textBox_client_path_3_tab_4;
+        private MetroFramework.Controls.MetroTextBox textBox_client_id_1_tab_4;
+        private MetroFramework.Controls.MetroLabel label_client_3_tab_4;
+        private MetroFramework.Controls.MetroTextBox textBox_client_pw_1_tab_4;
+        private MetroFramework.Controls.MetroTextBox textBox_client_pw_2_tab_4;
+        private MetroFramework.Controls.MetroLabel label_client_2_tab_4;
+        private MetroFramework.Controls.MetroTextBox textBox_client_id_2_tab_4;
+        private MetroFramework.Controls.MetroTextBox textBox_client_path_2_tab_4;
+        private MetroFramework.Controls.MetroButton button_path_finder_2_tab_4;
     }
 }
