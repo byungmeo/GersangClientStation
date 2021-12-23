@@ -403,7 +403,7 @@ namespace GersangClientStation {
             // 
             this.link_blog.AutoSize = true;
             this.link_blog.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.link_blog.Location = new System.Drawing.Point(417, 28);
+            this.link_blog.Location = new System.Drawing.Point(416, 27);
             this.link_blog.Name = "link_blog";
             this.link_blog.Size = new System.Drawing.Size(40, 22);
             this.link_blog.TabIndex = 24;
@@ -415,7 +415,7 @@ namespace GersangClientStation {
             this.pic_naver.Image = ((System.Drawing.Image)(resources.GetObject("pic_naver.Image")));
             this.pic_naver.Location = new System.Drawing.Point(402, 32);
             this.pic_naver.Name = "pic_naver";
-            this.pic_naver.Size = new System.Drawing.Size(16, 16);
+            this.pic_naver.Size = new System.Drawing.Size(14, 14);
             this.pic_naver.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pic_naver.TabIndex = 25;
             this.pic_naver.TabStop = false;
@@ -423,9 +423,9 @@ namespace GersangClientStation {
             // pic_github
             // 
             this.pic_github.Image = ((System.Drawing.Image)(resources.GetObject("pic_github.Image")));
-            this.pic_github.Location = new System.Drawing.Point(473, 32);
+            this.pic_github.Location = new System.Drawing.Point(464, 32);
             this.pic_github.Name = "pic_github";
-            this.pic_github.Size = new System.Drawing.Size(16, 16);
+            this.pic_github.Size = new System.Drawing.Size(14, 14);
             this.pic_github.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pic_github.TabIndex = 26;
             this.pic_github.TabStop = false;
@@ -434,7 +434,7 @@ namespace GersangClientStation {
             // 
             this.link_github.AutoSize = true;
             this.link_github.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.link_github.Location = new System.Drawing.Point(488, 28);
+            this.link_github.Location = new System.Drawing.Point(478, 27);
             this.link_github.Name = "link_github";
             this.link_github.Size = new System.Drawing.Size(51, 22);
             this.link_github.TabIndex = 27;
