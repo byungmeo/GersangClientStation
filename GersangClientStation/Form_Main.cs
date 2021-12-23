@@ -102,6 +102,11 @@ namespace GersangClientStation {
                     }
 
                     if (!isSubmitOtp) {
+                        if(input_otp[0].GetAttribute("value").Length == 0) {
+                            MessageBox.Show("OTP 코드를 입력해주세요.", "OTP 코드 입력", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            isTypingOtp = false;
+                            return;
+                        }
                         //opt 입력이 되었으므로, 클릭
                         HtmlElement button_otp_login = document_main.GetElementById("btn_Send");
                         isSubmitOtp = true;
@@ -236,20 +241,27 @@ namespace GersangClientStation {
                 Width = 300,
                 Height = 100,
                 Text = "OTP를 입력해주세요.",
-                StartPosition = FormStartPosition.CenterScreen,
+                StartPosition = FormStartPosition.Manual, //CenterParent 설정 및 Owner설정 시 otp 입력이 정상적으로 되지 않음..
                 Resizable = false,
                 MaximizeBox = false,
-                MinimizeBox = false
+                MinimizeBox = false,
+                BorderStyle = MetroFramework.Drawing.MetroBorderStyle.FixedSingle,
             };
-            MetroTextBox textBox_otp = new MetroTextBox() { Left = 30, Top = 60, Width = 180 };
+            otpDialogForm.Left = this.Left + (this.Width - otpDialogForm.Width) / 2;
+            otpDialogForm.Top = this.Top + (this.Height - otpDialogForm.Height) / 2;
+            MetroTextBox textBox_otp = new MetroTextBox() { Left = 30, Top = 60, Width = 180, MaxLength = 8 };
             MetroButton button_otpConfirm = new MetroButton() { Left = 220, Top = 60, Width = 50, Text = "로그인", DialogResult = DialogResult.OK };
             button_otpConfirm.Click += (sender, e) => { otpDialogForm.Close(); };
+
             otpDialogForm.Controls.Add(textBox_otp);
             otpDialogForm.Controls.Add(button_otpConfirm);
             otpDialogForm.AcceptButton = button_otpConfirm;
 
-            string otpCode = otpDialogForm.ShowDialog() == DialogResult.OK ? textBox_otp.Text : string.Empty;
+
             isTypingOtp = true;
+            DialogResult dr = otpDialogForm.ShowDialog();
+            string otpCode = dr == DialogResult.OK ? textBox_otp.Text : string.Empty;
+
             Debug.WriteLine(otpCode);
             input_otp.SetAttribute("value", otpCode);
 
