@@ -541,6 +541,7 @@ namespace GersangClientStation {
             this.link_shortcut_5.Size = new System.Drawing.Size(75, 23);
             this.link_shortcut_5.TabIndex = 4;
             this.link_shortcut_5.Text = "바로가기5";
+            this.link_shortcut_5.Click += new System.EventHandler(this.link_shortcut_5_Click);
             // 
             // link_shortcut_4
             // 
@@ -549,6 +550,7 @@ namespace GersangClientStation {
             this.link_shortcut_4.Size = new System.Drawing.Size(75, 23);
             this.link_shortcut_4.TabIndex = 3;
             this.link_shortcut_4.Text = "바로가기4";
+            this.link_shortcut_4.Click += new System.EventHandler(this.link_shortcut_4_Click);
             // 
             // link_shortcut_3
             // 

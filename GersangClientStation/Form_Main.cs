@@ -46,6 +46,10 @@ namespace GersangClientStation {
         private string shortcut_address_2;
         private string shortcut_name_3;//
         private string shortcut_address_3;
+        private string shortcut_name_4;//
+        private string shortcut_address_4;
+        private string shortcut_name_5;//
+        private string shortcut_address_5;
 
         //브라우저 객체
         WebBrowser mainBrowser = new WebBrowser(); //로그인, 실행, 바로가기 기능을 수행하는 메인 브라우저
@@ -619,6 +623,34 @@ namespace GersangClientStation {
                 MessageBox.Show("링크 접속 에러");
             }
         }
+        private void link_shortcut_4_Click(object sender, EventArgs e) {
+            if (shortcut_address_4 == "") {
+                MessageBox.Show("바로가기 주소를 설정 해주세요.");
+                return;
+            }
+
+            try {
+                Form_Browser shortcutForm = new Form_Browser(mainBrowser, shortcut_address_4);
+                shortcutForm.ShowDialog();
+            } catch (Exception ex) {
+                Debug.WriteLine(ex.Message);
+                MessageBox.Show("링크 접속 에러");
+            }
+        }
+        private void link_shortcut_5_Click(object sender, EventArgs e) {
+            if (shortcut_address_5 == "") {
+                MessageBox.Show("바로가기 주소를 설정 해주세요.");
+                return;
+            }
+
+            try {
+                Form_Browser shortcutForm = new Form_Browser(mainBrowser, shortcut_address_5);
+                shortcutForm.ShowDialog();
+            } catch (Exception ex) {
+                Debug.WriteLine(ex.Message);
+                MessageBox.Show("링크 접속 에러");
+            }
+        }
         private void link_qa1_Click(object sender, EventArgs e) {
             try {
                 System.Diagnostics.Process.Start("https://blog.naver.com/kog5071/222598459133");
@@ -898,6 +930,12 @@ namespace GersangClientStation {
             this.shortcut_name_3 = ConfigurationManager.AppSettings["shortcut_name_3"];
             link_shortcut_3.Text = this.shortcut_name_3;
             this.shortcut_address_3 = ConfigurationManager.AppSettings["shortcut_address_3"];
+            this.shortcut_name_4 = ConfigurationManager.AppSettings["shortcut_name_4"];
+            link_shortcut_4.Text = this.shortcut_name_4;
+            this.shortcut_address_4 = ConfigurationManager.AppSettings["shortcut_address_4"];
+            this.shortcut_name_5 = ConfigurationManager.AppSettings["shortcut_name_5"];
+            link_shortcut_5.Text = this.shortcut_name_5;
+            this.shortcut_address_5 = ConfigurationManager.AppSettings["shortcut_address_5"];
         }
 
         //저장되어있는 세팅값 번호를 불러오고, 해당 세팅값으로 클라이언트를 세팅합니다.
