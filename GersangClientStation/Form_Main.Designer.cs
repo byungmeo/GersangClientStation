@@ -315,7 +315,7 @@ namespace GersangClientStation {
             this.label_client_1.Name = "label_client_1";
             this.label_client_1.Size = new System.Drawing.Size(165, 25);
             this.label_client_1.TabIndex = 6;
-            this.label_client_1.Text = "rlaqudeo35584";
+            this.label_client_1.Text = "MainClient";
             this.label_client_1.UseStyleColors = true;
             // 
             // metroPanel1

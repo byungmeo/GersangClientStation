@@ -355,7 +355,7 @@ namespace GersangClientStation {
             this.tabControl_setting.ItemSize = new System.Drawing.Size(60, 32);
             this.tabControl_setting.Location = new System.Drawing.Point(23, 63);
             this.tabControl_setting.Name = "tabControl_setting";
-            this.tabControl_setting.SelectedIndex = 3;
+            this.tabControl_setting.SelectedIndex = 0;
             this.tabControl_setting.Size = new System.Drawing.Size(365, 658);
             this.tabControl_setting.TabIndex = 0;
             this.tabControl_setting.TabStop = false;
@@ -418,9 +418,9 @@ namespace GersangClientStation {
             // textBox_client_name_3_tab_1
             // 
             this.textBox_client_name_3_tab_1.Location = new System.Drawing.Point(46, 344);
-            this.textBox_client_name_3_tab_1.MaxLength = 5;
+            this.textBox_client_name_3_tab_1.MaxLength = 8;
             this.textBox_client_name_3_tab_1.Name = "textBox_client_name_3_tab_1";
-            this.textBox_client_name_3_tab_1.Size = new System.Drawing.Size(75, 23);
+            this.textBox_client_name_3_tab_1.Size = new System.Drawing.Size(120, 23);
             this.textBox_client_name_3_tab_1.TabIndex = 8;
             // 
             // metroLabel29
@@ -435,9 +435,9 @@ namespace GersangClientStation {
             // textBox_client_name_2_tab_1
             // 
             this.textBox_client_name_2_tab_1.Location = new System.Drawing.Point(46, 188);
-            this.textBox_client_name_2_tab_1.MaxLength = 5;
+            this.textBox_client_name_2_tab_1.MaxLength = 8;
             this.textBox_client_name_2_tab_1.Name = "textBox_client_name_2_tab_1";
-            this.textBox_client_name_2_tab_1.Size = new System.Drawing.Size(75, 23);
+            this.textBox_client_name_2_tab_1.Size = new System.Drawing.Size(120, 23);
             this.textBox_client_name_2_tab_1.TabIndex = 4;
             // 
             // metroLabel28
@@ -452,9 +452,9 @@ namespace GersangClientStation {
             // textBox_client_name_1_tab_1
             // 
             this.textBox_client_name_1_tab_1.Location = new System.Drawing.Point(46, 32);
-            this.textBox_client_name_1_tab_1.MaxLength = 5;
+            this.textBox_client_name_1_tab_1.MaxLength = 8;
             this.textBox_client_name_1_tab_1.Name = "textBox_client_name_1_tab_1";
-            this.textBox_client_name_1_tab_1.Size = new System.Drawing.Size(75, 23);
+            this.textBox_client_name_1_tab_1.Size = new System.Drawing.Size(120, 23);
             this.textBox_client_name_1_tab_1.TabIndex = 0;
             // 
             // metroLabel19
@@ -628,9 +628,9 @@ namespace GersangClientStation {
             // textBox_client_name_3_tab_2
             // 
             this.textBox_client_name_3_tab_2.Location = new System.Drawing.Point(46, 344);
-            this.textBox_client_name_3_tab_2.MaxLength = 5;
+            this.textBox_client_name_3_tab_2.MaxLength = 8;
             this.textBox_client_name_3_tab_2.Name = "textBox_client_name_3_tab_2";
-            this.textBox_client_name_3_tab_2.Size = new System.Drawing.Size(75, 23);
+            this.textBox_client_name_3_tab_2.Size = new System.Drawing.Size(120, 23);
             this.textBox_client_name_3_tab_2.TabIndex = 8;
             // 
             // metroLabel32
@@ -645,9 +645,9 @@ namespace GersangClientStation {
             // textBox_client_name_2_tab_2
             // 
             this.textBox_client_name_2_tab_2.Location = new System.Drawing.Point(46, 188);
-            this.textBox_client_name_2_tab_2.MaxLength = 5;
+            this.textBox_client_name_2_tab_2.MaxLength = 8;
             this.textBox_client_name_2_tab_2.Name = "textBox_client_name_2_tab_2";
-            this.textBox_client_name_2_tab_2.Size = new System.Drawing.Size(75, 23);
+            this.textBox_client_name_2_tab_2.Size = new System.Drawing.Size(120, 23);
             this.textBox_client_name_2_tab_2.TabIndex = 4;
             // 
             // metroLabel31
@@ -662,9 +662,9 @@ namespace GersangClientStation {
             // textBox_client_name_1_tab_2
             // 
             this.textBox_client_name_1_tab_2.Location = new System.Drawing.Point(46, 32);
-            this.textBox_client_name_1_tab_2.MaxLength = 5;
+            this.textBox_client_name_1_tab_2.MaxLength = 8;
             this.textBox_client_name_1_tab_2.Name = "textBox_client_name_1_tab_2";
-            this.textBox_client_name_1_tab_2.Size = new System.Drawing.Size(75, 23);
+            this.textBox_client_name_1_tab_2.Size = new System.Drawing.Size(120, 23);
             this.textBox_client_name_1_tab_2.TabIndex = 0;
             // 
             // metroLabel16
@@ -1003,9 +1003,9 @@ namespace GersangClientStation {
             // textBox_client_name_3_tab_3
             // 
             this.textBox_client_name_3_tab_3.Location = new System.Drawing.Point(46, 344);
-            this.textBox_client_name_3_tab_3.MaxLength = 5;
+            this.textBox_client_name_3_tab_3.MaxLength = 8;
             this.textBox_client_name_3_tab_3.Name = "textBox_client_name_3_tab_3";
-            this.textBox_client_name_3_tab_3.Size = new System.Drawing.Size(75, 23);
+            this.textBox_client_name_3_tab_3.Size = new System.Drawing.Size(120, 23);
             this.textBox_client_name_3_tab_3.TabIndex = 8;
             // 
             // metroLabel35
@@ -1020,9 +1020,9 @@ namespace GersangClientStation {
             // textBox_client_name_2_tab_3
             // 
             this.textBox_client_name_2_tab_3.Location = new System.Drawing.Point(46, 188);
-            this.textBox_client_name_2_tab_3.MaxLength = 5;
+            this.textBox_client_name_2_tab_3.MaxLength = 8;
             this.textBox_client_name_2_tab_3.Name = "textBox_client_name_2_tab_3";
-            this.textBox_client_name_2_tab_3.Size = new System.Drawing.Size(75, 23);
+            this.textBox_client_name_2_tab_3.Size = new System.Drawing.Size(120, 23);
             this.textBox_client_name_2_tab_3.TabIndex = 4;
             // 
             // metroLabel34
@@ -1037,9 +1037,9 @@ namespace GersangClientStation {
             // textBox_client_name_1_tab_3
             // 
             this.textBox_client_name_1_tab_3.Location = new System.Drawing.Point(46, 32);
-            this.textBox_client_name_1_tab_3.MaxLength = 5;
+            this.textBox_client_name_1_tab_3.MaxLength = 8;
             this.textBox_client_name_1_tab_3.Name = "textBox_client_name_1_tab_3";
-            this.textBox_client_name_1_tab_3.Size = new System.Drawing.Size(75, 23);
+            this.textBox_client_name_1_tab_3.Size = new System.Drawing.Size(120, 23);
             this.textBox_client_name_1_tab_3.TabIndex = 0;
             // 
             // metroLabel7
@@ -1378,9 +1378,9 @@ namespace GersangClientStation {
             // textBox_client_name_3_tab_4
             // 
             this.textBox_client_name_3_tab_4.Location = new System.Drawing.Point(46, 344);
-            this.textBox_client_name_3_tab_4.MaxLength = 5;
+            this.textBox_client_name_3_tab_4.MaxLength = 8;
             this.textBox_client_name_3_tab_4.Name = "textBox_client_name_3_tab_4";
-            this.textBox_client_name_3_tab_4.Size = new System.Drawing.Size(75, 23);
+            this.textBox_client_name_3_tab_4.Size = new System.Drawing.Size(120, 23);
             this.textBox_client_name_3_tab_4.TabIndex = 142;
             // 
             // metroLabel38
@@ -1395,9 +1395,9 @@ namespace GersangClientStation {
             // textBox_client_name_2_tab_4
             // 
             this.textBox_client_name_2_tab_4.Location = new System.Drawing.Point(46, 188);
-            this.textBox_client_name_2_tab_4.MaxLength = 5;
+            this.textBox_client_name_2_tab_4.MaxLength = 8;
             this.textBox_client_name_2_tab_4.Name = "textBox_client_name_2_tab_4";
-            this.textBox_client_name_2_tab_4.Size = new System.Drawing.Size(75, 23);
+            this.textBox_client_name_2_tab_4.Size = new System.Drawing.Size(120, 23);
             this.textBox_client_name_2_tab_4.TabIndex = 138;
             // 
             // metroLabel39
@@ -1412,9 +1412,9 @@ namespace GersangClientStation {
             // textBox_client_name_1_tab_4
             // 
             this.textBox_client_name_1_tab_4.Location = new System.Drawing.Point(46, 32);
-            this.textBox_client_name_1_tab_4.MaxLength = 5;
+            this.textBox_client_name_1_tab_4.MaxLength = 8;
             this.textBox_client_name_1_tab_4.Name = "textBox_client_name_1_tab_4";
-            this.textBox_client_name_1_tab_4.Size = new System.Drawing.Size(75, 23);
+            this.textBox_client_name_1_tab_4.Size = new System.Drawing.Size(120, 23);
             this.textBox_client_name_1_tab_4.TabIndex = 132;
             // 
             // metroLabel40
