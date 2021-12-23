@@ -759,12 +759,28 @@ namespace GersangClientStation {
             //버전 업데이트 시 Properties -> AssemblyInfo.cs 의 AssemblyVersion과 AssemblyFileVersion을 바꿔주세요.
             string version = Assembly.GetExecutingAssembly().GetName().Version.ToString().Substring(0, 5);
 
+            //이전 버전의 config파일을 가져온 유저를 위해 업데이트 알림 수신과 관련한 config를 초기화 합니다.
+            KeyValueConfigurationElement element_check_update = Form_Main.config.AppSettings.Settings["check_update"];
+            if (element_check_update == null) { 
+                Form_Main.config.AppSettings.Settings.Add("check_update", "True");
+                config.Save(ConfigurationSaveMode.Modified, true);
+                ConfigurationManager.RefreshSection("appSettings");
+            }
+
+            KeyValueConfigurationElement element_ignore_version = Form_Main.config.AppSettings.Settings["current_ignore_version"];
+            if (element_ignore_version == null) { 
+                Form_Main.config.AppSettings.Settings.Add("current_ignore_version", "");
+                config.Save(ConfigurationSaveMode.Modified, true);
+                ConfigurationManager.RefreshSection("appSettings");
+            }
+
             try {
                 //깃허브에서 모든 릴리즈 정보를 받아옵니다.
                 GitHubClient client = new GitHubClient(new ProductHeaderValue("Byungmeo"));
                 IReadOnlyList<Release> releases = await client.Repository.Release.GetAll("byungmeo", "GersangClientStation");
 
                 //깃허브에 게시된 마지막 버전과 현재 버전을 초기화 합니다.
+                //Version latestGitHubVersion = new Version(releases[0].TagName);
                 Version latestGitHubVersion = new Version(releases[0].TagName);
                 Version localVersion = new Version(version);
                 Debug.WriteLine("깃허브에 마지막으로 게시된 버전 : " + latestGitHubVersion);
@@ -773,13 +789,39 @@ namespace GersangClientStation {
                 //버전 비교
                 int versionComparison = localVersion.CompareTo(latestGitHubVersion);
                 if (versionComparison < 0) {
+                    if(!Boolean.Parse(config.AppSettings.Settings["check_update"].Value)) {
+                        //업데이트 알림을 받지 않기로 체크하였음
+                        Debug.WriteLine("업데이트 알림을 받지 않기로 이전에 체크 하였음.");
+                        Debug.WriteLine("알림을 띄우지 않기로 한 버전 : " + config.AppSettings.Settings["current_ignore_version"].Value);
+                        if (latestGitHubVersion.ToString() == config.AppSettings.Settings["current_ignore_version"].Value) {
+                            //당시 알림을 받지 않기로 한 버전이 현재 업데이트 버전과 동일하면 알림을 띄우지 않습니다.
+                            return;
+                        } else {
+                            //만약 당시 알림을 받지 않기로 한 버전보다 상위 버전이 출시되면 다시 알림을 띄우도록 합니다.
+                            config.AppSettings.Settings["check_update"].Value = "True";
+                            config.Save(ConfigurationSaveMode.Modified, true);
+                            ConfigurationManager.RefreshSection("appSettings");
+                        }
+                    }
                     Debug.WriteLine("구버전입니다! 업데이트 메시지박스를 출력합니다!");
 
-                    DialogResult dr = MessageBox.Show(releases[0].Body + "\n\n업데이트 하시겠습니까? (GitHub 접속)",
+                    DialogResult dr1 = MessageBox.Show(releases[0].Body + "\n\n업데이트 하시겠습니까? (GitHub 접속)",
                         "업데이트 안내", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
 
-                    if (dr == DialogResult.Yes) {
+                    if (dr1 == DialogResult.Yes) {
                         System.Diagnostics.Process.Start("https://github.com/byungmeo/GersangClientStation/releases/latest");
+                    } else {
+                        DialogResult dr2 = MessageBox.Show("다다음 패치가 게시될 때 까지 업데이트 알림을 받지 않으시겠습니까?",
+                        "업데이트 알림", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                        
+                        if (dr2 == DialogResult.Yes) {
+                            Debug.WriteLine("업데이트 알림을 받지 않기로 체크 하였음.");
+                            Debug.WriteLine("다음부터 알림을 받지 않을 버전 : " + latestGitHubVersion.ToString());
+                            config.AppSettings.Settings["check_update"].Value = "False";
+                            config.AppSettings.Settings["current_ignore_version"].Value = latestGitHubVersion.ToString();
+                            config.Save(ConfigurationSaveMode.Modified, true);
+                            ConfigurationManager.RefreshSection("appSettings");
+                        }
                     }
                 } else if (versionComparison > 0) {
                     Debug.WriteLine("깃허브에 릴리즈된 버전보다 최신입니다!");
@@ -787,6 +829,7 @@ namespace GersangClientStation {
                     Debug.WriteLine("현재 버전은 최신버전입니다!");
                 }
             } catch (Exception ex) {
+                MessageBox.Show("프로그램 업데이트 확인 도중 에러가 발생하였습니다.\n문의 부탁드립니다.", "업데이트 확인 오류", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Debug.WriteLine(ex.Message);
             }
         }
@@ -824,7 +867,7 @@ namespace GersangClientStation {
             //이전 버전에서 설정 파일을 가져온 경우 별명 표시 여부 설정을 임의로 설정합니다.
             for (int num = 1; num <= 3; num++) {
                 KeyValueConfigurationElement element_display_nickname = Form_Main.config.AppSettings.Settings["display_nickname_" + num];
-                if (element_display_nickname == null) { Form_Main.config.AppSettings.Settings.Add("display_nickname_" + num, "true"); }
+                if (element_display_nickname == null) { Form_Main.config.AppSettings.Settings.Add("display_nickname_" + num, "True"); }
             }
 
             config.Save(ConfigurationSaveMode.Modified, true);
