@@ -75,7 +75,7 @@ namespace GersangClientStation {
         private bool isSubmitOtp = false; //현재 OTP 입력 후 로그인을 시도하였는가?
 
         //ActiveX 사용 여부
-        private bool isActiveX = true;
+        private bool isActiveX;
 
         //폼 생성자
         public Form_Main() {
@@ -86,8 +86,10 @@ namespace GersangClientStation {
 
         //폼 로딩
         private void Form_Main_Load(object sender, EventArgs e) {
+            LoadSetting();
             initRadioButton(); //저장되어있는 세팅값 번호를 불러오고, 해당 세팅값으로 클라이언트를 세팅합니다.
             initCheckBox();
+            initLabFunction(); //실험실 기능 세팅값 초기화
         }
         //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -154,6 +156,19 @@ namespace GersangClientStation {
                         Debug.WriteLine("SetStatus: 잘못된 Client 인자 전달");
                         return;
                 }
+
+                if (document_main.Url.ToString().Contains("pw_reset.gs")) {
+                    Debug.WriteLine("비밀번호 변경 주기 홉페이지입니다.");
+                    foreach (HtmlElement element in mainBrowser.Document.GetElementsByTagName("a")) {
+                        string innerText = element.InnerText;
+                        if (innerText == "다음에 변경하기") {
+                            Debug.WriteLine("정상적인 게임 실행을 위해 다음에 변경하기를 클릭합니다.");
+                            element.InvokeMember("Click");
+                            return;
+                        }
+                    }
+                }
+                
             } else {
                 Debug.WriteLine("로그인에 실패하였거나, 아직 로그인이 되지 않은 상태입니다.");
             }
@@ -331,14 +346,24 @@ namespace GersangClientStation {
             } else {
                 //ActiveX가 아닌 GersangStarter로 실행하도록 합니다.
                 //참고 : https://github.com/LOONACIA/GersangLauncher
-                HtmlElement script_start = this.document_main.CreateElement("script"); //새로운 스크립트 요소를 추가합니다
-                script_start.SetAttribute("text", "function start_Without_ActiveX()\n" +
-                    "{\n" +
-                    "self.location.href = 'Gersang:';\n" +
-                    @"startRetry = setTimeout(""socketStart('main')"", 2000);\n" +
-                    "}");
-                this.document_main.GetElementsByTagName("head")[0].AppendChild(script_start);
-                this.document_main.InvokeScript("start_Without_ActiveX");
+
+                this.document_main = mainBrowser.Document;
+                for(int i = 0; i < 5; i++) {
+                    Delay(200);
+                    if(document_main.Url.ToString().Contains("pw_reset.gs")) {
+                        continue;
+                    } else {
+                        string script = "function myStart() {\n self.location.href='Gersang:';\n startRetry = setTimeout(\"socketStart('main')\", 2000);" + "\n}";
+                        HtmlElement script_start = this.document_main.CreateElement("script"); //새로운 스크립트 요소를 추가합니다
+                        script_start.SetAttribute("language", "JavaScript");
+                        script_start.InnerHtml = script;
+                        this.document_main.GetElementsByTagName("head")[0].AppendChild(script_start);
+                        this.document_main.InvokeScript("myStart");
+                        return;
+                    }
+                }
+
+                MessageBox.Show("정상적으로 로그인을 실행하지 못하였습니다.\n실험실-ActiveX 체크박스를 체크하고 실행 해보세요.", "실행 오류", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
         //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -810,8 +835,8 @@ namespace GersangClientStation {
         //실험실
         private void menuItem_lab_Click(object sender, EventArgs e) {
             MetroForm labDialogForm = new MetroForm() {
-                Width = 500,
-                Height = 500,
+                Width = 300,
+                Height = 100,
                 Text = "실험실",
                 StartPosition = FormStartPosition.CenterParent,
                 Resizable = false,
@@ -822,6 +847,9 @@ namespace GersangClientStation {
             MetroCheckBox check_activeX = new MetroCheckBox() { Left = 30, Top = 60, Text = "ActiveX 사용", Checked = true };
             check_activeX.CheckedChanged += delegate (object obj, EventArgs eventArgs) {
                 this.isActiveX = ((MetroCheckBox)obj).Checked;
+                config.AppSettings.Settings["use_activeX"].Value = isActiveX.ToString();
+                config.Save(ConfigurationSaveMode.Modified, true);
+                ConfigurationManager.RefreshSection("appSettings");
             };
             labDialogForm.Controls.Add(check_activeX);
 
@@ -961,6 +989,10 @@ namespace GersangClientStation {
                 if (element_display_nickname == null) { Form_Main.config.AppSettings.Settings.Add("display_nickname_" + num, "True"); }
             }
 
+            //이전 버전에서 설정 파일을 가져온 경우 ActiveX 사용 여부 설정을 임의로 설정합니다.
+            KeyValueConfigurationElement element_use_activeX = Form_Main.config.AppSettings.Settings["use_activeX"];
+            if (element_use_activeX == null) { Form_Main.config.AppSettings.Settings.Add("use_activeX", "True"); }
+
             config.Save(ConfigurationSaveMode.Modified, true);
             ConfigurationManager.RefreshSection("appSettings");
 
@@ -1038,6 +1070,10 @@ namespace GersangClientStation {
             eventBrowser.DocumentCompleted += new WebBrowserDocumentCompletedEventHandler(this.eventBrowser_DocumentCompleted); //브라우저 로딩 완료 이벤트 리스너 부착
             eventBrowser.ScriptErrorsSuppressed = true; //Script Error가 뜨지 않도록 합니다.
             eventBrowser.Url = new Uri(url_main, UriKind.Absolute); //홈페이지 메인 화면으로 이동합니다.
+        }
+
+        private void initLabFunction() {
+            isActiveX = bool.Parse(ConfigurationManager.AppSettings["use_activeX"]);
         }
 
         //태스크바의 아이콘을 클릭 시 최소화, 최대화가 되도록 설정 (호출 필요 X)

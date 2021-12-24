@@ -29,6 +29,7 @@ namespace GersangClientStation {
             this.menuItem_client = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItem_shortcut = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItem_lab = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuItem_info = new System.Windows.Forms.ToolStripMenuItem();
             this.metroPanel2 = new MetroFramework.Controls.MetroPanel();
             this.check_nickname2 = new MetroFramework.Controls.MetroCheckBox();
             this.button_start_2 = new System.Windows.Forms.Button();
@@ -67,7 +68,6 @@ namespace GersangClientStation {
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.link_qa2 = new MetroFramework.Controls.MetroLink();
             this.link_icon_license = new MetroFramework.Controls.MetroLink();
-            this.menuItem_info = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip2.SuspendLayout();
             this.metroPanel2.SuspendLayout();
             this.metroPanel3.SuspendLayout();
@@ -125,6 +125,16 @@ namespace GersangClientStation {
             this.menuItem_lab.Text = "실험실                     ";
             this.menuItem_lab.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.menuItem_lab.Click += new System.EventHandler(this.menuItem_lab_Click);
+            // 
+            // menuItem_info
+            // 
+            this.menuItem_info.Image = ((System.Drawing.Image)(resources.GetObject("menuItem_info.Image")));
+            this.menuItem_info.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.menuItem_info.Name = "menuItem_info";
+            this.menuItem_info.Size = new System.Drawing.Size(190, 28);
+            this.menuItem_info.Text = "프로그램 정보           ";
+            this.menuItem_info.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.menuItem_info.Click += new System.EventHandler(this.menuItem_info_Click);
             // 
             // metroPanel2
             // 
@@ -629,16 +639,6 @@ namespace GersangClientStation {
             this.link_icon_license.Text = "Icons by Icons8,com";
             this.link_icon_license.Click += new System.EventHandler(this.link_icon_license_Click);
             // 
-            // menuItem_info
-            // 
-            this.menuItem_info.Image = ((System.Drawing.Image)(resources.GetObject("menuItem_info.Image")));
-            this.menuItem_info.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.menuItem_info.Name = "menuItem_info";
-            this.menuItem_info.Size = new System.Drawing.Size(190, 28);
-            this.menuItem_info.Text = "프로그램 정보           ";
-            this.menuItem_info.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
-            this.menuItem_info.Click += new System.EventHandler(this.menuItem_info_Click);
-            // 
             // Form_Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
@@ -660,7 +660,6 @@ namespace GersangClientStation {
             this.Controls.Add(this.metroPanel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip2;
-            this.MaximumSize = new System.Drawing.Size(1000, 600);
             this.Name = "Form_Main";
             this.Resizable = false;
             this.ShowIcon = false;
