@@ -668,6 +668,14 @@ namespace GersangClientStation {
                 MessageBox.Show("링크 접속 에러");
             }
         }
+        private void link_icon_license_Click(object sender, EventArgs e) {
+            try {
+                System.Diagnostics.Process.Start("https://icons8.com");
+            } catch (Exception ex) {
+                Debug.WriteLine(ex.Message);
+                MessageBox.Show("링크 접속 에러");
+            }
+        }
         //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
         /// <summary>
@@ -769,18 +777,28 @@ namespace GersangClientStation {
         /// 메뉴 클릭
         /// </summary>
 
-        //계정 정보 및 경로 설정
+        //클라이언트 설정
         private void toolStripMenuItem1_Click(object sender, EventArgs e) {
             Form_Setting settingDialogForm = new Form_Setting();
             settingDialogForm.ShowDialog();
             LoadSetting(); //세팅값이 바뀌었다면 새로고침 합니다.
         }
 
-        //바로가기 설정
+        //바로가기 경로 설정
         private void ToolStripMenuItem2_Click(object sender, EventArgs e) {
             Form_Shortcut shortcutDialogForm = new Form_Shortcut();
             shortcutDialogForm.ShowDialog();
             LoadSetting(); //세팅값이 바뀌었다면 새로고침 합니다.
+        }
+
+        //실험실
+        private void menuItem_lab_Click(object sender, EventArgs e) {
+
+        }
+
+        //프로그램 정보
+        private void menuItem_info_Click(object sender, EventArgs e) {
+
         }
         //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

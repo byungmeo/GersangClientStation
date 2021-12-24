@@ -26,9 +26,9 @@ namespace GersangClientStation {
         private void InitializeComponent() {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_Main));
             this.menuStrip2 = new System.Windows.Forms.MenuStrip();
-            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.ToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
-            this.다클라ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuItem_client = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuItem_shortcut = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuItem_lab = new System.Windows.Forms.ToolStripMenuItem();
             this.metroPanel2 = new MetroFramework.Controls.MetroPanel();
             this.check_nickname2 = new MetroFramework.Controls.MetroCheckBox();
             this.button_start_2 = new System.Windows.Forms.Button();
@@ -66,6 +66,8 @@ namespace GersangClientStation {
             this.link_qa1 = new MetroFramework.Controls.MetroLink();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.link_qa2 = new MetroFramework.Controls.MetroLink();
+            this.link_icon_license = new MetroFramework.Controls.MetroLink();
+            this.menuItem_info = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip2.SuspendLayout();
             this.metroPanel2.SuspendLayout();
             this.metroPanel3.SuspendLayout();
@@ -83,9 +85,10 @@ namespace GersangClientStation {
             this.menuStrip2.AutoSize = false;
             this.menuStrip2.Dock = System.Windows.Forms.DockStyle.Right;
             this.menuStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItem1,
-            this.ToolStripMenuItem2,
-            this.다클라ToolStripMenuItem});
+            this.menuItem_client,
+            this.menuItem_shortcut,
+            this.menuItem_lab,
+            this.menuItem_info});
             this.menuStrip2.Location = new System.Drawing.Point(488, 60);
             this.menuStrip2.Name = "menuStrip2";
             this.menuStrip2.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
@@ -93,35 +96,35 @@ namespace GersangClientStation {
             this.menuStrip2.TabIndex = 13;
             this.menuStrip2.Text = "menuStrip2";
             // 
-            // toolStripMenuItem1
+            // menuItem_client
             // 
-            this.toolStripMenuItem1.AutoSize = false;
-            this.toolStripMenuItem1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripMenuItem1.Image")));
-            this.toolStripMenuItem1.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(193, 36);
-            this.toolStripMenuItem1.Text = "계정정보 및 경로 설정";
-            this.toolStripMenuItem1.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
+            this.menuItem_client.Image = ((System.Drawing.Image)(resources.GetObject("menuItem_client.Image")));
+            this.menuItem_client.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.menuItem_client.Name = "menuItem_client";
+            this.menuItem_client.Size = new System.Drawing.Size(190, 28);
+            this.menuItem_client.Text = "클라이언트 설정         ";
+            this.menuItem_client.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.menuItem_client.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
             // 
-            // ToolStripMenuItem2
+            // menuItem_shortcut
             // 
-            this.ToolStripMenuItem2.Image = ((System.Drawing.Image)(resources.GetObject("ToolStripMenuItem2.Image")));
-            this.ToolStripMenuItem2.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.ToolStripMenuItem2.Name = "ToolStripMenuItem2";
-            this.ToolStripMenuItem2.Size = new System.Drawing.Size(190, 36);
-            this.ToolStripMenuItem2.Text = "바로가기 경로 설정   ";
-            this.ToolStripMenuItem2.Click += new System.EventHandler(this.ToolStripMenuItem2_Click);
+            this.menuItem_shortcut.Image = ((System.Drawing.Image)(resources.GetObject("menuItem_shortcut.Image")));
+            this.menuItem_shortcut.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.menuItem_shortcut.Name = "menuItem_shortcut";
+            this.menuItem_shortcut.Size = new System.Drawing.Size(190, 28);
+            this.menuItem_shortcut.Text = "바로가기 경로 설정    ";
+            this.menuItem_shortcut.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.menuItem_shortcut.Click += new System.EventHandler(this.ToolStripMenuItem2_Click);
             // 
-            // 다클라ToolStripMenuItem
+            // menuItem_lab
             // 
-            this.다클라ToolStripMenuItem.AutoSize = false;
-            this.다클라ToolStripMenuItem.Enabled = false;
-            this.다클라ToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("다클라ToolStripMenuItem.Image")));
-            this.다클라ToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.다클라ToolStripMenuItem.Name = "다클라ToolStripMenuItem";
-            this.다클라ToolStripMenuItem.Size = new System.Drawing.Size(193, 30);
-            this.다클라ToolStripMenuItem.Text = "다클라 생성기 실행";
-            this.다클라ToolStripMenuItem.Visible = false;
+            this.menuItem_lab.Image = ((System.Drawing.Image)(resources.GetObject("menuItem_lab.Image")));
+            this.menuItem_lab.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.menuItem_lab.Name = "menuItem_lab";
+            this.menuItem_lab.Size = new System.Drawing.Size(190, 28);
+            this.menuItem_lab.Text = "실험실                     ";
+            this.menuItem_lab.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.menuItem_lab.Click += new System.EventHandler(this.menuItem_lab_Click);
             // 
             // metroPanel2
             // 
@@ -613,12 +616,36 @@ namespace GersangClientStation {
             this.link_qa2.UseStyleColors = true;
             this.link_qa2.Click += new System.EventHandler(this.link_qa2_Click);
             // 
+            // link_icon_license
+            // 
+            this.link_icon_license.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.link_icon_license.AutoSize = true;
+            this.link_icon_license.BackColor = System.Drawing.SystemColors.Control;
+            this.link_icon_license.CustomBackground = true;
+            this.link_icon_license.Location = new System.Drawing.Point(521, 498);
+            this.link_icon_license.Name = "link_icon_license";
+            this.link_icon_license.Size = new System.Drawing.Size(134, 23);
+            this.link_icon_license.TabIndex = 28;
+            this.link_icon_license.Text = "Icons by Icons8,com";
+            this.link_icon_license.Click += new System.EventHandler(this.link_icon_license_Click);
+            // 
+            // menuItem_info
+            // 
+            this.menuItem_info.Image = ((System.Drawing.Image)(resources.GetObject("menuItem_info.Image")));
+            this.menuItem_info.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.menuItem_info.Name = "menuItem_info";
+            this.menuItem_info.Size = new System.Drawing.Size(190, 28);
+            this.menuItem_info.Text = "프로그램 정보           ";
+            this.menuItem_info.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.menuItem_info.Click += new System.EventHandler(this.menuItem_info_Click);
+            // 
             // Form_Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BorderStyle = MetroFramework.Drawing.MetroBorderStyle.FixedSingle;
             this.ClientSize = new System.Drawing.Size(705, 551);
+            this.Controls.Add(this.link_icon_license);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.link_github);
@@ -661,10 +688,10 @@ namespace GersangClientStation {
 
         #endregion
         private System.Windows.Forms.MenuStrip menuStrip2;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem menuItem_client;
         private MetroFramework.Controls.MetroPanel metroPanel2;
         private MetroFramework.Controls.MetroPanel metroPanel3;
-        private System.Windows.Forms.ToolStripMenuItem 다클라ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem menuItem_lab;
         private MetroFramework.Controls.MetroLabel label_client_2;
         private MetroFramework.Controls.MetroLabel label_client_3;
         private MetroFramework.Controls.MetroLabel label_client_1;
@@ -690,7 +717,7 @@ namespace GersangClientStation {
         private MetroFramework.Controls.MetroLink link_shortcut_3;
         private MetroFramework.Controls.MetroLink link_shortcut_2;
         private MetroFramework.Controls.MetroLink link_shortcut_1;
-        private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItem2;
+        private System.Windows.Forms.ToolStripMenuItem menuItem_shortcut;
         private MetroFramework.Controls.MetroLink link_qa1;
         private System.Windows.Forms.GroupBox groupBox2;
         private MetroFramework.Controls.MetroLink link_qa2;
@@ -701,6 +728,8 @@ namespace GersangClientStation {
         private MetroFramework.Controls.MetroCheckBox check_nickname1;
         private MetroFramework.Controls.MetroCheckBox check_nickname2;
         private MetroFramework.Controls.MetroCheckBox check_nickname3;
+        private MetroFramework.Controls.MetroLink link_icon_license;
+        private System.Windows.Forms.ToolStripMenuItem menuItem_info;
     }
 }
 
