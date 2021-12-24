@@ -74,6 +74,9 @@ namespace GersangClientStation {
         private bool isTypingOtp = false; //현재 OTP 입력 상태인가?
         private bool isSubmitOtp = false; //현재 OTP 입력 후 로그인을 시도하였는가?
 
+        //ActiveX 사용 여부
+        private bool isActiveX = true;
+
         //폼 생성자
         public Form_Main() {
             checkUpdate(); //업데이트 확인
@@ -322,8 +325,21 @@ namespace GersangClientStation {
                 registryKey.Close();
             }
 
-            //홈페이지에서 gameStart 스크립트를 실행합니다. (인자가 1이면 본섭, 2면 테섭을 실행합니다)
-            this.document_main.InvokeScript("gameStart", new object[] { 1 });
+            if (this.isActiveX) {
+                //홈페이지에서 gameStart 스크립트를 실행합니다. (인자가 1이면 본섭, 2면 테섭을 실행합니다)
+                this.document_main.InvokeScript("gameStart", new object[] { 1 });
+            } else {
+                //ActiveX가 아닌 GersangStarter로 실행하도록 합니다.
+                //참고 : https://github.com/LOONACIA/GersangLauncher
+                HtmlElement script_start = this.document_main.CreateElement("script"); //새로운 스크립트 요소를 추가합니다
+                script_start.SetAttribute("text", "function start_Without_ActiveX()\n" +
+                    "{\n" +
+                    "self.location.href = 'Gersang:';\n" +
+                    @"startRetry = setTimeout(""socketStart('main')"", 2000);\n" +
+                    "}");
+                this.document_main.GetElementsByTagName("head")[0].AppendChild(script_start);
+                this.document_main.InvokeScript("start_Without_ActiveX");
+            }
         }
         //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -793,7 +809,27 @@ namespace GersangClientStation {
 
         //실험실
         private void menuItem_lab_Click(object sender, EventArgs e) {
+            MetroForm labDialogForm = new MetroForm() {
+                Width = 500,
+                Height = 500,
+                Text = "실험실",
+                StartPosition = FormStartPosition.CenterParent,
+                Resizable = false,
+                MaximizeBox = false,
+                MinimizeBox = false,
+                BorderStyle = MetroFramework.Drawing.MetroBorderStyle.FixedSingle
+            };
+            MetroCheckBox check_activeX = new MetroCheckBox() { Left = 30, Top = 60, Text = "ActiveX 사용", Checked = true };
+            check_activeX.CheckedChanged += delegate (object obj, EventArgs eventArgs) {
+                this.isActiveX = ((MetroCheckBox)obj).Checked;
+            };
+            labDialogForm.Controls.Add(check_activeX);
 
+            labDialogForm.Load += delegate (object obj, EventArgs eventArgs) {
+                check_activeX.Checked = this.isActiveX;
+            };
+
+            labDialogForm.ShowDialog();
         }
 
         //프로그램 정보
