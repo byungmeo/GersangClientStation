@@ -819,14 +819,15 @@ namespace GersangClientStation {
         /// </summary>
 
         //클라이언트 설정
-        private void toolStripMenuItem1_Click(object sender, EventArgs e) {
-            Form_Setting settingDialogForm = new Form_Setting();
+        private void menuItem_client_Click(object sender, EventArgs e) {
+            byte settingNumber = Byte.Parse(ConfigurationManager.AppSettings["setting_num"]);
+            Form_Setting settingDialogForm = new Form_Setting(settingNumber);
             settingDialogForm.ShowDialog();
             LoadSetting(); //세팅값이 바뀌었다면 새로고침 합니다.
         }
 
         //바로가기 경로 설정
-        private void ToolStripMenuItem2_Click(object sender, EventArgs e) {
+        private void menuItem_shortcut_Click(object sender, EventArgs e) {
             Form_Shortcut shortcutDialogForm = new Form_Shortcut();
             shortcutDialogForm.ShowDialog();
             LoadSetting(); //세팅값이 바뀌었다면 새로고침 합니다.

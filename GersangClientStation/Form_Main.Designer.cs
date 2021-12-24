@@ -104,7 +104,7 @@ namespace GersangClientStation {
             this.menuItem_client.Size = new System.Drawing.Size(190, 28);
             this.menuItem_client.Text = "클라이언트 설정         ";
             this.menuItem_client.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
-            this.menuItem_client.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
+            this.menuItem_client.Click += new System.EventHandler(this.menuItem_client_Click);
             // 
             // menuItem_shortcut
             // 
@@ -114,7 +114,7 @@ namespace GersangClientStation {
             this.menuItem_shortcut.Size = new System.Drawing.Size(190, 28);
             this.menuItem_shortcut.Text = "바로가기 경로 설정    ";
             this.menuItem_shortcut.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
-            this.menuItem_shortcut.Click += new System.EventHandler(this.ToolStripMenuItem2_Click);
+            this.menuItem_shortcut.Click += new System.EventHandler(this.menuItem_shortcut_Click);
             // 
             // menuItem_lab
             // 

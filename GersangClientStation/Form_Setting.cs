@@ -6,14 +6,33 @@ using System.Windows.Forms;
 
 namespace GersangClientStation {
     public partial class Form_Setting : MetroForm {
+        private byte current_setting;
         private bool isTextChanged = false;
 
-        public Form_Setting() {
+        public Form_Setting(byte settingNumber) {
+            this.current_setting = settingNumber;
             InitializeComponent();
         }
 
         private void Form_Setting_Load(object sender, System.EventArgs e) {
-            tabControl_setting.SelectedTab = metroTabPage1;
+            switch (current_setting) {
+                case 1:
+                    tabControl_setting.SelectedTab = metroTabPage1;
+                    break;
+                case 2:
+                    tabControl_setting.SelectedTab = metroTabPage2;
+                    break;
+                case 3:
+                    tabControl_setting.SelectedTab = metroTabPage3;
+                    break;
+                case 4:
+                    tabControl_setting.SelectedTab = metroTabPage4;
+                    break;
+                default:
+                    tabControl_setting.SelectedTab = metroTabPage1;
+                    break;
+            }
+            
 
             //탭1
             textBox_client_name_1_tab_1.Text = ConfigurationManager.AppSettings["client_name_1_tab_1"];
