@@ -19,8 +19,6 @@
 .NET Framework 4.7.2
 
 ## 참고사항
-거상 유틸 오픈소스 프로젝트 디스코드 : https://discord.gg/XFp6hkyrXS (개발 관련 의견 공유)
-
 Form_Main.cs : 메인폼 코드
 
 Form_Setting.cs : 계정 설정폼 코드
