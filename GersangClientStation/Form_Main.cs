@@ -839,30 +839,31 @@ namespace GersangClientStation {
 
         //실험실
         private void menuItem_lab_Click(object sender, EventArgs e) {
-            MetroForm labDialogForm = new MetroForm() {
-                Width = 300,
-                Height = 100,
-                Text = "실험실",
-                StartPosition = FormStartPosition.CenterParent,
-                Resizable = false,
-                MaximizeBox = false,
-                MinimizeBox = false,
-                BorderStyle = MetroFramework.Drawing.MetroBorderStyle.FixedSingle
-            };
-            MetroCheckBox check_activeX = new MetroCheckBox() { Left = 30, Top = 60, Text = "ActiveX 사용", Checked = true };
+            Form_Lab labForm = new Form_Lab();
+
+            MetroCheckBox check_activeX = new MetroCheckBox() { Left = 30, Top = 120, Text = "ActiveX 사용" };
             check_activeX.CheckedChanged += delegate (object obj, EventArgs eventArgs) {
                 this.isActiveX = ((MetroCheckBox)obj).Checked;
                 config.AppSettings.Settings["use_activeX"].Value = isActiveX.ToString();
                 config.Save(ConfigurationSaveMode.Modified, true);
                 ConfigurationManager.RefreshSection("appSettings");
             };
-            labDialogForm.Controls.Add(check_activeX);
+            labForm.Controls.Add(check_activeX);
 
-            labDialogForm.Load += delegate (object obj, EventArgs eventArgs) {
+            labForm.Load += delegate (object obj, EventArgs eventArgs) {
                 check_activeX.Checked = this.isActiveX;
             };
 
-            labDialogForm.ShowDialog();
+            labForm.ShowDialog();
+        }
+
+        private void menuItem_contact_Click(object sender, EventArgs e) {
+            try {
+                System.Diagnostics.Process.Start("https://blog.naver.com/kog5071/222605986594");
+            } catch (Exception ex) {
+                Debug.WriteLine(ex.Message);
+                MessageBox.Show("링크 접속 에러");
+            }
         }
 
         //프로그램 정보

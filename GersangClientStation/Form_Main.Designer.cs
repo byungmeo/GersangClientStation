@@ -68,6 +68,7 @@ namespace GersangClientStation {
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.link_qa2 = new MetroFramework.Controls.MetroLink();
             this.link_icon_license = new MetroFramework.Controls.MetroLink();
+            this.menuItem_contact = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip2.SuspendLayout();
             this.metroPanel2.SuspendLayout();
             this.metroPanel3.SuspendLayout();
@@ -88,6 +89,7 @@ namespace GersangClientStation {
             this.menuItem_client,
             this.menuItem_shortcut,
             this.menuItem_lab,
+            this.menuItem_contact,
             this.menuItem_info});
             this.menuStrip2.Location = new System.Drawing.Point(488, 60);
             this.menuStrip2.Name = "menuStrip2";
@@ -639,6 +641,16 @@ namespace GersangClientStation {
             this.link_icon_license.Text = "Icons by Icons8,com";
             this.link_icon_license.Click += new System.EventHandler(this.link_icon_license_Click);
             // 
+            // menuItem_contact
+            // 
+            this.menuItem_contact.Image = ((System.Drawing.Image)(resources.GetObject("menuItem_contact.Image")));
+            this.menuItem_contact.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.menuItem_contact.Name = "menuItem_contact";
+            this.menuItem_contact.Size = new System.Drawing.Size(190, 28);
+            this.menuItem_contact.Text = "문의하기                  ";
+            this.menuItem_contact.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.menuItem_contact.Click += new System.EventHandler(this.menuItem_contact_Click);
+            // 
             // Form_Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
@@ -728,6 +740,7 @@ namespace GersangClientStation {
         private MetroFramework.Controls.MetroCheckBox check_nickname3;
         private MetroFramework.Controls.MetroLink link_icon_license;
         private System.Windows.Forms.ToolStripMenuItem menuItem_info;
+        private System.Windows.Forms.ToolStripMenuItem menuItem_contact;
     }
 }
 

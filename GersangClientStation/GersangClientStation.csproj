@@ -238,6 +238,12 @@
     <Compile Include="Form_Information.Designer.cs">
       <DependentUpon>Form_Information.cs</DependentUpon>
     </Compile>
+    <Compile Include="Form_Lab.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_Lab.Designer.cs">
+      <DependentUpon>Form_Lab.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form_License.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -272,6 +278,9 @@
     </Compile>
     <EmbeddedResource Include="Form_Information.resx">
       <DependentUpon>Form_Information.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_Lab.resx">
+      <DependentUpon>Form_Lab.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form_License.resx">
       <DependentUpon>Form_License.cs</DependentUpon>
