@@ -59,6 +59,10 @@ namespace GersangClientStation {
         //mainBrowser의 Document 속성
         HtmlDocument document_main = null;
 
+        //버전 정보
+        public static string currentVersion;
+        public static string latestVersion;
+
         //클라이언트 열거체
         enum Client {
             MainClient, //1클라
@@ -863,7 +867,8 @@ namespace GersangClientStation {
 
         //프로그램 정보
         private void menuItem_info_Click(object sender, EventArgs e) {
-
+            Form_Information informationForm = new Form_Information();
+            informationForm.ShowDialog();
         }
         //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -875,7 +880,7 @@ namespace GersangClientStation {
             ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
 
             //버전 업데이트 시 Properties -> AssemblyInfo.cs 의 AssemblyVersion과 AssemblyFileVersion을 바꿔주세요.
-            string version = Assembly.GetExecutingAssembly().GetName().Version.ToString().Substring(0, 5);
+            currentVersion = Assembly.GetExecutingAssembly().GetName().Version.ToString().Substring(0, 5);
 
             //이전 버전의 config파일을 가져온 유저를 위해 업데이트 알림 수신과 관련한 config를 초기화 합니다.
             KeyValueConfigurationElement element_check_update = Form_Main.config.AppSettings.Settings["check_update"];
@@ -896,11 +901,12 @@ namespace GersangClientStation {
                 //깃허브에서 모든 릴리즈 정보를 받아옵니다.
                 GitHubClient client = new GitHubClient(new ProductHeaderValue("Byungmeo"));
                 IReadOnlyList<Release> releases = await client.Repository.Release.GetAll("byungmeo", "GersangClientStation");
+                latestVersion = releases[0].TagName;
 
                 //깃허브에 게시된 마지막 버전과 현재 버전을 초기화 합니다.
                 //Version latestGitHubVersion = new Version(releases[0].TagName);
-                Version latestGitHubVersion = new Version(releases[0].TagName);
-                Version localVersion = new Version(version);
+                Version latestGitHubVersion = new Version(latestVersion);
+                Version localVersion = new Version(currentVersion);
                 Debug.WriteLine("깃허브에 마지막으로 게시된 버전 : " + latestGitHubVersion);
                 Debug.WriteLine("현재 프로젝트 버전 : " + localVersion);
 
