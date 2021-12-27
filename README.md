@@ -14,9 +14,11 @@
 빠른 이벤트 페이지 접속이 가능한 바로가기 기능 ✔
 
 ## 요구사항
-(권장) Windows 10
+(권장) Windows 7, 10, 11
 
-.NET Framework 4.7.2
+거상 GameStarter 또는 ActiveX
+
+.NET Framework 4.7.2 이상
 
 ## 참고사항
 Form_Main.cs : 메인폼 코드
