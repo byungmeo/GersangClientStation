@@ -662,7 +662,6 @@ namespace GersangClientStation {
             this.MainMenuStrip = this.menuStrip2;
             this.Name = "Form_Main";
             this.Resizable = false;
-            this.ShowIcon = false;
             this.Text = "거상 다클라 스테이션";
             this.Load += new System.EventHandler(this.Form_Main_Load);
             this.menuStrip2.ResumeLayout(false);
