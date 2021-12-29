@@ -78,8 +78,10 @@ namespace GersangClientStation {
         private bool isTypingOtp = false; //현재 OTP 입력 상태인가?
         private bool isSubmitOtp = false; //현재 OTP 입력 후 로그인을 시도하였는가?
 
-        //ActiveX 사용 여부
+        //실허실 기능 체크여부
         private bool isActiveX;
+        private bool isDebuggingMode = false;
+        private bool isDebuggingSearchMode = false;
 
         //폼 생성자
         public Form_Main() {
@@ -408,15 +410,20 @@ namespace GersangClientStation {
                 return;
             }
 
+            if(isDebuggingSearchMode) {
+                //검색보상 디버깅 모드에서는 검색 보상 수령을 수동으로 클릭해야 합니다.
+                return;
+            }
+
             //거상 출석체크 이벤트 페이지에 접속하였다면, 현재 시간 체크 후 해당 시간의 아이템 받기 버튼을 클릭합니다.
             if (isEventPage && eventBrowser.Url.Equals(url_event)) {
                 if (eventBrowser.Document.GetElementById("pop") != null) { //단순히 정말로 페이지가 다 로딩된건지 확인하기 위함입니다.
                     clickItemGet();
+
+                    Delay(100);
+                    this.Activate(); //검색 보상 기능 실행 후 폼이 비활성화 되어 실행 버튼을 두번 눌러야 하는 현상 방지
                 }
             }
-
-            Delay(100);
-            this.Activate(); //검색 보상 기능 실행 후 폼이 비활성화 되어 실행 버튼을 두번 눌러야 하는 현상 방지
         }
         //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -432,6 +439,23 @@ namespace GersangClientStation {
             }
 
             if (url_event != "" && isFind) {
+                if(isDebuggingSearchMode) {
+                    //검색 보상 수령이 안되는 경우 검색모드 디버깅모드를 체크하면
+                    //직접 작동하는걸 확인 가능합니다.
+                    Form debugSearchForm = new Form() {
+                        Width = 1300,
+                        Height = 1000,
+                        StartPosition = FormStartPosition.CenterScreen
+                    };
+                    debugSearchForm.FormClosed += delegate (object obj, FormClosedEventArgs args) {
+                        debugSearchForm.Controls.Clear();
+                    };
+
+                    debugSearchForm.Controls.Add(eventBrowser);
+                    debugSearchForm.Show();
+                }
+                
+
                 navigateSearchPage();
             } else {
                 MessageBox.Show("이벤트 페이지를 찾지 못하였습니다.");
@@ -758,6 +782,22 @@ namespace GersangClientStation {
                 return;
             }
 
+            if(isDebuggingMode) {
+                //검색 보상 수령이 안되는 경우 검색모드 디버깅모드를 체크하면
+                //직접 작동하는걸 확인 가능합니다.
+                Form debugForm = new Form() {
+                    Width = 1300,
+                    Height = 1000,
+                    StartPosition = FormStartPosition.CenterScreen
+                };
+                debugForm.FormClosed += delegate (object obj, FormClosedEventArgs args) {
+                    debugForm.Controls.Clear();
+                };
+
+                debugForm.Controls.Add(mainBrowser);
+                debugForm.Show();
+            }
+
             if (currentLoginClient != client) {
                 //다른 계정에 로그인 되어있거나, 로그아웃 상태라면,
 
@@ -848,10 +888,25 @@ namespace GersangClientStation {
                 config.Save(ConfigurationSaveMode.Modified, true);
                 ConfigurationManager.RefreshSection("appSettings");
             };
+
+            MetroCheckBox check_debug = new MetroCheckBox() { Left = 30, Top = 150, Text = "디버깅 모드" };
+            check_debug.CheckedChanged += delegate (object obj, EventArgs eventArgs) {
+                this.isDebuggingMode = ((MetroCheckBox)obj).Checked;
+            };
+
+            MetroCheckBox check_debugSearch = new MetroCheckBox() { Left = 30, Top = 180, Width = 140, Text = "검색보상 디버깅 모드" };
+            check_debugSearch.CheckedChanged += delegate (object obj, EventArgs eventArgs) {
+                this.isDebuggingSearchMode = ((MetroCheckBox)obj).Checked;
+            };
+
             labForm.Controls.Add(check_activeX);
+            labForm.Controls.Add(check_debug);
+            labForm.Controls.Add(check_debugSearch);
 
             labForm.Load += delegate (object obj, EventArgs eventArgs) {
                 check_activeX.Checked = this.isActiveX;
+                check_debug.Checked = this.isDebuggingMode;
+                check_debugSearch.Checked = this.isDebuggingSearchMode;
             };
 
             labForm.ShowDialog();
@@ -1077,6 +1132,7 @@ namespace GersangClientStation {
 
             eventBrowser.DocumentCompleted += new WebBrowserDocumentCompletedEventHandler(this.eventBrowser_DocumentCompleted); //브라우저 로딩 완료 이벤트 리스너 부착
             eventBrowser.ScriptErrorsSuppressed = true; //Script Error가 뜨지 않도록 합니다.
+            eventBrowser.Dock = DockStyle.Fill;
             eventBrowser.Url = new Uri(url_main, UriKind.Absolute); //홈페이지 메인 화면으로 이동합니다.
         }
 
