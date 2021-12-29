@@ -56,6 +56,9 @@
   <PropertyGroup>
     <SignManifests>false</SignManifests>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Costura, Version=5.7.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>packages\Costura.Fody.5.7.0\lib\netstandard1.0\Costura.dll</HintPath>
@@ -232,6 +235,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="EncryptionSupporter.cs" />
+    <Compile Include="Form_Creator.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_Creator.Designer.cs">
+      <DependentUpon>Form_Creator.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form_Information.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -276,6 +285,9 @@
     <Compile Include="Form_Setting.Designer.cs">
       <DependentUpon>Form_Setting.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Form_Creator.resx">
+      <DependentUpon>Form_Creator.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form_Information.resx">
       <DependentUpon>Form_Information.cs</DependentUpon>
     </EmbeddedResource>
@@ -307,6 +319,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="app.manifest" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -335,6 +348,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="icons8-space-station-60.ico" />
+    <EmbeddedResource Include="ClientCreatorCommand.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="packages\Fody.6.5.5\build\Fody.targets" Condition="Exists('packages\Fody.6.5.5\build\Fody.targets')" />

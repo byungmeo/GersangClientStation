@@ -1,0 +1,96 @@
+﻿@echo off
+echo 이 파일은 다클라 스테이션에 의해 생성되었습니다.
+echo.
+echo 다클라 생성을 시작합니다.
+echo.
+set path1=#PATH1#
+set path2=#PATH2#
+set path3=#PATH3#
+echo 본클라 경로 : %path1%
+echo 2클라 경로 : %path2%
+echo 3클라 경로 : %path3%
+echo.
+echo ###########################
+echo ## 1. 폴더를 생성합니다. ##
+echo ###########################
+echo mkdir "%path2%"
+mkdir "%path2%"
+echo mkdir "%path3%"
+mkdir "%path3%"
+echo.
+echo ###########################################
+echo ## 2. 본클라 경로의 파일들을 복사합니다. ##
+echo ###########################################
+echo xcopy "%path1%\*.*" "%path2%" /exclude:exclude.txt /y
+xcopy "%path1%\*.*" "%path2%" /exclude:exclude.txt /y
+echo xcopy "%path1%\*.*" "%path3%" /exclude:exclude.txt /y
+xcopy "%path1%\*.*" "%path3%" /exclude:exclude.txt /y
+echo.
+echo ####################################
+echo ## 3. XIGNCODE 폴더를 복사합니다. ##
+echo ####################################
+echo xcopy "%path1%\XIGNCODE\" "%path2%\XIGNCODE\" /i /y
+xcopy "%path1%\XIGNCODE\" "%path2%\XIGNCODE\" /i /y
+echo xcopy "%path1%\XIGNCODE\" "%path3%\XIGNCODE\" /i /y
+xcopy "%path1%\XIGNCODE\" "%path3%\XIGNCODE\" /i /y
+echo.
+echo #####################################################
+echo ## 4. 나머지 폴더를 모두 심볼릭 링크로 생성합니다. ##
+echo #####################################################
+echo mklink /d "%path2%\char" "%path1%\char"
+mklink /d "%path2%\char" "%path1%\char"
+echo mklink /d "%path2%\eft" "%path1%\eft"
+mklink /d "%path2%\eft" "%path1%\eft"
+echo mklink /d "%path2%\fnt" "%path1%\fnt"
+mklink /d "%path2%\fnt" "%path1%\fnt"
+echo mklink /d "%path2%\music" "%path1%\music"
+mklink /d "%path2%\music" "%path1%\music"
+echo mklink /d "%path2%\Online" "%path1%\Online"
+mklink /d "%path2%\Online" "%path1%\Online"
+echo mklink /d "%path2%\pal" "%path1%\pal"
+mklink /d "%path2%\pal" "%path1%\pal"
+echo mklink /d "%path2%\Production" "%path1%\Production"
+mklink /d "%path2%\Production" "%path1%\Production"
+echo mklink /d "%path2%\tempeft" "%path1%\tempeft"
+mklink /d "%path2%\tempeft" "%path1%\tempeft"
+echo mklink /d "%path2%\Temporary AutoPatch" "%path1%\Temporary AutoPatch"
+mklink /d "%path2%\Temporary AutoPatch" "%path1%\Temporary AutoPatch"
+echo mklink /d "%path2%\tile" "%path1%\tile"
+mklink /d "%path2%\tile" "%path1%\tile"
+echo mklink /d "%path2%\yfnt" "%path1%\yfnt"
+mklink /d "%path2%\yfnt" "%path1%\yfnt"
+
+echo mklink /d "%path3%\char" "%path1%\char"
+mklink /d "%path3%\char" "%path1%\char"
+echo mklink /d "%path3%\eft" "%path1%\eft"
+mklink /d "%path3%\eft" "%path1%\eft"
+echo mklink /d "%path3%\fnt" "%path1%\fnt"
+mklink /d "%path3%\fnt" "%path1%\fnt"
+echo mklink /d "%path3%\music" "%path1%\music"
+mklink /d "%path3%\music" "%path1%\music"
+echo mklink /d "%path3%\Online" "%path1%\Online"
+mklink /d "%path3%\Online" "%path1%\Online"
+echo mklink /d "%path3%\pal" "%path1%\pal"
+mklink /d "%path3%\pal" "%path1%\pal"
+echo mklink /d "%path3%\Production" "%path1%\Production"
+mklink /d "%path3%\Production" "%path1%\Production"
+echo mklink /d "%path3%\tempeft" "%path1%\tempeft"
+mklink /d "%path3%\tempeft" "%path1%\tempeft"
+echo mklink /d "%path3%\Temporary AutoPatch" "%path1%\Temporary AutoPatch"
+mklink /d "%path3%\Temporary AutoPatch" "%path1%\Temporary AutoPatch"
+echo mklink /d "%path3%\tile" "%path1%\tile"
+mklink /d "%path3%\tile" "%path1%\tile"
+echo mklink /d "%path3%\yfnt" "%path1%\yfnt"
+mklink /d "%path3%\yfnt" "%path1%\yfnt"
+echo.
+echo #########################################
+echo ## 5. 임시로 생성된 파일을 삭제합니다. ##
+echo #########################################
+echo del exclude.txt
+del exclude.txt
+echo.
+echo ###################################
+echo ## 다클라 생성을 완료하였습니다. ##
+echo ###################################
+echo.
+pause

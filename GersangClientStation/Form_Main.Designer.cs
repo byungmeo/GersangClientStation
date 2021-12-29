@@ -28,6 +28,7 @@ namespace GersangClientStation {
             this.menuStrip2 = new System.Windows.Forms.MenuStrip();
             this.menuItem_client = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItem_shortcut = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuItem_create = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItem_lab = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItem_contact = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItem_info = new System.Windows.Forms.ToolStripMenuItem();
@@ -88,6 +89,7 @@ namespace GersangClientStation {
             this.menuStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.menuItem_client,
             this.menuItem_shortcut,
+            this.menuItem_create,
             this.menuItem_lab,
             this.menuItem_contact,
             this.menuItem_info});
@@ -117,6 +119,16 @@ namespace GersangClientStation {
             this.menuItem_shortcut.Text = "바로가기 경로 설정    ";
             this.menuItem_shortcut.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.menuItem_shortcut.Click += new System.EventHandler(this.menuItem_shortcut_Click);
+            // 
+            // menuItem_create
+            // 
+            this.menuItem_create.Image = ((System.Drawing.Image)(resources.GetObject("menuItem_create.Image")));
+            this.menuItem_create.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.menuItem_create.Name = "menuItem_create";
+            this.menuItem_create.Size = new System.Drawing.Size(190, 28);
+            this.menuItem_create.Text = "다클라 생성               ";
+            this.menuItem_create.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.menuItem_create.Click += new System.EventHandler(this.menuItem_create_Click);
             // 
             // menuItem_lab
             // 
@@ -742,6 +754,7 @@ namespace GersangClientStation {
         private MetroFramework.Controls.MetroLink link_icon_license;
         private System.Windows.Forms.ToolStripMenuItem menuItem_info;
         private System.Windows.Forms.ToolStripMenuItem menuItem_contact;
+        private System.Windows.Forms.ToolStripMenuItem menuItem_create;
     }
 }
 

@@ -876,6 +876,13 @@ namespace GersangClientStation {
             shortcutDialogForm.ShowDialog();
             LoadSetting(); //세팅값이 바뀌었다면 새로고침 합니다.
         }
+        
+        private void menuItem_create_Click(object sender, EventArgs e) {
+            Form_Creator form_Creator = new Form_Creator();
+            form_Creator.ShowDialog();
+
+            
+        }
 
         //실험실
         private void menuItem_lab_Click(object sender, EventArgs e) {

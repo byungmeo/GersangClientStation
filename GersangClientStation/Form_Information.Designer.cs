@@ -125,6 +125,7 @@ namespace GersangClientStation {
             this.MinimizeBox = false;
             this.Name = "Form_Information";
             this.Resizable = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "프로그램 정보";
             this.Load += new System.EventHandler(this.Form_Information_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
