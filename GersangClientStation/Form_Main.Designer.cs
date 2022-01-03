@@ -201,30 +201,36 @@ namespace GersangClientStation {
             // 
             // button_save_2
             // 
+            this.button_save_2.Enabled = false;
             this.button_save_2.Location = new System.Drawing.Point(242, 10);
             this.button_save_2.Name = "button_save_2";
             this.button_save_2.Size = new System.Drawing.Size(40, 23);
             this.button_save_2.TabIndex = 32;
             this.button_save_2.Text = "Save";
+            this.button_save_2.Visible = false;
             this.button_save_2.Click += new System.EventHandler(this.button_save_2_Click);
             // 
             // textBox_client_2_pw
             // 
+            this.textBox_client_2_pw.Enabled = false;
             this.textBox_client_2_pw.Location = new System.Drawing.Point(126, 10);
             this.textBox_client_2_pw.Name = "textBox_client_2_pw";
             this.textBox_client_2_pw.PasswordChar = '●';
             this.textBox_client_2_pw.Size = new System.Drawing.Size(110, 23);
             this.textBox_client_2_pw.TabIndex = 34;
             this.textBox_client_2_pw.UseSystemPasswordChar = true;
+            this.textBox_client_2_pw.Visible = false;
             this.textBox_client_2_pw.TextChanged += new System.EventHandler(this.textBox_pw_TextChanged);
             this.textBox_client_2_pw.Leave += new System.EventHandler(this.textBox_client_2_pw_Leave);
             // 
             // textBox_client_2_id
             // 
+            this.textBox_client_2_id.Enabled = false;
             this.textBox_client_2_id.Location = new System.Drawing.Point(10, 10);
             this.textBox_client_2_id.Name = "textBox_client_2_id";
             this.textBox_client_2_id.Size = new System.Drawing.Size(110, 23);
             this.textBox_client_2_id.TabIndex = 33;
+            this.textBox_client_2_id.Visible = false;
             // 
             // button_start_2
             // 
@@ -309,30 +315,36 @@ namespace GersangClientStation {
             // 
             // button_save_3
             // 
+            this.button_save_3.Enabled = false;
             this.button_save_3.Location = new System.Drawing.Point(242, 10);
             this.button_save_3.Name = "button_save_3";
             this.button_save_3.Size = new System.Drawing.Size(40, 23);
             this.button_save_3.TabIndex = 35;
             this.button_save_3.Text = "Save";
+            this.button_save_3.Visible = false;
             this.button_save_3.Click += new System.EventHandler(this.button_save_3_Click);
             // 
             // textBox_client_3_pw
             // 
+            this.textBox_client_3_pw.Enabled = false;
             this.textBox_client_3_pw.Location = new System.Drawing.Point(126, 10);
             this.textBox_client_3_pw.Name = "textBox_client_3_pw";
             this.textBox_client_3_pw.PasswordChar = '●';
             this.textBox_client_3_pw.Size = new System.Drawing.Size(110, 23);
             this.textBox_client_3_pw.TabIndex = 37;
             this.textBox_client_3_pw.UseSystemPasswordChar = true;
+            this.textBox_client_3_pw.Visible = false;
             this.textBox_client_3_pw.TextChanged += new System.EventHandler(this.textBox_pw_TextChanged);
             this.textBox_client_3_pw.Leave += new System.EventHandler(this.textBox_client_3_pw_Leave);
             // 
             // textBox_client_3_id
             // 
+            this.textBox_client_3_id.Enabled = false;
             this.textBox_client_3_id.Location = new System.Drawing.Point(10, 10);
             this.textBox_client_3_id.Name = "textBox_client_3_id";
             this.textBox_client_3_id.Size = new System.Drawing.Size(110, 23);
             this.textBox_client_3_id.TabIndex = 36;
+            this.textBox_client_3_id.Visible = false;
             // 
             // button_start_3
             // 
@@ -428,30 +440,36 @@ namespace GersangClientStation {
             // 
             // button_save_1
             // 
+            this.button_save_1.Enabled = false;
             this.button_save_1.Location = new System.Drawing.Point(242, 10);
             this.button_save_1.Name = "button_save_1";
             this.button_save_1.Size = new System.Drawing.Size(40, 23);
             this.button_save_1.TabIndex = 30;
             this.button_save_1.Text = "Save";
+            this.button_save_1.Visible = false;
             this.button_save_1.Click += new System.EventHandler(this.button_save_1_Click);
             // 
             // textBox_client_1_pw
             // 
+            this.textBox_client_1_pw.Enabled = false;
             this.textBox_client_1_pw.Location = new System.Drawing.Point(126, 10);
             this.textBox_client_1_pw.Name = "textBox_client_1_pw";
             this.textBox_client_1_pw.PasswordChar = '●';
             this.textBox_client_1_pw.Size = new System.Drawing.Size(110, 23);
             this.textBox_client_1_pw.TabIndex = 31;
             this.textBox_client_1_pw.UseSystemPasswordChar = true;
+            this.textBox_client_1_pw.Visible = false;
             this.textBox_client_1_pw.TextChanged += new System.EventHandler(this.textBox_pw_TextChanged);
             this.textBox_client_1_pw.Leave += new System.EventHandler(this.textBox_client_1_pw_Leave);
             // 
             // textBox_client_1_id
             // 
+            this.textBox_client_1_id.Enabled = false;
             this.textBox_client_1_id.Location = new System.Drawing.Point(10, 10);
             this.textBox_client_1_id.Name = "textBox_client_1_id";
             this.textBox_client_1_id.Size = new System.Drawing.Size(110, 23);
             this.textBox_client_1_id.TabIndex = 30;
+            this.textBox_client_1_id.Visible = false;
             // 
             // button_start_1
             // 

@@ -443,9 +443,6 @@ namespace GersangClientStation {
             if (isEventPage && eventBrowser.Url.Equals(url_event)) {
                 if (eventBrowser.Document.GetElementById("pop") != null) { //단순히 정말로 페이지가 다 로딩된건지 확인하기 위함입니다.
                     clickItemGet();
-
-                    Delay(100);
-                    this.Activate(); //검색 보상 기능 실행 후 폼이 비활성화 되어 실행 버튼을 두번 눌러야 하는 현상 방지
                 }
             }
         }
@@ -479,7 +476,6 @@ namespace GersangClientStation {
                     debugSearchForm.Show();
                 }
                 
-
                 navigateSearchPage();
             } else {
                 MessageBox.Show("이벤트 페이지를 찾지 못하였습니다.");
@@ -537,6 +533,9 @@ namespace GersangClientStation {
             }
 
             eventBrowser.Document.InvokeScript("event_Search_Use", new object[] { arg });
+
+            Delay(200);
+            Activate(); //검색 보상 기능 실행 후 폼이 비활성화 되어 실행 버튼을 두번 눌러야 하는 현상 방지
         }
         //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -1161,7 +1160,7 @@ namespace GersangClientStation {
             textBox_client_3_pw.Enabled = flag;
             textBox_client_3_pw.Visible = flag;
             button_save_3.Enabled = flag;
-            button_save_2.Visible = flag;
+            button_save_3.Visible = flag;
         }
 
         //저장되어있는 세팅값 번호를 불러오고, 해당 세팅값으로 클라이언트를 세팅합니다.
