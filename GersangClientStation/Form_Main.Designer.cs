@@ -33,20 +33,17 @@ namespace GersangClientStation {
             this.menuItem_contact = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItem_info = new System.Windows.Forms.ToolStripMenuItem();
             this.metroPanel2 = new MetroFramework.Controls.MetroPanel();
-            this.check_nickname2 = new MetroFramework.Controls.MetroCheckBox();
             this.button_start_2 = new System.Windows.Forms.Button();
             this.button_search_naver2 = new System.Windows.Forms.Button();
             this.toggle_client_2 = new MetroFramework.Controls.MetroToggle();
             this.label_client_2 = new MetroFramework.Controls.MetroLabel();
             this.metroPanel3 = new MetroFramework.Controls.MetroPanel();
-            this.check_nickname3 = new MetroFramework.Controls.MetroCheckBox();
             this.button_start_3 = new System.Windows.Forms.Button();
             this.button_search_naver3 = new System.Windows.Forms.Button();
             this.toggle_client_3 = new MetroFramework.Controls.MetroToggle();
             this.label_client_3 = new MetroFramework.Controls.MetroLabel();
             this.label_client_1 = new MetroFramework.Controls.MetroLabel();
             this.metroPanel1 = new MetroFramework.Controls.MetroPanel();
-            this.check_nickname1 = new MetroFramework.Controls.MetroCheckBox();
             this.button_start_1 = new System.Windows.Forms.Button();
             this.button_search_naver_1 = new System.Windows.Forms.Button();
             this.toggle_client_1 = new MetroFramework.Controls.MetroToggle();
@@ -68,6 +65,9 @@ namespace GersangClientStation {
             this.link_shortcut_1 = new MetroFramework.Controls.MetroLink();
             this.link_icon_license = new MetroFramework.Controls.MetroLink();
             this.menuItem_question = new System.Windows.Forms.ToolStripMenuItem();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.check_nickname = new MetroFramework.Controls.MetroCheckBox();
+            this.check_direct = new MetroFramework.Controls.MetroCheckBox();
             this.menuStrip2.SuspendLayout();
             this.metroPanel2.SuspendLayout();
             this.metroPanel3.SuspendLayout();
@@ -77,6 +77,7 @@ namespace GersangClientStation {
             ((System.ComponentModel.ISupportInitialize)(this.pic_naver)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic_github)).BeginInit();
             this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip2
@@ -161,7 +162,6 @@ namespace GersangClientStation {
             // metroPanel2
             // 
             this.metroPanel2.BorderStyle = MetroFramework.Drawing.MetroBorderStyle.FixedSingle;
-            this.metroPanel2.Controls.Add(this.check_nickname2);
             this.metroPanel2.Controls.Add(this.button_start_2);
             this.metroPanel2.Controls.Add(this.button_search_naver2);
             this.metroPanel2.Controls.Add(this.toggle_client_2);
@@ -176,19 +176,6 @@ namespace GersangClientStation {
             this.metroPanel2.VerticalScrollbarBarColor = true;
             this.metroPanel2.VerticalScrollbarHighlightOnWheel = false;
             this.metroPanel2.VerticalScrollbarSize = 10;
-            // 
-            // check_nickname2
-            // 
-            this.check_nickname2.AutoSize = true;
-            this.check_nickname2.Checked = true;
-            this.check_nickname2.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.check_nickname2.Location = new System.Drawing.Point(186, 20);
-            this.check_nickname2.Name = "check_nickname2";
-            this.check_nickname2.Size = new System.Drawing.Size(74, 15);
-            this.check_nickname2.TabIndex = 29;
-            this.check_nickname2.Text = "별명 표시";
-            this.check_nickname2.UseVisualStyleBackColor = true;
-            this.check_nickname2.CheckedChanged += new System.EventHandler(this.check_nickname_CheckedChanged);
             // 
             // button_start_2
             // 
@@ -253,7 +240,6 @@ namespace GersangClientStation {
             // metroPanel3
             // 
             this.metroPanel3.BorderStyle = MetroFramework.Drawing.MetroBorderStyle.FixedSingle;
-            this.metroPanel3.Controls.Add(this.check_nickname3);
             this.metroPanel3.Controls.Add(this.button_start_3);
             this.metroPanel3.Controls.Add(this.button_search_naver3);
             this.metroPanel3.Controls.Add(this.toggle_client_3);
@@ -268,19 +254,6 @@ namespace GersangClientStation {
             this.metroPanel3.VerticalScrollbarBarColor = true;
             this.metroPanel3.VerticalScrollbarHighlightOnWheel = false;
             this.metroPanel3.VerticalScrollbarSize = 10;
-            // 
-            // check_nickname3
-            // 
-            this.check_nickname3.AutoSize = true;
-            this.check_nickname3.Checked = true;
-            this.check_nickname3.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.check_nickname3.Location = new System.Drawing.Point(186, 20);
-            this.check_nickname3.Name = "check_nickname3";
-            this.check_nickname3.Size = new System.Drawing.Size(74, 15);
-            this.check_nickname3.TabIndex = 31;
-            this.check_nickname3.Text = "별명 표시";
-            this.check_nickname3.UseVisualStyleBackColor = true;
-            this.check_nickname3.CheckedChanged += new System.EventHandler(this.check_nickname_CheckedChanged);
             // 
             // button_start_3
             // 
@@ -356,7 +329,6 @@ namespace GersangClientStation {
             // metroPanel1
             // 
             this.metroPanel1.BorderStyle = MetroFramework.Drawing.MetroBorderStyle.FixedSingle;
-            this.metroPanel1.Controls.Add(this.check_nickname1);
             this.metroPanel1.Controls.Add(this.button_start_1);
             this.metroPanel1.Controls.Add(this.button_search_naver_1);
             this.metroPanel1.Controls.Add(this.toggle_client_1);
@@ -371,19 +343,6 @@ namespace GersangClientStation {
             this.metroPanel1.VerticalScrollbarBarColor = false;
             this.metroPanel1.VerticalScrollbarHighlightOnWheel = false;
             this.metroPanel1.VerticalScrollbarSize = 10;
-            // 
-            // check_nickname1
-            // 
-            this.check_nickname1.AutoSize = true;
-            this.check_nickname1.Checked = true;
-            this.check_nickname1.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.check_nickname1.Location = new System.Drawing.Point(186, 20);
-            this.check_nickname1.Name = "check_nickname1";
-            this.check_nickname1.Size = new System.Drawing.Size(74, 15);
-            this.check_nickname1.TabIndex = 27;
-            this.check_nickname1.Text = "별명 표시";
-            this.check_nickname1.UseVisualStyleBackColor = true;
-            this.check_nickname1.CheckedChanged += new System.EventHandler(this.check_nickname_CheckedChanged);
             // 
             // button_start_1
             // 
@@ -637,12 +596,47 @@ namespace GersangClientStation {
             this.menuItem_question.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.menuItem_question.Click += new System.EventHandler(this.menuItem_question_Click);
             // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.check_direct);
+            this.groupBox2.Controls.Add(this.check_nickname);
+            this.groupBox2.Location = new System.Drawing.Point(335, 410);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(129, 121);
+            this.groupBox2.TabIndex = 29;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "간단 설정";
+            // 
+            // check_nickname
+            // 
+            this.check_nickname.AutoSize = true;
+            this.check_nickname.Checked = true;
+            this.check_nickname.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.check_nickname.Location = new System.Drawing.Point(15, 27);
+            this.check_nickname.Name = "check_nickname";
+            this.check_nickname.Size = new System.Drawing.Size(74, 15);
+            this.check_nickname.TabIndex = 32;
+            this.check_nickname.Text = "별명 표시";
+            this.check_nickname.UseVisualStyleBackColor = true;
+            this.check_nickname.CheckedChanged += new System.EventHandler(this.check_nickname_CheckedChanged);
+            // 
+            // check_direct
+            // 
+            this.check_direct.AutoSize = true;
+            this.check_direct.Location = new System.Drawing.Point(15, 56);
+            this.check_direct.Name = "check_direct";
+            this.check_direct.Size = new System.Drawing.Size(108, 15);
+            this.check_direct.TabIndex = 33;
+            this.check_direct.Text = "ID/PW 바로입력";
+            this.check_direct.UseVisualStyleBackColor = true;
+            // 
             // Form_Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BorderStyle = MetroFramework.Drawing.MetroBorderStyle.FixedSingle;
             this.ClientSize = new System.Drawing.Size(705, 551);
+            this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.link_icon_license);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.link_github);
@@ -676,6 +670,8 @@ namespace GersangClientStation {
             ((System.ComponentModel.ISupportInitialize)(this.pic_naver)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic_github)).EndInit();
             this.groupBox1.ResumeLayout(false);
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -717,14 +713,14 @@ namespace GersangClientStation {
         private MetroFramework.Controls.MetroRadioButton radio_setting_4;
         private MetroFramework.Controls.MetroLink link_shortcut_5;
         private MetroFramework.Controls.MetroLink link_shortcut_4;
-        private MetroFramework.Controls.MetroCheckBox check_nickname1;
-        private MetroFramework.Controls.MetroCheckBox check_nickname2;
-        private MetroFramework.Controls.MetroCheckBox check_nickname3;
         private MetroFramework.Controls.MetroLink link_icon_license;
         private System.Windows.Forms.ToolStripMenuItem menuItem_info;
         private System.Windows.Forms.ToolStripMenuItem menuItem_contact;
         private System.Windows.Forms.ToolStripMenuItem menuItem_create;
         private System.Windows.Forms.ToolStripMenuItem menuItem_question;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private MetroFramework.Controls.MetroCheckBox check_direct;
+        private MetroFramework.Controls.MetroCheckBox check_nickname;
     }
 }
 

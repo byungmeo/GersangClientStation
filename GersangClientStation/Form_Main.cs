@@ -579,19 +579,9 @@ namespace GersangClientStation {
             }
         }
 
-        //별명 체크박스 클릭
+        //별명 표시 체크박스 클릭
         private void check_nickname_CheckedChanged(object sender, EventArgs e) {
-            MetroCheckBox checkBox = sender as MetroCheckBox;
-            if(checkBox.Equals(this.check_nickname1)) {
-                config.AppSettings.Settings["display_nickname_1"].Value = checkBox.Checked.ToString();
-            } else if(checkBox.Equals(this.check_nickname2)) {
-                config.AppSettings.Settings["display_nickname_2"].Value = checkBox.Checked.ToString();
-            } else if(checkBox.Equals(this.check_nickname3)) {
-                config.AppSettings.Settings["display_nickname_3"].Value = checkBox.Checked.ToString();
-            } else {
-                MessageBox.Show("오류 발생 : check_nickname_CheckedChanged\nUnknown CheckBox");
-                return;
-            }
+            config.AppSettings.Settings["display_nickname"].Value = check_nickname.Checked.ToString();
             LoadSetting();
         }
         //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -1059,10 +1049,8 @@ namespace GersangClientStation {
             }
 
             //이전 버전에서 설정 파일을 가져온 경우 별명 표시 여부 설정을 임의로 설정합니다.
-            for (int num = 1; num <= 3; num++) {
-                KeyValueConfigurationElement element_display_nickname = Form_Main.config.AppSettings.Settings["display_nickname_" + num];
-                if (element_display_nickname == null) { Form_Main.config.AppSettings.Settings.Add("display_nickname_" + num, "True"); }
-            }
+            KeyValueConfigurationElement element_display_nickname = Form_Main.config.AppSettings.Settings["display_nickname"];
+            if (element_display_nickname == null) { Form_Main.config.AppSettings.Settings.Add("display_nickname", "True"); }
 
             //이전 버전에서 설정 파일을 가져온 경우 ActiveX 사용 여부 설정을 임의로 설정합니다.
             KeyValueConfigurationElement element_use_activeX = Form_Main.config.AppSettings.Settings["use_activeX"];
@@ -1083,9 +1071,15 @@ namespace GersangClientStation {
             this.client_id_3 = ConfigurationManager.AppSettings["client_id_3_tab_" + settingNumber];
             this.client_pw_3 = ConfigurationManager.AppSettings["client_pw_3_tab_" + settingNumber];
 
-            if (check_nickname1.Checked) { this.label_client_1.Text = ConfigurationManager.AppSettings["client_name_1_tab_" + settingNumber]; } else { this.label_client_1.Text = client_id_1; }
-            if (check_nickname2.Checked) { this.label_client_2.Text = ConfigurationManager.AppSettings["client_name_2_tab_" + settingNumber]; } else { this.label_client_2.Text = client_id_2; }
-            if (check_nickname3.Checked) { this.label_client_3.Text = ConfigurationManager.AppSettings["client_name_3_tab_" + settingNumber]; } else { this.label_client_3.Text = client_id_3; }
+            if (check_nickname.Checked) { 
+                this.label_client_1.Text = ConfigurationManager.AppSettings["client_name_1_tab_" + settingNumber];
+                this.label_client_2.Text = ConfigurationManager.AppSettings["client_name_2_tab_" + settingNumber];
+                this.label_client_3.Text = ConfigurationManager.AppSettings["client_name_3_tab_" + settingNumber];
+            } else { 
+                this.label_client_1.Text = client_id_1;
+                this.label_client_2.Text = client_id_2;
+                this.label_client_3.Text = client_id_3;
+            }
 
             this.shortcut_name_1 = ConfigurationManager.AppSettings["shortcut_name_1"];
             link_shortcut_1.Text = this.shortcut_name_1;
@@ -1127,13 +1121,19 @@ namespace GersangClientStation {
         }
 
         private void initCheckBox() {
+            bool display_nickname = bool.Parse(ConfigurationManager.AppSettings["display_nickname"]);
+            /*
             bool display_nickname_1 = bool.Parse(ConfigurationManager.AppSettings["display_nickname_1"]);
             bool display_nickname_2 = bool.Parse(ConfigurationManager.AppSettings["display_nickname_2"]);
             bool display_nickname_3 = bool.Parse(ConfigurationManager.AppSettings["display_nickname_3"]);
+            */
 
+            this.check_nickname.Checked = display_nickname;
+            /*
             this.check_nickname1.Checked = display_nickname_1;
             this.check_nickname2.Checked = display_nickname_2;
             this.check_nickname3.Checked = display_nickname_3;
+            */
         }
 
         private void initWebBrowser() {
