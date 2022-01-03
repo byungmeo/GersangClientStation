@@ -78,10 +78,13 @@ namespace GersangClientStation {
         private bool isTypingOtp = false; //현재 OTP 입력 상태인가?
         private bool isSubmitOtp = false; //현재 OTP 입력 후 로그인을 시도하였는가?
 
-        //실허실 기능 체크여부
+        //실험실실 기능 체크여부
         private bool isActiveX;
         private bool isDebuggingMode = false;
         private bool isDebuggingSearchMode = false;
+
+        //ID/PW 바로입력 기능을 위한 패스워드 관련 bool
+        private bool isTextChanged = false;
 
         //폼 생성자
         public Form_Main() {
@@ -93,6 +96,7 @@ namespace GersangClientStation {
         //폼 로딩
         private void Form_Main_Load(object sender, EventArgs e) {
             LoadSetting();
+            initTextBox(); //ID/PW 바로입력 기능 관련 초기화
             initRadioButton(); //저장되어있는 세팅값 번호를 불러오고, 해당 세팅값으로 클라이언트를 세팅합니다.
             initCheckBox();
             initLabFunction(); //실험실 기능 세팅값 초기화
@@ -191,22 +195,42 @@ namespace GersangClientStation {
 
             string id = null;
             string pw = null;
-            switch (client) {
-                case Client.MainClient:
-                    id = client_id_1;
-                    pw = client_pw_1;
-                    break;
-                case Client.Client2:
-                    id = client_id_2;
-                    pw = client_pw_2;
-                    break;
-                case Client.Client3:
-                    id = client_id_3;
-                    pw = client_pw_3;
-                    break;
-                case Client.None:
-                    Debug.WriteLine("SetStatus: 잘못된 Client 인자 전달");
-                    return;
+            if (check_direct.Checked) {
+                switch (client) {
+                    case Client.MainClient:
+                        id = textBox_client_1_id.Text;
+                        pw = textBox_client_1_pw.Text;
+                        break;
+                    case Client.Client2:
+                        id = textBox_client_2_id.Text;
+                        pw = textBox_client_2_pw.Text;
+                        break;
+                    case Client.Client3:
+                        id = textBox_client_3_id.Text;
+                        pw = textBox_client_3_pw.Text;
+                        break;
+                    case Client.None:
+                        Debug.WriteLine("SetStatus: 잘못된 Client 인자 전달");
+                        return;
+                }
+            } else {
+                switch (client) {
+                    case Client.MainClient:
+                        id = client_id_1;
+                        pw = client_pw_1;
+                        break;
+                    case Client.Client2:
+                        id = client_id_2;
+                        pw = client_pw_2;
+                        break;
+                    case Client.Client3:
+                        id = client_id_3;
+                        pw = client_pw_3;
+                        break;
+                    case Client.None:
+                        Debug.WriteLine("SetStatus: 잘못된 Client 인자 전달");
+                        return;
+                }
             }
 
             try {
@@ -584,6 +608,12 @@ namespace GersangClientStation {
             config.AppSettings.Settings["display_nickname"].Value = check_nickname.Checked.ToString();
             LoadSetting();
         }
+
+        //ID/PW 바로입력 체크박스 클릭
+        private void check_direct_CheckedChanged(object sender, EventArgs e) {
+            config.AppSettings.Settings["input_direct"].Value = check_direct.Checked.ToString();
+            LoadSetting();
+        }
         //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
         /// <summary>
@@ -614,6 +644,7 @@ namespace GersangClientStation {
                 config.Save(ConfigurationSaveMode.Modified, true); //Full로 하면 특정 환경에서 오류 발생
                 ConfigurationManager.RefreshSection("appSettings");
                 LoadSetting();
+                initTextBox();
 
                 //만약 로그인 되어있었다면, 로그아웃 합니다.
                 if (currentLoginClient != Client.None) {
@@ -870,8 +901,6 @@ namespace GersangClientStation {
         private void menuItem_create_Click(object sender, EventArgs e) {
             Form_Creator form_Creator = new Form_Creator();
             form_Creator.ShowDialog();
-
-            
         }
 
         //실험실
@@ -1052,6 +1081,10 @@ namespace GersangClientStation {
             KeyValueConfigurationElement element_display_nickname = Form_Main.config.AppSettings.Settings["display_nickname"];
             if (element_display_nickname == null) { Form_Main.config.AppSettings.Settings.Add("display_nickname", "True"); }
 
+            //이전 버전에서 설정 파일을 가져온 경우 ID/PW 바로 입력 여부 설정을 임의로 설정합니다.
+            KeyValueConfigurationElement element_input_direct = Form_Main.config.AppSettings.Settings["input_direct"];
+            if (element_input_direct == null) { Form_Main.config.AppSettings.Settings.Add("input_direct", "False"); }
+
             //이전 버전에서 설정 파일을 가져온 경우 ActiveX 사용 여부 설정을 임의로 설정합니다.
             KeyValueConfigurationElement element_use_activeX = Form_Main.config.AppSettings.Settings["use_activeX"];
             if (element_use_activeX == null) { Form_Main.config.AppSettings.Settings.Add("use_activeX", "True"); }
@@ -1081,6 +1114,12 @@ namespace GersangClientStation {
                 this.label_client_3.Text = client_id_3;
             }
 
+            if (check_direct.Checked) {
+                changeInputDirectMode(true);
+            } else {
+                changeInputDirectMode(false);
+            }
+
             this.shortcut_name_1 = ConfigurationManager.AppSettings["shortcut_name_1"];
             link_shortcut_1.Text = this.shortcut_name_1;
             this.shortcut_address_1 = ConfigurationManager.AppSettings["shortcut_address_1"];
@@ -1096,6 +1135,33 @@ namespace GersangClientStation {
             this.shortcut_name_5 = ConfigurationManager.AppSettings["shortcut_name_5"];
             link_shortcut_5.Text = this.shortcut_name_5;
             this.shortcut_address_5 = ConfigurationManager.AppSettings["shortcut_address_5"];
+        }
+
+        private void changeInputDirectMode(bool flag) {
+            this.label_client_1.Visible = !flag;
+            this.label_client_2.Visible = !flag;
+            this.label_client_3.Visible = !flag;
+
+            textBox_client_1_id.Enabled = flag;
+            textBox_client_1_id.Visible = flag;
+            textBox_client_1_pw.Enabled = flag;
+            textBox_client_1_pw.Visible = flag;
+            button_save_1.Enabled = flag;
+            button_save_1.Visible = flag;
+
+            textBox_client_2_id.Enabled = flag;
+            textBox_client_2_id.Visible = flag;
+            textBox_client_2_pw.Enabled = flag;
+            textBox_client_2_pw.Visible = flag;
+            button_save_2.Enabled = flag;
+            button_save_2.Visible = flag;
+
+            textBox_client_3_id.Enabled = flag;
+            textBox_client_3_id.Visible = flag;
+            textBox_client_3_pw.Enabled = flag;
+            textBox_client_3_pw.Visible = flag;
+            button_save_3.Enabled = flag;
+            button_save_2.Visible = flag;
         }
 
         //저장되어있는 세팅값 번호를 불러오고, 해당 세팅값으로 클라이언트를 세팅합니다.
@@ -1122,18 +1188,10 @@ namespace GersangClientStation {
 
         private void initCheckBox() {
             bool display_nickname = bool.Parse(ConfigurationManager.AppSettings["display_nickname"]);
-            /*
-            bool display_nickname_1 = bool.Parse(ConfigurationManager.AppSettings["display_nickname_1"]);
-            bool display_nickname_2 = bool.Parse(ConfigurationManager.AppSettings["display_nickname_2"]);
-            bool display_nickname_3 = bool.Parse(ConfigurationManager.AppSettings["display_nickname_3"]);
-            */
+            bool input_direct = bool.Parse(ConfigurationManager.AppSettings["input_direct"]);
 
             this.check_nickname.Checked = display_nickname;
-            /*
-            this.check_nickname1.Checked = display_nickname_1;
-            this.check_nickname2.Checked = display_nickname_2;
-            this.check_nickname3.Checked = display_nickname_3;
-            */
+            this.check_direct.Checked = input_direct;
         }
 
         private void initWebBrowser() {
@@ -1150,6 +1208,19 @@ namespace GersangClientStation {
 
         private void initLabFunction() {
             isActiveX = bool.Parse(ConfigurationManager.AppSettings["use_activeX"]);
+        }
+
+        private void initTextBox() {
+            byte settingNumber = Byte.Parse(ConfigurationManager.AppSettings["setting_num"]);
+
+            textBox_client_1_id.Text = ConfigurationManager.AppSettings["client_id_1_tab_" + settingNumber];
+            textBox_client_1_pw.Text = ConfigurationManager.AppSettings["client_pw_1_tab_" + settingNumber];
+
+            textBox_client_2_id.Text = ConfigurationManager.AppSettings["client_id_2_tab_" + settingNumber];
+            textBox_client_2_pw.Text = ConfigurationManager.AppSettings["client_pw_2_tab_" + settingNumber];
+
+            textBox_client_3_id.Text = ConfigurationManager.AppSettings["client_id_3_tab_" + settingNumber];
+            textBox_client_3_pw.Text = ConfigurationManager.AppSettings["client_pw_3_tab_" + settingNumber];
         }
 
         //태스크바의 아이콘을 클릭 시 최소화, 최대화가 되도록 설정 (호출 필요 X)
@@ -1190,6 +1261,68 @@ namespace GersangClientStation {
                 }
             }
             return null;
+        }
+
+        private void textBox_pw_TextChanged(object sender, System.EventArgs e) { isTextChanged = true; }
+
+        private void textBox_client_1_pw_Leave(object sender, EventArgs e) {
+            if (isTextChanged) {
+                if (textBox_client_1_pw.Text == "") { return; }
+                Debug.WriteLine("패스워드가 암호화 되었습니다.");
+                textBox_client_1_pw.Text = EncryptionSupporter.Protect(textBox_client_1_pw.Text);
+                isTextChanged = false;
+            }
+        }
+
+        private void textBox_client_2_pw_Leave(object sender, EventArgs e) {
+            if (isTextChanged) {
+                if (textBox_client_2_pw.Text == "") { return; }
+                Debug.WriteLine("패스워드가 암호화 되었습니다.");
+                textBox_client_2_pw.Text = EncryptionSupporter.Protect(textBox_client_2_pw.Text);
+                isTextChanged = false;
+            }
+        }
+
+        private void textBox_client_3_pw_Leave(object sender, EventArgs e) {
+            if (isTextChanged) {
+                if (textBox_client_3_pw.Text == "") { return; }
+                Debug.WriteLine("패스워드가 암호화 되었습니다.");
+                textBox_client_3_pw.Text = EncryptionSupporter.Protect(textBox_client_3_pw.Text);
+                isTextChanged = false;
+            }
+        }
+
+        private void button_save_1_Click(object sender, EventArgs e) {
+            byte setting_num = Byte.Parse(ConfigurationManager.AppSettings["setting_num"]);
+            Form_Main.config.AppSettings.Settings["client_id_1_tab_" + setting_num].Value = textBox_client_1_id.Text;
+            Form_Main.config.AppSettings.Settings["client_pw_1_tab_" + setting_num].Value = textBox_client_1_pw.Text;
+
+            Form_Main.config.Save(ConfigurationSaveMode.Modified, true);
+            ConfigurationManager.RefreshSection("appSettings");
+
+            MessageBox.Show("저장이 완료되었습니다.", "경로 및 계정정보", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void button_save_2_Click(object sender, EventArgs e) {
+            byte setting_num = Byte.Parse(ConfigurationManager.AppSettings["setting_num"]);
+            Form_Main.config.AppSettings.Settings["client_id_2_tab_" + setting_num].Value = textBox_client_2_id.Text;
+            Form_Main.config.AppSettings.Settings["client_pw_2_tab_" + setting_num].Value = textBox_client_2_pw.Text;
+
+            Form_Main.config.Save(ConfigurationSaveMode.Modified, true);
+            ConfigurationManager.RefreshSection("appSettings");
+
+            MessageBox.Show("저장이 완료되었습니다.", "경로 및 계정정보", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void button_save_3_Click(object sender, EventArgs e) {
+            byte setting_num = Byte.Parse(ConfigurationManager.AppSettings["setting_num"]);
+            Form_Main.config.AppSettings.Settings["client_id_3_tab_" + setting_num].Value = textBox_client_3_id.Text;
+            Form_Main.config.AppSettings.Settings["client_pw_3_tab_" + setting_num].Value = textBox_client_3_pw.Text;
+
+            Form_Main.config.Save(ConfigurationSaveMode.Modified, true);
+            ConfigurationManager.RefreshSection("appSettings");
+
+            MessageBox.Show("저장이 완료되었습니다.", "경로 및 계정정보", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 }

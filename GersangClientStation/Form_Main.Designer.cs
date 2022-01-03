@@ -30,20 +30,30 @@ namespace GersangClientStation {
             this.menuItem_shortcut = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItem_create = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItem_lab = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuItem_question = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItem_contact = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItem_info = new System.Windows.Forms.ToolStripMenuItem();
             this.metroPanel2 = new MetroFramework.Controls.MetroPanel();
+            this.button_save_2 = new MetroFramework.Controls.MetroButton();
+            this.textBox_client_2_pw = new MetroFramework.Controls.MetroTextBox();
+            this.textBox_client_2_id = new MetroFramework.Controls.MetroTextBox();
             this.button_start_2 = new System.Windows.Forms.Button();
             this.button_search_naver2 = new System.Windows.Forms.Button();
             this.toggle_client_2 = new MetroFramework.Controls.MetroToggle();
             this.label_client_2 = new MetroFramework.Controls.MetroLabel();
             this.metroPanel3 = new MetroFramework.Controls.MetroPanel();
+            this.button_save_3 = new MetroFramework.Controls.MetroButton();
+            this.textBox_client_3_pw = new MetroFramework.Controls.MetroTextBox();
+            this.textBox_client_3_id = new MetroFramework.Controls.MetroTextBox();
             this.button_start_3 = new System.Windows.Forms.Button();
             this.button_search_naver3 = new System.Windows.Forms.Button();
             this.toggle_client_3 = new MetroFramework.Controls.MetroToggle();
             this.label_client_3 = new MetroFramework.Controls.MetroLabel();
             this.label_client_1 = new MetroFramework.Controls.MetroLabel();
             this.metroPanel1 = new MetroFramework.Controls.MetroPanel();
+            this.button_save_1 = new MetroFramework.Controls.MetroButton();
+            this.textBox_client_1_pw = new MetroFramework.Controls.MetroTextBox();
+            this.textBox_client_1_id = new MetroFramework.Controls.MetroTextBox();
             this.button_start_1 = new System.Windows.Forms.Button();
             this.button_search_naver_1 = new System.Windows.Forms.Button();
             this.toggle_client_1 = new MetroFramework.Controls.MetroToggle();
@@ -64,10 +74,9 @@ namespace GersangClientStation {
             this.link_shortcut_2 = new MetroFramework.Controls.MetroLink();
             this.link_shortcut_1 = new MetroFramework.Controls.MetroLink();
             this.link_icon_license = new MetroFramework.Controls.MetroLink();
-            this.menuItem_question = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.check_nickname = new MetroFramework.Controls.MetroCheckBox();
             this.check_direct = new MetroFramework.Controls.MetroCheckBox();
+            this.check_nickname = new MetroFramework.Controls.MetroCheckBox();
             this.menuStrip2.SuspendLayout();
             this.metroPanel2.SuspendLayout();
             this.metroPanel3.SuspendLayout();
@@ -139,6 +148,16 @@ namespace GersangClientStation {
             this.menuItem_lab.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.menuItem_lab.Click += new System.EventHandler(this.menuItem_lab_Click);
             // 
+            // menuItem_question
+            // 
+            this.menuItem_question.Image = ((System.Drawing.Image)(resources.GetObject("menuItem_question.Image")));
+            this.menuItem_question.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.menuItem_question.Name = "menuItem_question";
+            this.menuItem_question.Size = new System.Drawing.Size(190, 28);
+            this.menuItem_question.Text = "자주하는 질문           ";
+            this.menuItem_question.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.menuItem_question.Click += new System.EventHandler(this.menuItem_question_Click);
+            // 
             // menuItem_contact
             // 
             this.menuItem_contact.Image = ((System.Drawing.Image)(resources.GetObject("menuItem_contact.Image")));
@@ -162,6 +181,9 @@ namespace GersangClientStation {
             // metroPanel2
             // 
             this.metroPanel2.BorderStyle = MetroFramework.Drawing.MetroBorderStyle.FixedSingle;
+            this.metroPanel2.Controls.Add(this.button_save_2);
+            this.metroPanel2.Controls.Add(this.textBox_client_2_pw);
+            this.metroPanel2.Controls.Add(this.textBox_client_2_id);
             this.metroPanel2.Controls.Add(this.button_start_2);
             this.metroPanel2.Controls.Add(this.button_search_naver2);
             this.metroPanel2.Controls.Add(this.toggle_client_2);
@@ -176,6 +198,33 @@ namespace GersangClientStation {
             this.metroPanel2.VerticalScrollbarBarColor = true;
             this.metroPanel2.VerticalScrollbarHighlightOnWheel = false;
             this.metroPanel2.VerticalScrollbarSize = 10;
+            // 
+            // button_save_2
+            // 
+            this.button_save_2.Location = new System.Drawing.Point(242, 10);
+            this.button_save_2.Name = "button_save_2";
+            this.button_save_2.Size = new System.Drawing.Size(40, 23);
+            this.button_save_2.TabIndex = 32;
+            this.button_save_2.Text = "Save";
+            this.button_save_2.Click += new System.EventHandler(this.button_save_2_Click);
+            // 
+            // textBox_client_2_pw
+            // 
+            this.textBox_client_2_pw.Location = new System.Drawing.Point(126, 10);
+            this.textBox_client_2_pw.Name = "textBox_client_2_pw";
+            this.textBox_client_2_pw.PasswordChar = '●';
+            this.textBox_client_2_pw.Size = new System.Drawing.Size(110, 23);
+            this.textBox_client_2_pw.TabIndex = 34;
+            this.textBox_client_2_pw.UseSystemPasswordChar = true;
+            this.textBox_client_2_pw.TextChanged += new System.EventHandler(this.textBox_pw_TextChanged);
+            this.textBox_client_2_pw.Leave += new System.EventHandler(this.textBox_client_2_pw_Leave);
+            // 
+            // textBox_client_2_id
+            // 
+            this.textBox_client_2_id.Location = new System.Drawing.Point(10, 10);
+            this.textBox_client_2_id.Name = "textBox_client_2_id";
+            this.textBox_client_2_id.Size = new System.Drawing.Size(110, 23);
+            this.textBox_client_2_id.TabIndex = 33;
             // 
             // button_start_2
             // 
@@ -240,6 +289,9 @@ namespace GersangClientStation {
             // metroPanel3
             // 
             this.metroPanel3.BorderStyle = MetroFramework.Drawing.MetroBorderStyle.FixedSingle;
+            this.metroPanel3.Controls.Add(this.button_save_3);
+            this.metroPanel3.Controls.Add(this.textBox_client_3_pw);
+            this.metroPanel3.Controls.Add(this.textBox_client_3_id);
             this.metroPanel3.Controls.Add(this.button_start_3);
             this.metroPanel3.Controls.Add(this.button_search_naver3);
             this.metroPanel3.Controls.Add(this.toggle_client_3);
@@ -254,6 +306,33 @@ namespace GersangClientStation {
             this.metroPanel3.VerticalScrollbarBarColor = true;
             this.metroPanel3.VerticalScrollbarHighlightOnWheel = false;
             this.metroPanel3.VerticalScrollbarSize = 10;
+            // 
+            // button_save_3
+            // 
+            this.button_save_3.Location = new System.Drawing.Point(242, 10);
+            this.button_save_3.Name = "button_save_3";
+            this.button_save_3.Size = new System.Drawing.Size(40, 23);
+            this.button_save_3.TabIndex = 35;
+            this.button_save_3.Text = "Save";
+            this.button_save_3.Click += new System.EventHandler(this.button_save_3_Click);
+            // 
+            // textBox_client_3_pw
+            // 
+            this.textBox_client_3_pw.Location = new System.Drawing.Point(126, 10);
+            this.textBox_client_3_pw.Name = "textBox_client_3_pw";
+            this.textBox_client_3_pw.PasswordChar = '●';
+            this.textBox_client_3_pw.Size = new System.Drawing.Size(110, 23);
+            this.textBox_client_3_pw.TabIndex = 37;
+            this.textBox_client_3_pw.UseSystemPasswordChar = true;
+            this.textBox_client_3_pw.TextChanged += new System.EventHandler(this.textBox_pw_TextChanged);
+            this.textBox_client_3_pw.Leave += new System.EventHandler(this.textBox_client_3_pw_Leave);
+            // 
+            // textBox_client_3_id
+            // 
+            this.textBox_client_3_id.Location = new System.Drawing.Point(10, 10);
+            this.textBox_client_3_id.Name = "textBox_client_3_id";
+            this.textBox_client_3_id.Size = new System.Drawing.Size(110, 23);
+            this.textBox_client_3_id.TabIndex = 36;
             // 
             // button_start_3
             // 
@@ -329,6 +408,9 @@ namespace GersangClientStation {
             // metroPanel1
             // 
             this.metroPanel1.BorderStyle = MetroFramework.Drawing.MetroBorderStyle.FixedSingle;
+            this.metroPanel1.Controls.Add(this.button_save_1);
+            this.metroPanel1.Controls.Add(this.textBox_client_1_pw);
+            this.metroPanel1.Controls.Add(this.textBox_client_1_id);
             this.metroPanel1.Controls.Add(this.button_start_1);
             this.metroPanel1.Controls.Add(this.button_search_naver_1);
             this.metroPanel1.Controls.Add(this.toggle_client_1);
@@ -343,6 +425,33 @@ namespace GersangClientStation {
             this.metroPanel1.VerticalScrollbarBarColor = false;
             this.metroPanel1.VerticalScrollbarHighlightOnWheel = false;
             this.metroPanel1.VerticalScrollbarSize = 10;
+            // 
+            // button_save_1
+            // 
+            this.button_save_1.Location = new System.Drawing.Point(242, 10);
+            this.button_save_1.Name = "button_save_1";
+            this.button_save_1.Size = new System.Drawing.Size(40, 23);
+            this.button_save_1.TabIndex = 30;
+            this.button_save_1.Text = "Save";
+            this.button_save_1.Click += new System.EventHandler(this.button_save_1_Click);
+            // 
+            // textBox_client_1_pw
+            // 
+            this.textBox_client_1_pw.Location = new System.Drawing.Point(126, 10);
+            this.textBox_client_1_pw.Name = "textBox_client_1_pw";
+            this.textBox_client_1_pw.PasswordChar = '●';
+            this.textBox_client_1_pw.Size = new System.Drawing.Size(110, 23);
+            this.textBox_client_1_pw.TabIndex = 31;
+            this.textBox_client_1_pw.UseSystemPasswordChar = true;
+            this.textBox_client_1_pw.TextChanged += new System.EventHandler(this.textBox_pw_TextChanged);
+            this.textBox_client_1_pw.Leave += new System.EventHandler(this.textBox_client_1_pw_Leave);
+            // 
+            // textBox_client_1_id
+            // 
+            this.textBox_client_1_id.Location = new System.Drawing.Point(10, 10);
+            this.textBox_client_1_id.Name = "textBox_client_1_id";
+            this.textBox_client_1_id.Size = new System.Drawing.Size(110, 23);
+            this.textBox_client_1_id.TabIndex = 30;
             // 
             // button_start_1
             // 
@@ -396,6 +505,7 @@ namespace GersangClientStation {
             // radio_setting_1
             // 
             this.radio_setting_1.AutoSize = true;
+            this.radio_setting_1.Checked = true;
             this.radio_setting_1.Location = new System.Drawing.Point(26, 27);
             this.radio_setting_1.Name = "radio_setting_1";
             this.radio_setting_1.Size = new System.Drawing.Size(68, 15);
@@ -412,7 +522,6 @@ namespace GersangClientStation {
             this.radio_setting_2.Name = "radio_setting_2";
             this.radio_setting_2.Size = new System.Drawing.Size(68, 15);
             this.radio_setting_2.TabIndex = 20;
-            this.radio_setting_2.TabStop = true;
             this.radio_setting_2.Text = "2번 설정";
             this.radio_setting_2.UseVisualStyleBackColor = true;
             this.radio_setting_2.CheckedChanged += new System.EventHandler(this.radio_setting_CheckedChanged);
@@ -424,7 +533,6 @@ namespace GersangClientStation {
             this.radio_setting_3.Name = "radio_setting_3";
             this.radio_setting_3.Size = new System.Drawing.Size(68, 15);
             this.radio_setting_3.TabIndex = 21;
-            this.radio_setting_3.TabStop = true;
             this.radio_setting_3.Text = "3번 설정";
             this.radio_setting_3.UseVisualStyleBackColor = true;
             this.radio_setting_3.CheckedChanged += new System.EventHandler(this.radio_setting_CheckedChanged);
@@ -450,7 +558,6 @@ namespace GersangClientStation {
             this.radio_setting_4.Name = "radio_setting_4";
             this.radio_setting_4.Size = new System.Drawing.Size(68, 15);
             this.radio_setting_4.TabIndex = 22;
-            this.radio_setting_4.TabStop = true;
             this.radio_setting_4.Text = "4번 설정";
             this.radio_setting_4.UseVisualStyleBackColor = true;
             this.radio_setting_4.CheckedChanged += new System.EventHandler(this.radio_setting_CheckedChanged);
@@ -586,16 +693,6 @@ namespace GersangClientStation {
             this.link_icon_license.Text = "Icons by Icons8,com";
             this.link_icon_license.Click += new System.EventHandler(this.link_icon_license_Click);
             // 
-            // menuItem_question
-            // 
-            this.menuItem_question.Image = ((System.Drawing.Image)(resources.GetObject("menuItem_question.Image")));
-            this.menuItem_question.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.menuItem_question.Name = "menuItem_question";
-            this.menuItem_question.Size = new System.Drawing.Size(190, 28);
-            this.menuItem_question.Text = "자주하는 질문           ";
-            this.menuItem_question.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
-            this.menuItem_question.Click += new System.EventHandler(this.menuItem_question_Click);
-            // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.check_direct);
@@ -606,6 +703,17 @@ namespace GersangClientStation {
             this.groupBox2.TabIndex = 29;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "간단 설정";
+            // 
+            // check_direct
+            // 
+            this.check_direct.AutoSize = true;
+            this.check_direct.Location = new System.Drawing.Point(15, 56);
+            this.check_direct.Name = "check_direct";
+            this.check_direct.Size = new System.Drawing.Size(108, 15);
+            this.check_direct.TabIndex = 33;
+            this.check_direct.Text = "ID/PW 바로입력";
+            this.check_direct.UseVisualStyleBackColor = true;
+            this.check_direct.CheckedChanged += new System.EventHandler(this.check_direct_CheckedChanged);
             // 
             // check_nickname
             // 
@@ -619,16 +727,6 @@ namespace GersangClientStation {
             this.check_nickname.Text = "별명 표시";
             this.check_nickname.UseVisualStyleBackColor = true;
             this.check_nickname.CheckedChanged += new System.EventHandler(this.check_nickname_CheckedChanged);
-            // 
-            // check_direct
-            // 
-            this.check_direct.AutoSize = true;
-            this.check_direct.Location = new System.Drawing.Point(15, 56);
-            this.check_direct.Name = "check_direct";
-            this.check_direct.Size = new System.Drawing.Size(108, 15);
-            this.check_direct.TabIndex = 33;
-            this.check_direct.Text = "ID/PW 바로입력";
-            this.check_direct.UseVisualStyleBackColor = true;
             // 
             // Form_Main
             // 
@@ -721,6 +819,15 @@ namespace GersangClientStation {
         private System.Windows.Forms.GroupBox groupBox2;
         private MetroFramework.Controls.MetroCheckBox check_direct;
         private MetroFramework.Controls.MetroCheckBox check_nickname;
+        private MetroFramework.Controls.MetroTextBox textBox_client_1_pw;
+        private MetroFramework.Controls.MetroTextBox textBox_client_1_id;
+        private MetroFramework.Controls.MetroButton button_save_1;
+        private MetroFramework.Controls.MetroButton button_save_2;
+        private MetroFramework.Controls.MetroTextBox textBox_client_2_pw;
+        private MetroFramework.Controls.MetroTextBox textBox_client_2_id;
+        private MetroFramework.Controls.MetroButton button_save_3;
+        private MetroFramework.Controls.MetroTextBox textBox_client_3_pw;
+        private MetroFramework.Controls.MetroTextBox textBox_client_3_id;
     }
 }
 
