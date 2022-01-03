@@ -130,6 +130,7 @@ namespace GersangClientStation {
             this.MinimizeBox = false;
             this.Name = "Form_Creator";
             this.Resizable = false;
+            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "다클라 생성기";
             this.ResumeLayout(false);

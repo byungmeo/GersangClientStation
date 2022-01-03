@@ -34,6 +34,7 @@ namespace GersangClientStation {
             this.ClientSize = new System.Drawing.Size(1284, 961);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form_Browser";
+            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "거상 다클라 스테이션";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form_Browser_FormClosed);

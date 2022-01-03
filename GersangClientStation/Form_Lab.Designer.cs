@@ -51,6 +51,7 @@ namespace GersangClientStation {
             this.MinimizeBox = false;
             this.Name = "Form_Lab";
             this.Resizable = false;
+            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "실험실";
             this.ResumeLayout(false);

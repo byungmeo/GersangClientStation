@@ -66,10 +66,8 @@ namespace GersangClientStation {
             this.link_shortcut_3 = new MetroFramework.Controls.MetroLink();
             this.link_shortcut_2 = new MetroFramework.Controls.MetroLink();
             this.link_shortcut_1 = new MetroFramework.Controls.MetroLink();
-            this.link_qa1 = new MetroFramework.Controls.MetroLink();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.link_qa2 = new MetroFramework.Controls.MetroLink();
             this.link_icon_license = new MetroFramework.Controls.MetroLink();
+            this.menuItem_question = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip2.SuspendLayout();
             this.metroPanel2.SuspendLayout();
             this.metroPanel3.SuspendLayout();
@@ -79,7 +77,6 @@ namespace GersangClientStation {
             ((System.ComponentModel.ISupportInitialize)(this.pic_naver)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic_github)).BeginInit();
             this.groupBox1.SuspendLayout();
-            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip2
@@ -91,6 +88,7 @@ namespace GersangClientStation {
             this.menuItem_shortcut,
             this.menuItem_create,
             this.menuItem_lab,
+            this.menuItem_question,
             this.menuItem_contact,
             this.menuItem_info});
             this.menuStrip2.Location = new System.Drawing.Point(488, 60);
@@ -616,40 +614,6 @@ namespace GersangClientStation {
             this.link_shortcut_1.Text = "바로가기1";
             this.link_shortcut_1.Click += new System.EventHandler(this.link_shortcut_1_Click);
             // 
-            // link_qa1
-            // 
-            this.link_qa1.Location = new System.Drawing.Point(19, 25);
-            this.link_qa1.Name = "link_qa1";
-            this.link_qa1.Size = new System.Drawing.Size(91, 23);
-            this.link_qa1.Style = MetroFramework.MetroColorStyle.Red;
-            this.link_qa1.TabIndex = 28;
-            this.link_qa1.Text = "실행이 안돼요";
-            this.link_qa1.UseStyleColors = true;
-            this.link_qa1.Click += new System.EventHandler(this.link_qa1_Click);
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox2.Controls.Add(this.link_qa2);
-            this.groupBox2.Controls.Add(this.link_qa1);
-            this.groupBox2.Location = new System.Drawing.Point(335, 410);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(129, 121);
-            this.groupBox2.TabIndex = 24;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "자주 하는 질문";
-            // 
-            // link_qa2
-            // 
-            this.link_qa2.Location = new System.Drawing.Point(19, 57);
-            this.link_qa2.Name = "link_qa2";
-            this.link_qa2.Size = new System.Drawing.Size(91, 51);
-            this.link_qa2.Style = MetroFramework.MetroColorStyle.Red;
-            this.link_qa2.TabIndex = 29;
-            this.link_qa2.Text = "업데이트 때마다 \r\n계정설정을 다시\r\n해야하나요?";
-            this.link_qa2.UseStyleColors = true;
-            this.link_qa2.Click += new System.EventHandler(this.link_qa2_Click);
-            // 
             // link_icon_license
             // 
             this.link_icon_license.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
@@ -663,6 +627,16 @@ namespace GersangClientStation {
             this.link_icon_license.Text = "Icons by Icons8,com";
             this.link_icon_license.Click += new System.EventHandler(this.link_icon_license_Click);
             // 
+            // menuItem_question
+            // 
+            this.menuItem_question.Image = ((System.Drawing.Image)(resources.GetObject("menuItem_question.Image")));
+            this.menuItem_question.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.menuItem_question.Name = "menuItem_question";
+            this.menuItem_question.Size = new System.Drawing.Size(190, 28);
+            this.menuItem_question.Text = "자주하는 질문           ";
+            this.menuItem_question.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.menuItem_question.Click += new System.EventHandler(this.menuItem_question_Click);
+            // 
             // Form_Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
@@ -670,7 +644,6 @@ namespace GersangClientStation {
             this.BorderStyle = MetroFramework.Drawing.MetroBorderStyle.FixedSingle;
             this.ClientSize = new System.Drawing.Size(705, 551);
             this.Controls.Add(this.link_icon_license);
-            this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.link_github);
             this.Controls.Add(this.pic_github);
@@ -703,7 +676,6 @@ namespace GersangClientStation {
             ((System.ComponentModel.ISupportInitialize)(this.pic_naver)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic_github)).EndInit();
             this.groupBox1.ResumeLayout(false);
-            this.groupBox2.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -741,9 +713,6 @@ namespace GersangClientStation {
         private MetroFramework.Controls.MetroLink link_shortcut_2;
         private MetroFramework.Controls.MetroLink link_shortcut_1;
         private System.Windows.Forms.ToolStripMenuItem menuItem_shortcut;
-        private MetroFramework.Controls.MetroLink link_qa1;
-        private System.Windows.Forms.GroupBox groupBox2;
-        private MetroFramework.Controls.MetroLink link_qa2;
         private System.Windows.Forms.Button button_start_1;
         private MetroFramework.Controls.MetroRadioButton radio_setting_4;
         private MetroFramework.Controls.MetroLink link_shortcut_5;
@@ -755,6 +724,7 @@ namespace GersangClientStation {
         private System.Windows.Forms.ToolStripMenuItem menuItem_info;
         private System.Windows.Forms.ToolStripMenuItem menuItem_contact;
         private System.Windows.Forms.ToolStripMenuItem menuItem_create;
+        private System.Windows.Forms.ToolStripMenuItem menuItem_question;
     }
 }
 

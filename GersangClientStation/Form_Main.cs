@@ -919,6 +919,11 @@ namespace GersangClientStation {
             labForm.ShowDialog();
         }
 
+        private void menuItem_question_Click(object sender, EventArgs e) {
+            Form_Question questionForm = new Form_Question();
+            questionForm.ShowDialog();
+        }
+
         private void menuItem_contact_Click(object sender, EventArgs e) {
             try {
                 System.Diagnostics.Process.Start("https://blog.naver.com/kog5071/222605986594");

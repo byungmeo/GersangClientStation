@@ -94,6 +94,7 @@ namespace GersangClientStation {
             this.MinimizeBox = false;
             this.Name = "Form_License";
             this.Resizable = false;
+            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "오픈소스 정보";
             this.Load += new System.EventHandler(this.Form_License_Load);

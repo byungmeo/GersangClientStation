@@ -24,6 +24,7 @@ namespace GersangClientStation {
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_Shortcut));
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
             this.textBox_name_1 = new MetroFramework.Controls.MetroTextBox();
             this.textBox_address_1 = new MetroFramework.Controls.MetroTextBox();
@@ -259,10 +260,12 @@ namespace GersangClientStation {
             this.Controls.Add(this.metroLabel2);
             this.Controls.Add(this.textBox_name_1);
             this.Controls.Add(this.metroLabel1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Form_Shortcut";
             this.Resizable = false;
+            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "바로가기 경로 설정";
             this.Load += new System.EventHandler(this.Form_Shortcut_Load);

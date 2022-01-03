@@ -24,6 +24,7 @@ namespace GersangClientStation {
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_Setting));
             this.label_client_1_tab_1 = new MetroFramework.Controls.MetroLabel();
             this.textBox_client_path_1_tab_1 = new MetroFramework.Controls.MetroTextBox();
             this.button_path_finder_1_tab_1 = new MetroFramework.Controls.MetroButton();
@@ -1703,10 +1704,12 @@ namespace GersangClientStation {
             this.BorderStyle = MetroFramework.Drawing.MetroBorderStyle.FixedSingle;
             this.ClientSize = new System.Drawing.Size(410, 744);
             this.Controls.Add(this.tabControl_setting);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Form_Setting";
             this.Resizable = false;
+            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "경로 및 계정정보";
             this.Load += new System.EventHandler(this.Form_Setting_Load);
