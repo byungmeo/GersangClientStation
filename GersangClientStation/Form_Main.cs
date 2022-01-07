@@ -525,33 +525,100 @@ namespace GersangClientStation {
         /// 네이버 검색 버튼 클릭
         /// </summary>
         private void button_search_naver_Click(object sender, EventArgs e) {
-            //네이버 검색 페이지 접속 -> 거상 공홈 버튼 클릭 -> 이벤트 페이지 이동 -> 아이템 획득 순서로 진행됩니다.
-            //각 과정이 메서드로 분리되어 DocumentLoading시에 실행됩니다.
-            if (currentLoginClient == Client.None) {
-                MessageBox.Show("로그인을 먼저 해주세요.");
+
+            if (url_event == "" || !isFind) {
+                MessageBox.Show("이벤트 페이지를 찾지 못하였습니다.");
                 return;
             }
 
-            if (url_event != "" && isFind) {
-                if(isDebuggingSearchMode) {
-                    //검색 보상 수령이 안되는 경우 검색모드 디버깅모드를 체크하면
-                    //직접 작동하는걸 확인 가능합니다.
-                    Form debugSearchForm = new Form() {
-                        Width = 1300,
-                        Height = 1000,
-                        StartPosition = FormStartPosition.CenterScreen
-                    };
-                    debugSearchForm.FormClosed += delegate (object obj, FormClosedEventArgs args) {
-                        debugSearchForm.Controls.Clear();
-                    };
+            if (isDebuggingSearchMode) {
+                //검색 보상 수령이 안되는 경우 검색모드 디버깅모드를 체크하면
+                //직접 작동하는걸 확인 가능합니다.
+                Form debugSearchForm = new Form() {
+                    Width = 1300,
+                    Height = 1000,
+                    StartPosition = FormStartPosition.CenterScreen
+                };
+                debugSearchForm.FormClosed += delegate (object obj, FormClosedEventArgs args) {
+                    debugSearchForm.Controls.Clear();
+                };
 
-                    debugSearchForm.Controls.Add(eventBrowser);
-                    debugSearchForm.Show();
+                debugSearchForm.Controls.Add(eventBrowser);
+                debugSearchForm.Show();
+            }
+
+            //네이버 검색 페이지 접속 -> 거상 공홈 버튼 클릭 -> 이벤트 페이지 이동 -> 아이템 획득 순서로 진행됩니다.
+            //각 과정이 메서드로 분리되어 DocumentLoading시에 실행됩니다.
+            int max_check_count = 25; //로그인 또는 로그아웃이 잘 되었는지 체크 할 횟수
+            Client client;
+
+            //클릭한 버튼에 따라 변수를 초기화
+            Button button_search = sender as Button;
+            if (button_search.Equals(button_search_naver_1)) { client = Client.MainClient; }
+            else if (button_search.Equals(button_search_naver2)) { client = Client.Client2; } 
+            else if (button_search.Equals(button_search_naver3)) { client = Client.Client3; } 
+            else {
+                client = Client.None;
+                MessageBox.Show("잘못된 검색 버튼");
+                return;
+            }
+
+            if (currentLoginClient != client) {
+                //다른 계정에 로그인 되어있거나, 로그아웃 상태라면,
+
+                if (this.findElementByClassName("div", "user_name") != null) {
+                    //로그인이 되어있는지 확실하게 체크한 후,
+
+                    Logout(); //로그아웃 한다.
+
+
+                    //로그아웃이 잘 되었는지 확인
+                    for (int i = 0; i < max_check_count; i++) {
+                        Delay(200); //0.2초 간격으로 최대 5초동안 로그아웃이 잘 되었는지 확인합니다.
+                        if (this.findElementByClassName("div", "user_name") == null && document_main.Url.ToString().Equals(url_main)) {
+                            Login(client);
+                            break;
+                        }
+
+                        if (i == max_check_count - 1) {
+                            MessageBox.Show("로그아웃이 정상적으로 완료되지 않았습니다.");
+                            return;
+                        }
+                    }
+
+                    for (int i = 0; i < max_check_count; i++) {
+                        Delay(200); //0.2초 간격으로 최대 5초동안 로그인이 잘 되었는지 확인합니다.
+                        if (this.findElementByClassName("div", "user_name") != null) {
+                            navigateSearchPage();
+                            return;
+                        }
+
+                        if (i == max_check_count - 1) {
+                            MessageBox.Show("로그인이 정상적으로 완료되지 않았습니다.");
+                            return;
+                        }
+                    }
+                } else {
+                    //로그인이 안되어있다면,
+                    Login(client);
+
+                    for (int i = 0; i < max_check_count; i++) {
+                        Delay(200); //0.2초 간격으로 최대 5초동안 로그인이 잘 되었는지 확인합니다.
+                        if (this.findElementByClassName("div", "user_name") != null) {
+                            navigateSearchPage();
+                            return;
+                        }
+
+                        if (i == max_check_count - 1) {
+                            MessageBox.Show("로그인이 정상적으로 완료되지 않았습니다.");
+                            return;
+                        }
+                    }
                 }
-                
-                navigateSearchPage();
             } else {
-                MessageBox.Show("이벤트 페이지를 찾지 못하였습니다.");
+                //시작하려는 거상 계정에 로그인되어있다면 그냥 실행
+                navigateSearchPage();
+                return;
             }
         }
 
@@ -845,7 +912,7 @@ namespace GersangClientStation {
         /// 게임 시작 버튼 클릭
         /// </summary>
         private void button_start_Click(object sender, EventArgs e) {
-            int max_check_count = 10; //로그인 또는 로그아웃이 잘 되었는지 체크 할 횟수
+            int max_check_count = 25; //로그인 또는 로그아웃이 잘 되었는지 체크 할 횟수
             Client client;
             string client_path;
 
@@ -903,7 +970,7 @@ namespace GersangClientStation {
 
                     //로그아웃이 잘 되었는지 확인
                     for (int i = 0; i < max_check_count; i++) {
-                        Delay(200); //0.2초 간격으로 최대 2초동안 로그아웃이 잘 되었는지 확인합니다.
+                        Delay(200); //0.2초 간격으로 최대 5초동안 로그아웃이 잘 되었는지 확인합니다.
                         if (this.findElementByClassName("div", "user_name") == null && document_main.Url.ToString().Equals(url_main)) {
                             Login(client);
                             break;
@@ -916,7 +983,7 @@ namespace GersangClientStation {
                     }
 
                     for (int i = 0; i < max_check_count; i++) {
-                        Delay(200); //0.2초 간격으로 최대 2초동안 로그인이 잘 되었는지 확인합니다.
+                        Delay(200); //0.2초 간격으로 최대 5초동안 로그인이 잘 되었는지 확인합니다.
                         if (this.findElementByClassName("div", "user_name") != null) {
                             GameStart(client_path);
                             return;
@@ -932,7 +999,7 @@ namespace GersangClientStation {
                     Login(client);
 
                     for (int i = 0; i < max_check_count; i++) {
-                        Delay(200); //0.2초 간격으로 최대 2초동안 로그인이 잘 되었는지 확인합니다.
+                        Delay(200); //0.2초 간격으로 최대 5초동안 로그인이 잘 되었는지 확인합니다.
                         if (this.findElementByClassName("div", "user_name") != null) {
                             GameStart(client_path);
                             return;

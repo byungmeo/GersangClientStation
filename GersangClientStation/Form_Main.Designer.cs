@@ -34,6 +34,8 @@ namespace GersangClientStation {
             this.menuItem_contact = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItem_info = new System.Windows.Forms.ToolStripMenuItem();
             this.metroPanel2 = new MetroFramework.Controls.MetroPanel();
+            this.metroLabel3 = new MetroFramework.Controls.MetroLabel();
+            this.label_client_2_version = new MetroFramework.Controls.MetroLabel();
             this.button_save_2 = new MetroFramework.Controls.MetroButton();
             this.textBox_client_2_pw = new MetroFramework.Controls.MetroTextBox();
             this.textBox_client_2_id = new MetroFramework.Controls.MetroTextBox();
@@ -42,6 +44,8 @@ namespace GersangClientStation {
             this.toggle_client_2 = new MetroFramework.Controls.MetroToggle();
             this.label_client_2 = new MetroFramework.Controls.MetroLabel();
             this.metroPanel3 = new MetroFramework.Controls.MetroPanel();
+            this.metroLabel4 = new MetroFramework.Controls.MetroLabel();
+            this.label_client_3_version = new MetroFramework.Controls.MetroLabel();
             this.button_save_3 = new MetroFramework.Controls.MetroButton();
             this.textBox_client_3_pw = new MetroFramework.Controls.MetroTextBox();
             this.textBox_client_3_id = new MetroFramework.Controls.MetroTextBox();
@@ -51,6 +55,8 @@ namespace GersangClientStation {
             this.label_client_3 = new MetroFramework.Controls.MetroLabel();
             this.label_client_1 = new MetroFramework.Controls.MetroLabel();
             this.metroPanel1 = new MetroFramework.Controls.MetroPanel();
+            this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
+            this.label_client_1_version = new MetroFramework.Controls.MetroLabel();
             this.button_save_1 = new MetroFramework.Controls.MetroButton();
             this.textBox_client_1_pw = new MetroFramework.Controls.MetroTextBox();
             this.textBox_client_1_id = new MetroFramework.Controls.MetroTextBox();
@@ -79,12 +85,6 @@ namespace GersangClientStation {
             this.check_nickname = new MetroFramework.Controls.MetroCheckBox();
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
             this.label_gersangLatestVersion = new MetroFramework.Controls.MetroLabel();
-            this.label_client_1_version = new MetroFramework.Controls.MetroLabel();
-            this.label_client_2_version = new MetroFramework.Controls.MetroLabel();
-            this.label_client_3_version = new MetroFramework.Controls.MetroLabel();
-            this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
-            this.metroLabel3 = new MetroFramework.Controls.MetroLabel();
-            this.metroLabel4 = new MetroFramework.Controls.MetroLabel();
             this.menuStrip2.SuspendLayout();
             this.metroPanel2.SuspendLayout();
             this.metroPanel3.SuspendLayout();
@@ -209,6 +209,26 @@ namespace GersangClientStation {
             this.metroPanel2.VerticalScrollbarHighlightOnWheel = false;
             this.metroPanel2.VerticalScrollbarSize = 10;
             // 
+            // metroLabel3
+            // 
+            this.metroLabel3.AutoSize = true;
+            this.metroLabel3.Location = new System.Drawing.Point(8, 113);
+            this.metroLabel3.Name = "metroLabel3";
+            this.metroLabel3.Size = new System.Drawing.Size(44, 19);
+            this.metroLabel3.TabIndex = 34;
+            this.metroLabel3.Text = "버전 :";
+            // 
+            // label_client_2_version
+            // 
+            this.label_client_2_version.AutoSize = true;
+            this.label_client_2_version.Location = new System.Drawing.Point(53, 113);
+            this.label_client_2_version.Name = "label_client_2_version";
+            this.label_client_2_version.Size = new System.Drawing.Size(44, 19);
+            this.label_client_2_version.Style = MetroFramework.MetroColorStyle.Black;
+            this.label_client_2_version.TabIndex = 35;
+            this.label_client_2_version.Text = "30000";
+            this.label_client_2_version.UseStyleColors = true;
+            // 
             // button_save_2
             // 
             this.button_save_2.Enabled = false;
@@ -324,6 +344,26 @@ namespace GersangClientStation {
             this.metroPanel3.VerticalScrollbarBarColor = true;
             this.metroPanel3.VerticalScrollbarHighlightOnWheel = false;
             this.metroPanel3.VerticalScrollbarSize = 10;
+            // 
+            // metroLabel4
+            // 
+            this.metroLabel4.AutoSize = true;
+            this.metroLabel4.Location = new System.Drawing.Point(8, 113);
+            this.metroLabel4.Name = "metroLabel4";
+            this.metroLabel4.Size = new System.Drawing.Size(44, 19);
+            this.metroLabel4.TabIndex = 36;
+            this.metroLabel4.Text = "버전 :";
+            // 
+            // label_client_3_version
+            // 
+            this.label_client_3_version.AutoSize = true;
+            this.label_client_3_version.Location = new System.Drawing.Point(53, 113);
+            this.label_client_3_version.Name = "label_client_3_version";
+            this.label_client_3_version.Size = new System.Drawing.Size(44, 19);
+            this.label_client_3_version.Style = MetroFramework.MetroColorStyle.Black;
+            this.label_client_3_version.TabIndex = 38;
+            this.label_client_3_version.Text = "30000";
+            this.label_client_3_version.UseStyleColors = true;
             // 
             // button_save_3
             // 
@@ -451,6 +491,26 @@ namespace GersangClientStation {
             this.metroPanel1.VerticalScrollbarBarColor = false;
             this.metroPanel1.VerticalScrollbarHighlightOnWheel = false;
             this.metroPanel1.VerticalScrollbarSize = 10;
+            // 
+            // metroLabel2
+            // 
+            this.metroLabel2.AutoSize = true;
+            this.metroLabel2.Location = new System.Drawing.Point(8, 114);
+            this.metroLabel2.Name = "metroLabel2";
+            this.metroLabel2.Size = new System.Drawing.Size(44, 19);
+            this.metroLabel2.TabIndex = 33;
+            this.metroLabel2.Text = "버전 :";
+            // 
+            // label_client_1_version
+            // 
+            this.label_client_1_version.AutoSize = true;
+            this.label_client_1_version.Location = new System.Drawing.Point(53, 114);
+            this.label_client_1_version.Name = "label_client_1_version";
+            this.label_client_1_version.Size = new System.Drawing.Size(44, 19);
+            this.label_client_1_version.Style = MetroFramework.MetroColorStyle.Black;
+            this.label_client_1_version.TabIndex = 32;
+            this.label_client_1_version.Text = "30000";
+            this.label_client_1_version.UseStyleColors = true;
             // 
             // button_save_1
             // 
@@ -777,66 +837,6 @@ namespace GersangClientStation {
             this.label_gersangLatestVersion.Size = new System.Drawing.Size(44, 19);
             this.label_gersangLatestVersion.TabIndex = 31;
             this.label_gersangLatestVersion.Text = "30000";
-            // 
-            // label_client_1_version
-            // 
-            this.label_client_1_version.AutoSize = true;
-            this.label_client_1_version.Location = new System.Drawing.Point(53, 114);
-            this.label_client_1_version.Name = "label_client_1_version";
-            this.label_client_1_version.Size = new System.Drawing.Size(44, 19);
-            this.label_client_1_version.Style = MetroFramework.MetroColorStyle.Black;
-            this.label_client_1_version.TabIndex = 32;
-            this.label_client_1_version.Text = "30000";
-            this.label_client_1_version.UseStyleColors = true;
-            // 
-            // label_client_2_version
-            // 
-            this.label_client_2_version.AutoSize = true;
-            this.label_client_2_version.Location = new System.Drawing.Point(53, 113);
-            this.label_client_2_version.Name = "label_client_2_version";
-            this.label_client_2_version.Size = new System.Drawing.Size(44, 19);
-            this.label_client_2_version.Style = MetroFramework.MetroColorStyle.Black;
-            this.label_client_2_version.TabIndex = 35;
-            this.label_client_2_version.Text = "30000";
-            this.label_client_2_version.UseStyleColors = true;
-            // 
-            // label_client_3_version
-            // 
-            this.label_client_3_version.AutoSize = true;
-            this.label_client_3_version.Location = new System.Drawing.Point(53, 113);
-            this.label_client_3_version.Name = "label_client_3_version";
-            this.label_client_3_version.Size = new System.Drawing.Size(44, 19);
-            this.label_client_3_version.Style = MetroFramework.MetroColorStyle.Black;
-            this.label_client_3_version.TabIndex = 38;
-            this.label_client_3_version.Text = "30000";
-            this.label_client_3_version.UseStyleColors = true;
-            // 
-            // metroLabel2
-            // 
-            this.metroLabel2.AutoSize = true;
-            this.metroLabel2.Location = new System.Drawing.Point(8, 114);
-            this.metroLabel2.Name = "metroLabel2";
-            this.metroLabel2.Size = new System.Drawing.Size(44, 19);
-            this.metroLabel2.TabIndex = 33;
-            this.metroLabel2.Text = "버전 :";
-            // 
-            // metroLabel3
-            // 
-            this.metroLabel3.AutoSize = true;
-            this.metroLabel3.Location = new System.Drawing.Point(8, 113);
-            this.metroLabel3.Name = "metroLabel3";
-            this.metroLabel3.Size = new System.Drawing.Size(44, 19);
-            this.metroLabel3.TabIndex = 34;
-            this.metroLabel3.Text = "버전 :";
-            // 
-            // metroLabel4
-            // 
-            this.metroLabel4.AutoSize = true;
-            this.metroLabel4.Location = new System.Drawing.Point(8, 113);
-            this.metroLabel4.Name = "metroLabel4";
-            this.metroLabel4.Size = new System.Drawing.Size(44, 19);
-            this.metroLabel4.TabIndex = 36;
-            this.metroLabel4.Text = "버전 :";
             // 
             // Form_Main
             // 
