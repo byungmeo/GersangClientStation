@@ -111,66 +111,79 @@ namespace GersangClientStation {
         }
 
         private void checkGersangUpdate() {
-            //현재 거상 최신 버전을 확인합니다
-            using (WebClient client = new WebClient()) {
-                ServicePointManager.Expect100Continue = true;
-                ServicePointManager.ServerCertificateValidationCallback = delegate { return true; };
-                ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12 | SecurityProtocolType.Ssl3;
+            try {
+                //현재 거상 최신 버전을 확인합니다
+                using (WebClient client = new WebClient()) {
+                    ServicePointManager.Expect100Continue = true;
+                    ServicePointManager.ServerCertificateValidationCallback = delegate { return true; };
+                    ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12 | SecurityProtocolType.Ssl3;
 
-                client.Headers.Add("User-Agent", "Mozilla/4.0 (compatible; MSIE 8.0)");
+                    client.Headers.Add("User-Agent", "Mozilla/4.0 (compatible; MSIE 8.0)");
 
-                DirectoryInfo binDirectory = new DirectoryInfo(System.Windows.Forms.Application.StartupPath + @"\bin");
-                if (!binDirectory.Exists) { binDirectory.Create(); } else {
-                    foreach (FileInfo file in binDirectory.GetFiles()) {
-                        if (file.Name.Equals("vsn.dat")) {
-                            file.Delete();
+                    DirectoryInfo binDirectory = new DirectoryInfo(System.Windows.Forms.Application.StartupPath + @"\bin");
+                    if (!binDirectory.Exists) { binDirectory.Create(); } else {
+                        foreach (FileInfo file in binDirectory.GetFiles()) {
+                            if (file.Name.Equals("vsn.dat")) {
+                                file.Delete();
+                            }
                         }
                     }
+
+                    client.DownloadFileCompleted += (object sender, AsyncCompletedEventArgs e) => {
+                        if (e.Error != null) {
+                            Debug.WriteLine("vsn.dat 파일 다운로드 중 오류 발생");
+                            Debug.WriteLine(e.Error.Message);
+                        } else {
+                            Debug.WriteLine("vsn.dat.gsz 파일 다운로드 완료");
+                            ZipFile.ExtractToDirectory(binDirectory.FullName + @"\vsn.dat.gsz", binDirectory.FullName);
+                            Debug.WriteLine("vsn.dat 파일 압축 해제 완료");
+
+                            FileStream fs = File.OpenRead(binDirectory.FullName + @"\vsn.dat");
+                            BinaryReader br = new BinaryReader(fs);
+                            gersangLatestVersion = -(br.ReadInt32() + 1);
+                            label_gersangLatestVersion.Text = gersangLatestVersion.ToString();
+                            Debug.WriteLine("서버에 게시된 거상 최신 버전 : " + gersangLatestVersion);
+                            fs.Close();
+                            br.Close();
+
+                            checkClientVersion();
+                        }
+                    };
+
+                    Uri vsnPath = new Uri(@"https://akgersang.xdn.kinxcdn.com/Gersang/Patch/Gersang_Server/Client_Patch_File/Online/vsn.dat.gsz");
+                    client.DownloadFileAsync(vsnPath, System.Windows.Forms.Application.StartupPath + @"\bin\vsn.dat.gsz");
                 }
-
-                client.DownloadFileCompleted += (object sender, AsyncCompletedEventArgs e) => {
-                    if (e.Error != null) {
-                        Debug.WriteLine("vsn.dat 파일 다운로드 중 오류 발생");
-                        Debug.WriteLine(e.Error.Message);
-                    } else {
-                        Debug.WriteLine("vsn.dat.gsz 파일 다운로드 완료");
-                        ZipFile.ExtractToDirectory(binDirectory.FullName + @"\vsn.dat.gsz", binDirectory.FullName);
-                        Debug.WriteLine("vsn.dat 파일 압축 해제 완료");
-
-                        FileStream fs = File.OpenRead(binDirectory.FullName + @"\vsn.dat");
-                        BinaryReader br = new BinaryReader(fs);
-                        gersangLatestVersion = -(br.ReadInt32() + 1);
-                        label_gersangLatestVersion.Text = gersangLatestVersion.ToString();
-                        Debug.WriteLine("서버에 게시된 거상 최신 버전 : " + gersangLatestVersion);
-                        fs.Close();
-                        br.Close();
-
-                        checkClientVersion();
-                    }
-                };
-
-                Uri vsnPath = new Uri(@"https://akgersang.xdn.kinxcdn.com/Gersang/Patch/Gersang_Server/Client_Patch_File/Online/vsn.dat.gsz");
-                client.DownloadFileAsync(vsnPath, System.Windows.Forms.Application.StartupPath + @"\bin\vsn.dat.gsz");
+            } catch (Exception e) {
+                MessageBox.Show("거상 최신 버전 확인 중 오류 발생\n" + e.Message);
             }
+            
         }
 
         private void checkClientVersion() {
-            string[] client_path = new string[3] { client_path_1, client_path_2, client_path_3 };
-            MetroLabel[] labels_clinet_version = new MetroLabel[3] { label_client_1_version, label_client_2_version, label_client_3_version };
-            for(int i = 0; i < 3; i++) {
-                FileStream fs = File.OpenRead(client_path[i] + @"\Online\vsn.dat");
-                BinaryReader br = new BinaryReader(fs);
-                int currentVer = -(br.ReadInt32() + 1);
-                labels_clinet_version[i].Text = currentVer.ToString();
-                Debug.WriteLine("클라 " + i + "  버전 :" + currentVer);
+            try {
+                string[] client_path = new string[3] { client_path_1, client_path_2, client_path_3 };
+                MetroLabel[] labels_clinet_version = new MetroLabel[3] { label_client_1_version, label_client_2_version, label_client_3_version };
+                for (int i = 0; i < 3; i++) {
+                    if (client_path[i].Equals("")) {
+                        labels_clinet_version[i].Text = "확인불가";
+                        continue;
+                    }
+                    FileStream fs = File.OpenRead(client_path[i] + @"\Online\vsn.dat");
+                    BinaryReader br = new BinaryReader(fs);
+                    int currentVer = -(br.ReadInt32() + 1);
+                    labels_clinet_version[i].Text = currentVer.ToString();
+                    Debug.WriteLine("클라 " + i + "  버전 :" + currentVer);
 
-                if(currentVer < gersangLatestVersion) {
-                    labels_clinet_version[i].Style = MetroFramework.MetroColorStyle.Red;
-                } else {
-                    labels_clinet_version[i].Style = MetroFramework.MetroColorStyle.Black;
+                    if (currentVer < gersangLatestVersion) {
+                        labels_clinet_version[i].Style = MetroFramework.MetroColorStyle.Red;
+                    } else {
+                        labels_clinet_version[i].Style = MetroFramework.MetroColorStyle.Black;
+                    }
+                    fs.Close();
+                    br.Close();
                 }
-                fs.Close();
-                br.Close();
+            } catch (Exception e) {
+                MessageBox.Show("클라이언트 버전 확인 중 오류 발생\n" + e.Message);
             }
         }
 

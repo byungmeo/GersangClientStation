@@ -223,10 +223,10 @@ namespace GersangClientStation {
             this.label_client_2_version.AutoSize = true;
             this.label_client_2_version.Location = new System.Drawing.Point(53, 113);
             this.label_client_2_version.Name = "label_client_2_version";
-            this.label_client_2_version.Size = new System.Drawing.Size(44, 19);
+            this.label_client_2_version.Size = new System.Drawing.Size(65, 19);
             this.label_client_2_version.Style = MetroFramework.MetroColorStyle.Black;
             this.label_client_2_version.TabIndex = 35;
-            this.label_client_2_version.Text = "30000";
+            this.label_client_2_version.Text = "확인불가";
             this.label_client_2_version.UseStyleColors = true;
             // 
             // button_save_2
@@ -359,10 +359,10 @@ namespace GersangClientStation {
             this.label_client_3_version.AutoSize = true;
             this.label_client_3_version.Location = new System.Drawing.Point(53, 113);
             this.label_client_3_version.Name = "label_client_3_version";
-            this.label_client_3_version.Size = new System.Drawing.Size(44, 19);
+            this.label_client_3_version.Size = new System.Drawing.Size(65, 19);
             this.label_client_3_version.Style = MetroFramework.MetroColorStyle.Black;
             this.label_client_3_version.TabIndex = 38;
-            this.label_client_3_version.Text = "30000";
+            this.label_client_3_version.Text = "확인불가";
             this.label_client_3_version.UseStyleColors = true;
             // 
             // button_save_3
@@ -506,10 +506,10 @@ namespace GersangClientStation {
             this.label_client_1_version.AutoSize = true;
             this.label_client_1_version.Location = new System.Drawing.Point(53, 114);
             this.label_client_1_version.Name = "label_client_1_version";
-            this.label_client_1_version.Size = new System.Drawing.Size(44, 19);
+            this.label_client_1_version.Size = new System.Drawing.Size(65, 19);
             this.label_client_1_version.Style = MetroFramework.MetroColorStyle.Black;
             this.label_client_1_version.TabIndex = 32;
-            this.label_client_1_version.Text = "30000";
+            this.label_client_1_version.Text = "확인불가";
             this.label_client_1_version.UseStyleColors = true;
             // 
             // button_save_1
@@ -823,18 +823,20 @@ namespace GersangClientStation {
             // metroLabel1
             // 
             this.metroLabel1.AutoSize = true;
-            this.metroLabel1.Location = new System.Drawing.Point(336, 504);
+            this.metroLabel1.FontWeight = MetroFramework.MetroLabelWeight.Bold;
+            this.metroLabel1.Location = new System.Drawing.Point(335, 522);
             this.metroLabel1.Name = "metroLabel1";
-            this.metroLabel1.Size = new System.Drawing.Size(112, 19);
+            this.metroLabel1.Size = new System.Drawing.Size(85, 19);
             this.metroLabel1.TabIndex = 30;
-            this.metroLabel1.Text = "최신 거상 버전 : ";
+            this.metroLabel1.Text = "거상 버전  : ";
             // 
             // label_gersangLatestVersion
             // 
             this.label_gersangLatestVersion.AutoSize = true;
-            this.label_gersangLatestVersion.Location = new System.Drawing.Point(336, 523);
+            this.label_gersangLatestVersion.FontWeight = MetroFramework.MetroLabelWeight.Bold;
+            this.label_gersangLatestVersion.Location = new System.Drawing.Point(417, 522);
             this.label_gersangLatestVersion.Name = "label_gersangLatestVersion";
-            this.label_gersangLatestVersion.Size = new System.Drawing.Size(44, 19);
+            this.label_gersangLatestVersion.Size = new System.Drawing.Size(49, 19);
             this.label_gersangLatestVersion.TabIndex = 31;
             this.label_gersangLatestVersion.Text = "30000";
             // 
