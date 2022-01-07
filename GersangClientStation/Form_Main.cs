@@ -4,8 +4,11 @@ using Microsoft.Win32;
 using Octokit;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Configuration;
 using System.Diagnostics;
+using System.IO;
+using System.IO.Compression;
 using System.Net;
 using System.Reflection;
 using System.Security.Cryptography;
@@ -86,6 +89,9 @@ namespace GersangClientStation {
         //ID/PW 바로입력 기능을 위한 패스워드 관련 bool
         private bool isTextChanged = false;
 
+        //거상 버전 관련
+        private int gersangLatestVersion;
+
         //폼 생성자
         public Form_Main() {
             checkUpdate(); //업데이트 확인
@@ -100,7 +106,74 @@ namespace GersangClientStation {
             initRadioButton(); //저장되어있는 세팅값 번호를 불러오고, 해당 세팅값으로 클라이언트를 세팅합니다.
             initCheckBox();
             initLabFunction(); //실험실 기능 세팅값 초기화
+
+            checkGersangUpdate();
         }
+
+        private void checkGersangUpdate() {
+            //현재 거상 최신 버전을 확인합니다
+            using (WebClient client = new WebClient()) {
+                ServicePointManager.Expect100Continue = true;
+                ServicePointManager.ServerCertificateValidationCallback = delegate { return true; };
+                ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12 | SecurityProtocolType.Ssl3;
+
+                client.Headers.Add("User-Agent", "Mozilla/4.0 (compatible; MSIE 8.0)");
+
+                DirectoryInfo binDirectory = new DirectoryInfo(System.Windows.Forms.Application.StartupPath + @"\bin");
+                if (!binDirectory.Exists) { binDirectory.Create(); } else {
+                    foreach (FileInfo file in binDirectory.GetFiles()) {
+                        if (file.Name.Equals("vsn.dat")) {
+                            file.Delete();
+                        }
+                    }
+                }
+
+                client.DownloadFileCompleted += (object sender, AsyncCompletedEventArgs e) => {
+                    if (e.Error != null) {
+                        Debug.WriteLine("vsn.dat 파일 다운로드 중 오류 발생");
+                        Debug.WriteLine(e.Error.Message);
+                    } else {
+                        Debug.WriteLine("vsn.dat.gsz 파일 다운로드 완료");
+                        ZipFile.ExtractToDirectory(binDirectory.FullName + @"\vsn.dat.gsz", binDirectory.FullName);
+                        Debug.WriteLine("vsn.dat 파일 압축 해제 완료");
+
+                        FileStream fs = File.OpenRead(binDirectory.FullName + @"\vsn.dat");
+                        BinaryReader br = new BinaryReader(fs);
+                        gersangLatestVersion = -(br.ReadInt32() + 1);
+                        label_gersangLatestVersion.Text = gersangLatestVersion.ToString();
+                        Debug.WriteLine("서버에 게시된 거상 최신 버전 : " + gersangLatestVersion);
+                        fs.Close();
+                        br.Close();
+
+                        checkClientVersion();
+                    }
+                };
+
+                Uri vsnPath = new Uri(@"https://akgersang.xdn.kinxcdn.com/Gersang/Patch/Gersang_Server/Client_Patch_File/Online/vsn.dat.gsz");
+                client.DownloadFileAsync(vsnPath, System.Windows.Forms.Application.StartupPath + @"\bin\vsn.dat.gsz");
+            }
+        }
+
+        private void checkClientVersion() {
+            string[] client_path = new string[3] { client_path_1, client_path_2, client_path_3 };
+            MetroLabel[] labels_clinet_version = new MetroLabel[3] { label_client_1_version, label_client_2_version, label_client_3_version };
+            for(int i = 0; i < 3; i++) {
+                FileStream fs = File.OpenRead(client_path[i] + @"\Online\vsn.dat");
+                BinaryReader br = new BinaryReader(fs);
+                int currentVer = -(br.ReadInt32() + 1);
+                labels_clinet_version[i].Text = currentVer.ToString();
+                Debug.WriteLine("클라 " + i + "  버전 :" + currentVer);
+
+                if(currentVer < gersangLatestVersion) {
+                    labels_clinet_version[i].Style = MetroFramework.MetroColorStyle.Red;
+                } else {
+                    labels_clinet_version[i].Style = MetroFramework.MetroColorStyle.Black;
+                }
+                fs.Close();
+                br.Close();
+            }
+        }
+
         //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
         /// <summary>
@@ -644,6 +717,7 @@ namespace GersangClientStation {
                 ConfigurationManager.RefreshSection("appSettings");
                 LoadSetting();
                 initTextBox();
+                checkClientVersion();
 
                 //만약 로그인 되어있었다면, 로그아웃 합니다.
                 if (currentLoginClient != Client.None) {
