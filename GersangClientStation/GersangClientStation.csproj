@@ -271,6 +271,18 @@
     <Compile Include="Form_Browser.Designer.cs">
       <DependentUpon>Form_Browser.cs</DependentUpon>
     </Compile>
+    <Compile Include="Form_Patch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_Patch.Designer.cs">
+      <DependentUpon>Form_Patch.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form_PatchSetting.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_PatchSetting.Designer.cs">
+      <DependentUpon>Form_PatchSetting.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form_Question.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -308,6 +320,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form_Browser.resx">
       <DependentUpon>Form_Browser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_Patch.resx">
+      <DependentUpon>Form_Patch.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_PatchSetting.resx">
+      <DependentUpon>Form_PatchSetting.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form_Question.resx">
       <DependentUpon>Form_Question.cs</DependentUpon>

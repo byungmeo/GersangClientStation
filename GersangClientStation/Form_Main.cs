@@ -12,6 +12,7 @@ using System.IO.Compression;
 using System.Net;
 using System.Reflection;
 using System.Security.Cryptography;
+using System.Text;
 using System.Windows.Forms;
 
 namespace GersangClientStation {
@@ -766,6 +767,27 @@ namespace GersangClientStation {
             config.AppSettings.Settings["input_direct"].Value = check_direct.Checked.ToString();
             LoadSetting();
         }
+
+        //자동 업데이트 체크박스 클릭
+        private void check_autoUpdate_CheckedChanged(object sender, EventArgs e) {
+            MetroCheckBox check = sender as MetroCheckBox;
+            bool flag = check.Checked;
+
+            if (flag) {
+                if (config.AppSettings.Settings["gersang_original_path"].Value.Equals("")) {
+                    MessageBox.Show("거상 원본 폴더가 지정되지 않았습니다.\n자동패치 설정 -> 원본 폴더를 지정 해주세요."
+                        , "자동패치 설정", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                    check.Checked = false;
+                    return;
+                }
+            }
+
+            config.AppSettings.Settings["enable_auto_patch"].Value = flag.ToString();
+
+            config.Save(ConfigurationSaveMode.Modified, true);
+            ConfigurationManager.RefreshSection("appSettings");
+        }
+
         //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
         /// <summary>
@@ -1052,8 +1074,13 @@ namespace GersangClientStation {
         }
         
         private void menuItem_create_Click(object sender, EventArgs e) {
-            Form_Creator form_Creator = new Form_Creator();
-            form_Creator.ShowDialog();
+            Form_Creator form_creator = new Form_Creator();
+            form_creator.ShowDialog();
+        }
+
+        private void menuItem_patch_Click(object sender, EventArgs e) {
+            Form_PatchSetting form_patchSetting = new Form_PatchSetting();
+            form_patchSetting.ShowDialog();
         }
 
         //실험실
@@ -1363,6 +1390,7 @@ namespace GersangClientStation {
             isActiveX = bool.Parse(ConfigurationManager.AppSettings["use_activeX"]);
         }
 
+        //ID/PW 바로입력 기능을 위해 텍스트박스 초기화
         private void initTextBox() {
             byte settingNumber = Byte.Parse(ConfigurationManager.AppSettings["setting_num"]);
 
@@ -1374,46 +1402,6 @@ namespace GersangClientStation {
 
             textBox_client_3_id.Text = ConfigurationManager.AppSettings["client_id_3_tab_" + settingNumber];
             textBox_client_3_pw.Text = ConfigurationManager.AppSettings["client_pw_3_tab_" + settingNumber];
-        }
-
-        //태스크바의 아이콘을 클릭 시 최소화, 최대화가 되도록 설정 (호출 필요 X)
-        //원래 안되었던 이유 : MetroForm은 BorderStyle이 None이라서
-        protected override CreateParams CreateParams {
-            get {
-                CreateParams cp = base.CreateParams;
-                cp.Style |= 0x20000;
-                cp.ClassStyle |= 0x8;
-                return cp;
-            }
-        }
-        //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-        /// <summary>
-        /// 유틸 메서드
-        /// </summary>
-
-        //ms초만큼 딜레이를 겁니다.
-        private static DateTime Delay(int MS) {
-            DateTime ThisMoment = DateTime.Now;
-            TimeSpan duration = new TimeSpan(0, 0, 0, 0, MS);
-            DateTime AfterWards = ThisMoment.Add(duration);
-
-            while (AfterWards >= ThisMoment) {
-                System.Windows.Forms.Application.DoEvents();
-                ThisMoment = DateTime.Now;
-            }
-            return DateTime.Now;
-        }
-
-        //Document에서 해당 태그와 클래스명을 가진 요소를 반환합니다.
-        //여러 개가 있을 경우 가장 첫 번째에 있는 요소를 가져옴에 유의
-        private HtmlElement findElementByClassName(string tagName, string className) {
-            foreach (HtmlElement element in document_main.GetElementsByTagName(tagName)) {
-                if (element.GetAttribute("className") == className) {
-                    return element;
-                }
-            }
-            return null;
         }
 
         private void textBox_pw_TextChanged(object sender, System.EventArgs e) { isTextChanged = true; }
@@ -1476,6 +1464,56 @@ namespace GersangClientStation {
             ConfigurationManager.RefreshSection("appSettings");
 
             MessageBox.Show("저장이 완료되었습니다.", "경로 및 계정정보", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        //태스크바의 아이콘을 클릭 시 최소화, 최대화가 되도록 설정 (호출 필요 X)
+        //원래 안되었던 이유 : MetroForm은 BorderStyle이 None이라서
+        protected override CreateParams CreateParams {
+            get {
+                CreateParams cp = base.CreateParams;
+                cp.Style |= 0x20000;
+                cp.ClassStyle |= 0x8;
+                return cp;
+            }
+        }
+        //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+        /// <summary>
+        /// 수동패치
+        /// </summary>
+
+        private void button_patch_Click(object sender, EventArgs e) {
+            Form_Patch form_patch = new Form_Patch();
+            form_patch.ShowDialog();
+        }
+        //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+        /// <summary>
+        /// 유틸 메서드
+        /// </summary>
+
+        //ms초만큼 딜레이를 겁니다.
+        private static DateTime Delay(int MS) {
+            DateTime ThisMoment = DateTime.Now;
+            TimeSpan duration = new TimeSpan(0, 0, 0, 0, MS);
+            DateTime AfterWards = ThisMoment.Add(duration);
+
+            while (AfterWards >= ThisMoment) {
+                System.Windows.Forms.Application.DoEvents();
+                ThisMoment = DateTime.Now;
+            }
+            return DateTime.Now;
+        }
+
+        //Document에서 해당 태그와 클래스명을 가진 요소를 반환합니다.
+        //여러 개가 있을 경우 가장 첫 번째에 있는 요소를 가져옴에 유의
+        private HtmlElement findElementByClassName(string tagName, string className) {
+            foreach (HtmlElement element in document_main.GetElementsByTagName(tagName)) {
+                if (element.GetAttribute("className") == className) {
+                    return element;
+                }
+            }
+            return null;
         }
     }
 }

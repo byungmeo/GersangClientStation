@@ -148,6 +148,13 @@
         rkJggg==
 </value>
   </data>
+  <data name="menuItem_patch.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAAFJJREFUSEvt
+        krEOABAMBfvXRv4cgyYNpUIN6CW3Ne+WwlfESnUsIGIBkfsCLluP9vTZJWYiy+PIKLI9jnARtXGERtTH
+        kVA0zkA/RMMG7mjHJwBI7/pvZRBmLDoAAAAASUVORK5CYII=
+</value>
+  </data>
   <data name="menuItem_lab.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAALlJREFUSEvt
