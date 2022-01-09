@@ -26,5 +26,12 @@ namespace GersangClientStation {
 
             MessageBox.Show("저장이 완료되었습니다.", "거상 패치 설정", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
+
+        private void button_find_Click(object sender, EventArgs e) {
+            pathBrowserDialog.ShowDialog();
+            if (pathBrowserDialog.SelectedPath.Length != 0) {
+                textBox_original_path.Text = pathBrowserDialog.SelectedPath;
+            }
+        }
     }
 }

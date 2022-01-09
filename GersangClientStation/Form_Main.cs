@@ -184,7 +184,7 @@ namespace GersangClientStation {
                     br.Close();
                 }
             } catch (Exception e) {
-                MessageBox.Show("클라이언트 버전 확인 중 오류 발생\n" + e.Message);
+                Debug.WriteLine("클라이언트 버전 확인 중 오류 발생\n" + e.Message);
             }
         }
 
@@ -767,27 +767,6 @@ namespace GersangClientStation {
             config.AppSettings.Settings["input_direct"].Value = check_direct.Checked.ToString();
             LoadSetting();
         }
-
-        //자동 업데이트 체크박스 클릭
-        private void check_autoUpdate_CheckedChanged(object sender, EventArgs e) {
-            MetroCheckBox check = sender as MetroCheckBox;
-            bool flag = check.Checked;
-
-            if (flag) {
-                if (config.AppSettings.Settings["gersang_original_path"].Value.Equals("")) {
-                    MessageBox.Show("거상 원본 폴더가 지정되지 않았습니다.\n자동패치 설정 -> 원본 폴더를 지정 해주세요."
-                        , "자동패치 설정", MessageBoxButtons.OK, MessageBoxIcon.Stop);
-                    check.Checked = false;
-                    return;
-                }
-            }
-
-            config.AppSettings.Settings["enable_auto_patch"].Value = flag.ToString();
-
-            config.Save(ConfigurationSaveMode.Modified, true);
-            ConfigurationManager.RefreshSection("appSettings");
-        }
-
         //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
         /// <summary>
@@ -948,24 +927,43 @@ namespace GersangClientStation {
         /// </summary>
         private void button_start_Click(object sender, EventArgs e) {
             int max_check_count = 25; //로그인 또는 로그아웃이 잘 되었는지 체크 할 횟수
-            Client client;
-            string client_path;
+            Client client = Client.None;
+            string client_path = "";
+            int version = 0;
+            string id = "";
+            string pw = "";
 
-            //클릭한 버튼에 따라 변수를 초기화
-            Button button_start = sender as Button;
-            if (button_start.Equals(button_start_1)) {
-                client = Client.MainClient;
-                client_path = client_path_1;
-            } else if (button_start.Equals(button_start_2)) {
-                client = Client.Client2;
-                client_path = client_path_2;
-            } else if (button_start.Equals(button_start_3)) {
-                client = Client.Client3;
-                client_path = client_path_3;
-            } else {
-                client = Client.None;
-                client_path = string.Empty;
+            try {
+                //클릭한 버튼에 따라 변수를 초기화
+                Button button_start = sender as Button;
+                if (button_start.Equals(button_start_1)) {
+                    client = Client.MainClient;
+                    client_path = client_path_1;
+                    version = Int16.Parse(label_client_1_version.Text);
+                    id = client_id_1;
+                    pw = client_pw_1;
+                } else if (button_start.Equals(button_start_2)) {
+                    client = Client.Client2;
+                    client_path = client_path_2;
+                    version = Int16.Parse(label_client_2_version.Text);
+                    id = client_id_2;
+                    pw = client_pw_2;
+                } else if (button_start.Equals(button_start_3)) {
+                    client = Client.Client3;
+                    client_path = client_path_3;
+                    version = Int16.Parse(label_client_3_version.Text);
+                    id = client_id_3;
+                    pw = client_pw_3;
+                } else {
+                    client = Client.None;
+                    client_path = string.Empty;
+                    version = 0;
+                }
+            } catch (Exception ex) {
+                Debug.WriteLine(ex.Message);
+                version = 0;
             }
+            
 
             //예외 처리
             if (client == Client.None) {
@@ -974,11 +972,44 @@ namespace GersangClientStation {
             }
 
             if (client_path == "") {
-                MessageBox.Show("거상 경로를 지정해주세요.");
+                MessageBox.Show("거상 경로를 지정해주세요.\n클라이언트 설정 창을 엽니다.", "경로 설정", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                menuItem_client.PerformClick();
                 return;
             }
 
-            if(isDebuggingMode) {
+            if(version < Int16.Parse(label_gersangLatestVersion.Text) && version != 0 && !label_gersangLatestVersion.Text.Equals("00000")) {
+                DialogResult dr = MessageBox.Show("거상 업데이트가 필요합니다.\n다클라 스테이션의 패치 기능으로\n업데이트 하시겠습니까?", "업데이트", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                if(dr == DialogResult.Yes) {
+                    string origin_path = Form_Main.config.AppSettings.Settings["gersang_original_path"].Value;
+
+                    //원본 폴더 경로가 설정되어 있는지 확인
+                    if (origin_path.Equals("")) {
+                        MessageBox.Show("거상 원본 폴더가 지정되지 않았습니다.\n거상 패치 설정 창을 엽니다."
+                            , "거상 패치 설정", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                        menuItem_patch.PerformClick();
+                        return;
+                    } else {
+                        Form_Patch form_patch = new Form_Patch();
+                        form_patch.ShowDialog();
+                        checkClientVersion();
+                        return;
+                    }
+                }
+            }
+
+            if(id.Equals("")) {
+                MessageBox.Show("아이디를 입력해주세요..\n클라이언트 설정 창을 엽니다.", "아이디 설정", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                menuItem_client.PerformClick();
+                return;
+            }
+
+            if(pw.Equals("")) {
+                MessageBox.Show("비밀번호를 입력해주세요..\n클라이언트 설정 창을 엽니다.", "패스워드 설정", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                menuItem_client.PerformClick();
+                return;
+            }
+
+            if (isDebuggingMode) {
                 //검색 보상 수령이 안되는 경우 검색모드 디버깅모드를 체크하면
                 //직접 작동하는걸 확인 가능합니다.
                 Form debugForm = new Form() {
@@ -1064,6 +1095,7 @@ namespace GersangClientStation {
             Form_Setting settingDialogForm = new Form_Setting(settingNumber);
             settingDialogForm.ShowDialog();
             LoadSetting(); //세팅값이 바뀌었다면 새로고침 합니다.
+            checkClientVersion();
         }
 
         //바로가기 경로 설정
@@ -1076,6 +1108,7 @@ namespace GersangClientStation {
         private void menuItem_create_Click(object sender, EventArgs e) {
             Form_Creator form_creator = new Form_Creator();
             form_creator.ShowDialog();
+            checkClientVersion();
         }
 
         private void menuItem_patch_Click(object sender, EventArgs e) {
@@ -1485,6 +1518,7 @@ namespace GersangClientStation {
         private void button_patch_Click(object sender, EventArgs e) {
             Form_Patch form_patch = new Form_Patch();
             form_patch.ShowDialog();
+            checkClientVersion();
         }
         //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

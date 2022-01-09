@@ -29,6 +29,8 @@ namespace GersangClientStation {
             if (origin_path.Equals("")) {
                 MessageBox.Show("거상 원본 폴더가 지정되지 않았습니다.\n자동패치 설정 -> 원본 폴더를 지정 해주세요."
                     , "자동패치 설정", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                isCompleted = true;
+                this.Close();
                 return;
             }
 
@@ -38,12 +40,16 @@ namespace GersangClientStation {
                 if (Directory.GetFiles(origin_path, "Gersang.exe", SearchOption.TopDirectoryOnly).Length <= 0) {
                     MessageBox.Show("현재 지정된 경로에 Gersang.exe 파일이 존재하지 않습니다.\n경로를 다시 지정해주세요."
                         , "거상 경로 인식 실패", MessageBoxButtons.OK, MessageBoxIcon.Question);
+                    isCompleted = true;
+                    this.Close();
                     return;
                 }
             } catch (Exception ex) {
                 MessageBox.Show("거상 경로가 올바른지 확인 중에 오류가 발생하였습니다.\n경로를 다시 확인 하거나 문의 바랍니다." + ex.Message
                     , "거상 경로 확인 실패", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
+                isCompleted = true;
+                this.Close();
+                return; ;
             }
 
             //
@@ -58,6 +64,8 @@ namespace GersangClientStation {
             } catch (Exception ex) {
                 MessageBox.Show("현재 거상 버전을 확인 중 오류가 발생하였습니다.\n문의해주세요." + ex.Message
                     , "거상 경로 확인 실패", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                isCompleted = true;
+                this.Close();
                 return;
             }
 
@@ -109,11 +117,15 @@ namespace GersangClientStation {
                                     , "동일한 버전", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
                                 if (dr == DialogResult.No) {
+                                    isCompleted = true;
+                                    this.Close();
                                     return;
                                 }
                             } else if (latestVer - currentVer < 0) {
                                 MessageBox.Show("지정된 경로의 거상 버전이 거상 서버에 게시된 버전보다 최신입니다.\n문의 바랍니다."
                                     , "버전 오류", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                                isCompleted = true;
+                                this.Close();
                                 return;
                             }
 
@@ -139,17 +151,24 @@ namespace GersangClientStation {
                             System.Net.WebClient webClient = new System.Net.WebClient();
                             webClient.Headers.Add("User-Agent", "Mozilla/4.0 (compatible; MSIE 8.0)");
 
-                            for (int i = currentVer + 1; i <= latestVer; i++) {
-                                string downloadUrl = @"http://akgersang.xdn.kinxcdn.com/Gersang/Patch/Gersang_Server/" + @"Client_info_File/" + i;
-                                try {
-                                    webClient.DownloadFile(new Uri(downloadUrl), infoDirectory + @"\" + i + ".txt");
-                                    Debug.WriteLine(i + " 버전 패치정보 파일 다운로드 성공\n");
+                            if(currentVer == latestVer) {
+                                string downloadUrl = @"http://akgersang.xdn.kinxcdn.com/Gersang/Patch/Gersang_Server/" + @"Client_info_File/" + currentVer;
+                                webClient.DownloadFile(new Uri(downloadUrl), infoDirectory + @"\" + currentVer + ".txt");
+                                Debug.WriteLine(currentVer + " 버전 패치정보 파일 다운로드 성공\n");
+                                patchList.Add(currentVer.ToString());
+                            } else {
+                                for (int i = currentVer + 1; i <= latestVer; i++) {
+                                    string downloadUrl = @"http://akgersang.xdn.kinxcdn.com/Gersang/Patch/Gersang_Server/" + @"Client_info_File/" + i;
+                                    try {
+                                        webClient.DownloadFile(new Uri(downloadUrl), infoDirectory + @"\" + i + ".txt");
+                                        Debug.WriteLine(i + " 버전 패치정보 파일 다운로드 성공\n");
 
-                                    patchList.Add(i.ToString());
-                                } catch (Exception ex) {
-                                    //다운로드 실패 시 다음 버전으로 넘어갑니다
-                                    Debug.WriteLine("버전 " + i + " 이 존재하지 않아 다음 버전으로 넘어갑니다.\n");
-                                    Debug.WriteLine(ex.Message);
+                                        patchList.Add(i.ToString());
+                                    } catch (Exception ex) {
+                                        //다운로드 실패 시 다음 버전으로 넘어갑니다
+                                        Debug.WriteLine("버전 " + i + " 이 존재하지 않아 다음 버전으로 넘어갑니다.\n");
+                                        Debug.WriteLine(ex.Message);
+                                    }
                                 }
                             }
 
@@ -200,9 +219,6 @@ namespace GersangClientStation {
                             label_progress.Text = downloadCompletedCount + " / " + patchFileList.Count;
                             progressBar.Maximum = patchFileList.Count;
 
-                            Stopwatch sw = new Stopwatch();
-                            sw.Start();
-
                             //버전이름의 폴더에 패치 파일을 다운로드합니다.
                             string fileServerUrl = @"http://akgersang.xdn.kinxcdn.com/Gersang/Patch/Gersang_Server/" + "Client_Patch_File/";
                             foreach (var item in patchFileList) {
@@ -219,6 +235,7 @@ namespace GersangClientStation {
                                 lvi.SubItems.Add("다운로드 대기 중");
                                 listView1.Items.Add(lvi);
 
+                                //해당 파일이 이미 다운로드 받은 파일이라면?
                                 if (System.IO.File.Exists(filePath.Remove(filePath.Length - 4))) {
                                     lvi.SubItems[4].Text = "이미 존재하는 파일";
                                     lvi.SubItems[4].ForeColor = Color.Green;
@@ -227,17 +244,54 @@ namespace GersangClientStation {
                                     progressBar.Value += 1;
                                     Debug.WriteLine(fileName + " 는 이미 존재합니다!");
 
+                                    //이미 존재하는 파일을 끝으로 다운로드가 종료되는 상황에 대비
                                     if (downloadCompletedCount == patchFileList.Count) {
                                         if (!errorMessageList.Equals("")) {
                                             MessageBox.Show("파일 다운로드 중 오류가 발생하였습니다.\n다시 시도해주세요.", "다운로드 에러", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                             isCompleted = true;
-                                            button_end.Enabled = true;
+                                            button_close.Enabled = true;
+                                            return;
                                         } else {
-                                            MessageBox.Show("패치 파일을 모두 다운로드 하였습니다.", "다운로드 완료", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                            isCompleted = true;
-                                            button_end.Enabled = true;
-                                            //8. 원본 폴더로 패치 파일 복사
+                                            //MessageBox.Show("패치 파일을 모두 다운로드 하였습니다.", "다운로드 완료", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                            //isCompleted = true;
+                                            //button_end.Enabled = true;
 
+                                            //
+                                            //8. 원본 폴더로 패치 파일 복사
+                                            //
+                                            try {
+                                                //Now Create all of the directories
+                                                foreach (string dirPath in Directory.GetDirectories(fileDirectory.FullName, "*", System.IO.SearchOption.AllDirectories))
+                                                    Directory.CreateDirectory(dirPath.Replace(fileDirectory.FullName, origin_path));
+
+                                                //Copy all the files & Replaces any files with the same name
+                                                foreach (string newPath in Directory.GetFiles(fileDirectory.FullName, "*.*", System.IO.SearchOption.AllDirectories)) {
+                                                    System.IO.File.Copy(newPath, newPath.Replace(fileDirectory.FullName, origin_path), true);
+                                                }
+
+                                                MessageBox.Show("패치 다운로드 및 적용이 모두 완료되었습니다.", "패치 적용 완료", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                                isCompleted = true;
+                                                button_close.Enabled = true;
+                                            } catch (Exception ex) {
+                                                MessageBox.Show("패치 적용 중 오류가 발생하였습니다.\n다시 시도해주세요.\n" + ex.Message, "패치적용 에러", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                                isCompleted = true;
+                                                button_close.Enabled = true;
+                                                return;
+                                            }
+
+                                            //
+                                            //9. 체크여부에 따라 저장된 패치 파일 삭제
+                                            //
+                                            if (bool.Parse(Form_Main.config.AppSettings.Settings["remove_file_after_patch"].Value)) {
+                                                try {
+                                                    fileDirectory.Delete(true);
+                                                    Debug.WriteLine("패치 파일 삭제 완료");
+                                                } catch (Exception ex) {
+                                                    Debug.WriteLine("패치 파일 삭제 실패\n" + ex.Message);
+                                                }
+                                            }
+
+                                            //10. 체크여부에 따라 다클라 패치 적용
                                         }
                                     }
                                     continue;
@@ -288,15 +342,47 @@ namespace GersangClientStation {
                                             if(!errorMessageList.Equals("")) {
                                                 MessageBox.Show("파일 다운로드 중 오류가 발생하였습니다.\n다시 시도해주세요.\n" + errorMessageList, "다운로드 에러", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                                 isCompleted = true;
-                                                button_end.Enabled = true;
+                                                button_close.Enabled = true;
                                             } else {
-                                                MessageBox.Show("패치 파일을 모두 다운로드 하였습니다.", "다운로드 완료", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                                isCompleted = true;
-                                                button_end.Enabled = true;
+                                                //MessageBox.Show("패치 파일을 모두 다운로드 하였습니다.", "다운로드 완료", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                                //isCompleted = true;
+                                                //button_end.Enabled = true;
 
                                                 //
                                                 //8. 원본 폴더로 패치 파일 복사
                                                 //
+                                                try {
+                                                    //Now Create all of the directories
+                                                    foreach (string dirPath in Directory.GetDirectories(fileDirectory.FullName, "*", System.IO.SearchOption.AllDirectories))
+                                                        Directory.CreateDirectory(dirPath.Replace(fileDirectory.FullName, origin_path));
+
+                                                    //Copy all the files & Replaces any files with the same name
+                                                    foreach (string newPath in Directory.GetFiles(fileDirectory.FullName, "*.*", System.IO.SearchOption.AllDirectories)) {
+                                                        System.IO.File.Copy(newPath, newPath.Replace(fileDirectory.FullName, origin_path), true);
+                                                    }
+
+                                                    MessageBox.Show("패치 다운로드 및 적용이 모두 완료되었습니다.", "패치 적용 완료", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                                    isCompleted = true;
+                                                    button_close.Enabled = true;
+                                                } catch (Exception ex) {
+                                                    MessageBox.Show("패치 적용 중 오류가 발생하였습니다.\n다시 시도해주세요.\n" + ex.Message, "패치적용 에러", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                                    button_close.Enabled = true;
+                                                    return;
+                                                }
+
+                                                //
+                                                //9. 체크여부에 따라 저장된 패치 파일 삭제
+                                                //
+                                                if (bool.Parse(Form_Main.config.AppSettings.Settings["remove_file_after_patch"].Value)) {
+                                                    try {
+                                                        fileDirectory.Delete(true);
+                                                        Debug.WriteLine("패치 파일 삭제 완료");
+                                                    } catch (Exception ex) {
+                                                        Debug.WriteLine("패치 파일 삭제 실패\n" + ex.Message);
+                                                    }
+                                                }
+
+                                                //10. 체크여부에 따라 다클라 패치 적용
                                             }
                                         }
 
@@ -306,11 +392,6 @@ namespace GersangClientStation {
                                     client2.DownloadFileAsync(downloadUrl, filePath);
                                 }
                             }
-                            
-                            
-                            //9. 체크여부에 따라 저장된 패치 파일 삭제
-                            //10. 체크여부에 따라 다클라 패치 적용
-                            //11. 버전 재확인
                         }
                     };
 
@@ -321,6 +402,8 @@ namespace GersangClientStation {
             } catch (Exception ex) {
                 MessageBox.Show("현재 최신 거상 버전이 확인되지 않았습니다.\n인터넷이 연결되었는지 확인 하거나, 프로그램을 재시작 해주세요."
                     , "최신 버전 확인 실패", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                isCompleted = true;
+                this.Close();
                 return;
             }
         }

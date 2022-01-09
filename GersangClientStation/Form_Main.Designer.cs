@@ -83,7 +83,6 @@ namespace GersangClientStation {
             this.link_shortcut_1 = new MetroFramework.Controls.MetroLink();
             this.link_icon_license = new MetroFramework.Controls.MetroLink();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.check_autoUpdate = new MetroFramework.Controls.MetroCheckBox();
             this.check_direct = new MetroFramework.Controls.MetroCheckBox();
             this.check_nickname = new MetroFramework.Controls.MetroCheckBox();
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
@@ -667,7 +666,7 @@ namespace GersangClientStation {
             this.groupBox_setting.Controls.Add(this.radio_setting_2);
             this.groupBox_setting.Location = new System.Drawing.Point(335, 60);
             this.groupBox_setting.Name = "groupBox_setting";
-            this.groupBox_setting.Size = new System.Drawing.Size(129, 160);
+            this.groupBox_setting.Size = new System.Drawing.Size(129, 150);
             this.groupBox_setting.TabIndex = 22;
             this.groupBox_setting.TabStop = false;
             this.groupBox_setting.Text = "클라이언트 설정";
@@ -749,7 +748,7 @@ namespace GersangClientStation {
             this.groupBox1.Controls.Add(this.link_shortcut_3);
             this.groupBox1.Controls.Add(this.link_shortcut_2);
             this.groupBox1.Controls.Add(this.link_shortcut_1);
-            this.groupBox1.Location = new System.Drawing.Point(335, 235);
+            this.groupBox1.Location = new System.Drawing.Point(335, 225);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(129, 160);
             this.groupBox1.TabIndex = 23;
@@ -816,31 +815,19 @@ namespace GersangClientStation {
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.check_autoUpdate);
             this.groupBox2.Controls.Add(this.check_direct);
             this.groupBox2.Controls.Add(this.check_nickname);
-            this.groupBox2.Location = new System.Drawing.Point(335, 410);
+            this.groupBox2.Location = new System.Drawing.Point(335, 400);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(129, 101);
+            this.groupBox2.Size = new System.Drawing.Size(129, 89);
             this.groupBox2.TabIndex = 29;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "간단 설정";
             // 
-            // check_autoUpdate
-            // 
-            this.check_autoUpdate.AutoSize = true;
-            this.check_autoUpdate.Location = new System.Drawing.Point(15, 69);
-            this.check_autoUpdate.Name = "check_autoUpdate";
-            this.check_autoUpdate.Size = new System.Drawing.Size(98, 15);
-            this.check_autoUpdate.TabIndex = 34;
-            this.check_autoUpdate.Text = "거상 자동패치";
-            this.check_autoUpdate.UseVisualStyleBackColor = true;
-            this.check_autoUpdate.CheckedChanged += new System.EventHandler(this.check_autoUpdate_CheckedChanged);
-            // 
             // check_direct
             // 
             this.check_direct.AutoSize = true;
-            this.check_direct.Location = new System.Drawing.Point(15, 48);
+            this.check_direct.Location = new System.Drawing.Point(15, 60);
             this.check_direct.Name = "check_direct";
             this.check_direct.Size = new System.Drawing.Size(108, 15);
             this.check_direct.TabIndex = 33;
@@ -865,7 +852,7 @@ namespace GersangClientStation {
             // 
             this.metroLabel1.AutoSize = true;
             this.metroLabel1.FontWeight = MetroFramework.MetroLabelWeight.Bold;
-            this.metroLabel1.Location = new System.Drawing.Point(335, 514);
+            this.metroLabel1.Location = new System.Drawing.Point(335, 506);
             this.metroLabel1.Name = "metroLabel1";
             this.metroLabel1.Size = new System.Drawing.Size(85, 19);
             this.metroLabel1.TabIndex = 30;
@@ -875,7 +862,7 @@ namespace GersangClientStation {
             // 
             this.label_gersangLatestVersion.AutoSize = true;
             this.label_gersangLatestVersion.FontWeight = MetroFramework.MetroLabelWeight.Bold;
-            this.label_gersangLatestVersion.Location = new System.Drawing.Point(417, 514);
+            this.label_gersangLatestVersion.Location = new System.Drawing.Point(417, 506);
             this.label_gersangLatestVersion.Name = "label_gersangLatestVersion";
             this.label_gersangLatestVersion.Size = new System.Drawing.Size(49, 19);
             this.label_gersangLatestVersion.TabIndex = 31;
@@ -883,11 +870,11 @@ namespace GersangClientStation {
             // 
             // button_patch
             // 
-            this.button_patch.Location = new System.Drawing.Point(335, 537);
+            this.button_patch.Location = new System.Drawing.Point(335, 536);
             this.button_patch.Name = "button_patch";
             this.button_patch.Size = new System.Drawing.Size(129, 23);
             this.button_patch.TabIndex = 32;
-            this.button_patch.Text = "수동패치";
+            this.button_patch.Text = "패치하기";
             this.button_patch.Click += new System.EventHandler(this.button_patch_Click);
             // 
             // Form_Main
@@ -1001,7 +988,6 @@ namespace GersangClientStation {
         private MetroFramework.Controls.MetroLabel metroLabel3;
         private MetroFramework.Controls.MetroLabel metroLabel4;
         private MetroFramework.Controls.MetroLabel metroLabel2;
-        private MetroFramework.Controls.MetroCheckBox check_autoUpdate;
         private System.Windows.Forms.ToolStripMenuItem menuItem_patch;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
         private MetroFramework.Controls.MetroButton button_patch;

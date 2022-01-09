@@ -211,6 +211,8 @@ namespace GersangClientStation {
             // pathBrowserDialog
             // 
             this.pathBrowserDialog.Description = "예시 : \"C:\\AKInteractive\\Gersang\"";
+            this.pathBrowserDialog.RootFolder = System.Environment.SpecialFolder.MyComputer;
+            this.pathBrowserDialog.ShowNewFolderButton = false;
             // 
             // textBox_client_id_1_tab_1
             // 

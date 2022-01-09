@@ -33,7 +33,7 @@ namespace GersangClientStation {
             this.status = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.button_patchNote = new MetroFramework.Controls.MetroButton();
             this.label_patchVersion = new MetroFramework.Controls.MetroLabel();
-            this.button_end = new MetroFramework.Controls.MetroButton();
+            this.button_close = new MetroFramework.Controls.MetroButton();
             this.progressBar = new MetroFramework.Controls.MetroProgressBar();
             this.label_progress = new MetroFramework.Controls.MetroLabel();
             this.SuspendLayout();
@@ -97,16 +97,16 @@ namespace GersangClientStation {
             this.label_patchVersion.TabIndex = 4;
             this.label_patchVersion.Text = "업데이트 버전 : 00000 -> 00000";
             // 
-            // button_end
+            // button_close
             // 
-            this.button_end.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.button_end.Enabled = false;
-            this.button_end.Location = new System.Drawing.Point(284, 375);
-            this.button_end.Name = "button_end";
-            this.button_end.Size = new System.Drawing.Size(81, 23);
-            this.button_end.TabIndex = 5;
-            this.button_end.Text = "업데이트 종료";
-            this.button_end.Click += new System.EventHandler(this.button_end_Click);
+            this.button_close.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.button_close.Enabled = false;
+            this.button_close.Location = new System.Drawing.Point(284, 375);
+            this.button_close.Name = "button_close";
+            this.button_close.Size = new System.Drawing.Size(81, 23);
+            this.button_close.TabIndex = 5;
+            this.button_close.Text = "닫기";
+            this.button_close.Click += new System.EventHandler(this.button_end_Click);
             // 
             // progressBar
             // 
@@ -132,7 +132,7 @@ namespace GersangClientStation {
             this.ClientSize = new System.Drawing.Size(649, 418);
             this.Controls.Add(this.label_progress);
             this.Controls.Add(this.progressBar);
-            this.Controls.Add(this.button_end);
+            this.Controls.Add(this.button_close);
             this.Controls.Add(this.label_patchVersion);
             this.Controls.Add(this.button_patchNote);
             this.Controls.Add(this.listView1);
@@ -141,6 +141,7 @@ namespace GersangClientStation {
             this.MinimizeBox = false;
             this.Name = "Form_Patch";
             this.Resizable = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "거상 패치";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form_Patch_FormClosing);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form_Patch_FormClosed);
@@ -159,7 +160,7 @@ namespace GersangClientStation {
         private System.Windows.Forms.ColumnHeader status;
         private MetroFramework.Controls.MetroButton button_patchNote;
         private MetroFramework.Controls.MetroLabel label_patchVersion;
-        private MetroFramework.Controls.MetroButton button_end;
+        private MetroFramework.Controls.MetroButton button_close;
         private MetroFramework.Controls.MetroProgressBar progressBar;
         private MetroFramework.Controls.MetroLabel label_progress;
     }
