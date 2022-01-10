@@ -195,9 +195,8 @@ namespace GersangClientStation {
         /// </summary>
         //메인 브라우저 로딩이 완료되면 호출됩니다.
         private void mainBrowser_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e) {
-            Debug.WriteLine("메인 브라우저가 로딩되었습니다.");
             this.document_main = mainBrowser.Document;
-            Debug.WriteLine("현재 메인 브라우저 접속 URL : " + document_main.Url);
+            Debug.WriteLine("<< 현재 메인 브라우저 접속 URL : " + document_main.Url + " >>");
 
             //홈페이지 주소가 otp주소인지 확인합니다.
             if (document_main.Url.Equals(url_otp)) {
@@ -494,6 +493,7 @@ namespace GersangClientStation {
         bool isMainPage = false; //거상 홈페이지인지
         bool isEventPage = false; //출석체크 이벤트 페이지인지
         private void eventBrowser_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e) {
+            Debug.WriteLine("<< 현재 이벤트 브라우저 접속 URL : " + e.Url + " >>");
             //프로그램을 시작하자마자 출석체크 이벤트 페이지를 찾고, 리턴합니다.
             //찾은 뒤에는 진입하지 않습니다.
             if (!isFind) {
@@ -506,28 +506,32 @@ namespace GersangClientStation {
                         return;
                     }
                 }
+                return;
+            }
+
+            if(url_event.Equals("")) {
+                Debug.WriteLine("이벤트 페이지를 찾지 못하여 다음 과정을 진행하지 않습니다.");
+                return;
             }
 
             //출석체크 이벤트 페이지를 성공적으로 찾았으며, 현재 네이버에 거상을 검색한 상태라면,
             //검색페이지 내의 거상 공식홈페이지 링크 버튼을 찾고 누릅니다.
-            if (isNaver) {
+            if (isNaver && e.Url.ToString().Equals(url_search_gersang)) {
+                Debug.WriteLine("네이버 검색 완료 -> 거상 링크 클릭");
                 clickGersangLink();
                 return;
             }
 
             //거상 홈페이지에 들어왔다면, 바로 이벤트 페이지로 접속합니다.
-            if (isMainPage) {
+            if (isMainPage && e.Url.ToString().Equals(url_main)) {
+                Debug.WriteLine("거상 메인화면 -> 거상 링크 클릭");
                 navigateEventPage();
                 return;
             }
 
-            if(isDebuggingSearchMode) {
-                //검색보상 디버깅 모드에서는 검색 보상 수령을 수동으로 클릭해야 합니다.
-                return;
-            }
-
             //거상 출석체크 이벤트 페이지에 접속하였다면, 현재 시간 체크 후 해당 시간의 아이템 받기 버튼을 클릭합니다.
-            if (isEventPage && eventBrowser.Url.Equals(url_event)) {
+            if (isEventPage && e.Url.ToString().Equals(url_event)) {
+                Debug.WriteLine("이벤트 페이지 -> 보상 수령 버튼 클릭");
                 if (eventBrowser.Document.GetElementById("pop") != null) { //단순히 정말로 페이지가 다 로딩된건지 확인하기 위함입니다.
                     clickItemGet();
                 }
@@ -654,6 +658,7 @@ namespace GersangClientStation {
                     break;
                 }
             }
+            Debug.WriteLine("네이버 검색창에서 거상 링크를 찾지 못하였습니다.");
         }
 
         //출석체크 이벤트 페이지로 이동
