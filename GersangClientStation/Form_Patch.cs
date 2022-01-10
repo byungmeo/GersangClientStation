@@ -27,7 +27,7 @@ namespace GersangClientStation {
 
             //원본 폴더 경로가 설정되어 있는지 확인
             if (origin_path.Equals("")) {
-                MessageBox.Show("거상 원본 폴더가 지정되지 않았습니다.\n자동패치 설정 -> 원본 폴더를 지정 해주세요."
+                MessageBox.Show("거상 원본 폴더가 지정되지 않았습니다.\n 거상 패치 설정 -> 원본 폴더를 지정 해주세요."
                     , "자동패치 설정", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 isCompleted = true;
                 this.Close();

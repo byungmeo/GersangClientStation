@@ -874,7 +874,7 @@ namespace GersangClientStation {
             this.button_patch.Name = "button_patch";
             this.button_patch.Size = new System.Drawing.Size(129, 23);
             this.button_patch.TabIndex = 32;
-            this.button_patch.Text = "패치하기";
+            this.button_patch.Text = "수동 패치";
             this.button_patch.Click += new System.EventHandler(this.button_patch_Click);
             // 
             // Form_Main

@@ -1530,9 +1530,20 @@ namespace GersangClientStation {
         /// </summary>
 
         private void button_patch_Click(object sender, EventArgs e) {
-            Form_Patch form_patch = new Form_Patch();
-            form_patch.ShowDialog();
-            checkClientVersion();
+            string origin_path = Form_Main.config.AppSettings.Settings["gersang_original_path"].Value;
+
+            //원본 폴더 경로가 설정되어 있는지 확인
+            if (origin_path.Equals("")) {
+                MessageBox.Show("거상 원본 폴더가 지정되지 않았습니다.\n거상 패치 설정 창을 엽니다."
+                    , "거상 패치 설정", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                menuItem_patch.PerformClick();
+                return;
+            } else {
+                Form_Patch form_patch = new Form_Patch();
+                form_patch.ShowDialog();
+                checkClientVersion();
+                return;
+            }
         }
         //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
