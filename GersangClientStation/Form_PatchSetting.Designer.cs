@@ -29,9 +29,9 @@ namespace GersangClientStation {
             this.textBox_original_path = new MetroFramework.Controls.MetroTextBox();
             this.button_find = new MetroFramework.Controls.MetroButton();
             this.button_save = new MetroFramework.Controls.MetroButton();
-            this.metroCheckBox1 = new MetroFramework.Controls.MetroCheckBox();
+            this.check_removeFile = new MetroFramework.Controls.MetroCheckBox();
             this.pathBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
-            this.metroCheckBox2 = new MetroFramework.Controls.MetroCheckBox();
+            this.check_creator = new MetroFramework.Controls.MetroCheckBox();
             this.SuspendLayout();
             // 
             // metroLabel1
@@ -72,17 +72,18 @@ namespace GersangClientStation {
             this.button_save.Text = "저장";
             this.button_save.Click += new System.EventHandler(this.button_save_Click);
             // 
-            // metroCheckBox1
+            // check_removeFile
             // 
-            this.metroCheckBox1.AutoSize = true;
-            this.metroCheckBox1.Checked = true;
-            this.metroCheckBox1.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.metroCheckBox1.Location = new System.Drawing.Point(23, 187);
-            this.metroCheckBox1.Name = "metroCheckBox1";
-            this.metroCheckBox1.Size = new System.Drawing.Size(191, 15);
-            this.metroCheckBox1.TabIndex = 4;
-            this.metroCheckBox1.Text = "패치 완료 후 패치파일 삭제하기";
-            this.metroCheckBox1.UseVisualStyleBackColor = true;
+            this.check_removeFile.AutoSize = true;
+            this.check_removeFile.Checked = true;
+            this.check_removeFile.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.check_removeFile.Location = new System.Drawing.Point(23, 187);
+            this.check_removeFile.Name = "check_removeFile";
+            this.check_removeFile.Size = new System.Drawing.Size(191, 15);
+            this.check_removeFile.TabIndex = 4;
+            this.check_removeFile.Text = "패치 완료 후 패치파일 삭제하기";
+            this.check_removeFile.UseVisualStyleBackColor = true;
+            this.check_removeFile.CheckedChanged += new System.EventHandler(this.check_removeFile_CheckedChanged);
             // 
             // pathBrowserDialog
             // 
@@ -90,17 +91,18 @@ namespace GersangClientStation {
             this.pathBrowserDialog.RootFolder = System.Environment.SpecialFolder.MyComputer;
             this.pathBrowserDialog.ShowNewFolderButton = false;
             // 
-            // metroCheckBox2
+            // check_creator
             // 
-            this.metroCheckBox2.AutoSize = true;
-            this.metroCheckBox2.Checked = true;
-            this.metroCheckBox2.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.metroCheckBox2.Location = new System.Drawing.Point(281, 187);
-            this.metroCheckBox2.Name = "metroCheckBox2";
-            this.metroCheckBox2.Size = new System.Drawing.Size(137, 15);
-            this.metroCheckBox2.TabIndex = 5;
-            this.metroCheckBox2.Text = "다클라 패치 적용하기";
-            this.metroCheckBox2.UseVisualStyleBackColor = true;
+            this.check_creator.AutoSize = true;
+            this.check_creator.Checked = true;
+            this.check_creator.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.check_creator.Location = new System.Drawing.Point(281, 187);
+            this.check_creator.Name = "check_creator";
+            this.check_creator.Size = new System.Drawing.Size(137, 15);
+            this.check_creator.TabIndex = 5;
+            this.check_creator.Text = "다클라 패치 적용하기";
+            this.check_creator.UseVisualStyleBackColor = true;
+            this.check_creator.CheckedChanged += new System.EventHandler(this.check_creator_CheckedChanged);
             // 
             // Form_PatchSetting
             // 
@@ -108,8 +110,8 @@ namespace GersangClientStation {
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BorderStyle = MetroFramework.Drawing.MetroBorderStyle.FixedSingle;
             this.ClientSize = new System.Drawing.Size(441, 273);
-            this.Controls.Add(this.metroCheckBox2);
-            this.Controls.Add(this.metroCheckBox1);
+            this.Controls.Add(this.check_creator);
+            this.Controls.Add(this.check_removeFile);
             this.Controls.Add(this.button_save);
             this.Controls.Add(this.button_find);
             this.Controls.Add(this.textBox_original_path);
@@ -133,8 +135,8 @@ namespace GersangClientStation {
         private MetroFramework.Controls.MetroTextBox textBox_original_path;
         private MetroFramework.Controls.MetroButton button_find;
         private MetroFramework.Controls.MetroButton button_save;
-        private MetroFramework.Controls.MetroCheckBox metroCheckBox1;
+        private MetroFramework.Controls.MetroCheckBox check_removeFile;
         private System.Windows.Forms.FolderBrowserDialog pathBrowserDialog;
-        private MetroFramework.Controls.MetroCheckBox metroCheckBox2;
+        private MetroFramework.Controls.MetroCheckBox check_creator;
     }
 }

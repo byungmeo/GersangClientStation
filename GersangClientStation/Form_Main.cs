@@ -1307,6 +1307,14 @@ namespace GersangClientStation {
             KeyValueConfigurationElement element_use_activeX = Form_Main.config.AppSettings.Settings["use_activeX"];
             if (element_use_activeX == null) { Form_Main.config.AppSettings.Settings.Add("use_activeX", "True"); }
 
+            //이전 버전에서 설정 파일을 가져온 경우 거상 패치 관련 설정을 초기화 합니다.
+            KeyValueConfigurationElement element_original_path = Form_Main.config.AppSettings.Settings["gersang_original_path"];
+            if (element_original_path == null) { Form_Main.config.AppSettings.Settings.Add("gersang_original_path", ""); }
+            KeyValueConfigurationElement element_removeFile = Form_Main.config.AppSettings.Settings["remove_file_after_patch"];
+            if (element_removeFile == null) { Form_Main.config.AppSettings.Settings.Add("remove_file_after_patch", "True"); }
+            KeyValueConfigurationElement element_creator = Form_Main.config.AppSettings.Settings["apply_creator_after_patch"];
+            if (element_creator == null) { Form_Main.config.AppSettings.Settings.Add("apply_creator_after_patch", "True"); }
+
             config.Save(ConfigurationSaveMode.Modified, true);
             ConfigurationManager.RefreshSection("appSettings");
 
