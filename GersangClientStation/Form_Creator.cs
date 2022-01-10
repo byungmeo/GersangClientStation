@@ -17,6 +17,10 @@ namespace GersangClientStation {
                 return;
             }
 
+            client_create(textBox_mainPath.Text);
+        }
+
+        public static void client_create(string original_path) {
             try {
                 // 파일 복사 시 제외할 확장자명이 담긴 txt파일을 생성합니다.
                 string excludeList = ".tmp\n.bmp";
@@ -32,9 +36,8 @@ namespace GersangClientStation {
                 }
 
                 //bat파일 초안의 경로 부분을 사용자가 설정한 경로로 바꿉니다.
-                string path = textBox_mainPath.Text;
-                command = command.Replace("#PATH1#", path);
-                string[] splitString = path.Split('\\');
+                command = command.Replace("#PATH1#", original_path);
+                string[] splitString = original_path.Split('\\');
                 string previousPath = "";
                 for (int i = 0; i < splitString.Length - 1; i++) {
                     previousPath += splitString[i] + '\\';
@@ -56,7 +59,10 @@ namespace GersangClientStation {
                 process.Start(); //다클생성기 실행
                 process.WaitForExit();
 
-                MessageBox.Show("다클라 생성을 완료하였습니다.", "다클라 생성", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("다클라 생성을 완료하였습니다.\n다클라 폴더의 이름은 Gersang2, Gersang3입니다.", "다클라 생성", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                //다클라가 생성된 폴더를 열어준다
+                System.Diagnostics.Process.Start(original_path + "/..");
             } catch (Exception exception) {
                 MessageBox.Show("다클라 생성중 오류가 발생한 것 같습니다. 문의해주세요.\n" + exception.StackTrace, "다클라 생성", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }

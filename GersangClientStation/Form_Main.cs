@@ -166,6 +166,7 @@ namespace GersangClientStation {
                 MetroLabel[] labels_clinet_version = new MetroLabel[3] { label_client_1_version, label_client_2_version, label_client_3_version };
                 for (int i = 0; i < 3; i++) {
                     if (client_path[i].Equals("")) {
+                        labels_clinet_version[i].Style = MetroFramework.MetroColorStyle.Silver;
                         labels_clinet_version[i].Text = "확인불가";
                         continue;
                     }
@@ -983,7 +984,7 @@ namespace GersangClientStation {
             }
 
             if(version < Int16.Parse(label_gersangLatestVersion.Text) && version != 0 && !label_gersangLatestVersion.Text.Equals("00000")) {
-                DialogResult dr = MessageBox.Show("거상 업데이트가 필요합니다.\n다클라 스테이션의 패치 기능으로\n업데이트 하시겠습니까?", "업데이트", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                DialogResult dr = MessageBox.Show("거상 업데이트가 필요합니다.\n다클라 스테이션의 패치 기능으로\n훨씬 빠르게 업데이트 하시겠습니까?", "업데이트", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
                 if(dr == DialogResult.Yes) {
                     string origin_path = Form_Main.config.AppSettings.Settings["gersang_original_path"].Value;
 

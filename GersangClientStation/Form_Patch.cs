@@ -292,6 +292,9 @@ namespace GersangClientStation {
                                             }
 
                                             //10. 체크여부에 따라 다클라 패치 적용
+                                            if (bool.Parse(Form_Main.config.AppSettings.Settings["apply_creator_after_patch"].Value)) {
+                                                Form_Creator.client_create(origin_path);
+                                            }
                                         }
                                     }
                                     continue;
@@ -383,6 +386,9 @@ namespace GersangClientStation {
                                                 }
 
                                                 //10. 체크여부에 따라 다클라 패치 적용
+                                                if (bool.Parse(Form_Main.config.AppSettings.Settings["apply_creator_after_patch"].Value)) {
+                                                    Form_Creator.client_create(origin_path);
+                                                }
                                             }
                                         }
 
