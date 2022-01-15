@@ -470,6 +470,7 @@ namespace GersangClientStation {
                 button_otpConfirm.DialogResult = DialogResult.OK;
 
                 otpDialogForm.FormClosed += (sender, e) => {
+                    Delay(500);
                     this.Activate(); //OTP 로그인 후 버튼 두 번 클릭해야하는 현상 방지
                 };
 
@@ -773,7 +774,7 @@ namespace GersangClientStation {
 
             eventBrowser.Document.InvokeScript("event_Search_Use", new object[] { arg });
 
-            Delay(200);
+            Delay(500);
             Activate(); //검색 보상 기능 실행 후 폼이 비활성화 되어 실행 버튼을 두번 눌러야 하는 현상 방지
         }
         //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
