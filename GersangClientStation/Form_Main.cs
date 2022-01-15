@@ -98,6 +98,8 @@ namespace GersangClientStation {
         private bool isSearch_Logout = false; //로그인 된 상태에서, 다른 클라의 검색보상 버튼을 눌러 Logout 메서드를 실행한 상태
         public static bool isShortcut = false; //바로가기 링크를 접속한 상태인가? (true라면 로그인 검사를 하지 않음)
 
+        private int count = 0;
+
         //임시로 사용할 변수들
         private string current_client_path = ""; //현재 게임실행 버튼을 누른 클라이언트의 거상 경로를 임시로 저장
         private Client current_change_client = Client.None; //로그인 된 상태에서, 다른 클라로 로그인 할 때, 다른 클라의 정보를 임시로 저장
@@ -144,6 +146,8 @@ namespace GersangClientStation {
             }
 
             Debug.WriteLine("<< 현재 메인 브라우저 접속 URL : " + document_main.Url + " >>");
+            int temp = ++count;
+            Debug.WriteLine(temp + " 번째 로딩 이벤트");
 
             //비밀번호 변경 경로라면, 다음에 변경하기 버튼을 누르기
             if (document_main.Url.ToString().Contains("pw_reset.gs")) {
@@ -278,6 +282,7 @@ namespace GersangClientStation {
 
             //바로가기 접속 시에는 로그인 여부를 판단하지 않습니다.
             if (!isShortcut) {
+                Debug.WriteLine(temp + " setStatus");
                 setStatus();
             }
             isProcessing = false;
@@ -286,23 +291,11 @@ namespace GersangClientStation {
         private void setStatus() {
             //웹페이지에 닉네임이 표시되고 있는지 확인하여 로그인 여부를 판단합니다.
             HtmlElement div_nickname = this.findElementByClassName("div", "user_name");
+            HtmlElement div_logout = this.findElementByClassName("div", "logout_btn");
             if (div_nickname != null) {
                 Debug.WriteLine("로그인이 되어있는 상태입니다!\n홈페이지 닉네임 : " + div_nickname.InnerText);
-                switch (currentLoginClient) {
-                    case Client.MainClient:
-                        toggle_client_1.Checked = true;
-                        break;
-                    case Client.Client2:
-                        toggle_client_2.Checked = true;
-                        break;
-                    case Client.Client3:
-                        toggle_client_3.Checked = true;
-                        break;
-                    case Client.None:
-                        Debug.WriteLine("SetStatus: 잘못된 Client 인자 전달");
-                        return;
-                }
-                metroLabel5.Text = "로그인 완료";
+            } else if(div_logout != null) {
+                Debug.WriteLine("로그아웃 버튼이 있어 로그인 되어있는 상태로 간주합니다!");
             } else {
                 Debug.WriteLine("로그인에 실패하였습니다.");
                 metroLabel5.Text = "로그인 실패";
@@ -310,6 +303,23 @@ namespace GersangClientStation {
                 toggle_client_1.Checked = false;
                 toggle_client_2.Checked = false;
                 toggle_client_3.Checked = false;
+                return;
+            }
+
+            metroLabel5.Text = "로그인 완료";
+            switch (currentLoginClient) {
+                case Client.MainClient:
+                    toggle_client_1.Checked = true;
+                    break;
+                case Client.Client2:
+                    toggle_client_2.Checked = true;
+                    break;
+                case Client.Client3:
+                    toggle_client_3.Checked = true;
+                    break;
+                case Client.None:
+                    Debug.WriteLine("SetStatus: 잘못된 Client 인자 전달");
+                    return;
             }
         }
 
@@ -489,6 +499,8 @@ namespace GersangClientStation {
                             //opt 입력이 되었으므로, 클릭
                             HtmlElement button_otp_login = document_main.GetElementById("btn_Send");
                             object result = button_otp_login.InvokeMember("Click");
+                            button_otpConfirm.Enabled = false;
+                            Delay(Int32.Parse(Form_Main.config.AppSettings.Settings["otp_delay"].Value)); //딜레이 기본값 500
                             mainBrowser.Url = new Uri(url_main); //로그인 실패 여부를 판단하기 위해 메인 홈페이지로 이동
                         }
                     } else {
@@ -785,66 +797,18 @@ namespace GersangClientStation {
         /// 로그인 토글버튼 클릭 & 별명 체크박스 클릭
         /// </summary>
         private void toggle_client_1_Click(object sender, EventArgs e) {
-            MetroToggle toggle = sender as MetroToggle;
-
-            if (isProcessing) {
-                Debug.WriteLine("지금은 버튼을 누를 수 없습니다.");
-                toggle.Checked = !toggle.Checked;
-                return;
-            }
-            isProcessing = true;
-
-            if (toggle.Checked) {
-                if (client_id_1 == "" || client_pw_1 == "" || client_path_1 == "") {
-                    toggle_client_1.Checked = false;
-                    MessageBox.Show("경로 또는 아이디 또는 비밀번호가 설정되지 않았습니다.");
-                    return;
-                }
-
-                if (currentLoginClient != Client.None) {
-                    isChangeLogin = true;
-                    current_change_client = Client.MainClient;
-                    Logout();
-                } else {
-                    Login(Client.MainClient);
-                }
-            } else {
-                Logout();
-            }
+            toggle_login(sender as MetroToggle, client_id_1, client_pw_1, client_path_1, Client.MainClient);
         }
 
         private void toggle_client_2_Click(object sender, EventArgs e) {
-            MetroToggle toggle = sender as MetroToggle;
-
-            if (isProcessing) {
-                Debug.WriteLine("지금은 버튼을 누를 수 없습니다.");
-                toggle.Checked = !toggle.Checked;
-                return;
-            }
-            isProcessing = true;
-
-            if (toggle.Checked) {
-                if (client_id_2 == "" || client_pw_2 == "" || client_path_2 == "") {
-                    toggle_client_2.Checked = false;
-                    MessageBox.Show("경로 또는 아이디 또는 비밀번호가 설정되지 않았습니다.");
-                    return;
-                }
-
-                if (currentLoginClient != Client.None) {
-                    isChangeLogin = true;
-                    current_change_client = Client.Client2;
-                    Logout();
-                } else {
-                    Login(Client.Client2);
-                }
-            } else {
-                Logout();
-            }
+            toggle_login(sender as MetroToggle, client_id_2, client_pw_2, client_path_2, Client.Client2);
         }
 
         private void toggle_client_3_Click(object sender, EventArgs e) {
-            MetroToggle toggle = sender as MetroToggle;
+            toggle_login(sender as MetroToggle, client_id_3, client_pw_3, client_path_3, Client.Client3);
+        }
 
+        private void toggle_login(MetroToggle toggle, string id, string pw, string path, Client client) {
             if (isProcessing) {
                 Debug.WriteLine("지금은 버튼을 누를 수 없습니다.");
                 toggle.Checked = !toggle.Checked;
@@ -853,18 +817,19 @@ namespace GersangClientStation {
             isProcessing = true;
 
             if (toggle.Checked) {
-                if (client_id_3 == "" || client_pw_3 == "" || client_path_3 == "") {
-                    toggle_client_3.Checked = false;
+                if (id == "" || pw == "" || path == "") {
+                    toggle.Checked = false;
                     MessageBox.Show("경로 또는 아이디 또는 비밀번호가 설정되지 않았습니다.");
+                    isProcessing = false;
                     return;
                 }
 
                 if (currentLoginClient != Client.None) {
                     isChangeLogin = true;
-                    current_change_client = Client.Client3;
+                    current_change_client = client;
                     Logout();
                 } else {
-                    Login(Client.Client3);
+                    Login(client);
                 }
             } else {
                 Logout();
@@ -1050,7 +1015,6 @@ namespace GersangClientStation {
                 Debug.WriteLine("지금은 버튼을 누를 수 없습니다.");
                 return;
             }
-            isProcessing = true;
 
             Client client = Client.None;
             string client_path = "";
@@ -1133,6 +1097,8 @@ namespace GersangClientStation {
                 menuItem_client.PerformClick();
                 return;
             }
+
+            isProcessing = true;
 
             if (isDebuggingMode) {
                 //검색 보상 수령이 안되는 경우 검색모드 디버깅모드를 체크하면
@@ -1397,6 +1363,10 @@ namespace GersangClientStation {
             KeyValueConfigurationElement element_creator = Form_Main.config.AppSettings.Settings["apply_creator_after_patch"];
             if (element_creator == null) { Form_Main.config.AppSettings.Settings.Add("apply_creator_after_patch", "True"); }
 
+            //딜레이 설정 초기화
+            KeyValueConfigurationElement element_delay = Form_Main.config.AppSettings.Settings["otp_delay"];
+            if (element_delay == null) { Form_Main.config.AppSettings.Settings.Add("otp_delay", "500"); }
+
             config.Save(ConfigurationSaveMode.Modified, true);
             ConfigurationManager.RefreshSection("appSettings");
 
@@ -1443,6 +1413,8 @@ namespace GersangClientStation {
             this.shortcut_name_5 = ConfigurationManager.AppSettings["shortcut_name_5"];
             link_shortcut_5.Text = this.shortcut_name_5;
             this.shortcut_address_5 = ConfigurationManager.AppSettings["shortcut_address_5"];
+
+            textBox_delay.Text = ConfigurationManager.AppSettings["otp_delay"];
         }
 
         private void changeInputDirectMode(bool flag) {
@@ -1782,14 +1754,6 @@ namespace GersangClientStation {
             button_start_3.PerformClick();
         }
 
-        private void Form_Main_Activated(object sender, EventArgs e) {
-            Debug.WriteLine("Activated");
-        }
-
-        private void Form_Main_Deactivate(object sender, EventArgs e) {
-            Debug.WriteLine("Deactivated");
-        }
-
         private void Form_Main_Resize(object sender, EventArgs e) {
             Debug.WriteLine(this.WindowState.ToString());
             if(this.WindowState == FormWindowState.Minimized) {
@@ -1800,6 +1764,26 @@ namespace GersangClientStation {
                 notifyIcon1.Visible = false;
                 this.TopMost = true;
                 this.TopMost = false;
+            }
+        }
+
+        private void button_set_Click(object sender, EventArgs e) {
+            try {
+                int delay = Int32.Parse(textBox_delay.Text);
+                if(delay < 0 || delay > 5000) {
+                    MessageBox.Show("0 이상 5000 이하의 숫자만 입력이 가능합니다!", "딜레이 설정", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    textBox_delay.Text = Form_Main.config.AppSettings.Settings["otp_delay"].Value;
+                    return;
+                }
+
+                Form_Main.config.AppSettings.Settings["otp_delay"].Value = delay.ToString();
+                config.Save(ConfigurationSaveMode.Modified, true);
+                ConfigurationManager.RefreshSection("appSettings");
+                MessageBox.Show("딜레이 설정이 완료되었습니다!", "딜레이 설정", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            } catch (Exception ex) {
+                MessageBox.Show("0 이상 5000 이하의 숫자만 입력이 가능합니다!", "딜레이 설정", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                textBox_delay.Text = Form_Main.config.AppSettings.Settings["otp_delay"].Value;
+                return;
             }
         }
     }
