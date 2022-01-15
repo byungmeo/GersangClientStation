@@ -120,7 +120,7 @@ namespace GersangClientStation {
             checkGersangUpdate();
         }
 
-        
+
 
         //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -255,19 +255,19 @@ namespace GersangClientStation {
                 }
             }
             //Login메서드에서 아이디와 비밀번호를 입력하고 로그인 버튼을 누른 상태
-            else if(isLogin) {
+            else if (isLogin) {
                 test_status.Text = "isLogin";
                 //OTP 화면인지 판단
                 if (document_main.Url.ToString().Contains("otp.gs")) {
                     Debug.WriteLine("OTP화면 입니다.");
-                    if(OtpLogin()) {
+                    if (OtpLogin()) {
                         Debug.WriteLine("OTP 확인 버튼 클릭");
                         return;
                     }
                 }
 
                 isLogin = false; //로그인 처리 완료 후 false로 변경
-            } 
+            }
 
             //로그인 상태가 아니라면 로그인 여부를 판단하지 않습니다.
             if (currentLoginClient == Client.None) {
@@ -277,7 +277,7 @@ namespace GersangClientStation {
             }
 
             //바로가기 접속 시에는 로그인 여부를 판단하지 않습니다.
-            if(!isShortcut) {
+            if (!isShortcut) {
                 setStatus();
             }
             isProcessing = false;
@@ -319,12 +319,12 @@ namespace GersangClientStation {
         /// 로그인
         /// </summary>
         private void Login(Client client) {
-            if(client == Client.None) {
+            if (client == Client.None) {
                 MessageBox.Show("Login메서드에 잘못된 클라이언트 매개변수가 입력되었습니다.");
             }
 
             document_main = mainBrowser.Document;
-            if(document_main == null) {
+            if (document_main == null) {
                 MessageBox.Show("Login 메서드 실행 오류 : document_main이 null 입니다.\n개발자에게 문의 해주세요.");
                 return;
             }
@@ -371,7 +371,7 @@ namespace GersangClientStation {
                 //"GSuserID"라는 이름을 가진 input 태그 요소는 2개 있습니다. 그 중 2번째 요소에 id속성을 설정해줘야 합니다.
                 //"GSuserPW"도 마찬가지
                 HtmlElementCollection temp = document_main.GetElementsByTagName("input").GetElementsByName("GSuserID");
-                if(temp == null) {
+                if (temp == null) {
                     MessageBox.Show("Login메서드 실행 실패지점 1\n개발자에게 문의해주세요.");
                     return;
                 }
@@ -386,7 +386,7 @@ namespace GersangClientStation {
 
                 //frmLogin이라는 Name 속성을 가진 Form 태그 요소를 찾습니다.
                 temp = document_main.Forms.GetElementsByName("frmLogin");
-                if(temp == null) {
+                if (temp == null) {
                     MessageBox.Show("Login메서드 실행 실패지점 3\n개발자에게 문의해주세요.");
                     return;
                 }
@@ -476,7 +476,7 @@ namespace GersangClientStation {
 
                 bool isCancle = false;
                 otpDialogForm.FormClosing += (sender, e) => {
-                    if(otpDialogForm.DialogResult == DialogResult.OK) {
+                    if (otpDialogForm.DialogResult == DialogResult.OK) {
                         if (textBox_otp.Text.Length < 8) {
                             MessageBox.Show("OTP 코드를 다시 확인해주세요.\nOTP 코드는 8자리 입니다.", "OTP 코드 입력", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                             e.Cancel = true;
@@ -500,7 +500,12 @@ namespace GersangClientStation {
 
                 otpDialogForm.Controls.Add(textBox_otp);
                 otpDialogForm.Controls.Add(button_otpConfirm);
+                
+                if (this.WindowState == FormWindowState.Minimized) {
+                    otpDialogForm.StartPosition = FormStartPosition.CenterScreen;
+                }
                 otpDialogForm.ShowDialog();
+                
 
                 if (isCancle) {
                     Debug.WriteLine("OTP 로그인 취소");
@@ -508,7 +513,7 @@ namespace GersangClientStation {
                 }
 
                 return true;
-            } catch(Exception ex) {
+            } catch (Exception ex) {
                 Debug.WriteLine(ex.StackTrace);
                 return false;
             }
@@ -547,7 +552,7 @@ namespace GersangClientStation {
         /// </summary>
         private void GameStart(string client_path) {
             document_main = mainBrowser.Document;
-            if(document_main == null) {
+            if (document_main == null) {
                 MessageBox.Show("GameStart에서 document_main이 null입니다.\n관리자에게 문의해주세요.");
                 return;
             }
@@ -612,7 +617,7 @@ namespace GersangClientStation {
                 return;
             }
 
-            if(url_event.Equals("")) {
+            if (url_event.Equals("")) {
                 Debug.WriteLine("이벤트 페이지를 찾지 못하여 다음 과정을 진행하지 않습니다.");
                 return;
             }
@@ -686,10 +691,7 @@ namespace GersangClientStation {
 
             //클릭한 버튼에 따라 변수를 초기화
             Button button_search = sender as Button;
-            if (button_search.Equals(button_search_naver_1)) { client = Client.MainClient; }
-            else if (button_search.Equals(button_search_naver2)) { client = Client.Client2; } 
-            else if (button_search.Equals(button_search_naver3)) { client = Client.Client3; } 
-            else {
+            if (button_search.Equals(button_search_naver_1)) { client = Client.MainClient; } else if (button_search.Equals(button_search_naver_2)) { client = Client.Client2; } else if (button_search.Equals(button_search_naver_3)) { client = Client.Client3; } else {
                 client = Client.None;
                 MessageBox.Show("잘못된 검색 버튼");
                 return;
@@ -700,7 +702,7 @@ namespace GersangClientStation {
             if (currentLoginClient != client) {
                 //다른 계정에 로그인 되어있거나, 로그아웃 상태라면,
 
-                if(currentLoginClient != Client.None) {
+                if (currentLoginClient != Client.None) {
                     isSearch_Logout = true;
                     current_change_client = client;
                     Logout(); //로그아웃 한다.
@@ -791,7 +793,7 @@ namespace GersangClientStation {
                 return;
             }
             isProcessing = true;
-           
+
             if (toggle.Checked) {
                 if (client_id_1 == "" || client_pw_1 == "" || client_path_1 == "") {
                     toggle_client_1.Checked = false;
@@ -1086,7 +1088,7 @@ namespace GersangClientStation {
                 Debug.WriteLine(ex.Message);
                 version = 0;
             }
-            
+
 
             //예외 처리
             if (client == Client.None) {
@@ -1100,9 +1102,9 @@ namespace GersangClientStation {
                 return;
             }
 
-            if(version < Int16.Parse(label_gersangLatestVersion.Text) && version != 0 && !label_gersangLatestVersion.Text.Equals("00000")) {
+            if (version < Int16.Parse(label_gersangLatestVersion.Text) && version != 0 && !label_gersangLatestVersion.Text.Equals("00000")) {
                 DialogResult dr = MessageBox.Show("거상 업데이트가 필요합니다.\n다클라 스테이션의 패치 기능으로\n훨씬 빠르게 업데이트 하시겠습니까?", "업데이트", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
-                if(dr == DialogResult.Yes) {
+                if (dr == DialogResult.Yes) {
                     string origin_path = Form_Main.config.AppSettings.Settings["gersang_original_path"].Value;
 
                     //원본 폴더 경로가 설정되어 있는지 확인
@@ -1120,13 +1122,13 @@ namespace GersangClientStation {
                 }
             }
 
-            if(id.Equals("")) {
+            if (id.Equals("")) {
                 MessageBox.Show("아이디를 입력해주세요..\n클라이언트 설정 창을 엽니다.", "아이디 설정", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 menuItem_client.PerformClick();
                 return;
             }
 
-            if(pw.Equals("")) {
+            if (pw.Equals("")) {
                 MessageBox.Show("비밀번호를 입력해주세요..\n클라이언트 설정 창을 엽니다.", "패스워드 설정", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 menuItem_client.PerformClick();
                 return;
@@ -1148,7 +1150,7 @@ namespace GersangClientStation {
                 debugForm.Show();
             }
 
-            if(currentLoginClient != client) {
+            if (currentLoginClient != client) {
                 current_client_path = client_path;
                 if (currentLoginClient == Client.None) {
                     isGameStart_Login = true;
@@ -1189,7 +1191,7 @@ namespace GersangClientStation {
             shortcutDialogForm.ShowDialog();
             LoadSetting(); //세팅값이 바뀌었다면 새로고침 합니다.
         }
-        
+
         private void menuItem_create_Click(object sender, EventArgs e) {
             Form_Creator form_creator = new Form_Creator();
             form_creator.ShowDialog();
@@ -1269,14 +1271,14 @@ namespace GersangClientStation {
 
             //이전 버전의 config파일을 가져온 유저를 위해 업데이트 알림 수신과 관련한 config를 초기화 합니다.
             KeyValueConfigurationElement element_check_update = Form_Main.config.AppSettings.Settings["check_update"];
-            if (element_check_update == null) { 
+            if (element_check_update == null) {
                 Form_Main.config.AppSettings.Settings.Add("check_update", "True");
                 config.Save(ConfigurationSaveMode.Modified, true);
                 ConfigurationManager.RefreshSection("appSettings");
             }
 
             KeyValueConfigurationElement element_ignore_version = Form_Main.config.AppSettings.Settings["current_ignore_version"];
-            if (element_ignore_version == null) { 
+            if (element_ignore_version == null) {
                 Form_Main.config.AppSettings.Settings.Add("current_ignore_version", "");
                 config.Save(ConfigurationSaveMode.Modified, true);
                 ConfigurationManager.RefreshSection("appSettings");
@@ -1298,7 +1300,7 @@ namespace GersangClientStation {
                 //버전 비교
                 int versionComparison = localVersion.CompareTo(latestGitHubVersion);
                 if (versionComparison < 0) {
-                    if(!Boolean.Parse(config.AppSettings.Settings["check_update"].Value)) {
+                    if (!Boolean.Parse(config.AppSettings.Settings["check_update"].Value)) {
                         //업데이트 알림을 받지 않기로 체크하였음
                         Debug.WriteLine("업데이트 알림을 받지 않기로 이전에 체크 하였음.");
                         Debug.WriteLine("알림을 띄우지 않기로 한 버전 : " + config.AppSettings.Settings["current_ignore_version"].Value);
@@ -1322,7 +1324,7 @@ namespace GersangClientStation {
                     } else {
                         DialogResult dr2 = MessageBox.Show("다다음 패치가 게시될 때 까지 업데이트 알림을 받지 않으시겠습니까?",
                         "업데이트 알림", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
-                        
+
                         if (dr2 == DialogResult.Yes) {
                             Debug.WriteLine("업데이트 알림을 받지 않기로 체크 하였음.");
                             Debug.WriteLine("다음부터 알림을 받지 않을 버전 : " + latestGitHubVersion.ToString());
@@ -1410,11 +1412,11 @@ namespace GersangClientStation {
             this.client_id_3 = ConfigurationManager.AppSettings["client_id_3_tab_" + settingNumber];
             this.client_pw_3 = ConfigurationManager.AppSettings["client_pw_3_tab_" + settingNumber];
 
-            if (check_nickname.Checked) { 
+            if (check_nickname.Checked) {
                 this.label_client_1.Text = ConfigurationManager.AppSettings["client_name_1_tab_" + settingNumber];
                 this.label_client_2.Text = ConfigurationManager.AppSettings["client_name_2_tab_" + settingNumber];
                 this.label_client_3.Text = ConfigurationManager.AppSettings["client_name_3_tab_" + settingNumber];
-            } else { 
+            } else {
                 this.label_client_1.Text = client_id_1;
                 this.label_client_2.Text = client_id_2;
                 this.label_client_3.Text = client_id_3;
@@ -1727,12 +1729,12 @@ namespace GersangClientStation {
         //여러 개가 있을 경우 가장 첫 번째에 있는 요소를 가져옴에 유의
         private HtmlElement findElementByClassName(string tagName, string className) {
             document_main = mainBrowser.Document;
-            if(document_main == null) {
+            if (document_main == null) {
                 return null;
             }
 
             foreach (HtmlElement element in document_main.GetElementsByTagName(tagName)) {
-                if(element == null) {
+                if (element == null) {
                     continue;
                 } else {
                     if (element.GetAttribute("className") == className) {
@@ -1742,6 +1744,63 @@ namespace GersangClientStation {
             }
 
             return null;
+        }
+
+        private void notifyIcon1_MouseDoubleClick(object sender, MouseEventArgs e) {
+            this.WindowState = FormWindowState.Normal;
+        }
+
+        private void toolStripMenuItem_exit_Click(object sender, EventArgs e) {
+            this.Close();
+        }
+
+        private void toolStripMenuItem_open_Click(object sender, EventArgs e) {
+            this.WindowState = FormWindowState.Normal;
+        }
+
+        private void toolStripMenuItem_client1_search_Click(object sender, EventArgs e) {
+            button_search_naver_1.PerformClick();
+        }
+
+        private void toolStripMenuItem_client1_run_Click(object sender, EventArgs e) {
+            button_start_1.PerformClick();
+        }
+
+        private void toolStripMenuItem_client2_search_Click(object sender, EventArgs e) {
+            button_search_naver_2.PerformClick();
+        }
+
+        private void toolStripMenuItem_client2_run_Click(object sender, EventArgs e) {
+            button_start_2.PerformClick();
+        }
+
+        private void toolStripMenuItem_client3_search_Click(object sender, EventArgs e) {
+            button_search_naver_3.PerformClick();
+        }
+
+        private void toolStripMenuItem_client3_run_Click(object sender, EventArgs e) {
+            button_start_3.PerformClick();
+        }
+
+        private void Form_Main_Activated(object sender, EventArgs e) {
+            Debug.WriteLine("Activated");
+        }
+
+        private void Form_Main_Deactivate(object sender, EventArgs e) {
+            Debug.WriteLine("Deactivated");
+        }
+
+        private void Form_Main_Resize(object sender, EventArgs e) {
+            Debug.WriteLine(this.WindowState.ToString());
+            if(this.WindowState == FormWindowState.Minimized) {
+                notifyIcon1.Visible = true;
+                notifyIcon1.BalloonTipText = "트레이가 활성화 되었습니다.";
+                notifyIcon1.ShowBalloonTip(3000);
+            } else if(this.WindowState == FormWindowState.Normal) {
+                notifyIcon1.Visible = false;
+                this.TopMost = true;
+                this.TopMost = false;
+            }
         }
     }
 }
