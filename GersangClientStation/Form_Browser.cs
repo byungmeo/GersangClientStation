@@ -18,6 +18,7 @@ namespace GersangClientStation {
 
         private void Form_Browser_FormClosed(object sender, FormClosedEventArgs e) {
             Debug.WriteLine("폼 닫음");
+            Form_Main.isShortcut = false;
             this.mainBrowser.Navigate(url_main);
             this.Controls.Clear();
         }

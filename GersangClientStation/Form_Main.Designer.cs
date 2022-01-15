@@ -88,6 +88,9 @@ namespace GersangClientStation {
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
             this.label_gersangLatestVersion = new MetroFramework.Controls.MetroLabel();
             this.button_patch = new MetroFramework.Controls.MetroButton();
+            this.metroLabel5 = new MetroFramework.Controls.MetroLabel();
+            this.test_url = new MetroFramework.Controls.MetroLabel();
+            this.test_status = new MetroFramework.Controls.MetroLabel();
             this.menuStrip2.SuspendLayout();
             this.metroPanel2.SuspendLayout();
             this.metroPanel3.SuspendLayout();
@@ -117,7 +120,7 @@ namespace GersangClientStation {
             this.menuStrip2.Location = new System.Drawing.Point(488, 60);
             this.menuStrip2.Name = "menuStrip2";
             this.menuStrip2.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.menuStrip2.Size = new System.Drawing.Size(197, 500);
+            this.menuStrip2.Size = new System.Drawing.Size(197, 510);
             this.menuStrip2.TabIndex = 13;
             this.menuStrip2.Text = "menuStrip2";
             // 
@@ -806,7 +809,7 @@ namespace GersangClientStation {
             this.link_icon_license.AutoSize = true;
             this.link_icon_license.BackColor = System.Drawing.SystemColors.Control;
             this.link_icon_license.CustomBackground = true;
-            this.link_icon_license.Location = new System.Drawing.Point(521, 527);
+            this.link_icon_license.Location = new System.Drawing.Point(521, 537);
             this.link_icon_license.Name = "link_icon_license";
             this.link_icon_license.Size = new System.Drawing.Size(134, 23);
             this.link_icon_license.TabIndex = 28;
@@ -877,12 +880,45 @@ namespace GersangClientStation {
             this.button_patch.Text = "수동 패치";
             this.button_patch.Click += new System.EventHandler(this.button_patch_Click);
             // 
+            // metroLabel5
+            // 
+            this.metroLabel5.AutoSize = true;
+            this.metroLabel5.FontSize = MetroFramework.MetroLabelSize.Small;
+            this.metroLabel5.Location = new System.Drawing.Point(23, 567);
+            this.metroLabel5.Name = "metroLabel5";
+            this.metroLabel5.Size = new System.Drawing.Size(58, 15);
+            this.metroLabel5.TabIndex = 33;
+            this.metroLabel5.Text = "로딩 상태";
+            // 
+            // test_url
+            // 
+            this.test_url.AutoSize = true;
+            this.test_url.FontSize = MetroFramework.MetroLabelSize.Small;
+            this.test_url.Location = new System.Drawing.Point(214, 567);
+            this.test_url.Name = "test_url";
+            this.test_url.Size = new System.Drawing.Size(27, 15);
+            this.test_url.TabIndex = 34;
+            this.test_url.Text = "URL";
+            // 
+            // test_status
+            // 
+            this.test_status.AutoSize = true;
+            this.test_status.FontSize = MetroFramework.MetroLabelSize.Small;
+            this.test_status.Location = new System.Drawing.Point(98, 567);
+            this.test_status.Name = "test_status";
+            this.test_status.Size = new System.Drawing.Size(55, 15);
+            this.test_status.TabIndex = 35;
+            this.test_status.Text = "테스트용";
+            // 
             // Form_Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BorderStyle = MetroFramework.Drawing.MetroBorderStyle.FixedSingle;
-            this.ClientSize = new System.Drawing.Size(705, 580);
+            this.ClientSize = new System.Drawing.Size(705, 590);
+            this.Controls.Add(this.test_status);
+            this.Controls.Add(this.test_url);
+            this.Controls.Add(this.metroLabel5);
             this.Controls.Add(this.button_patch);
             this.Controls.Add(this.label_gersangLatestVersion);
             this.Controls.Add(this.metroLabel1);
@@ -901,7 +937,7 @@ namespace GersangClientStation {
             this.Controls.Add(this.metroPanel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip2;
-            this.MaximumSize = new System.Drawing.Size(705, 580);
+            this.MaximumSize = new System.Drawing.Size(705, 590);
             this.Name = "Form_Main";
             this.Resizable = false;
             this.Text = "거상 다클라 스테이션";
@@ -991,6 +1027,9 @@ namespace GersangClientStation {
         private System.Windows.Forms.ToolStripMenuItem menuItem_patch;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
         private MetroFramework.Controls.MetroButton button_patch;
+        private MetroFramework.Controls.MetroLabel metroLabel5;
+        private MetroFramework.Controls.MetroLabel test_url;
+        private MetroFramework.Controls.MetroLabel test_status;
     }
 }
 

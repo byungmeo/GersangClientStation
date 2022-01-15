@@ -12,7 +12,6 @@ using System.IO.Compression;
 using System.Net;
 using System.Reflection;
 using System.Security.Cryptography;
-using System.Text;
 using System.Windows.Forms;
 
 namespace GersangClientStation {
@@ -27,7 +26,7 @@ namespace GersangClientStation {
         //각종 url 정의
         private const string url_main = "http://www.gersang.co.kr/main/index.gs"; //거상 홈페이지
         private const string url_logout = "http://www.gersang.co.kr/member/logoutProc.gs"; //로그아웃 링크
-        private const string url_otp = "https://www.gersang.co.kr/member/otp.gs"; //OTP 링크
+        //private const string url_otp = "https://www.gersang.co.kr/member/otp.gs"; //OTP 링크
         private const string url_search_gersang = "https://search.naver.com/search.naver?&query=거상"; //네이버 검색 링크
         private string url_event = ""; //프로그램 실행 시 mainBrowser에서 출석체크 이벤트 url을 찾음
 
@@ -63,9 +62,12 @@ namespace GersangClientStation {
         //mainBrowser의 Document 속성
         HtmlDocument document_main = null;
 
-        //버전 정보
+        //프로그램 버전 정보
         public static string currentVersion;
         public static string latestVersion;
+
+        //서버에 업로드된 거상 최신버전
+        private int gersangLatestVersion;
 
         //클라이언트 열거체
         enum Client {
@@ -78,11 +80,7 @@ namespace GersangClientStation {
         //현재 로그인 되어있는 클라이언트
         private Client currentLoginClient = Client.None;
 
-        //현재 메인 브라우저의 상태 체크를 위한 임시 bool 변수
-        private bool isTypingOtp = false; //현재 OTP 입력 상태인가?
-        private bool isSubmitOtp = false; //현재 OTP 입력 후 로그인을 시도하였는가?
-
-        //실험실실 기능 체크여부
+        //실험실 기능 체크여부
         private bool isActiveX;
         private bool isDebuggingMode = false;
         private bool isDebuggingSearchMode = false;
@@ -90,8 +88,19 @@ namespace GersangClientStation {
         //ID/PW 바로입력 기능을 위한 패스워드 관련 bool
         private bool isTextChanged = false;
 
-        //거상 버전 관련
-        private int gersangLatestVersion;
+        //프로그램의 현재 진행 상태를 나타내는 bool
+        private bool isProcessing = false; //현재 작업이 진행중인가? (true라면 버튼 클릭 불가)
+        private bool isLogin = false; //방금 Login 메서드를 실행한 상태
+        private bool isChangeLogin = false; //이미 로그인 된 상태에서, 다른 클라로 로그인 하려고 Logout 메서드를 실행한 상태
+        private bool isGameStart_Login = false; //로그아웃된 상태에서 게임실행 버튼을 눌러 Login 메서드를 실행한 상태
+        private bool isGameStart_Logout = false; //로그인 된 상태에서, 다른 클라의 게임실행 버튼을 눌러 Logout 메서드를 실행한 상태
+        private bool isSearch_Login = false; //로그아웃 된 상태에서 검색보상 버튼을 눌러 Login 메서드를 실행한 상태
+        private bool isSearch_Logout = false; //로그인 된 상태에서, 다른 클라의 검색보상 버튼을 눌러 Logout 메서드를 실행한 상태
+        public static bool isShortcut = false; //바로가기 링크를 접속한 상태인가? (true라면 로그인 검사를 하지 않음)
+
+        //임시로 사용할 변수들
+        private string current_client_path = ""; //현재 게임실행 버튼을 누른 클라이언트의 거상 경로를 임시로 저장
+        private Client current_change_client = Client.None; //로그인 된 상태에서, 다른 클라로 로그인 할 때, 다른 클라의 정보를 임시로 저장
 
         //폼 생성자
         public Form_Main() {
@@ -111,83 +120,7 @@ namespace GersangClientStation {
             checkGersangUpdate();
         }
 
-        private void checkGersangUpdate() {
-            try {
-                //현재 거상 최신 버전을 확인합니다
-                using (WebClient client = new WebClient()) {
-                    ServicePointManager.Expect100Continue = true;
-                    ServicePointManager.ServerCertificateValidationCallback = delegate { return true; };
-                    ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12 | SecurityProtocolType.Ssl3;
-
-                    client.Headers.Add("User-Agent", "Mozilla/4.0 (compatible; MSIE 8.0)");
-
-                    DirectoryInfo binDirectory = new DirectoryInfo(System.Windows.Forms.Application.StartupPath + @"\bin");
-                    if (!binDirectory.Exists) { binDirectory.Create(); } else {
-                        foreach (FileInfo file in binDirectory.GetFiles()) {
-                            if (file.Name.Equals("vsn.dat")) {
-                                file.Delete();
-                            }
-                        }
-                    }
-
-                    client.DownloadFileCompleted += (object sender, AsyncCompletedEventArgs e) => {
-                        if (e.Error != null) {
-                            Debug.WriteLine("vsn.dat 파일 다운로드 중 오류 발생");
-                            Debug.WriteLine(e.Error.Message);
-                        } else {
-                            Debug.WriteLine("vsn.dat.gsz 파일 다운로드 완료");
-                            ZipFile.ExtractToDirectory(binDirectory.FullName + @"\vsn.dat.gsz", binDirectory.FullName);
-                            Debug.WriteLine("vsn.dat 파일 압축 해제 완료");
-
-                            FileStream fs = File.OpenRead(binDirectory.FullName + @"\vsn.dat");
-                            BinaryReader br = new BinaryReader(fs);
-                            gersangLatestVersion = -(br.ReadInt32() + 1);
-                            label_gersangLatestVersion.Text = gersangLatestVersion.ToString();
-                            Debug.WriteLine("서버에 게시된 거상 최신 버전 : " + gersangLatestVersion);
-                            fs.Close();
-                            br.Close();
-
-                            checkClientVersion();
-                        }
-                    };
-
-                    Uri vsnPath = new Uri(@"https://akgersang.xdn.kinxcdn.com/Gersang/Patch/Gersang_Server/Client_Patch_File/Online/vsn.dat.gsz");
-                    client.DownloadFileAsync(vsnPath, System.Windows.Forms.Application.StartupPath + @"\bin\vsn.dat.gsz");
-                }
-            } catch (Exception e) {
-                MessageBox.Show("거상 최신 버전 확인 중 오류 발생\n" + e.Message);
-            }
-            
-        }
-
-        private void checkClientVersion() {
-            try {
-                string[] client_path = new string[3] { client_path_1, client_path_2, client_path_3 };
-                MetroLabel[] labels_clinet_version = new MetroLabel[3] { label_client_1_version, label_client_2_version, label_client_3_version };
-                for (int i = 0; i < 3; i++) {
-                    if (client_path[i].Equals("")) {
-                        labels_clinet_version[i].Style = MetroFramework.MetroColorStyle.Silver;
-                        labels_clinet_version[i].Text = "확인불가";
-                        continue;
-                    }
-                    FileStream fs = File.OpenRead(client_path[i] + @"\Online\vsn.dat");
-                    BinaryReader br = new BinaryReader(fs);
-                    int currentVer = -(br.ReadInt32() + 1);
-                    labels_clinet_version[i].Text = currentVer.ToString();
-                    Debug.WriteLine("클라 " + i + "  버전 :" + currentVer);
-
-                    if (currentVer < gersangLatestVersion) {
-                        labels_clinet_version[i].Style = MetroFramework.MetroColorStyle.Red;
-                    } else {
-                        labels_clinet_version[i].Style = MetroFramework.MetroColorStyle.Black;
-                    }
-                    fs.Close();
-                    br.Close();
-                }
-            } catch (Exception e) {
-                Debug.WriteLine("클라이언트 버전 확인 중 오류 발생\n" + e.Message);
-            }
-        }
+        
 
         //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -196,45 +129,161 @@ namespace GersangClientStation {
         /// </summary>
         //메인 브라우저 로딩이 완료되면 호출됩니다.
         private void mainBrowser_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e) {
-            this.document_main = mainBrowser.Document;
-            Debug.WriteLine("<< 현재 메인 브라우저 접속 URL : " + document_main.Url + " >>");
-
-            //홈페이지 주소가 otp주소인지 확인합니다.
-            if (document_main.Url.Equals(url_otp)) {
-                HtmlElementCollection input_otp = this.document_main.GetElementsByTagName("input").GetElementsByName("GSotpNo"); //OTP 입력상자를 가져옵니다.
-                if (input_otp.Count != 0) {
-                    Debug.WriteLine("OTP 입력 준비가 되었습니다.");
-                    if (!isTypingOtp && !isSubmitOtp) {
-                        OtpLogin(input_otp[0]); //여기서 otp 입력을 함
-                        return;
-                    }
-
-                    if (!isSubmitOtp) {
-                        if (input_otp[0].GetAttribute("value").Length == 0) {
-                            MessageBox.Show("OTP 코드를 입력해주세요.", "OTP 코드 입력", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                            isTypingOtp = false;
-                            return;
-                        }
-                        //opt 입력이 되었으므로, 클릭
-                        HtmlElement button_otp_login = document_main.GetElementById("btn_Send");
-                        isSubmitOtp = true;
-                        button_otp_login.InvokeMember("Click");
-                    }
-                    return;
-                } else {
-                    Debug.WriteLine("아직 OTP 입력 창이 로딩되지 않았습니다.");
-                    return;
-                }
+            //절대경로가 같은지 체크하여 이 이벤트가 3번 실행되는 것을 방지합니다.
+            if (e.Url.AbsoluteUri != mainBrowser.Url.AbsoluteUri) {
+                metroLabel5.Text = "로딩 중...";
+                return;
             }
+            metroLabel5.Text = "로딩 완료";
+            test_url.Text = e.Url.ToString();
 
-            isTypingOtp = false;
-            isSubmitOtp = false;
-
-            //로그인 상태가 아니라면 로그인 여부를 판단하지 않습니다.
-            if (currentLoginClient == Client.None) {
+            this.document_main = mainBrowser.Document;
+            if (document_main == null) {
+                MessageBox.Show("mainBrowser_DocumentCompleted 에서 예외가 발생하였습니다.\n개발자에게 문의 해주세요.\ndocument_main이 null입니다.");
                 return;
             }
 
+            Debug.WriteLine("<< 현재 메인 브라우저 접속 URL : " + document_main.Url + " >>");
+
+            //비밀번호 변경 경로라면, 다음에 변경하기 버튼을 누르기
+            if (document_main.Url.ToString().Contains("pw_reset.gs")) {
+                test_status.Text = "pw_reset";
+                Debug.WriteLine("비밀번호 변경 주기 홉페이지입니다.");
+                foreach (HtmlElement element in mainBrowser.Document.GetElementsByTagName("a")) {
+                    string innerText = element.InnerText;
+                    if (innerText == "다음에 변경하기") {
+                        Debug.WriteLine("정상적인 게임 실행을 위해 다음에 변경하기를 클릭합니다.");
+                        element.InvokeMember("Click");
+                        return;
+                    }
+                }
+            }
+
+            //게임실행 버튼을 누르고 로그인 버튼을 누른 상태
+            if (isGameStart_Login) {
+                test_status.Text = "isGameStart_Login";
+                if (document_main.Url.ToString().Contains("otp.gs")) {
+                    Debug.WriteLine("OTP화면 입니다.");
+                    if (OtpLogin()) {
+                        Debug.WriteLine("OTP 확인 버튼 클릭");
+                        return;
+                    }
+                }
+
+                GameStart(current_client_path);
+                isGameStart_Login = false;
+                isLogin = false; //로그인 처리 완료 후 false로 변경
+                current_client_path = "";
+            }
+            //게임실행 버튼을 누르고 로그아웃 버튼을 누른 상태
+            else if (isGameStart_Logout) {
+                test_status.Text = "isGameStart_Logout";
+                Debug.WriteLine(currentLoginClient);
+                Debug.WriteLine(isLogin);
+                if (!isLogin) {
+                    Login(current_change_client);
+                    return;
+                } else {
+                    if (document_main.Url.ToString().Contains("otp.gs")) {
+                        Debug.WriteLine("OTP화면 입니다.");
+                        if (OtpLogin()) {
+                            Debug.WriteLine("OTP 확인 버튼 클릭");
+                            return;
+                        }
+                    }
+                    GameStart(current_client_path);
+                    isGameStart_Logout = false;
+                    isLogin = false;
+                    current_change_client = Client.None;
+                }
+            }
+            //로그인 되어 있는데, 다른 계정에 로그인 하기 위해 로그아웃 한 상태
+            else if (isChangeLogin) {
+                test_status.Text = "isChangeLogin";
+                if (!isLogin) {
+                    Login(current_change_client);
+                    return;
+                } else {
+                    if (document_main.Url.ToString().Contains("otp.gs")) {
+                        Debug.WriteLine("OTP화면 입니다.");
+                        if (OtpLogin()) {
+                            Debug.WriteLine("OTP 확인 버튼 클릭");
+                            return;
+                        }
+                    }
+                    isChangeLogin = false;
+                    isLogin = false;
+                    current_change_client = Client.None;
+                }
+            }
+            //로그아웃 상태에서 검색보상 버튼을 누른 후 브라우저에서 로그인 버튼을 누른 상태
+            else if (isSearch_Login) {
+                test_status.Text = "isSearch_Login";
+                if (document_main.Url.ToString().Contains("otp.gs")) {
+                    Debug.WriteLine("OTP화면 입니다.");
+                    if (OtpLogin()) {
+                        Debug.WriteLine("OTP 확인 버튼 클릭");
+                        return;
+                    }
+                }
+
+                navigateSearchPage(); //네이버 검색창에 접속한다.
+                isSearch_Login = false;
+                isLogin = false;
+            }
+            //로그인 상태에서 다른 클라의 검색보상 버튼을 눌러 Logout메서드를 실행 한 상태
+            else if (isSearch_Logout) {
+                test_status.Text = "isSearch_Logout";
+                Debug.WriteLine(currentLoginClient);
+                Debug.WriteLine(isLogin);
+                if (!isLogin) {
+                    Login(current_change_client);
+                    return;
+                } else {
+                    if (document_main.Url.ToString().Contains("otp.gs")) {
+                        Debug.WriteLine("OTP화면 입니다.");
+                        if (OtpLogin()) {
+                            Debug.WriteLine("OTP 확인 버튼 클릭");
+                            return;
+                        }
+                    }
+
+                    navigateSearchPage();
+                    isSearch_Logout = false;
+                    isLogin = false;
+                    current_change_client = Client.None;
+                }
+            }
+            //Login메서드에서 아이디와 비밀번호를 입력하고 로그인 버튼을 누른 상태
+            else if(isLogin) {
+                test_status.Text = "isLogin";
+                //OTP 화면인지 판단
+                if (document_main.Url.ToString().Contains("otp.gs")) {
+                    Debug.WriteLine("OTP화면 입니다.");
+                    if(OtpLogin()) {
+                        Debug.WriteLine("OTP 확인 버튼 클릭");
+                        return;
+                    }
+                }
+
+                isLogin = false; //로그인 처리 완료 후 false로 변경
+            } 
+
+            //로그인 상태가 아니라면 로그인 여부를 판단하지 않습니다.
+            if (currentLoginClient == Client.None) {
+                metroLabel5.Text = "로그아웃";
+                isProcessing = false;
+                return;
+            }
+
+            //바로가기 접속 시에는 로그인 여부를 판단하지 않습니다.
+            if(!isShortcut) {
+                setStatus();
+            }
+            isProcessing = false;
+        }
+
+        private void setStatus() {
             //웹페이지에 닉네임이 표시되고 있는지 확인하여 로그인 여부를 판단합니다.
             HtmlElement div_nickname = this.findElementByClassName("div", "user_name");
             if (div_nickname != null) {
@@ -253,21 +302,14 @@ namespace GersangClientStation {
                         Debug.WriteLine("SetStatus: 잘못된 Client 인자 전달");
                         return;
                 }
-
-                if (document_main.Url.ToString().Contains("pw_reset.gs")) {
-                    Debug.WriteLine("비밀번호 변경 주기 홉페이지입니다.");
-                    foreach (HtmlElement element in mainBrowser.Document.GetElementsByTagName("a")) {
-                        string innerText = element.InnerText;
-                        if (innerText == "다음에 변경하기") {
-                            Debug.WriteLine("정상적인 게임 실행을 위해 다음에 변경하기를 클릭합니다.");
-                            element.InvokeMember("Click");
-                            return;
-                        }
-                    }
-                }
-                
+                metroLabel5.Text = "로그인 완료";
             } else {
-                Debug.WriteLine("로그인에 실패하였거나, 아직 로그인이 되지 않은 상태입니다.");
+                Debug.WriteLine("로그인에 실패하였습니다.");
+                metroLabel5.Text = "로그인 실패";
+                currentLoginClient = Client.None;
+                toggle_client_1.Checked = false;
+                toggle_client_2.Checked = false;
+                toggle_client_3.Checked = false;
             }
         }
 
@@ -277,11 +319,22 @@ namespace GersangClientStation {
         /// 로그인
         /// </summary>
         private void Login(Client client) {
+            if(client == Client.None) {
+                MessageBox.Show("Login메서드에 잘못된 클라이언트 매개변수가 입력되었습니다.");
+            }
+
+            document_main = mainBrowser.Document;
+            if(document_main == null) {
+                MessageBox.Show("Login 메서드 실행 오류 : document_main이 null 입니다.\n개발자에게 문의 해주세요.");
+                return;
+            }
+
             Debug.WriteLine("로그인 시작");
-            currentLoginClient = client;
 
             string id = null;
             string pw = null;
+
+            //아이디와 비밀번호를 불러옵니다.
             if (check_direct.Checked) {
                 switch (client) {
                     case Client.MainClient:
@@ -296,9 +349,6 @@ namespace GersangClientStation {
                         id = textBox_client_3_id.Text;
                         pw = textBox_client_3_pw.Text;
                         break;
-                    case Client.None:
-                        Debug.WriteLine("SetStatus: 잘못된 Client 인자 전달");
-                        return;
                 }
             } else {
                 switch (client) {
@@ -314,22 +364,36 @@ namespace GersangClientStation {
                         id = client_id_3;
                         pw = client_pw_3;
                         break;
-                    case Client.None:
-                        Debug.WriteLine("SetStatus: 잘못된 Client 인자 전달");
-                        return;
                 }
             }
 
             try {
                 //"GSuserID"라는 이름을 가진 input 태그 요소는 2개 있습니다. 그 중 2번째 요소에 id속성을 설정해줘야 합니다.
                 //"GSuserPW"도 마찬가지
-                HtmlElement input_userId = document_main.GetElementsByTagName("input").GetElementsByName("GSuserID")[1];
-                HtmlElement input_userPwd = document_main.GetElementsByTagName("input").GetElementsByName("GSuserPW")[1];
+                HtmlElementCollection temp = document_main.GetElementsByTagName("input").GetElementsByName("GSuserID");
+                if(temp == null) {
+                    MessageBox.Show("Login메서드 실행 실패지점 1\n개발자에게 문의해주세요.");
+                    return;
+                }
+                HtmlElement input_userId = temp[1];
+
+                temp = document_main.GetElementsByTagName("input").GetElementsByName("GSuserPW");
+                if (temp == null) {
+                    MessageBox.Show("Login메서드 실행 실패지점 2\n개발자에게 문의해주세요.");
+                    return;
+                }
+                HtmlElement input_userPwd = temp[1];
 
                 //frmLogin이라는 Name 속성을 가진 Form 태그 요소를 찾습니다.
-                HtmlElement form_login = document_main.Forms.GetElementsByName("frmLogin")[0];
+                temp = document_main.Forms.GetElementsByName("frmLogin");
+                if(temp == null) {
+                    MessageBox.Show("Login메서드 실행 실패지점 3\n개발자에게 문의해주세요.");
+                    return;
+                }
 
+                HtmlElement form_login = temp[0];
                 if (input_userId == null || input_userPwd == null || form_login == null) {
+                    MessageBox.Show("Login메서드 실행 실패지점 4\n개발자에게 문의해주세요.");
                     return;
                 }
 
@@ -345,18 +409,15 @@ namespace GersangClientStation {
                     return;
                 }
 
+                isLogin = true;
                 form_login.InvokeMember("submit"); //입력된 아이디와 패스워드로 로그인을 시도
-
+                currentLoginClient = client; //여기까지 무사히 왔다면 로그인을 하였다고 간주 (단, 로딩 이벤트에서 로그인 완료하였는지 체크하여 안되었을 시 None으로 변경)
             } catch (ArgumentOutOfRangeException e) {
-                if (document_main.Url.Equals(url_main)) {
-                    Debug.WriteLine(e.Message);
-                    Debug.WriteLine("로그인을 다시 시도합니다.");
-                    //SetStatus(Status.Retrying, client);
-                    Delay(1000);
-                    Login(client);
-                }
+                isLogin = false;
+                MessageBox.Show(e.StackTrace);
             }
         }
+
         private void clearPassword() {
             Form_Main.config.AppSettings.Settings["client_pw_1_tab_1"].Value = "";
             Form_Main.config.AppSettings.Settings["client_pw_2_tab_1"].Value = "";
@@ -380,37 +441,76 @@ namespace GersangClientStation {
         /// <summary>
         /// OTP 로그인
         /// </summary>
-        private void OtpLogin(HtmlElement input_otp) {
-            Form otpDialogForm = new MetroForm() {
-                Width = 300,
-                Height = 100,
-                Text = "OTP를 입력해주세요.",
-                StartPosition = FormStartPosition.Manual, //CenterParent 설정 및 Owner설정 시 otp 입력이 정상적으로 되지 않음..
-                Resizable = false,
-                MaximizeBox = false,
-                MinimizeBox = false,
-                BorderStyle = MetroFramework.Drawing.MetroBorderStyle.FixedSingle,
-            };
-            otpDialogForm.Left = this.Left + (this.Width - otpDialogForm.Width) / 2;
-            otpDialogForm.Top = this.Top + (this.Height - otpDialogForm.Height) / 2;
-            MetroTextBox textBox_otp = new MetroTextBox() { Left = 30, Top = 60, Width = 180, MaxLength = 8 };
-            MetroButton button_otpConfirm = new MetroButton() { Left = 220, Top = 60, Width = 50, Text = "로그인", DialogResult = DialogResult.OK };
-            button_otpConfirm.Click += (sender, e) => { otpDialogForm.Close(); };
+        private bool OtpLogin() {
+            try {
+                HtmlElementCollection input_otp = this.document_main.GetElementsByTagName("input").GetElementsByName("GSotpNo"); //OTP 입력상자를 가져옵니다.
+                if (input_otp.Count == 0) {
+                    MessageBox.Show("OtpLogin 메서드 실행 오류 : OTP 입력 창을 찾을 수 없습니다.");
+                    return false;
+                }
 
-            otpDialogForm.Controls.Add(textBox_otp);
-            otpDialogForm.Controls.Add(button_otpConfirm);
-            otpDialogForm.AcceptButton = button_otpConfirm;
+                string otpCode = string.Empty;
 
+                Form otpDialogForm = new MetroForm() {
+                    Width = 300,
+                    Height = 100,
+                    Text = "OTP를 입력해주세요.",
+                    StartPosition = FormStartPosition.Manual, //CenterParent 설정 및 Owner설정 시 otp 입력이 정상적으로 되지 않음..
+                    Resizable = false,
+                    MaximizeBox = false,
+                    MinimizeBox = false,
+                    BorderStyle = MetroFramework.Drawing.MetroBorderStyle.FixedSingle
+                };
 
-            isTypingOtp = true;
-            DialogResult dr = otpDialogForm.ShowDialog();
-            string otpCode = dr == DialogResult.OK ? textBox_otp.Text : string.Empty;
+                otpDialogForm.Left = this.Left + (this.Width - otpDialogForm.Width) / 2;
+                otpDialogForm.Top = this.Top + (this.Height - otpDialogForm.Height) / 2;
+                MetroTextBox textBox_otp = new MetroTextBox() { Left = 30, Top = 60, Width = 180, MaxLength = 8 };
+                MetroButton button_otpConfirm = new MetroButton() { Left = 220, Top = 60, Width = 50, Text = "로그인", DialogResult = DialogResult.OK };
+                otpDialogForm.AcceptButton = button_otpConfirm;
+                button_otpConfirm.DialogResult = DialogResult.OK;
 
-            Debug.WriteLine(otpCode);
-            input_otp.SetAttribute("value", otpCode);
+                otpDialogForm.FormClosed += (sender, e) => {
+                    this.Activate(); //OTP 로그인 후 버튼 두 번 클릭해야하는 현상 방지
+                };
 
-            Delay(100);
-            this.Activate(); //OTP 로그인 후 버튼 두 번 클릭해야하는 현상 방지
+                bool isCancle = false;
+                otpDialogForm.FormClosing += (sender, e) => {
+                    if(otpDialogForm.DialogResult == DialogResult.OK) {
+                        if (textBox_otp.Text.Length < 8) {
+                            MessageBox.Show("OTP 코드를 다시 확인해주세요.\nOTP 코드는 8자리 입니다.", "OTP 코드 입력", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            e.Cancel = true;
+                        } else {
+                            otpCode = textBox_otp.Text;
+
+                            Debug.WriteLine(otpCode);
+                            input_otp[0].SetAttribute("value", otpCode);
+
+                            //opt 입력이 되었으므로, 클릭
+                            HtmlElement button_otp_login = document_main.GetElementById("btn_Send");
+                            object result = button_otp_login.InvokeMember("Click");
+                            mainBrowser.Url = new Uri(url_main); //로그인 실패 여부를 판단하기 위해 메인 홈페이지로 이동
+                        }
+                    } else {
+                        //X버튼으로 닫았을 때 (Cancle)
+                        mainBrowser.Navigate(url_main);
+                        isCancle = true;
+                    }
+                };
+
+                otpDialogForm.Controls.Add(textBox_otp);
+                otpDialogForm.Controls.Add(button_otpConfirm);
+                otpDialogForm.ShowDialog();
+
+                if (isCancle) {
+                    Debug.WriteLine("OTP 로그인 취소");
+                    return false;
+                }
+
+                return true;
+            } catch(Exception ex) {
+                Debug.WriteLine(ex.StackTrace);
+                return false;
+            }
         }
         //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -445,6 +545,12 @@ namespace GersangClientStation {
         /// 게임 시작
         /// </summary>
         private void GameStart(string client_path) {
+            document_main = mainBrowser.Document;
+            if(document_main == null) {
+                MessageBox.Show("GameStart에서 document_main이 null입니다.\n관리자에게 문의해주세요.");
+                return;
+            }
+
             if (currentLoginClient == Client.None) {
                 MessageBox.Show("로그인을 먼저 해주세요.");
                 return;
@@ -464,23 +570,12 @@ namespace GersangClientStation {
                 //ActiveX가 아닌 GersangStarter로 실행하도록 합니다.
                 //참고 : https://github.com/LOONACIA/GersangLauncher
 
-                this.document_main = mainBrowser.Document;
-                for(int i = 0; i < 5; i++) {
-                    Delay(200);
-                    if(document_main.Url.ToString().Contains("pw_reset.gs")) {
-                        continue;
-                    } else {
-                        string script = "function myStart() {\n self.location.href='Gersang:';\n startRetry = setTimeout(\"socketStart('main')\", 2000);" + "\n}";
-                        HtmlElement script_start = this.document_main.CreateElement("script"); //새로운 스크립트 요소를 추가합니다
-                        script_start.SetAttribute("language", "JavaScript");
-                        script_start.InnerHtml = script;
-                        this.document_main.GetElementsByTagName("head")[0].AppendChild(script_start);
-                        this.document_main.InvokeScript("myStart");
-                        return;
-                    }
-                }
-
-                MessageBox.Show("정상적으로 로그인을 실행하지 못하였습니다.\n실험실-ActiveX 체크박스를 체크하고 실행 해보세요.", "실행 오류", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                string script = "function myStart() {\n self.location.href='Gersang:';\n startRetry = setTimeout(\"socketStart('main')\", 2000);" + "\n}";
+                HtmlElement script_start = this.document_main.CreateElement("script"); //새로운 스크립트 요소를 추가합니다
+                script_start.SetAttribute("language", "JavaScript");
+                script_start.InnerHtml = script;
+                this.document_main.GetElementsByTagName("head")[0].AppendChild(script_start);
+                this.document_main.InvokeScript("myStart");
             }
         }
         //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -494,7 +589,13 @@ namespace GersangClientStation {
         bool isMainPage = false; //거상 홈페이지인지
         bool isEventPage = false; //출석체크 이벤트 페이지인지
         private void eventBrowser_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e) {
+            //절대경로가 같은지 체크하여 이 이벤트가 3번 실행되는 것을 방지합니다.
+            if (e.Url.AbsoluteUri != eventBrowser.Url.AbsoluteUri) {
+                return;
+            }
+
             Debug.WriteLine("<< 현재 이벤트 브라우저 접속 URL : " + e.Url + " >>");
+
             //프로그램을 시작하자마자 출석체크 이벤트 페이지를 찾고, 리턴합니다.
             //찾은 뒤에는 진입하지 않습니다.
             if (!isFind) {
@@ -517,26 +618,28 @@ namespace GersangClientStation {
 
             //출석체크 이벤트 페이지를 성공적으로 찾았으며, 현재 네이버에 거상을 검색한 상태라면,
             //검색페이지 내의 거상 공식홈페이지 링크 버튼을 찾고 누릅니다.
-            if (isNaver && e.Url.ToString().Equals(url_search_gersang)) {
+            if (isNaver && e.Url.ToString().Contains(url_search_gersang)) {
                 Debug.WriteLine("네이버 검색 완료 -> 거상 링크 클릭");
                 clickGersangLink();
                 return;
             }
 
             //거상 홈페이지에 들어왔다면, 바로 이벤트 페이지로 접속합니다.
-            if (isMainPage && e.Url.ToString().Equals(url_main)) {
+            if (isMainPage && e.Url.ToString().Contains(url_main)) {
                 Debug.WriteLine("거상 메인화면 -> 거상 링크 클릭");
                 navigateEventPage();
                 return;
             }
 
             //거상 출석체크 이벤트 페이지에 접속하였다면, 현재 시간 체크 후 해당 시간의 아이템 받기 버튼을 클릭합니다.
-            if (isEventPage && e.Url.ToString().Equals(url_event)) {
+            if (isEventPage && e.Url.ToString().Contains(url_event)) {
                 Debug.WriteLine("이벤트 페이지 -> 보상 수령 버튼 클릭");
                 if (eventBrowser.Document.GetElementById("pop") != null) { //단순히 정말로 페이지가 다 로딩된건지 확인하기 위함입니다.
                     clickItemGet();
                 }
             }
+
+            isProcessing = false;
         }
         //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -544,6 +647,16 @@ namespace GersangClientStation {
         /// 네이버 검색 버튼 클릭
         /// </summary>
         private void button_search_naver_Click(object sender, EventArgs e) {
+            if (isProcessing) {
+                Debug.WriteLine("지금은 버튼을 누를 수 없습니다.");
+                return;
+            }
+
+            document_main = mainBrowser.Document;
+            if (document_main == null) {
+                MessageBox.Show("button_search_naver_Click에서 document_main이 null입니다.\n관리자에게 문의해주세요.");
+                return;
+            }
 
             if (url_event == "" || !isFind) {
                 MessageBox.Show("이벤트 페이지를 찾지 못하였습니다.");
@@ -568,7 +681,6 @@ namespace GersangClientStation {
 
             //네이버 검색 페이지 접속 -> 거상 공홈 버튼 클릭 -> 이벤트 페이지 이동 -> 아이템 획득 순서로 진행됩니다.
             //각 과정이 메서드로 분리되어 DocumentLoading시에 실행됩니다.
-            int max_check_count = 25; //로그인 또는 로그아웃이 잘 되었는지 체크 할 횟수
             Client client;
 
             //클릭한 버튼에 따라 변수를 초기화
@@ -582,57 +694,22 @@ namespace GersangClientStation {
                 return;
             }
 
+            isProcessing = true;
+
             if (currentLoginClient != client) {
                 //다른 계정에 로그인 되어있거나, 로그아웃 상태라면,
 
-                if (this.findElementByClassName("div", "user_name") != null) {
-                    //로그인이 되어있는지 확실하게 체크한 후,
-
+                if(currentLoginClient != Client.None) {
+                    isSearch_Logout = true;
+                    current_change_client = client;
                     Logout(); //로그아웃 한다.
-
-
-                    //로그아웃이 잘 되었는지 확인
-                    for (int i = 0; i < max_check_count; i++) {
-                        Delay(200); //0.2초 간격으로 최대 5초동안 로그아웃이 잘 되었는지 확인합니다.
-                        if (this.findElementByClassName("div", "user_name") == null && document_main.Url.ToString().Equals(url_main)) {
-                            Login(client);
-                            break;
-                        }
-
-                        if (i == max_check_count - 1) {
-                            MessageBox.Show("로그아웃이 정상적으로 완료되지 않았습니다.");
-                            return;
-                        }
-                    }
-
-                    for (int i = 0; i < max_check_count; i++) {
-                        Delay(200); //0.2초 간격으로 최대 5초동안 로그인이 잘 되었는지 확인합니다.
-                        if (this.findElementByClassName("div", "user_name") != null) {
-                            navigateSearchPage();
-                            return;
-                        }
-
-                        if (i == max_check_count - 1) {
-                            MessageBox.Show("로그인이 정상적으로 완료되지 않았습니다.");
-                            return;
-                        }
-                    }
+                    //Login(client); //로그인 한다.
+                    //navigateSearchPage(); //네이버 검색창에 접속한다.
                 } else {
                     //로그인이 안되어있다면,
+                    isSearch_Login = true;
                     Login(client);
-
-                    for (int i = 0; i < max_check_count; i++) {
-                        Delay(200); //0.2초 간격으로 최대 5초동안 로그인이 잘 되었는지 확인합니다.
-                        if (this.findElementByClassName("div", "user_name") != null) {
-                            navigateSearchPage();
-                            return;
-                        }
-
-                        if (i == max_check_count - 1) {
-                            MessageBox.Show("로그인이 정상적으로 완료되지 않았습니다.");
-                            return;
-                        }
-                    }
+                    //navigateSearchPage(); //네이버 검색창에 접속한다.
                 }
             } else {
                 //시작하려는 거상 계정에 로그인되어있다면 그냥 실행
@@ -656,9 +733,11 @@ namespace GersangClientStation {
                     element.InvokeMember("click");
                     isNaver = false;
                     isMainPage = true;
-                    break;
+                    return;
                 }
             }
+
+            isNaver = false;
             Debug.WriteLine("네이버 검색창에서 거상 링크를 찾지 못하였습니다.");
         }
 
@@ -704,6 +783,14 @@ namespace GersangClientStation {
         /// </summary>
         private void toggle_client_1_Click(object sender, EventArgs e) {
             MetroToggle toggle = sender as MetroToggle;
+
+            if (isProcessing) {
+                Debug.WriteLine("지금은 버튼을 누를 수 없습니다.");
+                toggle.Checked = !toggle.Checked;
+                return;
+            }
+            isProcessing = true;
+           
             if (toggle.Checked) {
                 if (client_id_1 == "" || client_pw_1 == "" || client_path_1 == "") {
                     toggle_client_1.Checked = false;
@@ -712,11 +799,12 @@ namespace GersangClientStation {
                 }
 
                 if (currentLoginClient != Client.None) {
+                    isChangeLogin = true;
+                    current_change_client = Client.MainClient;
                     Logout();
-                    Delay(500);
+                } else {
+                    Login(Client.MainClient);
                 }
-                toggle_client_1.Checked = false;
-                Login(Client.MainClient);
             } else {
                 Logout();
             }
@@ -724,6 +812,14 @@ namespace GersangClientStation {
 
         private void toggle_client_2_Click(object sender, EventArgs e) {
             MetroToggle toggle = sender as MetroToggle;
+
+            if (isProcessing) {
+                Debug.WriteLine("지금은 버튼을 누를 수 없습니다.");
+                toggle.Checked = !toggle.Checked;
+                return;
+            }
+            isProcessing = true;
+
             if (toggle.Checked) {
                 if (client_id_2 == "" || client_pw_2 == "" || client_path_2 == "") {
                     toggle_client_2.Checked = false;
@@ -732,11 +828,12 @@ namespace GersangClientStation {
                 }
 
                 if (currentLoginClient != Client.None) {
+                    isChangeLogin = true;
+                    current_change_client = Client.Client2;
                     Logout();
-                    Delay(500);
+                } else {
+                    Login(Client.Client2);
                 }
-                toggle_client_2.Checked = false;
-                Login(Client.Client2);
             } else {
                 Logout();
             }
@@ -744,6 +841,14 @@ namespace GersangClientStation {
 
         private void toggle_client_3_Click(object sender, EventArgs e) {
             MetroToggle toggle = sender as MetroToggle;
+
+            if (isProcessing) {
+                Debug.WriteLine("지금은 버튼을 누를 수 없습니다.");
+                toggle.Checked = !toggle.Checked;
+                return;
+            }
+            isProcessing = true;
+
             if (toggle.Checked) {
                 if (client_id_3 == "" || client_pw_3 == "" || client_path_3 == "") {
                     toggle_client_3.Checked = false;
@@ -752,11 +857,12 @@ namespace GersangClientStation {
                 }
 
                 if (currentLoginClient != Client.None) {
+                    isChangeLogin = true;
+                    current_change_client = Client.Client3;
                     Logout();
-                    Delay(500);
+                } else {
+                    Login(Client.Client3);
                 }
-                toggle_client_3.Checked = false;
-                Login(Client.Client3);
             } else {
                 Logout();
             }
@@ -839,6 +945,7 @@ namespace GersangClientStation {
                 return;
             }
             try {
+                isShortcut = true;
                 Form_Browser shortcutForm = new Form_Browser(mainBrowser, shortcut_address_1);
                 shortcutForm.ShowDialog();
             } catch (Exception ex) {
@@ -853,6 +960,7 @@ namespace GersangClientStation {
             }
 
             try {
+                isShortcut = true;
                 Form_Browser shortcutForm = new Form_Browser(mainBrowser, shortcut_address_2);
                 shortcutForm.ShowDialog();
             } catch (Exception ex) {
@@ -867,6 +975,7 @@ namespace GersangClientStation {
             }
 
             try {
+                isShortcut = true;
                 Form_Browser shortcutForm = new Form_Browser(mainBrowser, shortcut_address_3);
                 shortcutForm.ShowDialog();
             } catch (Exception ex) {
@@ -881,6 +990,7 @@ namespace GersangClientStation {
             }
 
             try {
+                isShortcut = true;
                 Form_Browser shortcutForm = new Form_Browser(mainBrowser, shortcut_address_4);
                 shortcutForm.ShowDialog();
             } catch (Exception ex) {
@@ -895,6 +1005,7 @@ namespace GersangClientStation {
             }
 
             try {
+                isShortcut = true;
                 Form_Browser shortcutForm = new Form_Browser(mainBrowser, shortcut_address_5);
                 shortcutForm.ShowDialog();
             } catch (Exception ex) {
@@ -932,7 +1043,12 @@ namespace GersangClientStation {
         /// 게임 시작 버튼 클릭
         /// </summary>
         private void button_start_Click(object sender, EventArgs e) {
-            int max_check_count = 25; //로그인 또는 로그아웃이 잘 되었는지 체크 할 횟수
+            if (isProcessing) {
+                Debug.WriteLine("지금은 버튼을 누를 수 없습니다.");
+                return;
+            }
+            isProcessing = true;
+
             Client client = Client.None;
             string client_path = "";
             int version = 0;
@@ -1031,63 +1147,25 @@ namespace GersangClientStation {
                 debugForm.Show();
             }
 
-            if (currentLoginClient != client) {
-                //다른 계정에 로그인 되어있거나, 로그아웃 상태라면,
-
-                if (this.findElementByClassName("div", "user_name") != null) {
-                    //로그인이 되어있는지 확실하게 체크한 후,
-
-                    Logout(); //로그아웃 한다.
-
-
-                    //로그아웃이 잘 되었는지 확인
-                    for (int i = 0; i < max_check_count; i++) {
-                        Delay(200); //0.2초 간격으로 최대 5초동안 로그아웃이 잘 되었는지 확인합니다.
-                        if (this.findElementByClassName("div", "user_name") == null && document_main.Url.ToString().Equals(url_main)) {
-                            Login(client);
-                            break;
-                        }
-
-                        if (i == max_check_count - 1) {
-                            MessageBox.Show("로그아웃이 정상적으로 완료되지 않았습니다.");
-                            return;
-                        }
-                    }
-
-                    for (int i = 0; i < max_check_count; i++) {
-                        Delay(200); //0.2초 간격으로 최대 5초동안 로그인이 잘 되었는지 확인합니다.
-                        if (this.findElementByClassName("div", "user_name") != null) {
-                            GameStart(client_path);
-                            return;
-                        }
-
-                        if (i == max_check_count - 1) {
-                            MessageBox.Show("로그인이 정상적으로 완료되지 않았습니다.");
-                            return;
-                        }
-                    }
-                } else {
-                    //로그인이 안되어있다면,
+            if(currentLoginClient != client) {
+                current_client_path = client_path;
+                if (currentLoginClient == Client.None) {
+                    isGameStart_Login = true;
                     Login(client);
-
-                    for (int i = 0; i < max_check_count; i++) {
-                        Delay(200); //0.2초 간격으로 최대 5초동안 로그인이 잘 되었는지 확인합니다.
-                        if (this.findElementByClassName("div", "user_name") != null) {
-                            GameStart(client_path);
-                            return;
-                        }
-
-                        if (i == max_check_count - 1) {
-                            MessageBox.Show("로그인이 정상적으로 완료되지 않았습니다.");
-                            return;
-                        }
-                    }
+                    //GameStart(client_path);
+                } else {
+                    isGameStart_Logout = true;
+                    current_change_client = client;
+                    Logout();
+                    //Login(client);
+                    //GameStart(client_path);
                 }
             } else {
                 //시작하려는 거상 계정에 로그인되어있다면 그냥 실행
                 GameStart(client_path);
-                return;
+                isProcessing = false;
             }
+
         }
         //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -1513,6 +1591,86 @@ namespace GersangClientStation {
             MessageBox.Show("저장이 완료되었습니다.", "경로 및 계정정보", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
+        //거상 서버에서 vsn.dat 파일을 다운로드 받아 현재 거상 최신버전을 확인
+        private void checkGersangUpdate() {
+            try {
+                //현재 거상 최신 버전을 확인합니다
+                using (WebClient client = new WebClient()) {
+                    ServicePointManager.Expect100Continue = true;
+                    ServicePointManager.ServerCertificateValidationCallback = delegate { return true; };
+                    ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12 | SecurityProtocolType.Ssl3;
+
+                    client.Headers.Add("User-Agent", "Mozilla/4.0 (compatible; MSIE 8.0)");
+
+                    DirectoryInfo binDirectory = new DirectoryInfo(System.Windows.Forms.Application.StartupPath + @"\bin");
+                    if (!binDirectory.Exists) { binDirectory.Create(); } else {
+                        foreach (FileInfo file in binDirectory.GetFiles()) {
+                            if (file.Name.Equals("vsn.dat")) {
+                                file.Delete();
+                            }
+                        }
+                    }
+
+                    client.DownloadFileCompleted += (object sender, AsyncCompletedEventArgs e) => {
+                        if (e.Error != null) {
+                            Debug.WriteLine("vsn.dat 파일 다운로드 중 오류 발생");
+                            Debug.WriteLine(e.Error.Message);
+                        } else {
+                            Debug.WriteLine("vsn.dat.gsz 파일 다운로드 완료");
+                            ZipFile.ExtractToDirectory(binDirectory.FullName + @"\vsn.dat.gsz", binDirectory.FullName);
+                            Debug.WriteLine("vsn.dat 파일 압축 해제 완료");
+
+                            FileStream fs = File.OpenRead(binDirectory.FullName + @"\vsn.dat");
+                            BinaryReader br = new BinaryReader(fs);
+                            gersangLatestVersion = -(br.ReadInt32() + 1);
+                            label_gersangLatestVersion.Text = gersangLatestVersion.ToString();
+                            Debug.WriteLine("서버에 게시된 거상 최신 버전 : " + gersangLatestVersion);
+                            fs.Close();
+                            br.Close();
+
+                            checkClientVersion();
+                        }
+                    };
+
+                    Uri vsnPath = new Uri(@"https://akgersang.xdn.kinxcdn.com/Gersang/Patch/Gersang_Server/Client_Patch_File/Online/vsn.dat.gsz");
+                    client.DownloadFileAsync(vsnPath, System.Windows.Forms.Application.StartupPath + @"\bin\vsn.dat.gsz");
+                }
+            } catch (Exception e) {
+                MessageBox.Show("거상 최신 버전 확인 중 오류 발생\n" + e.Message);
+            }
+
+        }
+
+        //클라이언트 경로에서 vsn.dat를 추출하여 현재 거상 클라버전을 확인
+        private void checkClientVersion() {
+            try {
+                string[] client_path = new string[3] { client_path_1, client_path_2, client_path_3 };
+                MetroLabel[] labels_clinet_version = new MetroLabel[3] { label_client_1_version, label_client_2_version, label_client_3_version };
+                for (int i = 0; i < 3; i++) {
+                    if (client_path[i].Equals("")) {
+                        labels_clinet_version[i].Style = MetroFramework.MetroColorStyle.Silver;
+                        labels_clinet_version[i].Text = "확인불가";
+                        continue;
+                    }
+                    FileStream fs = File.OpenRead(client_path[i] + @"\Online\vsn.dat");
+                    BinaryReader br = new BinaryReader(fs);
+                    int currentVer = -(br.ReadInt32() + 1);
+                    labels_clinet_version[i].Text = currentVer.ToString();
+                    Debug.WriteLine("클라 " + i + "  버전 :" + currentVer);
+
+                    if (currentVer < gersangLatestVersion) {
+                        labels_clinet_version[i].Style = MetroFramework.MetroColorStyle.Red;
+                    } else {
+                        labels_clinet_version[i].Style = MetroFramework.MetroColorStyle.Black;
+                    }
+                    fs.Close();
+                    br.Close();
+                }
+            } catch (Exception e) {
+                Debug.WriteLine("클라이언트 버전 확인 중 오류 발생\n" + e.Message);
+            }
+        }
+
         //태스크바의 아이콘을 클릭 시 최소화, 최대화가 되도록 설정 (호출 필요 X)
         //원래 안되었던 이유 : MetroForm은 BorderStyle이 None이라서
         protected override CreateParams CreateParams {
@@ -1567,11 +1725,21 @@ namespace GersangClientStation {
         //Document에서 해당 태그와 클래스명을 가진 요소를 반환합니다.
         //여러 개가 있을 경우 가장 첫 번째에 있는 요소를 가져옴에 유의
         private HtmlElement findElementByClassName(string tagName, string className) {
+            document_main = mainBrowser.Document;
+            if(document_main == null) {
+                return null;
+            }
+
             foreach (HtmlElement element in document_main.GetElementsByTagName(tagName)) {
-                if (element.GetAttribute("className") == className) {
-                    return element;
+                if(element == null) {
+                    continue;
+                } else {
+                    if (element.GetAttribute("className") == className) {
+                        return element;
+                    }
                 }
             }
+
             return null;
         }
     }
