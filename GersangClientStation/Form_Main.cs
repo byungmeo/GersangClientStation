@@ -89,6 +89,7 @@ namespace GersangClientStation {
         private bool isTextChanged = false;
 
         //프로그램의 현재 진행 상태를 나타내는 bool
+        private bool isInitBrowserCompleted = false; //처음 프로그램 실행 시 브라우저가 로딩 되었는지 여부
         private bool isProcessing = false; //현재 작업이 진행중인가? (true라면 버튼 클릭 불가)
         private bool isLogin = false; //방금 Login 메서드를 실행한 상태
         private bool isChangeLogin = false; //이미 로그인 된 상태에서, 다른 클라로 로그인 하려고 Logout 메서드를 실행한 상태
@@ -136,6 +137,11 @@ namespace GersangClientStation {
                 metroLabel5.Text = "로딩 중...";
                 return;
             }
+
+            if(isInitBrowserCompleted == false) {
+                isInitBrowserCompleted = true;
+            }
+
             metroLabel5.Text = "로딩 완료";
             test_url.Text = e.Url.ToString();
 
@@ -331,11 +337,6 @@ namespace GersangClientStation {
         private void Login(Client client) {
             if (client == Client.None) {
                 MessageBox.Show("Login메서드에 잘못된 클라이언트 매개변수가 입력되었습니다.");
-            }
-
-            document_main = mainBrowser.Document;
-            if (document_main == null) {
-                MessageBox.Show("Login 메서드 실행 오류 : document_main이 null 입니다.\n개발자에게 문의 해주세요.");
                 return;
             }
 
@@ -563,7 +564,6 @@ namespace GersangClientStation {
         /// 게임 시작
         /// </summary>
         private void GameStart(string client_path) {
-            document_main = mainBrowser.Document;
             if (document_main == null) {
                 MessageBox.Show("GameStart에서 document_main이 null입니다.\n관리자에게 문의해주세요.");
                 return;
@@ -580,6 +580,8 @@ namespace GersangClientStation {
                 registryKey.SetValue("InstallPath", client_path);
                 registryKey.Close();
             }
+
+            Delay(500);
 
             if (this.isActiveX) {
                 //홈페이지에서 gameStart 스크립트를 실행합니다. (인자가 1이면 본섭, 2면 테섭을 실행합니다)
@@ -665,12 +667,16 @@ namespace GersangClientStation {
         /// 네이버 검색 버튼 클릭
         /// </summary>
         private void button_search_naver_Click(object sender, EventArgs e) {
+            if (!isInitBrowserCompleted) {
+                MessageBox.Show("아직 브라우저가 로딩되지 않아 로그인이 불가능합니다. 잠시 후 시도해주세요.", "로그인 실패", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                return;
+            }
+
             if (isProcessing) {
                 Debug.WriteLine("지금은 버튼을 누를 수 없습니다.");
                 return;
             }
 
-            document_main = mainBrowser.Document;
             if (document_main == null) {
                 MessageBox.Show("button_search_naver_Click에서 document_main이 null입니다.\n관리자에게 문의해주세요.");
                 return;
@@ -809,11 +815,23 @@ namespace GersangClientStation {
         }
 
         private void toggle_login(MetroToggle toggle, string id, string pw, string path, Client client) {
+            if (!isInitBrowserCompleted) {
+                MessageBox.Show("아직 브라우저가 로딩되지 않아 로그인이 불가능합니다. 잠시 후 시도해주세요.", "로그인 실패", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                toggle.Checked = !toggle.Checked;
+                return;
+            }
+
             if (isProcessing) {
                 Debug.WriteLine("지금은 버튼을 누를 수 없습니다.");
                 toggle.Checked = !toggle.Checked;
                 return;
             }
+
+            if (document_main == null) {
+                MessageBox.Show("toggle_login에서 document_main이 null입니다.\n관리자에게 문의해주세요.");
+                return;
+            }
+
             isProcessing = true;
 
             if (toggle.Checked) {
@@ -1011,8 +1029,18 @@ namespace GersangClientStation {
         /// 게임 시작 버튼 클릭
         /// </summary>
         private void button_start_Click(object sender, EventArgs e) {
+            if (!isInitBrowserCompleted) {
+                MessageBox.Show("아직 브라우저가 로딩되지 않아 로그인이 불가능합니다. 잠시 후 시도해주세요.", "로그인 실패", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                return;
+            }
+
             if (isProcessing) {
                 Debug.WriteLine("지금은 버튼을 누를 수 없습니다.");
+                return;
+            }
+
+            if (document_main == null) {
+                MessageBox.Show("button_start_Click에서 document_main이 null입니다.\n관리자에게 문의해주세요.");
                 return;
             }
 
@@ -1679,6 +1707,33 @@ namespace GersangClientStation {
             }
         }
         //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        /// <summary>
+        /// 트레이 관련
+        /// </summary>
+
+        private void notifyIcon1_MouseDoubleClick(object sender, MouseEventArgs e) {this.WindowState = FormWindowState.Normal;}
+        private void toolStripMenuItem_exit_Click(object sender, EventArgs e) {this.Close();}
+        private void toolStripMenuItem_open_Click(object sender, EventArgs e) {this.WindowState = FormWindowState.Normal;}
+        private void toolStripMenuItem_client1_search_Click(object sender, EventArgs e) {button_search_naver_1.PerformClick();}
+        private void toolStripMenuItem_client1_run_Click(object sender, EventArgs e) {button_start_1.PerformClick();}
+        private void toolStripMenuItem_client2_search_Click(object sender, EventArgs e) {button_search_naver_2.PerformClick();}
+        private void toolStripMenuItem_client2_run_Click(object sender, EventArgs e) {button_start_2.PerformClick();}
+        private void toolStripMenuItem_client3_search_Click(object sender, EventArgs e) {button_search_naver_3.PerformClick();}
+        private void toolStripMenuItem_client3_run_Click(object sender, EventArgs e) {button_start_3.PerformClick();}
+
+        private void Form_Main_Resize(object sender, EventArgs e) {
+            Debug.WriteLine(this.WindowState.ToString());
+            if (this.WindowState == FormWindowState.Minimized) {
+                notifyIcon1.Visible = true;
+                notifyIcon1.BalloonTipText = "트레이가 활성화 되었습니다.";
+                notifyIcon1.ShowBalloonTip(3000);
+            } else if (this.WindowState == FormWindowState.Normal) {
+                notifyIcon1.Visible = false;
+                this.TopMost = true;
+                this.TopMost = false;
+            }
+        }
+        //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
         /// <summary>
         /// 유틸 메서드
@@ -1700,7 +1755,6 @@ namespace GersangClientStation {
         //Document에서 해당 태그와 클래스명을 가진 요소를 반환합니다.
         //여러 개가 있을 경우 가장 첫 번째에 있는 요소를 가져옴에 유의
         private HtmlElement findElementByClassName(string tagName, string className) {
-            document_main = mainBrowser.Document;
             if (document_main == null) {
                 return null;
             }
@@ -1718,55 +1772,7 @@ namespace GersangClientStation {
             return null;
         }
 
-        private void notifyIcon1_MouseDoubleClick(object sender, MouseEventArgs e) {
-            this.WindowState = FormWindowState.Normal;
-        }
-
-        private void toolStripMenuItem_exit_Click(object sender, EventArgs e) {
-            this.Close();
-        }
-
-        private void toolStripMenuItem_open_Click(object sender, EventArgs e) {
-            this.WindowState = FormWindowState.Normal;
-        }
-
-        private void toolStripMenuItem_client1_search_Click(object sender, EventArgs e) {
-            button_search_naver_1.PerformClick();
-        }
-
-        private void toolStripMenuItem_client1_run_Click(object sender, EventArgs e) {
-            button_start_1.PerformClick();
-        }
-
-        private void toolStripMenuItem_client2_search_Click(object sender, EventArgs e) {
-            button_search_naver_2.PerformClick();
-        }
-
-        private void toolStripMenuItem_client2_run_Click(object sender, EventArgs e) {
-            button_start_2.PerformClick();
-        }
-
-        private void toolStripMenuItem_client3_search_Click(object sender, EventArgs e) {
-            button_search_naver_3.PerformClick();
-        }
-
-        private void toolStripMenuItem_client3_run_Click(object sender, EventArgs e) {
-            button_start_3.PerformClick();
-        }
-
-        private void Form_Main_Resize(object sender, EventArgs e) {
-            Debug.WriteLine(this.WindowState.ToString());
-            if(this.WindowState == FormWindowState.Minimized) {
-                notifyIcon1.Visible = true;
-                notifyIcon1.BalloonTipText = "트레이가 활성화 되었습니다.";
-                notifyIcon1.ShowBalloonTip(3000);
-            } else if(this.WindowState == FormWindowState.Normal) {
-                notifyIcon1.Visible = false;
-                this.TopMost = true;
-                this.TopMost = false;
-            }
-        }
-
+        //OTP 로그인 후 딜레이 관련
         private void button_set_Click(object sender, EventArgs e) {
             try {
                 int delay = Int32.Parse(textBox_delay.Text);

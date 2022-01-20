@@ -906,9 +906,9 @@ namespace GersangClientStation {
             this.metroLabel5.FontSize = MetroFramework.MetroLabelSize.Small;
             this.metroLabel5.Location = new System.Drawing.Point(23, 567);
             this.metroLabel5.Name = "metroLabel5";
-            this.metroLabel5.Size = new System.Drawing.Size(58, 15);
+            this.metroLabel5.Size = new System.Drawing.Size(55, 15);
             this.metroLabel5.TabIndex = 33;
-            this.metroLabel5.Text = "로딩 상태";
+            this.metroLabel5.Text = "로딩 중...";
             // 
             // test_url
             // 
