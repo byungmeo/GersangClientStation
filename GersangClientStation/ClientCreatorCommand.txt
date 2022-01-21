@@ -29,10 +29,10 @@ echo.
 echo ####################################
 echo ## 3. XIGNCODE 폴더를 복사합니다. ##
 echo ####################################
-echo xcopy "%path1%\XIGNCODE\" "%path2%\XIGNCODE\" /i /y
-xcopy "%path1%\XIGNCODE\" "%path2%\XIGNCODE\" /i /y
-echo xcopy "%path1%\XIGNCODE\" "%path3%\XIGNCODE\" /i /y
-xcopy "%path1%\XIGNCODE\" "%path3%\XIGNCODE\" /i /y
+echo xcopy "%path1%\XIGNCODE" "%path2%\XIGNCODE" /i /y
+xcopy "%path1%\XIGNCODE" "%path2%\XIGNCODE" /i /y
+echo xcopy "%path1%\XIGNCODE" "%path3%\XIGNCODE" /i /y
+xcopy "%path1%\XIGNCODE" "%path3%\XIGNCODE" /i /y
 echo.
 echo #####################################################
 echo ## 4. 나머지 폴더를 모두 심볼릭 링크로 생성합니다. ##
