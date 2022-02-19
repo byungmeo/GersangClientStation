@@ -3,6 +3,8 @@
 ![GitHub last commit](https://img.shields.io/github/last-commit/byungmeo/GersangClientStation?style=for-the-badge)
 ![GitHub all releases](https://img.shields.io/github/downloads/byungmeo/GersangClientStation/total?style=for-the-badge)
 
+https://github.com/byungmeo/GersangStation  <- 리뉴얼 버전
+
 일반, OTP 로그인 ✔
 
 네이버 검색 보상 ✔
